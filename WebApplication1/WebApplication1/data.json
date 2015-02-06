@@ -1,0 +1,8 @@
+﻿[
+	{"title": "Divisions", "isFolder": true, "key": "folder2", "tooltip":"1",
+		"children": [
+			{"title": "Segment1","tooltip":"2", "children: [{"title": "Sub-Segment1", "tooltip":"3"}]"},
+			{"title": "Segment2","tooltip":"2", "children: [{"title": "Sub-Segment2", "tooltip":"3"}]"}
+			]
+	}
+]

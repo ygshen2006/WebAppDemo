@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="MyDB" Class="SQLOperationsDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=.;Initial Catalog=MyDB;Integrated Security=True" SettingsObjectName="Models.Properties.Settings" SettingsPropertyName="MyDBConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.IntrestType" Member="IntrestTypes">
+    <Type Name="IntrestType">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="IntrestName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Association Name="IntrestType_TeamType" Member="TeamTypes" ThisKey="Id" OtherKey="IntrestTypeId" Type="TeamType" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TeamTypes" Member="TeamTypes">
+    <Type Name="TeamType">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="TeamId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="IntrestTypeId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="IntrestType_TeamType" Member="IntrestType" ThisKey="IntrestTypeId" OtherKey="Id" Type="IntrestType" IsForeignKey="true" DeleteRule="CASCADE" />
+      <Association Name="TeamSite_TeamType" Member="TeamSite" ThisKey="TeamId" OtherKey="Id" Type="TeamSite" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TeamSites" Member="TeamSites">
+    <Type Name="TeamSite">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="TeamGUID" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="TeamOwner" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="TeamLogo" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="CreatedDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="TeamSite_TeamType" Member="TeamTypes" ThisKey="Id" OtherKey="TeamId" Type="TeamType" />
+      <Association Name="TeamSite_Report" Member="Reports" ThisKey="Id" OtherKey="TeamSiteId" Type="Report" />
+      <Association Name="User_TeamSite" Member="User" ThisKey="TeamOwner" OtherKey="Id" Type="User" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Reports" Member="Reports">
+    <Type Name="Report">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Title" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="FeaturedPicture" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="OtherPics" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="TeamSiteId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="IsDeleted" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="ReportStatusId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="StatusComment" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="CreatedDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="ModifiedDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Association Name="Report_ReportOwner" Member="ReportOwners" ThisKey="Id" OtherKey="ReportId" Type="ReportOwner" />
+      <Association Name="TeamSite_Report" Member="TeamSite" ThisKey="TeamSiteId" OtherKey="Id" Type="TeamSite" IsForeignKey="true" />
+      <Association Name="ReportStatus_Report" Member="ReportStatus" ThisKey="ReportStatusId" OtherKey="Id" Type="ReportStatus" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ReportStatus" Member="ReportStatus">
+    <Type Name="ReportStatus">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Status" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Association Name="ReportStatus_Report" Member="Reports" ThisKey="Id" OtherKey="ReportStatusId" Type="Report" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Users" Member="Users">
+    <Type Name="User">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Password" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Mail" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="DisplayName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Association Name="User_TeamSite" Member="TeamSites" ThisKey="Id" OtherKey="TeamOwner" Type="TeamSite" />
+      <Association Name="User_ReportOwner" Member="ReportOwners" ThisKey="Id" OtherKey="UserId" Type="ReportOwner" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ReportOwner" Member="ReportOwners">
+    <Type Name="ReportOwner">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="UserId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ReportId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Report_ReportOwner" Member="Report" ThisKey="ReportId" OtherKey="Id" Type="Report" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+      <Association Name="User_ReportOwner" Member="User" ThisKey="UserId" OtherKey="Id" Type="User" IsForeignKey="true" />
+    </Type>
+  </Table>
+</Database>

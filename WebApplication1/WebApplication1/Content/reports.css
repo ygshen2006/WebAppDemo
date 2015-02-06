@@ -1,0 +1,270 @@
+﻿* {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    font-family: 'Microsoft YaHei UI';
+    font-size:15px;
+}
+body {
+    /*background:url(../Images/tutorial.png) no-repeat top center;*/
+}
+
+a {
+    text-decoration: none;
+}
+
+.wrapper {
+    width: 1200px;
+    margin: 0 auto;
+}
+
+
+.tile {
+    margin: 5px;
+    padding: 5px;
+    background-color: #6DC2E9;
+    width: 100px;
+    height: 100px;
+    float: left;
+    position: relative;
+}
+
+    .tile:hover {
+        cursor: pointer;
+    }
+
+
+.tile-selected {
+    background-color: #1570A6 !important;
+    color: #FFF !important;
+}
+
+
+.leftbar {
+    padding-left: 30px;
+    width: 250px;
+    height: auto;
+    float: left;
+    font-family: 'Segoe UI';
+}
+
+.reportCategory {
+    width: 250px;
+    color: black;
+    font-size: 24px;
+    margin-top: 30px;
+}
+
+.filterHead {
+    font-family: 'Segoe UI';
+    font-size: 15px;
+    margin-top: 30px;
+}
+
+.filterCollapse {
+    background-image: url('../Images/plus.png');
+    background-repeat: no-repeat;
+    display: inline-block;
+    height: 24px;
+    width: 24px;
+    margin-left: 5px;
+}
+
+.filterExpand {
+    background-image: url('../Images/minus.png');
+    background-repeat: no-repeat;
+    display: inline-block;
+    height: 24px;
+    width: 24px;
+    margin-left: 5px;
+}
+
+    .filterExpand:hover {
+        background-image: url('../Images/minusHover.png');
+        background-repeat: no-repeat;
+    }
+
+.filterCollapse:hover {
+    background-image: url('../Images/plusHover.png');
+    background-repeat: no-repeat;
+}
+
+.parentFilter {
+    font-family: 'Segoe UI';
+    font-size: 14px;
+}
+
+.checkAll {
+    font-family: 'Segoe UI';
+    font-size: 14px;
+    margin: 10px;
+}
+
+.childFilter {
+    font-family: 'Segoe UI';
+    font-size: 14px;
+    margin: 10px;
+}
+
+.filterItem > ul {
+    display: none;
+    margin-left: 5px;
+    color: #1570A6 !important;
+    margin-top: 0px;
+    padding-bottom: 2px;
+    padding-left: 15px;
+}
+
+.filterApply input[type=button] {
+    color: white;
+    display: inline-block;
+    height: 25px;
+    width: 50px;
+    margin: 10px;
+    margin-bottom: 0px;
+    background-color: rgb(0, 114, 198);
+    padding-top: 5px !important;
+    border: 1px solid rgb(0, 114, 198);
+}
+
+.setButton cleanButton {
+    background-color: #1570A6 !important;
+    cursor: pointer;
+}
+
+
+
+.addReport {
+    width: 250px;
+    font-size: 15px;
+    margin-top: 20px;
+}
+
+.loading-indicator {
+    background: url('../Images/loading40.gif') no-repeat center;
+    width: 70px;
+    height: 70px;
+}
+
+.loading-indicator-overlay {
+    opacity: 0.6;
+    background-color: rgb(255, 255, 255);
+}
+
+.content {
+    float: left;
+    width: 660px;
+    padding: 10px;
+    margin-left: 10px;
+    min-height: 700px;
+}
+
+    .content .sorter {
+        height: 55px;
+        line-height: 80px;
+        text-align: right;
+        padding-right: 30px;
+    }
+
+.list-item {
+    width: 100%;
+}
+
+.reportCollapse {
+    background-image: url('../Images/propCollapsed.png');
+    background-repeat: no-repeat;
+    display: inline-block;
+    height: 24px;
+    width: 24px;
+    margin-left: 5px;
+}
+
+.reportExpanded {
+    background-image: url('../Images/propExpanded.png');
+    background-repeat: no-repeat;
+    display: inline-block;
+    height: 24px;
+    width: 24px;
+    margin-left: 5px;
+}
+
+.reportIcon {
+    background-image: url('../Images/rptUser.png');
+    background-repeat: no-repeat;
+    display: inline-block;
+    height: 24px;
+    width: 24px;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.action {
+    margin: 10px;
+    font-size: 13px;
+    text-decoration: none;
+    font-family: 'Segoe UI';
+}
+
+.item-description {
+    width: 100%;
+    font-size: 13px;
+    font-style: normal;
+    font-family: 'Segoe UI';
+}
+
+.detail-desc {
+    width: 100%;
+    font-size: 13px;
+    font-style: normal;
+    font-family: 'Segoe UI';
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.detail-table {
+    width: 100%;
+    font-size: 13px;
+    font-style: normal;
+    font-family: 'Segoe UI';
+    border-spacing: 5px;
+    border-collapse: separate;
+}
+
+    .detail-table .td {
+        padding: 10px;
+    }
+
+.item-footer {
+    width: 100%;
+    font-size: 13px;
+    font-style: normal;
+    font-family: 'Segoe UI';
+}
+
+.item-detail {
+    display: none;
+}
+
+.even {
+    background-color: #E7F0F6 !important;
+}
+
+.ordersel {
+    width: auto;
+    margin-left: 8px;
+    padding: 2px;
+}
+
+.last-item {
+    margin-top: 10px;
+    min-height: 80px;
+    position: relative;
+}
+
+
+.col3 {
+    margin-left: 10px;
+    width: 210px;
+    float: left;
+    font-family: 'Segoe UI';
+}

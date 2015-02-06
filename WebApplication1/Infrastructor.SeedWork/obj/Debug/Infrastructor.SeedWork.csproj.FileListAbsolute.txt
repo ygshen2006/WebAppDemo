@@ -1,0 +1,16 @@
+D:\MyProjects\Web\WebApplication1\Infrastructor.SeedWork\bin\Debug\Infrastructor.SeedWork.dll.config
+D:\MyProjects\Web\WebApplication1\Infrastructor.SeedWork\bin\Debug\Infrastructor.SeedWork.dll
+D:\MyProjects\Web\WebApplication1\Infrastructor.SeedWork\bin\Debug\Infrastructor.SeedWork.pdb
+D:\MyProjects\Web\WebApplication1\Infrastructor.SeedWork\bin\Debug\Domain.SeedWork.dll
+D:\MyProjects\Web\WebApplication1\Infrastructor.SeedWork\bin\Debug\EntityFramework.dll
+D:\MyProjects\Web\WebApplication1\Infrastructor.SeedWork\bin\Debug\EntityFramework.SqlServer.dll
+D:\MyProjects\Web\WebApplication1\Infrastructor.SeedWork\bin\Debug\Microsoft.AspNet.Identity.Core.dll
+D:\MyProjects\Web\WebApplication1\Infrastructor.SeedWork\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.dll
+D:\MyProjects\Web\WebApplication1\Infrastructor.SeedWork\bin\Debug\Domain.SeedWork.pdb
+D:\MyProjects\Web\WebApplication1\Infrastructor.SeedWork\bin\Debug\EntityFramework.xml
+D:\MyProjects\Web\WebApplication1\Infrastructor.SeedWork\bin\Debug\EntityFramework.SqlServer.xml
+D:\MyProjects\Web\WebApplication1\Infrastructor.SeedWork\bin\Debug\Microsoft.AspNet.Identity.Core.xml
+D:\MyProjects\Web\WebApplication1\Infrastructor.SeedWork\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
+D:\MyProjects\Web\WebApplication1\Infrastructor.SeedWork\obj\Debug\Infrastructor.SeedWork.csprojResolveAssemblyReference.cache
+D:\MyProjects\Web\WebApplication1\Infrastructor.SeedWork\obj\Debug\Infrastructor.SeedWork.dll
+D:\MyProjects\Web\WebApplication1\Infrastructor.SeedWork\obj\Debug\Infrastructor.SeedWork.pdb

@@ -1,0 +1,119 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApplication1", "WebApplication1\WebApplication1.csproj", "{33A1F240-B922-4960-80A2-2F49934AAA67}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BoundedContext", "BoundedContext", "{A3589574-235F-457D-86F3-229F8BF4A904}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Application", "Application", "{1069D3CA-8561-47F9-AD68-130D96163AEE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Domain", "Domain", "{E7C9EABA-A675-4B9C-B22C-5719B555A604}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructor", "Infrastructor", "{4B0C043F-8C2D-428C-99F3-3A56AE472DFA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "LayerSeed", "LayerSeed", "{FF742A0B-75B6-4F87-974B-CDA156069306}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Application", "Application", "{65535782-B0B4-4C7C-813C-14387EC413C1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Domain", "Domain", "{3A8DEE8C-E3A7-494E-A07C-71E562D8D9CB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructor", "Infrastructor", "{4D7C2433-F235-4565-8E67-8E25D3F3D718}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain.MainBoundedContext", "Domain.MainBoundedContext\Domain.MainBoundedContext.csproj", "{97A0D587-ABA4-4831-9479-A67B9CFD0431}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructor.MainBoundedContext", "Infrastructor.MainBoundedContext\Infrastructor.MainBoundedContext.csproj", "{7A737165-5F75-494A-A02E-AC673082C81A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application.MainBoundedContext", "Application.MainBoundedContect\Application.MainBoundedContext.csproj", "{76739EB7-CC94-4CD6-8CAD-5CF1C1A8EB70}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain.SeedWork", "Domain.SeedWork\Domain.SeedWork.csproj", "{EC6E151B-EF22-48B4-83B6-89C261344E08}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructor.SeedWork", "Infrastructor.SeedWork\Infrastructor.SeedWork.csproj", "{B5A4276F-C64C-4C2E-91B7-5489CE8D55CC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ReadMe", "ReadMe", "{DC6D3FA6-F1FE-47C0-A4DE-E0B7D422AB21}"
+	ProjectSection(SolutionItems) = preProject
+		LearningArticles.txt = LearningArticles.txt
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ReferenceDlls", "ReferenceDlls", "{3B33A7C7-6D50-442C-A686-45A524A4B2D1}"
+	ProjectSection(SolutionItems) = preProject
+		WebApplication1\bin\CKFinder.dll = WebApplication1\bin\CKFinder.dll
+		WebApplication1\bin\CKFinder.pdb = WebApplication1\bin\CKFinder.pdb
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 7
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://johnshen.visualstudio.com/defaultcollection
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = WebApplication1\\WebApplication1.csproj
+		SccProjectName1 = WebApplication1
+		SccLocalPath1 = WebApplication1
+		SccProjectUniqueName2 = Domain.MainBoundedContext\\Domain.MainBoundedContext.csproj
+		SccProjectTopLevelParentUniqueName2 = WebApplication1.sln
+		SccProjectName2 = Domain.MainBoundedContext
+		SccLocalPath2 = Domain.MainBoundedContext
+		SccProjectUniqueName3 = Infrastructor.MainBoundedContext\\Infrastructor.MainBoundedContext.csproj
+		SccProjectTopLevelParentUniqueName3 = WebApplication1.sln
+		SccProjectName3 = Infrastructor.MainBoundedContext
+		SccLocalPath3 = Infrastructor.MainBoundedContext
+		SccProjectUniqueName4 = Application.MainBoundedContect\\Application.MainBoundedContext.csproj
+		SccProjectTopLevelParentUniqueName4 = WebApplication1.sln
+		SccProjectName4 = Application.MainBoundedContect
+		SccLocalPath4 = Application.MainBoundedContect
+		SccProjectUniqueName5 = Domain.SeedWork\\Domain.SeedWork.csproj
+		SccProjectTopLevelParentUniqueName5 = WebApplication1.sln
+		SccProjectName5 = Domain.SeedWork
+		SccLocalPath5 = Domain.SeedWork
+		SccProjectUniqueName6 = Infrastructor.SeedWork\\Infrastructor.SeedWork.csproj
+		SccProjectTopLevelParentUniqueName6 = WebApplication1.sln
+		SccProjectName6 = Infrastructor.SeedWork
+		SccLocalPath6 = Infrastructor.SeedWork
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{33A1F240-B922-4960-80A2-2F49934AAA67}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{33A1F240-B922-4960-80A2-2F49934AAA67}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{33A1F240-B922-4960-80A2-2F49934AAA67}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{33A1F240-B922-4960-80A2-2F49934AAA67}.Release|Any CPU.Build.0 = Release|Any CPU
+		{97A0D587-ABA4-4831-9479-A67B9CFD0431}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{97A0D587-ABA4-4831-9479-A67B9CFD0431}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{97A0D587-ABA4-4831-9479-A67B9CFD0431}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{97A0D587-ABA4-4831-9479-A67B9CFD0431}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7A737165-5F75-494A-A02E-AC673082C81A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7A737165-5F75-494A-A02E-AC673082C81A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7A737165-5F75-494A-A02E-AC673082C81A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7A737165-5F75-494A-A02E-AC673082C81A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{76739EB7-CC94-4CD6-8CAD-5CF1C1A8EB70}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{76739EB7-CC94-4CD6-8CAD-5CF1C1A8EB70}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{76739EB7-CC94-4CD6-8CAD-5CF1C1A8EB70}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{76739EB7-CC94-4CD6-8CAD-5CF1C1A8EB70}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EC6E151B-EF22-48B4-83B6-89C261344E08}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EC6E151B-EF22-48B4-83B6-89C261344E08}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EC6E151B-EF22-48B4-83B6-89C261344E08}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EC6E151B-EF22-48B4-83B6-89C261344E08}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B5A4276F-C64C-4C2E-91B7-5489CE8D55CC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B5A4276F-C64C-4C2E-91B7-5489CE8D55CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B5A4276F-C64C-4C2E-91B7-5489CE8D55CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B5A4276F-C64C-4C2E-91B7-5489CE8D55CC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{1069D3CA-8561-47F9-AD68-130D96163AEE} = {A3589574-235F-457D-86F3-229F8BF4A904}
+		{E7C9EABA-A675-4B9C-B22C-5719B555A604} = {A3589574-235F-457D-86F3-229F8BF4A904}
+		{4B0C043F-8C2D-428C-99F3-3A56AE472DFA} = {A3589574-235F-457D-86F3-229F8BF4A904}
+		{76739EB7-CC94-4CD6-8CAD-5CF1C1A8EB70} = {1069D3CA-8561-47F9-AD68-130D96163AEE}
+		{97A0D587-ABA4-4831-9479-A67B9CFD0431} = {E7C9EABA-A675-4B9C-B22C-5719B555A604}
+		{7A737165-5F75-494A-A02E-AC673082C81A} = {4B0C043F-8C2D-428C-99F3-3A56AE472DFA}
+		{65535782-B0B4-4C7C-813C-14387EC413C1} = {FF742A0B-75B6-4F87-974B-CDA156069306}
+		{3A8DEE8C-E3A7-494E-A07C-71E562D8D9CB} = {FF742A0B-75B6-4F87-974B-CDA156069306}
+		{4D7C2433-F235-4565-8E67-8E25D3F3D718} = {FF742A0B-75B6-4F87-974B-CDA156069306}
+		{EC6E151B-EF22-48B4-83B6-89C261344E08} = {3A8DEE8C-E3A7-494E-A07C-71E562D8D9CB}
+		{B5A4276F-C64C-4C2E-91B7-5489CE8D55CC} = {4D7C2433-F235-4565-8E67-8E25D3F3D718}
+	EndGlobalSection
+EndGlobal

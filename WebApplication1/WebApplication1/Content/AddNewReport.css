@@ -1,0 +1,289 @@
+﻿body {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    font-family: 'Microsoft YaHei UI';
+    font-size: 15px;
+    text-decoration: none;
+}
+
+.wrapper {
+    width: 1200px;
+    margin: 0 auto;
+}
+
+.page-title {
+    font-size: 20px;
+    float: left;
+    margin: 20px;
+    font-weight: bold;
+}
+
+.content {
+    margin: auto;
+}
+
+.head {
+    padding: 50px;
+}
+
+#report-list {
+    list-style: none;
+    margin: 0 auto;
+}
+
+    #report-list>li {
+        width: 1200px;
+        display: inline-block;
+        list-style: none;
+        margin: 0 30px 30px 0;
+        vertical-align: top;
+        text-align:left;
+    }
+
+.pictureShowDiv {
+    width: auto;
+    height: auto;
+    margin-top:-40px;
+    margin-left:-30px;
+    display: none;
+}
+
+.head-titles {
+    font-weight: bold;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+.title-txt {
+    width: 400px;
+    margin-left:18px;
+}
+.tags-class {
+    width:400px;
+    margin-top:-15px;
+    margin-left:90px;
+    border:medium;
+    height:100px;
+    overflow-y:scroll;
+    list-style:none;
+    border:1px solid;
+}
+    .tags-class li {
+        list-style:none;
+        margin-top:10px;
+    }
+.type_select {
+    width: 400px;
+    margin-left:18px;
+}
+.type_select2 {
+    width: 150px;
+    margin-left:18px;
+    margin-right:50px;
+}
+#teamlist {
+    float: left;
+}
+
+.desc {
+    height: 400px;
+    width: 100%;
+    float: left;
+}
+
+.selectPictureWin {
+    max-height: 570px;
+    width: 1000px;
+    padding: 50px 50px;
+    background-color: #FFF;
+}
+
+
+.tab {
+    width: 100%;
+}
+
+.tab_menu {
+    clear: both;
+}
+
+    .tab_menu li {
+        float: left;
+        text-align: center;
+        cursor: pointer;
+        list-style: none;
+        padding: 1px 6px;
+        margin-right: 4px;
+        background: #F1F1F1;
+        border: 1px solid #898989;
+        border-bottom: none;
+        width: 95px;
+        height: 36px;
+        vertical-align: central;
+    }
+
+        .tab_menu li.hover {
+            background: #3fa7cb;
+        }
+
+        .tab_menu li.selected {
+            color: white;
+            font-weight: bold;
+            background: #3fa7cb;
+        }
+
+.tab_box {
+    clear: both;
+    width: 100%;
+    border-bottom: 1px solid #898989;
+    border-top: 1px solid #898989;
+    height: 482px;
+}
+
+.addPicBt {
+    margin-top: 218px;
+    margin-left: 346px;
+}
+
+.pic-desc {
+    color: #999;
+    position: absolute;
+    top: 353px;
+    left: 280px;
+}
+
+.hide {
+    display: none;
+}
+
+.actionArea {
+    float: right;
+    height: 50px;
+}
+
+.okBt {
+    margin: 10px;
+    background-color: #3fa7cb;
+    color: black;
+    font-size: 16px;
+    outline: none;
+    float: left;
+    width: 95px;
+    height: 36px;
+}
+
+    .okBt:hover {
+        color: white;
+        font-weight: bold;
+        cursor: pointer;
+        background-color: darkblue;
+    }
+
+
+
+.resetBt2 {
+    margin: 10px;
+    background-color: #3fa7cb;
+    color: black;
+    font-size: 16px;
+    outline: none;
+    float: left;
+    width: 95px;
+    height: 36px;
+}
+
+    .resetBt2:hover {
+        color: white;
+        font-weight: bold;
+        cursor: pointer;
+        background-color: darkblue;
+    }
+
+.resetBt {
+    margin: 10px;
+    background-color: #3fa7cb;
+    color: black;
+    font-size: 16px;
+    outline: none;
+    float: left;
+    width: 95px;
+    height: 36px;
+}
+
+    .resetBt:hover {
+        color: white;
+        font-weight: bold;
+        cursor: pointer;
+        background-color: darkblue;
+    }
+
+.secondAddPicBt {
+    display: none;
+}
+
+.pict-items {
+    list-style: none;
+}
+
+.pict-show-in-body {
+    list-style: none;
+}
+
+.pict-item {
+    list-style: none;
+    width: 200px;
+    height: 200px;
+    float: left;
+}
+
+.pict-head {
+    padding: 10px;
+    width: 200px;
+    height: 150px;
+}
+
+.innerPic {
+    width: 180px;
+    height: 130px;
+    border: thick;
+    border-color: rgba(50, 69, 58, 0.61);
+}
+
+.pict-actions {
+    height: 20px;
+    width: 200px;
+    text-align: center;
+}
+
+#addNewPict {
+    margin: 10px;
+}
+
+.item {
+    margin: 30px;
+    float: left;
+}
+
+.itemMain {
+    margin: 30px;
+    box-shadow: 10px 10px #666666;
+    float: left;
+}
+
+.removePicture {
+    width: 30px;
+    height: 30px;
+}
+
+.removePicture2 {
+    width: 30px;
+    height: 30px;
+    margin-left: 20px;
+}
+
+
+#TextBox1 {
+    width:900px;
+    margin:0 auto;
+}

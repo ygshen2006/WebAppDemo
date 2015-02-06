@@ -1,0 +1,13 @@
+﻿body {
+    font-family: 'Segoe UI';
+}
+   .wrapper {
+    width: 1200px;
+    margin: 0 auto;
+}
+     .user-name-link {
+            color: white;
+        }
+  .container {
+            width: 1040px;
+        }

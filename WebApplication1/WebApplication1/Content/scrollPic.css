@@ -1,0 +1,114 @@
+﻿ .image-content {
+            position: relative;
+            z-index: -1;
+        }
+
+        .text-team {
+            position: absolute;
+            margin-left: 30px;
+            margin-bottom: 30px;
+            margin-top: 100px;
+            padding: 10px 30px 10px 10px;
+            width: 200px;
+            z-index: 2;
+            background-color: #E56600;
+            cursor: pointer;
+        }
+
+        .text-intrest {
+            position: absolute;
+            margin-left: 30px;
+            margin-bottom: 30px;
+            margin-top: 100px;
+            padding: 10px 30px 10px 10px;
+            width: 200px;
+            z-index: 2;
+            background-color: #6699CC;
+            cursor: pointer;
+        }
+
+        .text-category {
+            position: absolute;
+            margin-left: 30px;
+            margin-bottom: 30px;
+            margin-top: 100px;
+            padding: 10px 30px 10px 10px;
+            width: 200px;
+            z-index: 2;
+            background-color: #E5CCCC;
+            cursor: pointer;
+        }
+
+        .text-links {
+            position: absolute;
+            margin-left: 30px;
+            margin-bottom: 30px;
+            margin-top: 100px;
+            padding: 10px 30px 10px 10px;
+            width: 200px;
+            z-index: 2;
+            background-color: #004C4C;
+            cursor: pointer;
+        }
+
+        .team-desc-title {
+            font-size: 20px;
+            font-family: 'Segoe UI';
+            color: white;
+            margin-bottom: 10px;
+        }
+
+        .team-desc-description {
+            font-size: 15px;
+            font-family: 'Segoe UI';
+            color: white;
+        }
+
+        .scroll_num {
+            display: inline;
+            height: 20px;
+            line-height: 12px;
+            margin-left: 1080px;
+            margin-top: -60px;
+            text-align: right;
+            position: absolute;
+        }
+
+            .scroll_num a {
+                display: inline-block;
+                height: 20px;
+                margin-left: 5px;
+                overflow: hidden;
+                padding-top: 12px;
+                vertical-align: top;
+                width: 20px;
+                color: #e0e0e0;
+                font-weight: 400;
+                font-size: 29px;
+            }
+
+                .scroll_num a:hover, .scroll_num a.raiders_current {
+                    color: #E56600;
+                    font-size: 33.4px;
+                    /*background-position: -54px -35px;*/
+                }
+
+        /*.header ul {
+            list-style: none outside none;
+        }*/
+
+        .pic1 {
+            display: block;
+        }
+
+        .pic2 {
+            display: none;
+        }
+
+        .pic3 {
+            display: none;
+        }
+
+        .pic4 {
+            display: none;
+        }

@@ -1,0 +1,145 @@
+﻿   body {
+        }
+   .wrapper {
+    width: 1200px;
+    margin: 0 auto;
+}
+          .left-side {
+    padding-left: 30px;
+    width: 200px;
+    height: auto;
+    float: left;
+    font-family: 'Segoe UI';
+
+}
+          .center {
+    width: 1200px;
+    margin: 0 auto;
+}
+     
+/*.col3 {
+    margin-left: 10px;
+    width: 210px;
+    float: left;
+    font-family: 'Segoe UI';
+}*/
+
+
+        .user-name-link {
+            color: white;
+        }
+         .container {
+            width: 1040px;
+        }
+        .segment {
+        }
+
+        /*.left-side {
+            float: left;
+            width: 20%;
+            height: auto;
+        }
+
+        .content-side {
+            float: left;
+            width: 80%;
+            height: auto;
+        }
+
+        .right-side {
+            float: left;
+            width: 10%;
+        }*/
+
+        .segment {
+            font-family: Segoe;
+            font-size: 14px;
+            color: white;
+            font-weight: bold;
+            width: 90%;
+            margin: 0 auto;
+        }
+
+        .teamtitlefont {
+            color: white;
+        }
+
+        .teamsitetile, .teamsitetile-seg{
+            float: left;
+            width: auto;
+            height: 100px;
+            margin: 20px 10px;
+        }
+
+        
+
+            .teamsitetile img {
+                max-width: 100%;
+            }
+
+        .teamsitetile-pic {
+            width: 300px;
+            height: 100px;
+        }
+
+        .teamsitedetail {
+            overflow: hidden;
+            bottom: 0;
+            left: 0;
+            padding: 10px 10px;
+            position: absolute;
+            right: 0;
+            top: 0;
+        }
+
+        .teamsitetile i {
+            font-family: 'Segoe UI_', 'Open Sans', Verdana, Arial, Helvetica, sans-serif;
+        }
+
+       
+
+        .teamseachzone {
+            height: auto;
+            float: left;
+            margin-top: 10px;
+        }
+
+        .teamsselected  {
+           
+        }
+
+        .noteam {
+            width: 100px;
+            margin: 0 auto;
+            float: left;
+        }
+
+        .noresult {
+            display: none;
+        }
+
+        .smallicon {
+            height: 30px;
+            width: 30px;
+        }
+        .teamsselected ul {
+            margin-left:-50px;
+            width:100%;
+            height: auto;
+        }
+        .teamsselected ul li{
+            width:300px;
+            height: auto;
+        }
+        .teamsitetile-small {
+            height: 30px;
+            width: 30px;
+            margin: 2px 2px;
+        }
+
+            .teamsitetile-small img {
+                max-width: 100%;
+            }
+
+        .teamdescarea {
+        }

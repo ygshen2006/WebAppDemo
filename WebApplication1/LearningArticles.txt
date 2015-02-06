@@ -1,0 +1,28 @@
+Introducing what is EF:
+http://weblogs.asp.net/scottgu/archive/2010/07/16/code-first-development-with-entity-framework-4.aspx
+http://blogs.msdn.com/b/efdesign/archive/2010/06/01/conventions-for-code-first.aspx
+http://msdn.microsoft.com/zh-cn/library/ms178329(v=vs.100).aspx
+http://msdn.microsoft.com/zh-cn/library/system.web.ui.webcontrols.createuserwizard(v=vs.100).aspx
+http://msdn.microsoft.com/zh-cn/library/879kf95c(v=vs.100).aspx
+
+
+Jquery plugin: http://www.jqueryrain.com/?BEAlLLl9
+http://metroui.org.ua/tiles.html
+
+
+
+chEditor:
+http://www.cnblogs.com/liuning8023/p/ckeditor_upload_insert_image.html
+
+
+CKEditor Plugin Develop: http://blog.csdn.net/ishowing/article/details/5358824
+
+
+https://github.com/rustd/AspnetIdentitySample: Role
+
+
+
+
+Microsoft font usage:
+http://www.adamdawes.com/windows8/win8_segoeuisymbol.html
+https://github.com/geekytime/segoe-symbol-css

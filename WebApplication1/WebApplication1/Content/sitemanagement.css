@@ -1,0 +1,357 @@
+﻿body {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    font-family: 'Microsoft YaHei UI';
+    font-size: 15px;
+}
+
+
+a {
+    text-decoration: none;
+}
+
+.team-logo {
+    width: 20px;
+    height: 20px;
+}
+.uploadPictureBt {
+    position:absolute; 
+    width:100px;
+    left:0px; 
+    top:0px
+}
+.uploadPictureHide {
+    position:absolute;
+     width:100px;
+     left: 0px; top:0px; opacity:0
+}
+
+.loading-indicator {
+    background: url('../Images/loading40.gif') no-repeat center;
+    width: 70px;
+    height: 70px;
+}
+
+.loading-indicator-overlay {
+    opacity: 0.6;
+    background-color: rgb(255, 255, 255);
+}
+
+.wrapper {
+    width: 1200px;
+    height: 800px;
+    margin: 0 auto;
+}
+
+.header {
+    /*border-bottom-color:#99CC19;
+    border: 1px solid;*/
+    height: auto;
+    max-width:1200px;
+    width:auto;
+}
+
+.content {
+    width: 80%;
+    height: 100%;
+    overflow-x: auto;
+    overflow-y:auto;
+}
+
+.leftbar {
+    width: 20%;
+    height: 100%;
+    float: left;
+    font-family: 'Segoe UI';
+    background-color: #e9eaea;
+}
+
+.tab-box {
+    position: relative;
+}
+
+.tab {
+    width: 100%;
+    height: 100%;
+}
+
+.tab_menu {
+    clear: both;
+}
+
+    .tab_menu li {
+        /*float: left;*/
+        text-align: left;
+        cursor: pointer;
+        list-style: none;
+        padding: 10px 6px;
+        background: #e9eaea;
+        border-bottom: none;
+        vertical-align: central;
+    }
+
+        .tab_menu li.hover {
+            /*background: #3fa7cb;*/
+        }
+
+        .tab_menu li.selected {
+            color: white;
+            background-image: url(../Images/s_menu_6f5d9147.png);
+        }
+
+.tab_box {
+    clear: both;
+    height: 100%;
+    width: 100%;
+}
+
+.hide {
+    display: none;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+.teamlist-table, .intrestlist-table, .parent-category-list {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 8px;
+}
+
+    .teamlist-table .table-head td, .intrestlist-table .table-head td {
+        font-weight: bold;
+        width: 200px;
+    }
+
+.error-msg, .intrest-error-msg {
+    color: red;
+    text-align: center;
+    display: none;
+}
+
+.team-actions {
+    float: right;
+}
+
+    .team-actions ul li {
+        float: left;
+    }
+
+
+.add-team, .reset-team, .save-team, .add-intrest, .reset-intrest, .save-intrest, .save-link, .add-child-link, .save-catagory, .add-root-catagory, .add-root-link, .add-child-catagory, .add-child-link, .save-myroot-catagory, .add-myroot-catagory, .close-myroot-catagory, .add-myroot-link, .save-myroot-link, .close-myroot-link {
+    background-color: #3fa7cb;
+    margin: 10px;
+    width: auto;
+}
+
+.error-circle {
+    border: 1px solid;
+    border-color: red;
+}
+
+.uploaded-image {
+    border: 1px solid;
+    width: 50px;
+    height: 50px;
+}
+
+.intrest-select {
+    border: 1px solid;
+    border-top: none;
+    height:auto;
+    width:340px;
+    overflow-y:scroll;
+    background-color:azure;
+    
+}
+.move:hover {
+    background-color:#1ba1e2;
+    cursor:pointer;
+}
+
+.intrest-list {
+    list-style:none
+}
+.intrest-list li {
+    float:none
+}
+.intrest-item {
+    cursor: pointer;
+    width: 163px;
+}
+
+    .intrest-item:hover {
+        background-color: rgb(27, 157, 233);
+    }
+
+.pic-big {
+    display: none;
+}
+
+.manage-parent-category-div, .manage-parent-link-div {
+    display: none;
+    width: 500px;
+    height: 500px;
+    overflow: scroll;
+    background-color: white;
+}
+
+    .manage-parent-category-div .parent-category-list {
+        height: auto;
+        width: 460px;
+        margin: 20px 20px 0px 20px;
+    }
+
+    .manage-parent-link-div .parent-link-list {
+        height: auto;
+        width: 460px;
+        margin: 20px 20px 0px 20px;
+    }
+
+thead {
+    background-color: #E5CCCC;
+}
+
+.manage-parent-category-div .parent-category-list thead {
+    background-color: #e5CC19;
+    text-align: center;
+    height: 10px;
+}
+
+.manage-parent-category-div .parent-category-list td {
+    text-align: center;
+    height: 10px;
+    margin: 0px;
+}
+
+.manage-parent-link-div .parent-link-list thead {
+    background-color: #e5CC19;
+    text-align: center;
+    height: 10px;
+}
+
+.manage-parent-link-div .parent-link-list td {
+    text-align: center;
+    height: 10px;
+    margin: 0px;
+}
+
+.category-actions {
+    margin: 0px 10px 0px 200px;
+}
+
+    .category-actions ul {
+        text-align: center;
+    }
+
+        .category-actions ul li {
+            float: left;
+        }
+
+.pCategory-msg {
+    display: none;
+    color: red;
+    float: right;
+}
+
+.suceed-div {
+    display: none;
+    height: auto;
+    width: auto;
+    position: fixed;
+    opacity: 0.5;
+}
+
+.fail-div {
+    display: none;
+    height: auto;
+    width: auto;
+    position: fixed;
+    opacity: 0.5;
+}
+
+.select-parent-category, .select-parent-link, .child-category-name, .child-link-name, .child-link-url {
+    width: 200px;
+    height: auto;
+}
+
+
+.mytfooter {
+    width: 450px;
+    margin: 0 auto;
+    white-space: nowrap;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+
+.mytfooter span {
+    display: inline-block;
+    padding-left: 100%;  /* show the marquee just outside the paragraph */
+    animation: marquee 15s linear infinite;
+}
+
+.mytfooter span:hover {
+    animation-play-state: paused
+}
+
+/* Make it move */
+@keyframes marquee {
+    0%   { transform: translate(0, 0); }
+    100% { transform: translate(-100%, 0); }
+}
+
+.header img {
+    border:0.5px outset;
+}
+
+  .actions {
+            margin: 0 auto;
+            float:right;
+        }
+
+            .actions input {
+                margin-left: 5px;
+            }
+
+        .addDivisionDialog, .addSegDialog, .addSubSegDialog, .EditSegDialog, .editSubSegDialog {
+            display: none;
+            width: 700px;
+            height: auto;
+            background-color: white;
+        }
+
+        .loading-indicator {
+            background: url('../Images/loading40.gif') no-repeat center;
+            width: 70px;
+            height: 70px;
+        }
+
+        .loading-indicator-overlay {
+            opacity: 0.6;
+            background-color: rgb(255, 255, 255);
+        }
+
+        .actions-bar {
+            margin: 20px;
+        }
+
+            .actions-bar input {
+                margin-left: 5px;
+            }
+
+        #test {
+            width: 100%;
+            height: auto;
+            float: left;
+            border: none;
+        }
+
+        #teamzone {
+            width: 80%;
+            height: 200px;
+            float: right;
+            background-color: gray;
+            display: none;
+        }

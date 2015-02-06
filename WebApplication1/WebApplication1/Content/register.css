@@ -1,0 +1,203 @@
+﻿/** {
+    color:rgb(128, 128, 128);
+}*/
+a {
+    color: rgb(4, 43, 152);
+    text-decoration:none;
+}
+.loading-indicator {
+    background: url('../Images/loading40.gif') no-repeat center;
+    width: 70px;
+    height: 70px;
+}
+
+.loading-indicator-overlay {
+    opacity: 0.6;
+    background-color: rgb(255, 255, 255);
+}
+
+body {
+    font-size:15px;
+    margin:0px;
+    padding:0px;
+    list-style:none;
+    font-family:'Segoe UI';
+}
+div {
+    display:block;
+}
+
+.wrapper {
+    width:1200px;
+    margin:auto;
+}
+
+.login-div {
+    height: 400px;
+    width: 500px;
+}
+.content-reg {
+     height: 400px;
+    width: 550px;
+    margin:auto;
+}
+.title-div {
+    background-color: #f7f7f7;
+    border: 1px solid #ddd;
+    border-width: 1px 1px 0 1px;
+    border-bottom: 0px;
+    cursor: move;
+    position: relative;
+    height: 50px;
+    width: 500px;
+}
+.content-div {
+    height:350px;
+    width:300px;
+    margin:auto;
+}
+.close-div {
+    position: absolute;
+    right: 9px;
+    top: 15px;
+    height: 30px;
+    width: 40px;
+    background: url('../Images/close.png') no-repeat right top;
+}
+
+
+.login-text {
+    width: auto;
+    height: 18px;
+    font-size: 16px;
+    font-family: "宋体";
+    font-weight: bold;
+    color: #666;
+    text-indent: 50px;
+    padding: 15px 0 13px;
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-align: left;
+    box-sizing: content-box;
+}
+.text-danger {
+    color:red;
+}
+.text-danger {
+    color:red;
+    margin-left:8px;
+}
+.form-group {
+    
+}
+.nav {
+    background:none;
+    width:100%;
+    z-index:1;
+
+}
+.nav-2 {
+    background:url(../Images/split.png) no-repeat center top;
+    height:20px;
+}
+.head {
+    z-index:100;
+}
+.clearfix {
+    zoom:1;
+}
+.clearfix::after {
+    content:'\20';
+    display:block;
+    height:0;
+    clear:both;
+    visibility:hidden;
+}
+.page-type-notab {
+    font-size:100%;
+}
+
+
+.head {
+       width:100%;
+    margin-left:auto;
+    margin-right:auto;
+}
+
+.logo-head {
+    padding-left:360px;
+    background:url(../Images/back-t.png) no-repeat right top;
+    width:330px;
+}
+
+
+.txt-desc {
+    font-size:14px;
+    font-weight:bold;
+    margin-bottom:12px;
+    color:rgb(128, 128, 128);
+}
+.form-group {
+    padding-bottom:10px;
+
+}
+.txt-detail, .txt-detail-password {
+    height:28px;
+    width:328px;
+    
+}
+.failed-msg {
+    color:red;
+}
+.txt-detail-verifycode {
+height:28px;
+    width:275px;
+}
+.form-group {
+    margin-top:10px;
+}
+.btn-default, .btn-default-login {
+    background-color:#4490f7;
+    background-clip:padding-box;
+    width:250px;
+    height:50px;
+    color:white;
+    font-size:16px;
+    font-weight:bold;
+}
+.form-group {
+    position:relative;
+}
+.tip {
+    position:absolute;
+    height:auto;
+    width:auto;
+}
+.focus-text {
+    border: 1px solid;
+    border-color:#4490f7;
+}
+.sex {
+    margin-bottom:5px;
+    margin-top:5px;
+}
+
+.verification-code-img {
+    height:28px;
+    width:100px;
+    margin-top:8px;
+}
+
+.change-verification-code {
+    text-decoration:none;
+    margin-left:10px;
+}
+
+.login-zone {
+    display:none;
+    
+    background-color:white;
+    height:400px;
+    width:500px;
+}

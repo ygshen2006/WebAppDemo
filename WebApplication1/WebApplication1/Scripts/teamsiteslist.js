@@ -21,7 +21,7 @@
                 async: true
             });
             this.InitTeamSiteDivisions();
-
+            
             $('.btn-search').live('click', function (e) {
                 e.preventDefault();
                 $('.teamsselected').remove();
@@ -119,9 +119,12 @@
                         // load the segment and teamsites
                         if (result != null && result.length > 0) {
                             $.each(result, function (index, current) {
-                                str += ' <div class="panel" data-role="panel"><div class="panel-header segment">';
-                                str += current.title;
-                                str += "</div>";
+
+                                str += '<div class="panel" data-role="panel" style="float:left; width: 810px; border:none">'+
+                                    '<div class="panel-header segment"><span style="margin-left: 10px">';
+                                        str += current.title;
+                              str += "</span></div>";
+
                                 str += '<div class="panel-content" style="display: block; border: none; margin: 0 auto">';
                                 $.each(current.children, function (iindex, icurrent) {
                                     // if this is a team?
@@ -132,7 +135,16 @@
                                             pic = icurrent.teampic;
                                         }
 
-                                        str += '<div class="teamsitetile teampic"><div class="tile double live" data-role="live-tile" effect="slideLeft"><div class="tile-content image"><img class="teamtag" src="' + pic + '" tag="' + icurrent.TeamGuid + '"/></div><div class="tile-status bg-dark opacity teamtitlefont">' + icurrent.title + '</div></div></div>';
+                                        str += '<div class="teamsitetile teampic" style="padding: 10px; 10px">' +
+                                                '<div class="tile live" data-role="live-tile" effect="slideLeft">' +
+                                                    '<div class="tile-content image">' +
+                                                        '<img class="teamtag" src="' + pic + '" tag="' + icurrent.TeamGuid + '"/>' +
+                                                    '</div>' +
+                                                    '<div class="tile-status bg-dark opacity teamtitlefont">'
+                                                        + icurrent.title +
+                                                    '</div>' +
+                                                 '</div>' +
+                                               '</div>';
                                     }
                                     else {
                                         // this is a subsegment
@@ -140,17 +152,17 @@
                                     }
                                 });
                                 str += '</div>';
+                                str += '</div>';
                             });
 
-                            $('.tab_box').append(str);
                         }
+                        $('.tab_box').append(str);
+
                     },
                     complete: function () {
-                        loadingArea.hideLoading();
                     },
                 });
             });
-
             this.GetTeamSiteAndSegments();
 
             $('.teampic').live('click', function (e) {
@@ -210,4 +222,8 @@
 
 $(function () {
     TeamSites.teamsitesLoading.Init();
+
+    if ($('#divisionlist li')[0] != null) {
+        $('#divisionlist li:first').trigger('click');
+    }
 });

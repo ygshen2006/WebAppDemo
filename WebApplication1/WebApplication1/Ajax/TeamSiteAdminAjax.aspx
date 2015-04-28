@@ -1,0 +1,1 @@
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="TeamSiteAdminAjax.aspx.cs" Inherits="WebApplication1.Ajax.TeamSiteAdminAjax" %>

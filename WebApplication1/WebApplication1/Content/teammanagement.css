@@ -11,3 +11,18 @@
   .container {
             width: 1040px;
         }
+.informationarea, .approvearea, .tagarea {
+    width: 500px;
+    margin: 50px auto;
+   
+
+}
+
+    .informationarea div {
+        width: 400px;
+        display:block;
+    }
+        
+.hide {
+    display: none;
+}

@@ -94,31 +94,31 @@
 
             <div class="center">
 
-                <table style="width: 1000px; margin: 0 auto; margin-top: 10px; float: left;">
+                <table style="width: 1200px; margin: 0 auto; margin-top: 10px; float: left;">
                     <tr>
+                    
                         <td style="position: relative; width: 20%; min-height: 1000px">
-                            <div class="input-control text searchteam" style="position:absolute; top:-5px;  width:180px;">
+                            <nav class="sidebar light" style="position: absolute; top: 0px;">
+                                <ul id="divisionlist">
+                                    
+                                </ul>
+                            </nav>
+                        </td>
+                        <td style="width: 70%; min-height: 500px;">
+                            <div class="tab_box" style="width: 100%; min-height: 1000px;">
+                            </div>
+                        </td>
+
+                            <td style="position: relative; width: 10%; min-height: 1000px">
+                            <div class="input-control text searchteam" style="position:absolute; top:-1px; height:15px; width:100px;">
                                 <input id="teamnameinput" type="text" />
                                 <button class="btn-search"></button>
                                 <div class="teamseachzone"></div>
                             </div>
                            
                         </td>
-                        <td style="position: relative; width: 20%; min-height: 1000px">
-                            <nav class="sidebar light" style="position: absolute; top: 0px;">
-                                <ul id="divisionlist">
-                                    <li class="active"><a href="#"><i class="icon-heart"></i>我的收藏</a>
-                                    </li>
-                                </ul>
-                            </nav>
-                        </td>
-                        <td style="width: 60%; min-height: 500px;">
-                            <div class="tab_box" style="width: 100%; min-height: 1000px; overflow-y: scroll">
-                            </div>
-                        </td>
                     </tr>
                 </table>
-                <div style="width: 200px; float: left; min-height: 500px;">Notification</div>
             </div>
 
 

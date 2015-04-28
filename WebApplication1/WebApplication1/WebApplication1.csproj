@@ -166,6 +166,7 @@
     <Content Include="Ajax\FrontAjax.aspx" />
     <Content Include="Ajax\SiteAdminAjax.aspx" />
     <Content Include="Ajax\TeamAdminAjax.aspx" />
+    <Content Include="Ajax\TeamSiteAdminAjax.aspx" />
     <Content Include="Ajax\UserAjax.aspx" />
     <Content Include="ckeditor\adapters\jquery.js" />
     <Content Include="ckeditor\build-config.js" />
@@ -852,6 +853,13 @@
     </Compile>
     <Compile Include="Ajax\TeamAdminAjax.aspx.designer.cs">
       <DependentUpon>TeamAdminAjax.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Ajax\TeamSiteAdminAjax.aspx.cs">
+      <DependentUpon>TeamSiteAdminAjax.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Ajax\TeamSiteAdminAjax.aspx.designer.cs">
+      <DependentUpon>TeamSiteAdminAjax.aspx</DependentUpon>
     </Compile>
     <Compile Include="Ajax\UserAjax.aspx.cs">
       <DependentUpon>UserAjax.aspx</DependentUpon>

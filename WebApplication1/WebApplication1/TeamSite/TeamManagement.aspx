@@ -114,99 +114,78 @@
                             <div class="tab_box" style="width: 100%; min-height: 1000px; overflow-y: auto">
                                 <div class="informationarea">
                                     <div class="basic-edit">
-                                        <div>
+
+                                        <div class="team-basic">
+                                            <span>* 团队基本信息</span>
                                             团队名称:
-                                            <input type="text" class="teamname-textbox" />
-                                            *
-                                        </div>
-                                        <div class="owner-edit">
-                                            <span>团队拥有者:
-                                            <select>
-                                                <option></option>
-                                            </select></span>
+                                            <br />
+
+                                            <div class="input-control text" style="height: 20px; width: 700px; margin-top: 10px">
+                                                <input type="text" value="" placeholder="名称" />
+                                                <button class="btn-clear"></button>
+                                            </div>
+                                            <br />
+
+                                            <div style="margin-top: 20px;">
+                                                Owner:
+                                            <br />
+
+                                                <div class="input-control select" style="height: 20px; width: 710px; margin-top: 10px">
+                                                    <select>
+                                                        <option>Value 1</option>
+                                                        <option>Value 2</option>
+                                                        <option>Value 3</option>
+                                                    </select>
+                                                </div>
+                                            </div>
                                         </div>
 
                                         <div class="member-edit">
-                                            <span>团队成员：</span>
+                                            <span>* 团队成员：</span>
                                             <table>
                                                 <thead>
                                                     <tr>
                                                         <td>账号</td>
+                                                        <td style="padding-left: 200px">操作</td>
                                                     </tr>
                                                 </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td colspan="2" style="font-style: italic; font-size: small">...暂时没有用户</td>
+                                                    </tr>
+                                                </tbody>
                                             </table>
                                         </div>
-                                           
                                         <div>
-                                             团队Logo: 
-                                            <div style="position: relative; margin-left: 400px; margin-top: 10px; margin-bottom: 10px;">
-                                                <div id="oldUserPhoto" style="">
-                                                </div>
-                                            </div>
-                                            <table style="width: 600px; margin: 0 auto">
-                                                <%--   <tr class="panel-header bg-darkBlue">
-                                                    <td></td>
-                                                    <td>
-                                                        <p style="font-family: 'Segoe UI'; margin-top: 6px; font-size: 16px; color: white; font-weight: bold">新头像</p>
-                                                    </td>
-                                                    <td>
-                                                        <p style="font-family: 'Segoe UI'; margin-top: 6px; font-size: 16px; color: white; font-weight: bold">预览</p>
-                                                    </td>
-                                                </tr>--%>
-                                                <tr>
-                                                    <td style="width: 20%"></td>
-                                                    <td style="width: 60%">
-                                                        <div style="position: relative">
-                                                            <div style="position: absolute; top: -95px">
-                                                                <div style="position: relative">
-                                                                    <input class="chooseImageBt" type="button" value="选择新头像" style="position: absolute; width: 100px; left: 0px; top: 0px" />
-                                                                    <input type="text" value="" id="imageSelect" style="position: absolute; width: 100px; left: 0px; top: 0px; opacity: 0" />
-
-                                                                    <input class="saveImage" type="button" value="确定" disabled="disabled" style="position: absolute; width: 100px; left: 150px; top: 0px;" />
-
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </td>
-                                                    <td style="width: 20%">
-                                                        <div style="margin-top: 10px; position: relative">
-                                                            <div style="float: left">
-                                                                <div style="height: 200px; width: 200px; margin-right: 126px" class="img-preview"></div>
-                                                            </div>
-                                                            <div style="display: block; position: absolute; left: 220px" id="preview-id">
-                                                                <div style="height: 60px; width: 60px" class="img-preview"></div>
-                                                            </div>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td style="width: 20%"></td>
-                                                    <td style="width: 60%">
-                                                        <div style="position: relative">
-                                                            <div class="img-container" style="border: 1px groove; position: absolute; top: -150px; width: 400px; height: 300px">
-                                                                <img style="width: 400px; width: 400px" src="" class="cropper" />
-                                                            </div>
-                                                        </div>
-
-                                                    </td>
-
-                                                    <td style="width: 20%"></td>
-                                                </tr>
-                                            </table>
+                                            <button class="small bg-darkGreen fg-white">保存</button>
+                                            <button class="small bg-darkRed fg-white">重置</button>
                                         </div>
                                     </div>
 
 
-                                    <div style="padding-top:200px">
-                                        <input type="button" value="保存" />
-                                        <input type="button" value="重置" />
-                                    </div>
+
                                 </div>
                                 <div class="approvearea hide">
-                                    Approve report area
                                 </div>
                                 <div class="tagarea hide">
-                                    Tag management area
+                                    <table class="table hovered">
+                                        <thead>
+                                            <tr>
+                                                <td>操作</td>
+                                                <td>标签信息</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr><td colspan="2"><span style="font-style:italic; font-size:small">...暂时没有任何标签信息</span></td></tr>
+                                        </tbody>
+                                        <tfoot>
+                                            <tr>
+                                                <td colspan="2">
+                                                    <a class="bg-darkGreen fg-white button small" href="#">添加</a>
+                                                </td>
+                                            </tr>
+                                        </tfoot>
+                                    </table>
                                 </div>
                             </div>
                         </td>

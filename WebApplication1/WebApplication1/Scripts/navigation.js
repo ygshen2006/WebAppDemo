@@ -31,6 +31,7 @@
                             if (document.URL.contains("MyTeamSitePage")) {
                                 str += "<li>"
                             + "<a href='../TeamSite/TeamManagement.aspx' class='manage-team'>团队管理</a></li>";
+                                str += "<li><a href='../TeamSite/TeamDashboard.aspx' class='manage-team'>团队Dashboard</a></li>";
                             }
                         }
                     });

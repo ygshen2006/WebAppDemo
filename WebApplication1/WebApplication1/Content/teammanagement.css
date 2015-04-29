@@ -12,16 +12,24 @@
             width: 1040px;
         }
 .informationarea, .approvearea, .tagarea {
-    width: 500px;
-    margin: 50px auto;
-   
-
+    width: 800px;
+    margin: 0 auto;
 }
 
-    .informationarea div {
-        width: 400px;
-        display:block;
-    }
+.basic-edit div {
+    margin: 20px auto;
+}
+
+.basic-edit span {
+    display:block;
+    font-size:large;
+    font-weight:bold;
+    margin-left:-10px;
+    margin-bottom:10px;
+}
+
+
+
         
 .hide {
     display: none;

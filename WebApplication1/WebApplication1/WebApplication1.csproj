@@ -767,6 +767,7 @@
     <Content Include="ckfinder\plugins\fileeditor\codemirror\LICENSE" />
     <Content Include="ckfinder\userfiles\.htaccess" />
     <Content Include="TeamSite\MyTeamSitesAdminPage.aspx" />
+    <Content Include="TeamSite\TeamDashboard.aspx" />
     <Content Include="TestPage.aspx" />
     <Content Include="Welcome.aspx" />
     <Content Include="data.json" />
@@ -942,6 +943,13 @@
     </Compile>
     <Compile Include="Study.aspx.designer.cs">
       <DependentUpon>Study.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TeamSite\TeamDashboard.aspx.cs">
+      <DependentUpon>TeamDashboard.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TeamSite\TeamDashboard.aspx.designer.cs">
+      <DependentUpon>TeamDashboard.aspx</DependentUpon>
     </Compile>
     <Compile Include="TeamSite\TeamManagement.aspx.cs">
       <DependentUpon>TeamManagement.aspx</DependentUpon>

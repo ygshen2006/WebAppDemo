@@ -527,6 +527,7 @@
     <Content Include="ckfinder\skins\v1\uipanel.css" />
     <Content Include="ckfinder\translations.txt" />
     <Content Include="ckfinder\userfiles\images\a.jpg" />
+    <Content Include="Content\Dashboard.css" />
     <Content Include="Content\icons-rtl.gif" />
     <Content Include="Content\icons.gif" />
     <Content Include="Content\ISAnimate1.css" />
@@ -534,7 +535,9 @@
     <Content Include="Content\teammanagement.css" />
     <Content Include="Content\teamsites.css" />
     <Content Include="Images\bg_repeat.png" />
+    <Content Include="Images\checkmark.png" />
     <Content Include="Images\default-team.png" />
+    <Content Include="Images\downArrow.PNG" />
     <Content Include="Images\index.gif" />
     <Content Include="Images\isguidex.png" />
     <Content Include="Images\run.jpg" />
@@ -564,6 +567,7 @@
     <Content Include="Images\sideNav.png" />
     <Content Include="js\uploader\jquery.browse.js" />
     <Content Include="js\uploader\jquery.upload.js" />
+    <Content Include="Scripts\Dashboard.js" />
     <Content Include="Scripts\sitealists.js" />
     <Content Include="Scripts\skin\segment-icon.png" />
     <Content Include="Scripts\skin\team-icon.png" />

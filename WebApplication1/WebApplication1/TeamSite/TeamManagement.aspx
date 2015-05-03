@@ -91,13 +91,13 @@
                 </div>
             </header>
 
-            <div class="icon-arrow-left" style="margin: 4px">
+           <%-- <div class="icon-arrow-left" style="margin: 4px">
                 <a href="#">返回Team首页</a>
-            </div>
+            </div>--%>
             <div style="width: 1200px; margin: 0 auto;">
                 <table style="width: 1200px;">
                     <tr>
-                        <td style="position: relative; width: 20%; min-height: 1000px">
+                        <td style="position: relative; width: 20%; min-height: 1000px; left:-208px">
                             <nav class="sidebar light" style="position: absolute; top: 0px;">
                                 <ul id="managelist">
                                     <li class="active"><a href="#"><i class="icon-home"></i>基本信息</a>
@@ -110,7 +110,7 @@
                                 </ul>
                             </nav>
                         </td>
-                        <td style="width: 80%; min-height: 500px;">
+                        <td style="width: 80%; min-height: 500px;  left:-208px; position:relative">
                             <div class="tab_box" style="width: 100%; min-height: 1000px; overflow-y: auto">
                                 <div class="informationarea">
                                     <div class="basic-edit">

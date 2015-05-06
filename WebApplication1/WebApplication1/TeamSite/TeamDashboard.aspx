@@ -45,8 +45,8 @@
             <div class="float-clear"></div>
         </div>
         <div class="action-wrapper">
-            <a class="tile-create">&#xE005; 新建磁贴</a>
-            <a class="tile-delete">&#xE0CA; 删除磁贴</a>
+            <a class="tile-create">&#x002b; 新建磁贴</a>
+            <a class="tile-delete">&#xE014; 删除磁贴</a>
         </div>
         
 
@@ -88,70 +88,70 @@
                     <li style="position: relative;">
                         <div class="size-input collapse"></div>
                         <ul class="size-picker">
-                            <li class="size-picker-sup collapse">&#xE002;&#xE003;&#xE003;&#xE003;&#xE003;&#xE003;&#xE003;&#xE003;</li>
+                            <li class="size-picker-sup collapse">&#xE123;&#xE157;&#xE157;&#xE157;&#xE157;&#xE157;&#xE157;&#xE157;</li>
                             <li>
                                 <ul class="size-picker-sub">
-                                    <li>&#xE002;&#xE003;&#xE003;&#xE003;&#xE003;&#xE003;&#xE003;&#xE003;</li>
-                                    <li>&#xE002;&#xE002;&#xE003;&#xE003;&#xE003;&#xE003;&#xE003;&#xE003;</li>
-                                    <li>&#xE002;&#xE002;&#xE002;&#xE003;&#xE003;&#xE003;&#xE003;&#xE003;</li>
-                                    <li>&#xE002;&#xE002;&#xE002;&#xE002;&#xE003;&#xE003;&#xE003;&#xE003;</li>
-                                    <li>&#xE002;&#xE002;&#xE002;&#xE002;&#xE002;&#xE003;&#xE003;&#xE003;</li>
-                                    <li>&#xE002;&#xE002;&#xE002;&#xE002;&#xE002;&#xE002;&#xE003;&#xE003;</li>
-                                    <li>&#xE002;&#xE002;&#xE002;&#xE002;&#xE002;&#xE002;&#xE002;&#xE003;</li>
-                                    <li>&#xE002;&#xE002;&#xE002;&#xE002;&#xE002;&#xE002;&#xE002;&#xE002;</li>
+                                    <li>&#xE074;&#xE157;&#xE157;&#xE157;&#xE157;&#xE157;&#xE157;&#xE157;</li>
+                                    <li>&#xE074;&#xE074;&#xE157;&#xE157;&#xE157;&#xE157;&#xE157;&#xE157;</li>
+                                    <li>&#xE074;&#xE074;&#xE074;&#xE157;&#xE157;&#xE157;&#xE157;&#xE157;</li>
+                                    <li>&#xE074;&#xE074;&#xE074;&#xE074;&#xE157;&#xE157;&#xE157;&#xE157;</li>
+                                    <li>&#xE074;&#xE074;&#xE074;&#xE074;&#xE074;&#xE157;&#xE157;&#xE157;</li>
+                                    <li>&#xE074;&#xE074;&#xE074;&#xE074;&#xE074;&#xE074;&#xE157;&#xE157;</li>
+                                    <li>&#xE074;&#xE074;&#xE074;&#xE074;&#xE074;&#xE074;&#xE074;&#xE157;</li>
+                                    <li>&#xE074;&#xE074;&#xE074;&#xE074;&#xE074;&#xE074;&#xE074;&#xE074;</li>
                                 </ul>
                             </li>
-                            <li class="size-picker-sup collapse">&#xE002;&#xE003;&#xE003;&#xE003;&#xE003;&#xE003;&#xE003;&#xE003;<br />
-                                &#xE002;&#xE003;&#xE003;&#xE003;&#xE003;&#xE003;&#xE003;&#xE003;</li>
+                            <li class="size-picker-sup collapse">&#xE074;&#xE157;&#xE157;&#xE157;&#xE157;&#xE157;&#xE157;&#xE157;<br />
+                                &#xE074;&#xE157;&#xE157;&#xE157;&#xE157;&#xE157;&#xE157;&#xE157;</li>
                             <li>
                                 <ul class="size-picker-sub">
-                                    <li>&#xE002;&#xE003;&#xE003;&#xE003;&#xE003;&#xE003;&#xE003;&#xE003;<br />
-                                        &#xE002;&#xE003;&#xE003;&#xE003;&#xE003;&#xE003;&#xE003;&#xE003;</li>
-                                    <li>&#xE002;&#xE002;&#xE003;&#xE003;&#xE003;&#xE003;&#xE003;&#xE003;<br />
-                                        &#xE002;&#xE002;&#xE003;&#xE003;&#xE003;&#xE003;&#xE003;&#xE003;</li>
-                                    <li>&#xE002;&#xE002;&#xE002;&#xE003;&#xE003;&#xE003;&#xE003;&#xE003;<br />
-                                        &#xE002;&#xE002;&#xE002;&#xE003;&#xE003;&#xE003;&#xE003;&#xE003;</li>
-                                    <li>&#xE002;&#xE002;&#xE002;&#xE002;&#xE003;&#xE003;&#xE003;&#xE003;<br />
-                                        &#xE002;&#xE002;&#xE002;&#xE002;&#xE003;&#xE003;&#xE003;&#xE003;</li>
-                                    <li>&#xE002;&#xE002;&#xE002;&#xE002;&#xE002;&#xE003;&#xE003;&#xE003;<br />
-                                        &#xE002;&#xE002;&#xE002;&#xE002;&#xE002;&#xE003;&#xE003;&#xE003;</li>
-                                    <li>&#xE002;&#xE002;&#xE002;&#xE002;&#xE002;&#xE002;&#xE003;&#xE003;<br />
-                                        &#xE002;&#xE002;&#xE002;&#xE002;&#xE002;&#xE002;&#xE003;&#xE003;</li>
-                                    <li>&#xE002;&#xE002;&#xE002;&#xE002;&#xE002;&#xE002;&#xE002;&#xE003;<br />
-                                        &#xE002;&#xE002;&#xE002;&#xE002;&#xE002;&#xE002;&#xE002;&#xE003;</li>
-                                    <li>&#xE002;&#xE002;&#xE002;&#xE002;&#xE002;&#xE002;&#xE002;&#xE002;<br />
-                                        &#xE002;&#xE002;&#xE002;&#xE002;&#xE002;&#xE002;&#xE002;&#xE002;</li>
+                                    <li>&#xE074;&#xE157;&#xE157;&#xE157;&#xE157;&#xE157;&#xE157;&#xE157;<br />
+                                        &#xE074;&#xE157;&#xE157;&#xE157;&#xE157;&#xE157;&#xE157;&#xE157;</li>
+                                    <li>&#xE074;&#xE074;&#xE157;&#xE157;&#xE157;&#xE157;&#xE157;&#xE157;<br />
+                                        &#xE074;&#xE074;&#xE157;&#xE157;&#xE157;&#xE157;&#xE157;&#xE157;</li>
+                                    <li>&#xE074;&#xE074;&#xE074;&#xE157;&#xE157;&#xE157;&#xE157;&#xE157;<br />
+                                        &#xE074;&#xE074;&#xE074;&#xE157;&#xE157;&#xE157;&#xE157;&#xE157;</li>
+                                    <li>&#xE074;&#xE074;&#xE074;&#xE074;&#xE157;&#xE157;&#xE157;&#xE157;<br />
+                                        &#xE074;&#xE074;&#xE074;&#xE074;&#xE157;&#xE157;&#xE157;&#xE157;</li>
+                                    <li>&#xE074;&#xE074;&#xE074;&#xE074;&#xE074;&#xE157;&#xE157;&#xE157;<br />
+                                        &#xE074;&#xE074;&#xE074;&#xE074;&#xE074;&#xE157;&#xE157;&#xE157;</li>
+                                    <li>&#xE074;&#xE074;&#xE074;&#xE074;&#xE074;&#xE074;&#xE157;&#xE157;<br />
+                                        &#xE074;&#xE074;&#xE074;&#xE074;&#xE074;&#xE074;&#xE157;&#xE157;</li>
+                                    <li>&#xE074;&#xE074;&#xE074;&#xE074;&#xE074;&#xE074;&#xE074;&#xE157;<br />
+                                        &#xE074;&#xE074;&#xE074;&#xE074;&#xE074;&#xE074;&#xE074;&#xE157;</li>
+                                    <li>&#xE074;&#xE074;&#xE074;&#xE074;&#xE074;&#xE074;&#xE074;&#xE074;<br />
+                                        &#xE074;&#xE074;&#xE074;&#xE074;&#xE074;&#xE074;&#xE074;&#xE074;</li>
                                 </ul>
                             </li>
-                            <li class="size-picker-sup collapse">&#xE002;&#xE003;&#xE003;&#xE003;&#xE003;&#xE003;&#xE003;&#xE003;<br />
-                                &#xE002;&#xE003;&#xE003;&#xE003;&#xE003;&#xE003;&#xE003;&#xE003;<br />
-                                &#xE002;&#xE003;&#xE003;&#xE003;&#xE003;&#xE003;&#xE003;&#xE003;</li>
+                            <li class="size-picker-sup collapse">&#xE074;&#xE157;&#xE157;&#xE157;&#xE157;&#xE157;&#xE157;&#xE157;<br />
+                                &#xE074;&#xE157;&#xE157;&#xE157;&#xE157;&#xE157;&#xE157;&#xE157;<br />
+                                &#xE074;&#xE157;&#xE157;&#xE157;&#xE157;&#xE157;&#xE157;&#xE157;</li>
                             <li>
                                 <ul class="size-picker-sub">
-                                    <li>&#xE002;&#xE003;&#xE003;&#xE003;&#xE003;&#xE003;&#xE003;&#xE003;<br />
-                                        &#xE002;&#xE003;&#xE003;&#xE003;&#xE003;&#xE003;&#xE003;&#xE003;<br />
-                                        &#xE002;&#xE003;&#xE003;&#xE003;&#xE003;&#xE003;&#xE003;&#xE003;</li>
-                                    <li>&#xE002;&#xE002;&#xE003;&#xE003;&#xE003;&#xE003;&#xE003;&#xE003;<br />
-                                        &#xE002;&#xE002;&#xE003;&#xE003;&#xE003;&#xE003;&#xE003;&#xE003;<br />
-                                        &#xE002;&#xE002;&#xE003;&#xE003;&#xE003;&#xE003;&#xE003;&#xE003;</li>
-                                    <li>&#xE002;&#xE002;&#xE002;&#xE003;&#xE003;&#xE003;&#xE003;&#xE003;<br />
-                                        &#xE002;&#xE002;&#xE002;&#xE003;&#xE003;&#xE003;&#xE003;&#xE003;<br />
-                                        &#xE002;&#xE002;&#xE002;&#xE003;&#xE003;&#xE003;&#xE003;&#xE003;</li>
-                                    <li>&#xE002;&#xE002;&#xE002;&#xE002;&#xE003;&#xE003;&#xE003;&#xE003;<br />
-                                        &#xE002;&#xE002;&#xE002;&#xE002;&#xE003;&#xE003;&#xE003;&#xE003;<br />
-                                        &#xE002;&#xE002;&#xE002;&#xE002;&#xE003;&#xE003;&#xE003;&#xE003;</li>
-                                    <li>&#xE002;&#xE002;&#xE002;&#xE002;&#xE002;&#xE003;&#xE003;&#xE003;<br />
-                                        &#xE002;&#xE002;&#xE002;&#xE002;&#xE002;&#xE003;&#xE003;&#xE003;<br />
-                                        &#xE002;&#xE002;&#xE002;&#xE002;&#xE002;&#xE003;&#xE003;&#xE003;</li>
-                                    <li>&#xE002;&#xE002;&#xE002;&#xE002;&#xE002;&#xE002;&#xE003;&#xE003;<br />
-                                        &#xE002;&#xE002;&#xE002;&#xE002;&#xE002;&#xE002;&#xE003;&#xE003;<br />
-                                        &#xE002;&#xE002;&#xE002;&#xE002;&#xE002;&#xE002;&#xE003;&#xE003;</li>
-                                    <li>&#xE002;&#xE002;&#xE002;&#xE002;&#xE002;&#xE002;&#xE002;&#xE003;<br />
-                                        &#xE002;&#xE002;&#xE002;&#xE002;&#xE002;&#xE002;&#xE002;&#xE003;<br />
-                                        &#xE002;&#xE002;&#xE002;&#xE002;&#xE002;&#xE002;&#xE002;&#xE003;</li>
-                                    <li>&#xE002;&#xE002;&#xE002;&#xE002;&#xE002;&#xE002;&#xE002;&#xE002;<br />
-                                        &#xE002;&#xE002;&#xE002;&#xE002;&#xE002;&#xE002;&#xE002;&#xE002;<br />
-                                        &#xE002;&#xE002;&#xE002;&#xE002;&#xE002;&#xE002;&#xE002;&#xE002;</li>
+                                    <li style="font-family:'Glyphicons Halflings'">&#xE074;&#xE157;&#xE157;&#xE157;&#xE157;&#xE157;&#xE157;&#xE157;<br />
+                                        &#xE074;&#xE157;&#xE157;&#xE157;&#xE157;&#xE157;&#xE157;&#xE157;<br />
+                                        &#xE074;&#xE157;&#xE157;&#xE157;&#xE157;&#xE157;&#xE157;&#xE157;</li>
+                                    <li>&#xE074;&#xE074;&#xE157;&#xE157;&#xE157;&#xE157;&#xE157;&#xE157;<br />
+                                        &#xE074;&#xE074;&#xE157;&#xE157;&#xE157;&#xE157;&#xE157;&#xE157;<br />
+                                        &#xE074;&#xE074;&#xE157;&#xE157;&#xE157;&#xE157;&#xE157;&#xE157;</li>
+                                    <li>&#xE074;&#xE074;&#xE074;&#xE157;&#xE157;&#xE157;&#xE157;&#xE157;<br />
+                                        &#xE074;&#xE074;&#xE074;&#xE157;&#xE157;&#xE157;&#xE157;&#xE157;<br />
+                                        &#xE074;&#xE074;&#xE074;&#xE157;&#xE157;&#xE157;&#xE157;&#xE157;</li>
+                                    <li>&#xE074;&#xE074;&#xE074;&#xE074;&#xE157;&#xE157;&#xE157;&#xE157;<br />
+                                        &#xE074;&#xE074;&#xE074;&#xE074;&#xE157;&#xE157;&#xE157;&#xE157;<br />
+                                        &#xE074;&#xE074;&#xE074;&#xE074;&#xE157;&#xE157;&#xE157;&#xE157;</li>
+                                    <li>&#xE074;&#xE074;&#xE074;&#xE074;&#xE074;&#xE157;&#xE157;&#xE157;<br />
+                                        &#xE074;&#xE074;&#xE074;&#xE074;&#xE074;&#xE157;&#xE157;&#xE157;<br />
+                                        &#xE074;&#xE074;&#xE074;&#xE074;&#xE074;&#xE157;&#xE157;&#xE157;</li>
+                                    <li>&#xE074;&#xE074;&#xE074;&#xE074;&#xE074;&#xE074;&#xE157;&#xE157;<br />
+                                        &#xE074;&#xE074;&#xE074;&#xE074;&#xE074;&#xE074;&#xE157;&#xE157;<br />
+                                        &#xE074;&#xE074;&#xE074;&#xE074;&#xE074;&#xE074;&#xE157;&#xE157;</li>
+                                    <li>&#xE074;&#xE074;&#xE074;&#xE074;&#xE074;&#xE074;&#xE074;&#xE157;<br />
+                                        &#xE074;&#xE074;&#xE074;&#xE074;&#xE074;&#xE074;&#xE074;&#xE157;<br />
+                                        &#xE074;&#xE074;&#xE074;&#xE074;&#xE074;&#xE074;&#xE074;&#xE157;</li>
+                                    <li>&#xE074;&#xE074;&#xE074;&#xE074;&#xE074;&#xE074;&#xE074;&#xE074;<br />
+                                        &#xE074;&#xE074;&#xE074;&#xE074;&#xE074;&#xE074;&#xE074;&#xE074;<br />
+                                        &#xE074;&#xE074;&#xE074;&#xE074;&#xE074;&#xE074;&#xE074;&#xE074;</li>
                                 </ul>
                             </li>
                         </ul>
@@ -268,8 +268,8 @@
                                 <tr>
                                     <td icon="&#xE000;">&#xE000;</td>
                                     <td icon="&#xE001;">&#xE001;</td>
-                                    <td icon="&#xE002;">&#xE002;</td>
-                                    <td icon="&#xE003;">&#xE003;</td>
+                                    <td icon="&#xE074;">&#xE074;</td>
+                                    <td icon="&#xE157;">&#xE157;</td>
                                     <td icon="&#xE004;">&#xE004;</td>
                                     <td icon="&#xE005;">&#xE005;</td>
                                     <td icon="&#xE006;">&#xE006;</td>
@@ -290,8 +290,8 @@
                                 <tr>
                                     <td icon="&#xE000;">&#xE000;</td>
                                     <td icon="&#xE001;">&#xE001;</td>
-                                    <td icon="&#xE002;">&#xE002;</td>
-                                    <td icon="&#xE003;">&#xE003;</td>
+                                    <td icon="&#xE074;">&#xE074;</td>
+                                    <td icon="&#xE157;">&#xE157;</td>
                                     <td icon="&#xE004;">&#xE004;</td>
                                     <td icon="&#xE005;">&#xE005;</td>
                                     <td icon="&#xE006;">&#xE006;</td>
@@ -318,7 +318,7 @@
                 <div class="mark"></div>
                 <div class="tile-type">
                     <label>Type: <span class="label-tile-type">Static</span></label>
-                    <label style="font-family: 'Segoe UI Symbol'">&#xE2A9; Change type</label>
+                   <label style="font-family:'Glyphicons Halflings'">&#xE074; Change type</label>
                 </div>
                 <ul class="background-image">
                     <li>

@@ -772,9 +772,12 @@
     <Content Include="ckfinder\userfiles\.htaccess" />
     <Content Include="TeamSite\MyTeamSitesAdminPage.aspx" />
     <Content Include="TeamSite\TeamDashboard.aspx" />
+    <Content Include="TeamSite\WebForm1.aspx" />
     <Content Include="TestPage.aspx" />
     <Content Include="Welcome.aspx" />
     <Content Include="data.json" />
+    <Content Include="fonts\auticons.eot" />
+    <Content Include="fonts\auticons.ttf" />
     <None Include="Properties\PublishProfiles\firstwebsitetest - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\firstwebsitetest - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\johnshensite - FTP.pubxml" />
@@ -982,6 +985,13 @@
     </Compile>
     <Compile Include="TeamSite\MyTeamSitesAdminPage.aspx.designer.cs">
       <DependentUpon>MyTeamSitesAdminPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TeamSite\WebForm1.aspx.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TeamSite\WebForm1.aspx.designer.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
     </Compile>
     <Compile Include="TestPage.aspx.cs">
       <DependentUpon>TestPage.aspx</DependentUpon>

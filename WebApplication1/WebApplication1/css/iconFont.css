@@ -37,6 +37,10 @@
   font-size: 1.2em;
   vertical-align: -10%;
 }
+
+.icon-dropsize:before {
+
+}
 .icon-newspaper:before {
   content: "\e001";
 }
@@ -448,6 +452,7 @@
 .icon-cancel-2:before {
   content: "\e089";
 }
+
 .icon-checkmark:before {
   content: "\e08a";
 }

@@ -87,9 +87,9 @@
     <Compile Include="Logics\Parameter.cs" />
     <Compile Include="Logics\ParameterProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Reports\Report.cs" />
-    <Compile Include="Reports\ReportType.cs" />
-    <Compile Include="Reports\Status.cs" />
+    <Compile Include="Reports\Aggregates\Report.cs" />
+    <Compile Include="Reports\Aggregates\ReportType.cs" />
+    <Compile Include="Reports\Aggregates\Status.cs" />
     <Compile Include="Teams\Aggregates\Category\Category.cs" />
     <Compile Include="Teams\Aggregates\Division\Division.cs" />
     <Compile Include="Teams\Aggregates\Category\ICategoryRepository.cs" />
@@ -128,6 +128,7 @@
   <ItemGroup>
     <Folder Include="FilterField\" />
     <Folder Include="Mapping\" />
+    <Folder Include="NewFolder1\" />
     <Folder Include="Teams\FilterField\" />
   </ItemGroup>
   <ItemGroup>

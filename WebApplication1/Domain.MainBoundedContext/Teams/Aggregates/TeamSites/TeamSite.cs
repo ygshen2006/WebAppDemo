@@ -1,5 +1,5 @@
 ﻿using Domain.MainBoundedContext.Aggregates.Division;
-using Domain.MainBoundedContext.Reports;
+using Domain.MainBoundedContext.Reports.Aggregates;
 using Domain.MainBoundedContext.Users;
 using Domain.SeedWork;
 using System;

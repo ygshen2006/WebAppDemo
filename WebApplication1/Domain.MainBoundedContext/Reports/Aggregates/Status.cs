@@ -6,13 +6,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Domain.MainBoundedContext.Reports
+namespace Domain.MainBoundedContext.Reports.Aggregates
 {
-    public class ReportType : Entity
+    public class Status:Entity
     {
         [Required]
-        public string TypeName;
+        public string Name;
 
-        public virtual ICollection<Report> ReportsRelated { get; set; }
+        public virtual ICollection<Report> Reports { get; set; }
     }
 }

@@ -1,4 +1,4 @@
-﻿using Domain.MainBoundedContext.Reports;
+﻿using Domain.MainBoundedContext.Reports.Aggregates;
 using Domain.MainBoundedContext.Teams.Aggregates.TeamSites;
 using Domain.SeedWork;
 using System;

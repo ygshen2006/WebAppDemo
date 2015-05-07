@@ -1,4 +1,4 @@
-﻿using Domain.MainBoundedContext.Reports;
+﻿using Domain.MainBoundedContext.Reports.Aggregates;
 using Domain.SeedWork;
 using System;
 using System.Collections.Generic;

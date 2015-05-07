@@ -11,31 +11,43 @@ namespace Domain.MainBoundedContext.Teams
 {
     public class Tile : Entity
     {
-        public Tile() { }
-        public Tile(int id)
-            : base(id)
-        {
 
-        }
+        public Int32 Id { get; set; }
 
-        #region Property
-       
-        [Required, MaxLength(50)]
         public String Title { get; set; }
 
-        public Int32 RowNumber { get; set; }
+        public Int32 Top { get; set; }
+
+        public Int32 Left { get; set; }
+
+        public Int32 Width { get; set; }
+
+        public Int32 Height { get; set; }
+
+        public String BackgroundColor { get; set; }
+
+        public String Icon { get; set; }
+
+        public String BackgroundImage { get; set; }
+
+        public String ImageOverlayColor { get; set; }
+
+        public String ReportCountStyle { get; set; }
+
+        public Boolean AutoLaunch { get; set; }
 
         public Boolean IsCustomized { get; set; }
 
-        //This is not required, if it's for any team, it should be non-null
         public Int32? OwnerTeamSiteId { get; set; }
+
         public virtual TeamSite OwnerTeamSite { get; set; }
 
-        //1: MyReport, 2: TeamSite
         public Int32 TileType { get; set; }
 
-        public Int32? SystemDefinedTile { get; set; }
+        public Int32 LogicStringType { get; set; }
 
-        #endregion
+        public String LogicString { get; set; }
+
+        public virtual ICollection<TileQueryLogic> TileQueryLogics { get; set; }
     }
 }

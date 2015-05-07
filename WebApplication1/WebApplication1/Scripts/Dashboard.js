@@ -85,7 +85,7 @@
                 $('.show-count select').val('None');
                 $('.image-size').text('130X130');
                 selectColorItem('#6DC2E9');
-                $('.size-input').html('&#xE002;&#xE003;&#xE003;&#xE003;&#xE003;&#xE003;&#xE003;&#xE003;<br/>&#xE003;&#xE003;&#xE003;&#xE003;&#xE003;&#xE003;&#xE003;&#xE003;<br/>&#xE003;&#xE003;&#xE003;&#xE003;&#xE003;&#xE003;&#xE003;&#xE003;');
+                $('.size-input').html('&#xE074;&#xE157;&#xE157;&#xE157;&#xE157;&#xE157;&#xE157;&#xE157;<br/>&#xE157;&#xE157;&#xE157;&#xE157;&#xE157;&#xE157;&#xE157;&#xE157;<br/>&#xE157;&#xE157;&#xE157;&#xE157;&#xE157;&#xE157;&#xE157;&#xE157;');
                 $('.feature-area-middle .mark').css({
                     top: '0px', height: '533px'
                 });
@@ -429,6 +429,36 @@
                 $('.select-tileType').val(tile.LogicType);
                 LogicTypeChange(tile.LogicType);
             });
+
+
+
+            $('.dashboard-body .action-area a.action-save').click(function () {
+                if ($(this).hasClass('action-disable')) {
+                    return;
+                }
+                if (clipboardTiles.length > 0) {
+                    alert('Clipboard中存在没有保存的Tile,请先清空');
+                    return;
+                }
+                if (confirm('是否保存?')) {
+                    saveTiles();
+                }
+            });
+            $('.dashboard-body .action-area .action-cancel').click(function () {
+                if (confirm('推出后本次更改无法保存，是否继续?')) {
+                    $(window).off('onbeforeunload');
+                    window.location.href = $('.action-back').attr('href');
+                }
+            });
+            $(document).on('click', function (e) {
+                if ($('.size-input').hasClass('expand')) {
+                    $('.size-input').addClass('collapse').removeClass('expand');
+                }
+                if ($('.icon-input').hasClass('expand')) {
+                    $('.icon-input').addClass('collapse').removeClass('expand');
+                }
+            });
+            //initilizeIconPanel();
         }
 
 
@@ -490,20 +520,7 @@
             }
             return false;
         }
-        function initilizeIconPanel() {
-            var i, iconNum, index = 1;
-            var tr;
-            $('.icon-picker table').html('');
-            tr = $('<tr></tr>').appendTo($('.icon-picker table')).append('<td icon="None">None</td>');
-            for (i = 57600; i < 57835; i++) {
-                if (index % 10 == 0) {
-                    tr = $('<tr></tr>').appendTo($('.icon-picker table'));
-                }
-                iconNum = Number(i).toString(16).toUpperCase();
-                $('<td></td>').html('&#x' + iconNum).appendTo(tr).attr('icon', iconNum);
-                index++;
-            }
-        }
+
         function checkSaveState() {
             var changed = false;
             if (originalTiles.length != gridTiles.length) {
@@ -978,15 +995,15 @@
                 for (y = 0; y < tile.demensionY; y++) {
                     for (x = 0; x < 8 ; x++) {
                         if (x < tile.demensionX) {
-                            sizeInputHtml += '&#xE002;';
+                            sizeInputHtml += '&#xE074;';
                         } else {
-                            sizeInputHtml += '&#xE003;';
+                            sizeInputHtml += '&#xE157;';
                         }
                     }
                     sizeInputHtml += '<br />';
                 }
                 for (; y < 3; y++) {
-                    sizeInputHtml += '&#xE003;&#xE003;&#xE003;&#xE003;&#xE003;&#xE003;&#xE003;&#xE003;<br />';
+                    sizeInputHtml += '&#xE157;&#xE157;&#xE157;&#xE157;&#xE157;&#xE157;&#xE157;&#xE157;<br />';
                 }
                 $('.size-area .size-input').html(sizeInputHtml);
             }
@@ -1104,15 +1121,15 @@
             for (y = 0; y < currentDemensionY; y++) {
                 for (x = 0; x < 8 ; x++) {
                     if (x < currentDemensionX) {
-                        sizeInputHtml += '&#xE002;';
+                        sizeInputHtml += '&#xE074;';
                     } else {
-                        sizeInputHtml += '&#xE003;';
+                        sizeInputHtml += '&#xE157;';
                     }
                 }
                 sizeInputHtml += '<br />';
             }
             for (; y < 3; y++) {
-                sizeInputHtml += '&#xE003;&#xE003;&#xE003;&#xE003;&#xE003;&#xE003;&#xE003;&#xE003;<br />';
+                sizeInputHtml += '&#xE157;&#xE157;&#xE157;&#xE157;&#xE157;&#xE157;&#xE157;&#xE157;<br />';
             }
             $('.size-area .size-input').html(sizeInputHtml);
             var sizePickerHtml = '';
@@ -1123,10 +1140,10 @@
                     sizePickerHtml += ' <li class="size-picker-sup collapse">';
                 }
                 for (yy = 0; yy <= y; yy++) {
-                    sizePickerHtml += '&#xE002;&#xE003;&#xE003;&#xE003;&#xE003;&#xE003;&#xE003;&#xE003;<br/>';
+                    sizePickerHtml += '&#xE074;&#xE157;&#xE157;&#xE157;&#xE157;&#xE157;&#xE157;&#xE157;<br/>';
                 }
                 for (; yy < 3; yy++) {
-                    sizePickerHtml += '&#xE003;&#xE003;&#xE003;&#xE003;&#xE003;&#xE003;&#xE003;&#xE003;<br/>';
+                    sizePickerHtml += '&#xE157;&#xE157;&#xE157;&#xE157;&#xE157;&#xE157;&#xE157;&#xE157;<br/>';
                 }
                 sizePickerHtml += ' </li><li><ul class="size-picker-sub">';
                 for (x = 0; x + currentCoordinateX < 8; x++) {
@@ -1144,15 +1161,15 @@
                         for (yyy = 0; yyy < y + 1; yyy++) {
                             for (xx = 0; xx < 8 ; xx++) {
                                 if (xx < x + 1) {
-                                    sizePickerHtml += '&#xE002;';
+                                    sizePickerHtml += '&#xE074;';
                                 } else {
-                                    sizePickerHtml += '&#xE003;';
+                                    sizePickerHtml += '&#xE157;';
                                 }
                             }
                             sizePickerHtml += '<br />';
                         }
                         for (; yyy < 3; yyy++) {
-                            sizePickerHtml += '&#xE003;&#xE003;&#xE003;&#xE003;&#xE003;&#xE003;&#xE003;&#xE003;<br />';
+                            sizePickerHtml += '&#xE157;&#xE157;&#xE157;&#xE157;&#xE157;&#xE157;&#xE157;&#xE157;<br />';
                         }
                         sizePickerHtml += '</li>';
                     }

@@ -9,7 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Domain.MainBoundedContext.Reports
+namespace Domain.MainBoundedContext.Reports.Aggregates
 {
     public class Report : Entity
     {

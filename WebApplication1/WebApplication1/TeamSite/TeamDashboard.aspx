@@ -88,7 +88,7 @@
                     <li style="position: relative;">
                         <div class="size-input collapse"></div>
                         <ul class="size-picker">
-                            <li class="size-picker-sup collapse">&#xE123;&#xE157;&#xE157;&#xE157;&#xE157;&#xE157;&#xE157;&#xE157;</li>
+                            <li class="size-picker-sup collapse">&#xE074;&#xE157;&#xE157;&#xE157;&#xE157;&#xE157;&#xE157;&#xE157;</li>
                             <li>
                                 <ul class="size-picker-sub">
                                     <li>&#xE074;&#xE157;&#xE157;&#xE157;&#xE157;&#xE157;&#xE157;&#xE157;</li>
@@ -266,48 +266,106 @@
                         <div class="icon-picker">
                             <table>
                                 <tr>
-                                    <td icon="&#xE000;">&#xE000;</td>
-                                    <td icon="&#xE001;">&#xE001;</td>
-                                    <td icon="&#xE074;">&#xE074;</td>
-                                    <td icon="&#xE157;">&#xE157;</td>
-                                    <td icon="&#xE004;">&#xE004;</td>
-                                    <td icon="&#xE005;">&#xE005;</td>
-                                    <td icon="&#xE006;">&#xE006;</td>
-                                    <td icon="&#xE007;">&#xE007;</td>
-                                    <td icon="&#xE008;">&#xE008;</td>
-                                    <td icon="&#xE009;">&#xE009;</td>
-                                    <td icon="&#xE00A;">&#xE00A;</td>
-                                    <td icon="&#xE00B;">&#xE00B;</td>
-                                    <td icon="&#xE00C;">&#xE00C;</td>
-                                    <td icon="&#xE00D;">&#xE00D;</td>
-                                    <td icon="&#xE00E;">&#xE00E;</td>
-                                    <td icon="&#xE00F;">&#xE00F;</td>
-                                    <td icon="&#xE010;">&#xE010;</td>
-                                    <td icon="&#xE011;">&#xE011;</td>
-                                    <td icon="&#xE012;">&#xE012;</td>
-                                    <td icon="&#xE013;">&#xE013;</td>
+                                    <% for(int i=1; i<21;i++){
+                                           string current =(i < 10) ? "00" + i.ToString() : "0"+i.ToString();
+                                           Console.WriteLine(current);
+                                           string str = string.Format("E{0};", current);
+                                           %>
+                                    <td icon="<%= str %>">&#x<%= str %></td>
+                                    <%} %>
+                               <%--     <td icon="E002;">&#xE002;</td>
+                                    <td icon="E042;">&#xE042;</td>
+                                    <td icon="E062;">&#xE062;</td>
+                                    <td icon="E044;">&#xE044;</td>
+                                    <td icon="E046;">&#xE046;</td>
+                                    <td icon="270f;">&#x270f;</td>
+                                    <td icon="E102;">&#xE102;</td>
+                                    <td icon="E111;">&#xE111;</td>
+                                    <td icon="E116;">&#xE116;</td>
+                                    <td icon="E123;">&#xE123;</td>--%>
                                 </tr>
                                 <tr>
-                                    <td icon="&#xE000;">&#xE000;</td>
-                                    <td icon="&#xE001;">&#xE001;</td>
-                                    <td icon="&#xE074;">&#xE074;</td>
-                                    <td icon="&#xE157;">&#xE157;</td>
-                                    <td icon="&#xE004;">&#xE004;</td>
-                                    <td icon="&#xE005;">&#xE005;</td>
-                                    <td icon="&#xE006;">&#xE006;</td>
-                                    <td icon="&#xE007;">&#xE007;</td>
-                                    <td icon="&#xE008;">&#xE008;</td>
-                                    <td icon="&#xE009;">&#xE009;</td>
-                                    <td icon="&#xE00A;">&#xE00A;</td>
-                                    <td icon="&#xE00B;">&#xE00B;</td>
-                                    <td icon="&#xE00C;">&#xE00C;</td>
-                                    <td icon="&#xE00D;">&#xE00D;</td>
-                                    <td icon="&#xE00E;">&#xE00E;</td>
-                                    <td icon="&#xE00F;">&#xE00F;</td>
-                                    <td icon="&#xE010;">&#xE010;</td>
-                                    <td icon="&#xE011;">&#xE011;</td>
-                                    <td icon="&#xE012;">&#xE012;</td>
-                                    <td icon="&#xE013;">&#xE013;</td>
+                                         <% for(int i=21; i<41;i++){
+                                           string current =(i < 10) ? "00" + i.ToString() : "0"+i.ToString();
+                                           Console.WriteLine(current);
+                                           string str = string.Format("E{0};", current);
+                                           %>
+                                    <td icon="<%= str %>">&#x<%= str %></td>
+                                    <%} %>
+                                    
+                                </tr>
+
+                                  <tr>
+                                         <% for(int i=41; i<61;i++){
+                                           string current =(i < 10) ? "00" + i.ToString() : "0"+i.ToString();
+                                           Console.WriteLine(current);
+                                           string str = string.Format("E{0};", current);
+                                           %>
+                                    <td icon="<%= str %>">&#x<%= str %></td>
+                                    <%} %>
+                                    
+                                </tr>
+                                  <tr>
+                                         <% for(int i=61; i<81;i++){
+                                           string current =(i < 10) ? "00" + i.ToString() : "0"+i.ToString();
+                                           Console.WriteLine(current);
+                                           string str = string.Format("E{0};", current);
+                                           %>
+                                    <td icon="<%= str %>">&#x<%= str %></td>
+                                    <%} %>
+                                    
+                                </tr>
+                                   
+                                   <tr>
+                                         <% for(int i=91; i<111;i++){
+                                           string current =(i < 100) ? "0" + i.ToString() : i.ToString();
+                                           Console.WriteLine(current);
+                                           string str = string.Format("E{0};", current);
+                                           %>
+                                    <td icon="<%= str %>">&#x<%= str %></td>
+                                    <%} %>
+                                    
+                                </tr>
+
+                                    <tr>
+                                         <% for(int i=111; i<131;i++){
+                                           string current =(i < 100) ? "0" + i.ToString() : i.ToString();
+                                           Console.WriteLine(current);
+                                           string str = string.Format("E{0};", current);
+                                           %>
+                                    <td icon="<%= str %>">&#x<%= str %></td>
+                                    <%} %>
+                                    
+                                </tr>
+                                  <tr>
+                                         <% for(int i=131; i<151;i++){
+                                           string current =(i < 100) ? "0" + i.ToString() : i.ToString();
+                                           Console.WriteLine(current);
+                                           string str = string.Format("E{0};", current);
+                                           %>
+                                    <td icon="<%= str %>">&#x<%= str %></td>
+                                    <%} %>
+                                    
+                                </tr>
+                                 <tr>
+                                         <% for(int i=151; i<171;i++){
+                                           string current =(i < 100) ? "0" + i.ToString() : i.ToString();
+                                           Console.WriteLine(current);
+                                           string str = string.Format("E{0};", current);
+                                           %>
+                                    <td icon="<%= str %>">&#x<%= str %></td>
+                                    <%} %>
+                                    
+                                </tr>
+                                 <tr>
+                                         <% for(int i=171; i<191;i++){
+                                           string current =(i < 100) ? "0" + i.ToString() : i.ToString();
+                                           Console.WriteLine(current);
+                                           string str = string.Format("E{0};", current);
+                                           %>
+                                    <td icon="<%= str %>">&#x<%= str %></td>
+                                    <%} %>
+                                    
                                 </tr>
                             </table>
                         </div>
@@ -318,7 +376,7 @@
                 <div class="mark"></div>
                 <div class="tile-type">
                     <label>Type: <span class="label-tile-type">Static</span></label>
-                   <label style="font-family:'Glyphicons Halflings'">&#xE074; Change type</label>
+                   <label style="font-family:'Glyphicons Halflings'">&#x270f; Change type</label>
                 </div>
                 <ul class="background-image">
                     <li>

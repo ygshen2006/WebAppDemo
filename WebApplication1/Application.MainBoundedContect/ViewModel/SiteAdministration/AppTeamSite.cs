@@ -1,5 +1,5 @@
 ﻿using Application.MainBoundedContect.ViewModel.Users;
-using Domain.MainBoundedContext.Reports;
+using Domain.MainBoundedContext.Reports.Aggregates;
 using Domain.MainBoundedContext.Teams;
 using Domain.MainBoundedContext.Users;
 using System;

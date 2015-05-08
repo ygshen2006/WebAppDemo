@@ -7,6 +7,7 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using Domain.SeedWork;
+using Domain.MainBoundedContext.Reports.Logics.Aggregates;
 
 namespace Domain.MainBoundedContext.Logics
 {
@@ -27,7 +28,7 @@ namespace Domain.MainBoundedContext.Logics
         }*/
         #endregion
 
-        public override Expression<Func<Entity, bool>> GetExpression(ParameterProvider parameterProvider = null)
+        public override Expression<Func<Report, bool>> GetExpression(ParameterProvider parameterProvider = null)
         {
             if (FieldValue.GetValue(parameterProvider) == null)
             {

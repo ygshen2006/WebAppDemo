@@ -1,11 +1,11 @@
-﻿using Domain.MainBoundedContext.Reports.Aggregates;
-using Domain.MainBoundedContext.Teams;
+﻿using Domain.MainBoundedContext.Teams;
 using Domain.MainBoundedContext.Teams.Aggregates.TeamSites;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Domain.MainBoundedContext.Reports.Logics.Aggregates;
 
 namespace Application.MainBoundedContect.ViewModel.SiteAdministration
 {

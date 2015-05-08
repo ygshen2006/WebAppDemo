@@ -1,5 +1,4 @@
-﻿using Domain.MainBoundedContext.Reports.Aggregates;
-using Domain.MainBoundedContext.Teams;
+﻿using Domain.MainBoundedContext.Teams;
 using System;
 using System.Collections.Generic;
 using System.Linq;

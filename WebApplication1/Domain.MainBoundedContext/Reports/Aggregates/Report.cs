@@ -8,8 +8,9 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Domain.MainBoundedContext.Users;
 
-namespace Domain.MainBoundedContext.Reports.Aggregates
+namespace Domain.MainBoundedContext.Reports.Logics.Aggregates
 {
     public class Report : Entity
     {
@@ -43,5 +44,8 @@ namespace Domain.MainBoundedContext.Reports.Aggregates
 
         public virtual ICollection<Tag> Tags { get; set; }
         public virtual ICollection<Category> Catagories { get; set; }
+
+        public virtual ICollection<User> Owners
+        { get; set; }
     }
 }

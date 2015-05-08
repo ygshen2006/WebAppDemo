@@ -6,14 +6,12 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Domain.MainBoundedContext.Reports.Logics.Aggregates.Tiles;
 
 namespace Domain.MainBoundedContext.Teams
 {
     public class Tile : Entity
     {
-
-        public Int32 Id { get; set; }
-
         public String Title { get; set; }
 
         public Int32 Top { get; set; }
@@ -34,7 +32,7 @@ namespace Domain.MainBoundedContext.Teams
 
         public String ReportCountStyle { get; set; }
 
-        public Boolean AutoLaunch { get; set; }
+        //public Boolean AutoLaunch { get; set; }
 
         public Boolean IsCustomized { get; set; }
 
@@ -42,8 +40,15 @@ namespace Domain.MainBoundedContext.Teams
 
         public virtual TeamSite OwnerTeamSite { get; set; }
 
+        /// <summary>
+        /// Defined in the Application.DTO.Enums. 
+        /// Can be "My Report", "TeamSite Report and so on"
+        /// </summary>
         public Int32 TileType { get; set; }
 
+        /// <summary>
+        /// "Static, Taged, Filtered"
+        /// </summary>
         public Int32 LogicStringType { get; set; }
 
         public String LogicString { get; set; }

@@ -8,6 +8,7 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
+using Domain.MainBoundedContext.Reports.Logics.Aggregates;
 //using Microsoft.MSIT.ECO.UnifiedReporting.Domain.MainBoundedContext.ReportModule.Aggregates.ReportCatalogAgg;
 
 namespace Domain.MainBoundedContext.Logics
@@ -62,7 +63,7 @@ namespace Domain.MainBoundedContext.Logics
             return parentLogic;
         }
 
-        public abstract Expression<Func<Entity, bool>> GetExpression(ParameterProvider parameterProvider = null);
+        public abstract Expression<Func<Report, bool>> GetExpression(ParameterProvider parameterProvider = null);
 
         //public abstract void SetParameterProvider(ParameterProvider pp);
             /*

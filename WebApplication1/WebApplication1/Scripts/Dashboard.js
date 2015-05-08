@@ -578,7 +578,7 @@
         function saveTiles() {
             var tilesData = JSON.stringify(gridTiles);
             $.ajax({
-                url: getBaseUrl() + '/_layouts/15/URPAjax/AdminAjax.aspx',
+                url: getBaseUrl() + '/Ajax/TeamAdminAjax',
                 type: 'Post',
                 data: { queryType: 'updateadmintileinfo', TilesData: tilesData, SiteGUID: GetQueryString('SiteGUID') },
                 dataType: 'json',
@@ -1587,14 +1587,9 @@
             }
         }
         function getBaseUrl() {
-            var url = $('#divSiteCollectionUrl input[type=hidden]').val();
-            if ($('#divSiteName').length == 1) {
-                url += '/' + $('#divSiteName input[type=hidden]').val();
-            }
-            if (url == undefined) {
-                url = location.protocol + '//' + location.hostname + (location.port ? ':' + location.port : '');
-            }
+            var url = "http://" + window.location.hostname + ':' + window.location.port;
             return url;
+
         }
         function GetQueryString(name) {
             var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");

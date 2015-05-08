@@ -69,27 +69,30 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AppFilterField.cs" />
-    <Compile Include="Logics\AND.cs" />
-    <Compile Include="Logics\Constant.cs" />
-    <Compile Include="Logics\Equal.cs" />
-    <Compile Include="Logics\FieldValue.cs" />
-    <Compile Include="Logics\IEQUAL.cs" />
-    <Compile Include="Logics\IFieldLogic.cs" />
-    <Compile Include="Logics\IGetExpression.cs" />
-    <Compile Include="Logics\IIN.cs" />
-    <Compile Include="Logics\IN.cs" />
-    <Compile Include="Logics\INotIN.cs" />
-    <Compile Include="Logics\IParentLogic.cs" />
-    <Compile Include="Logics\ISortableField.cs" />
-    <Compile Include="Logics\Logic.cs" />
-    <Compile Include="Logics\NotIN.cs" />
-    <Compile Include="Logics\OR.cs" />
-    <Compile Include="Logics\Parameter.cs" />
-    <Compile Include="Logics\ParameterProvider.cs" />
+    <Compile Include="Reports\Logics\AND.cs" />
+    <Compile Include="Reports\Logics\Constant.cs" />
+    <Compile Include="Reports\Logics\Equal.cs" />
+    <Compile Include="Reports\Logics\FieldValue.cs" />
+    <Compile Include="Reports\Logics\IEQUAL.cs" />
+    <Compile Include="Reports\Logics\IFieldLogic.cs" />
+    <Compile Include="Reports\Logics\IGetExpression.cs" />
+    <Compile Include="Reports\Logics\IIN.cs" />
+    <Compile Include="Reports\Logics\IN.cs" />
+    <Compile Include="Reports\Logics\INotIN.cs" />
+    <Compile Include="Reports\Logics\IParentLogic.cs" />
+    <Compile Include="Reports\Logics\ISortableField.cs" />
+    <Compile Include="Reports\Logics\Logic.cs" />
+    <Compile Include="Reports\Logics\NotIN.cs" />
+    <Compile Include="Reports\Logics\OR.cs" />
+    <Compile Include="Reports\Logics\Parameter.cs" />
+    <Compile Include="Reports\Logics\ParameterProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Reports\Aggregates\Report.cs" />
     <Compile Include="Reports\Aggregates\ReportType.cs" />
     <Compile Include="Reports\Aggregates\Status.cs" />
+    <Compile Include="Reports\Aggregates\Tiles\TileQueryLogic.cs" />
+    <Compile Include="Reports\FilterField\ReportOwnerAlias.cs" />
+    <Compile Include="Reports\FilterField\ReportStatusId.cs" />
     <Compile Include="Teams\Aggregates\Category\Category.cs" />
     <Compile Include="Teams\Aggregates\Division\Division.cs" />
     <Compile Include="Teams\Aggregates\Category\ICategoryRepository.cs" />
@@ -102,16 +105,12 @@
     <Compile Include="Teams\Aggregates\Division\Segment.cs" />
     <Compile Include="Teams\Aggregates\TeamSites\TeamSite.cs" />
     <Compile Include="Teams\Aggregates\UsefulLinks\UsefulLinks.cs" />
+    <Compile Include="Teams\FilterField\TeamSiteGUID.cs" />
     <Compile Include="Teams\Tag.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Teams\Tile.cs">
       <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Test\Database1.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Database1.tt</DependentUpon>
     </Compile>
     <Compile Include="Users\IUserInformationRepository.cs" />
     <Compile Include="Users\IUserRepository.cs" />
@@ -126,20 +125,12 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="FilterField\" />
     <Folder Include="Mapping\" />
     <Folder Include="NewFolder1\" />
-    <Folder Include="Teams\FilterField\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
-    <None Include="Test\Database1.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>Database1.cs</LastGenOutput>
-    </None>
-    <None Include="Test\EF.Reverse.POCO.Core.ttinclude" />
-    <None Include="Test\EF.Reverse.POCO.ttinclude" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

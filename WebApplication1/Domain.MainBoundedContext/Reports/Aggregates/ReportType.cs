@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Domain.MainBoundedContext.Reports.Aggregates
+namespace Domain.MainBoundedContext.Reports.Logics.Aggregates
 {
     public class ReportType : Entity
     {

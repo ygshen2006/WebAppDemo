@@ -1,5 +1,4 @@
 ﻿using Domain.MainBoundedContext.Aggregates.Division;
-using Domain.MainBoundedContext.Reports.Aggregates;
 using Domain.MainBoundedContext.Teams;
 using Domain.MainBoundedContext.Teams.Aggregates.Category;
 using Domain.MainBoundedContext.Teams.Aggregates.TeamList;
@@ -19,6 +18,8 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Domain.MainBoundedContext.Reports.Logics.Aggregates;
+using Domain.MainBoundedContext.Reports.Logics.Aggregates.Tiles;
 
 namespace Infrastructor.MainBoundedContext.UnitWorks
 {
@@ -58,10 +59,10 @@ namespace Infrastructor.MainBoundedContext.UnitWorks
         {
             get { return _usefulLinks ?? base.Set<UsefulLinks>(); }
         }
-        private IDbSet<Tile> _teamTiles;
-        public IDbSet<Tile> TeamTiles
+        private IDbSet<Tile> _Tiles;
+        public IDbSet<Tile> Tiles
         {
-            get { return _teamTiles ?? base.Set<Tile>(); }
+            get { return _Tiles ?? base.Set<Tile>(); }
         }
 
         private IDbSet<User> _users;
@@ -94,6 +95,12 @@ namespace Infrastructor.MainBoundedContext.UnitWorks
         public IDbSet<Status> Status
         {
             get { return _status ?? base.Set<Status>(); }
+        }
+
+        private IDbSet<TileQueryLogic> _tileQueryLogic;
+        public IDbSet<TileQueryLogic> TileQueryLogic
+        {
+            get { return _tileQueryLogic ?? base.Set<TileQueryLogic>(); }
         }
         #endregion
         #region Iquerable
@@ -264,6 +271,15 @@ namespace Infrastructor.MainBoundedContext.UnitWorks
                 .HasOptional(_ => _.ParentCategory)
                 .WithMany(_ => _.ChildCategory)
                 .HasForeignKey(_ => _.CategoryParentId);
+
+            // Tile and Team is a one to many logic
+            //modelBuilder.Entity<Tile>()
+            //    .HasOptional(_ => _.OwnerTeamSite).
+            //    WithMany(_ => _.Tiles).
+            //    HasForeignKey(_ => _.OwnerTeamSiteId).
+            //    WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<Tile>().ToTable("Tiles");
         }
     }
 }

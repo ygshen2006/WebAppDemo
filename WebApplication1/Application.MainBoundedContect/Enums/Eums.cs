@@ -62,14 +62,14 @@ namespace Application.MainBoundedContect.Enums
 
         public static readonly Dictionary<Int32, SystemDefinedTile> SystemTilesDictionary = new Dictionary<Int32, SystemDefinedTile>();
         public static readonly SystemDefinedTile MyReports_MySubscriptions = new SystemDefinedTile("My Report Subscriptions", 1);
-        public static readonly SystemDefinedTile MyReports_MyReports = new SystemDefinedTile("All My Reports & Data Models", 2);
+        public static readonly SystemDefinedTile MyReports_MyReports = new SystemDefinedTile("All My Reports", 2);
         public static readonly SystemDefinedTile MyReports_Recommended = new SystemDefinedTile("Recommended Reports", 3);
-        public static readonly SystemDefinedTile MyReports_AllReports = new SystemDefinedTile("All Team Reports", 4);
+        //public static readonly SystemDefinedTile MyReports_AllReports = new SystemDefinedTile("All Team Reports", 4);
 
-        public static readonly SystemDefinedTile SelfService_MyUserReports = new SystemDefinedTile("My User Reports", 6);
-        public static readonly SystemDefinedTile SelfService_Subscriptions = new SystemDefinedTile("Data Model Subscriptions", 7);
-        public static readonly SystemDefinedTile SelfService_Recommended = new SystemDefinedTile("Recommended Data Models", 8);
-        public static readonly SystemDefinedTile SelfService_AllBIModels = new SystemDefinedTile("All Data Models", 9);
-        public static readonly SystemDefinedTile SelfService_PowerViewAndExcelReports = new SystemDefinedTile("PowerView and Excel Reports", 10);
+        //public static readonly SystemDefinedTile SelfService_MyUserReports = new SystemDefinedTile("My User Reports", 6);
+        //public static readonly SystemDefinedTile SelfService_Subscriptions = new SystemDefinedTile("Data Model Subscriptions", 7);
+        //public static readonly SystemDefinedTile SelfService_Recommended = new SystemDefinedTile("Recommended Data Models", 8);
+        //public static readonly SystemDefinedTile SelfService_AllBIModels = new SystemDefinedTile("All Data Models", 9);
+        //public static readonly SystemDefinedTile SelfService_PowerViewAndExcelReports = new SystemDefinedTile("PowerView and Excel Reports", 10);
     }
 }

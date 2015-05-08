@@ -7,6 +7,7 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
+using Domain.MainBoundedContext.Reports.Logics.FilterField;
 
 namespace Domain.MainBoundedContext.FilterField
 {
@@ -21,7 +22,7 @@ namespace Domain.MainBoundedContext.FilterField
     //[XmlInclude(typeof(PermissionGroups))]
     //[XmlInclude(typeof(RecommendToUserAlias))]
     //[XmlInclude(typeof(ReportOwnerAlias))]
-    //[XmlInclude(typeof(ReportStatusId))]
+    [XmlInclude(typeof(ReportStatusId))]
     //[XmlInclude(typeof(ReportTitle))]
     //[XmlInclude(typeof(RestrictAccess))]
     //[XmlInclude(typeof(SubCategoryId))]

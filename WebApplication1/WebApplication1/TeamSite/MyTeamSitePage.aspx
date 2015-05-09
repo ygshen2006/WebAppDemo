@@ -207,7 +207,7 @@
             <div class="last-item"></div>
         </div>
         <div class="col3">notification</div>
-                 
+                 <input type="hidden" id="teamguidhidden" />
      </form>
     </div>
     <script src="../Scripts/jquery-1.8.2.min.js"></script>
@@ -218,7 +218,7 @@
 
     <script src="../Scripts/navigation.js"></script>
 
-    <script src="../Scripts/teamsiteslist.js"></script>
+    <%--<script src="../Scripts/teamsiteslist.js"></script>--%>
     <script src="../js/jquery/jquery.widget.min.js"></script>
     <script src="../js/jquery/jquery.mousewheel.js"></script>
     <script src="../js/prettify/prettify.js"></script>
@@ -227,7 +227,7 @@
     <script src="../js/uploader/jquery.browse.js"></script>
     <script src="../js/uploader/jquery.upload.js"></script>
     <script src="../Scripts/picture-scrolling.js"></script>
-
+    <script src="../Scripts/myteampagejs.js"></script>
     <script type="text/javascript">
         var sessionUser = '<%= Session["UserName"]%>';
 
@@ -238,7 +238,6 @@
             // Load the team list in the detail panel below
             Nav.Initiate(sessionUser);
             PS.Inite();
-
         });
     </script>
 </body>

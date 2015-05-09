@@ -109,7 +109,7 @@
     <Compile Include="Teams\Tag.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Teams\Tile.cs">
+    <Compile Include="Tiles\Aggregates\Tile.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Users\IUserInformationRepository.cs" />
@@ -126,7 +126,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Mapping\" />
-    <Folder Include="NewFolder1\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

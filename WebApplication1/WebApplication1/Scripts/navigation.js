@@ -3,6 +3,7 @@
     Nav.Initiate = function (sessionUser) {
         Nav.util.initialNavigationBar(sessionUser);
 
+
         $('#logoff').live('click', function (e) {
             e.preventDefault();
             Nav.util.LogOff();
@@ -31,7 +32,7 @@
                             if (document.URL.contains("MyTeamSitePage")) {
                                 str += "<li>"
                             + "<a href='../TeamSite/TeamManagement.aspx' class='manage-team'>团队管理</a></li>";
-                                str += "<li><a href='../TeamSite/TeamDashboard.aspx' class='manage-team'>团队Dashboard</a></li>";
+                                str += "<li><a id='dashboardid' href='../TeamSite/TeamDashboard.aspx?SiteGuid=" + $('#teamguidhidden').val() + "' class='manage-team'>团队Dashboard</a></li>";
                             }
                         }
                     });

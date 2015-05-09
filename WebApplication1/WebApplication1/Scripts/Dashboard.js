@@ -578,7 +578,7 @@
         function saveTiles() {
             var tilesData = JSON.stringify(gridTiles);
             $.ajax({
-                url: getBaseUrl() + '/Ajax/TeamAdminAjax',
+                url: getBaseUrl() + '/Ajax/TeamDashBoardAjax',
                 type: 'Post',
                 data: { queryType: 'updateadmintileinfo', TilesData: tilesData, SiteGUID: GetQueryString('SiteGUID') },
                 dataType: 'json',
@@ -1592,9 +1592,8 @@
 
         }
         function GetQueryString(name) {
-            var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
-            var r = window.location.search.substr(1).match(reg);
-            if (r != null) return unescape(r[2]); return null;
+            var r = window.location.search.split('=')[1];
+            return r;
         }
         function subOwner(name) {
             if (!(name == undefined || name == null)) {

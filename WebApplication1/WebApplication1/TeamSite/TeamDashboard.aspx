@@ -444,5 +444,6 @@
     <script src="../Scripts/jquery-1.10.2.min.js"></script>
     <script src="../Scripts/jquery-1.10.2.js"></script>
     <script src="../Scripts/Dashboard.js"></script>
+    <script src="../Scripts/jquery.showLoading.js"></script>
 </body>
 </html>

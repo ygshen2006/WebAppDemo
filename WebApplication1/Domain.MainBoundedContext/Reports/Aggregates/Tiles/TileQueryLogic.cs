@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Domain.MainBoundedContext.Teams;
 using Domain.SeedWork;
+using Domain.MainBoundedContext.Tiles.Aggregates;
 
 namespace Domain.MainBoundedContext.Reports.Logics.Aggregates.Tiles
 {

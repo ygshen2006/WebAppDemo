@@ -154,7 +154,7 @@
     <script src="../js/uploader/jquery.browse.js"></script>
     <script src="../js/uploader/jquery.upload.js"></script>
     <script src="../Scripts/picture-scrolling.js"></script>
-
+    
     <script type="text/javascript">
         var sessionUser = '<%= Session["UserName"]%>';
 

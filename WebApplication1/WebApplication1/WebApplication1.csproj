@@ -166,6 +166,7 @@
     <Content Include="Ajax\FrontAjax.aspx" />
     <Content Include="Ajax\SiteAdminAjax.aspx" />
     <Content Include="Ajax\TeamAdminAjax.aspx" />
+    <Content Include="Ajax\TeamDashBoardAjax.aspx" />
     <Content Include="Ajax\TeamSiteAdminAjax.aspx" />
     <Content Include="Ajax\UserAjax.aspx" />
     <Content Include="ckeditor\adapters\jquery.js" />
@@ -568,7 +569,7 @@
     <Content Include="js\uploader\jquery.browse.js" />
     <Content Include="js\uploader\jquery.upload.js" />
     <Content Include="Scripts\Dashboard.js" />
-    <Content Include="Scripts\sitealists.js" />
+    <Content Include="Scripts\myteampagejs.js" />
     <Content Include="Scripts\skin\segment-icon.png" />
     <Content Include="Scripts\skin\team-icon.png" />
     <Content Include="Content\ui.dynatree.css" />
@@ -861,6 +862,13 @@
     </Compile>
     <Compile Include="Ajax\TeamAdminAjax.aspx.designer.cs">
       <DependentUpon>TeamAdminAjax.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Ajax\TeamDashBoardAjax.aspx.cs">
+      <DependentUpon>TeamDashBoardAjax.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Ajax\TeamDashBoardAjax.aspx.designer.cs">
+      <DependentUpon>TeamDashBoardAjax.aspx</DependentUpon>
     </Compile>
     <Compile Include="Ajax\TeamSiteAdminAjax.aspx.cs">
       <DependentUpon>TeamSiteAdminAjax.aspx</DependentUpon>

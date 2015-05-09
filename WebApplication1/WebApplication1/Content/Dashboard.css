@@ -767,7 +767,7 @@
 }
 
 .loading-indicator {
-    background: url('../images/SharePointProject/Metro_loading.gif') no-repeat center;
+    background: url('../images/loading40.gif') no-repeat center;
     width: 80px;
     height: 80px;
 }

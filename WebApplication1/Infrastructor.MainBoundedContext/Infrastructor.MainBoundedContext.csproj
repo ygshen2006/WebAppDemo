@@ -79,6 +79,7 @@
     <Compile Include="Repositories\SiteAdmin\SegmentRepository.cs" />
     <Compile Include="Repositories\SiteAdmin\UsefulLinksRepository.cs" />
     <Compile Include="Repositories\SiteAdmin\TeamRepository.cs" />
+    <Compile Include="Repositories\Tiles\TileRepository.cs" />
     <Compile Include="Repositories\Users\UserInformationRepository.cs" />
     <Compile Include="Repositories\Users\UserRepository.cs" />
     <Compile Include="Repositories\Users\VerficationCodeRepository.cs" />

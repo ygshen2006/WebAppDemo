@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Domain.MainBoundedContext.Reports.Logics.Aggregates.Tiles;
 
-namespace Domain.MainBoundedContext.Teams
+namespace Domain.MainBoundedContext.Tiles.Aggregates
 {
     public class Tile : Entity
     {

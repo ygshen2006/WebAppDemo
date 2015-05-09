@@ -20,6 +20,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Domain.MainBoundedContext.Reports.Logics.Aggregates;
 using Domain.MainBoundedContext.Reports.Logics.Aggregates.Tiles;
+using Domain.MainBoundedContext.Tiles.Aggregates;
 
 namespace Infrastructor.MainBoundedContext.UnitWorks
 {

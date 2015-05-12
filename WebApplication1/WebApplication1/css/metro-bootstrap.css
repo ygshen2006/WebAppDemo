@@ -3893,6 +3893,21 @@ a {
   line-height: 1.4rem;
   color: inherit;
 }
+.mif-user:before {
+  content: "\e971";
+}
+.mif-users:before {
+  content: "\e972";
+}
+.mif-user-plus:before {
+  content: "\e973";
+}
+.mif-user-minus:before {
+  content: "\e974";
+}
+.mif-user-check:before {
+  content: "\e975";
+}
 .metro .dropdown-menu.shadow {
   box-shadow: 3px 3px 0 rgba(236, 236, 236, 0.7);
 }

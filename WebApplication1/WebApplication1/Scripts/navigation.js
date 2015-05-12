@@ -29,7 +29,7 @@
                         if (result != null && result.length > 0) {
                             // If current page is team site page
 
-                            if (document.URL.contains("MyTeamSitePage")) {
+                            if (document.URL.indexOf("MyTeamSitePage")>-1) {
                                 str += "<li>"
                             + "<a href='../TeamSite/TeamManagement.aspx' class='manage-team'>团队管理</a></li>";
                                 str += "<li><a id='dashboardid' href='../TeamSite/TeamDashboard.aspx?SiteGuid=" + $('#teamguidhidden').val() + "' class='manage-team'>团队Dashboard</a></li>";

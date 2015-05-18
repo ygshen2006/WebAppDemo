@@ -8,12 +8,12 @@
                                     '' +
                                         '{Segment}' +
                                     '</div>';
-                                //    '<div class="panel-content" style="display: block; border: none">'+
+        //    '<div class="panel-content" style="display: block; border: none">'+
 
-                                //    '</div>'+
-                                //'</div>';
+        //    '</div>'+
+        //'</div>';
 
-        
+
         this.Init = function () {
             $.ajaxSetup({
                 crossDomain: true,
@@ -21,7 +21,7 @@
                 async: true
             });
             this.InitTeamSiteDivisions();
-            
+
             $('.btn-search').live('click', function (e) {
                 e.preventDefault();
                 $('.teamsselected').remove();
@@ -56,13 +56,13 @@
                                     }
                                     str += '<li class="teampic" style="list-style: none; ">';
                                     str += '<div class="teamsitetile-small">';
-                                    str+='          <div class="tile live half">';
+                                    str += '          <div class="tile live half">';
                                     str += '              <div class="tile-content image">';
                                     str += '                  <img class="teamtag" src="' + pic + '" tag="' + icurrent.TeamGuid + '" />';
-                                    str+='              </div>';
-                                    str +='             <div class="tile-status bg-dark opacity teamtitlefont">' + icurrent.TeamName;
-                                    str+=  '            </div>';
-                                    str+='          </div>';
+                                    str += '              </div>';
+                                    str += '             <div class="tile-status bg-dark opacity teamtitlefont">' + icurrent.TeamName;
+                                    str += '            </div>';
+                                    str += '          </div>';
                                     str += ' </div>';
                                     str += '<div class="teamdescarea">';
                                     str += '      <span>' + icurrent.TeamName + '</span>  ';
@@ -97,8 +97,8 @@
                 $.each($(this).siblings(), function (index, current) {
                     $(current).removeClass('active');
                 });
-                
-                
+
+
                 $.each($('.tab_box .panel'), function (index, current) {
                     $(current).remove();
                 });
@@ -120,10 +120,10 @@
                         if (result != null && result.length > 0) {
                             $.each(result, function (index, current) {
 
-                                str += '<div class="panel" data-role="panel" style="float:left; width: 810px; border:none">'+
-                                    '<div class="panel-header segment"><span style="margin-left: 10px">';
-                                        str += current.title;
-                              str += "</span></div>";
+                                str += '<div class="panel" data-role="panel" style="float:left; width: 100%; border:none">' +
+                                    '<div class="panel-header segment"><span style="margin-left: 10px;">';
+                                str += current.title;
+                                str += "</span></div>";
 
                                 str += '<div class="panel-content" style="display: block; border: none; margin: 0 auto">';
                                 $.each(current.children, function (iindex, icurrent) {
@@ -135,12 +135,12 @@
                                             pic = icurrent.teampic;
                                         }
 
-                                        str += '<div class="teamsitetile teampic" style="padding: 10px; 10px">' +
-                                                '<div class="tile live" data-role="live-tile" effect="slideLeft">' +
-                                                    '<div class="tile-content image">' +
-                                                        '<img class="teamtag" src="' + pic + '" tag="' + icurrent.TeamGuid + '"/>' +
+                                        str += '<div class="teamsitetile" >' +
+                                                '<div class="tile live teamsite-child" data-role="live-tile" style="margin:2px">' +
+                                                    '<div>' +
+                                                        '<img class="teampic" src="' + pic + '" tag="' + icurrent.TeamGuid + '"/>' +
                                                     '</div>' +
-                                                    '<div class="tile-status bg-dark opacity teamtitlefont">'
+                                                    '<div class="tile-status bg-dark opacity teamtitlefont hide">'
                                                         + icurrent.title +
                                                     '</div>' +
                                                  '</div>' +
@@ -165,14 +165,20 @@
             });
             this.GetTeamSiteAndSegments();
 
-            $('.teampic').live('click', function (e) {
-                var teamguid =$(this).find('.teamtag').attr('tag');
-                
+            $('.teamsitetile').live('click', function (e) {
+                var teamguid = $(this).find('.teampic').attr('tag');
+
                 if (teamguid != '00000000-0000-0000-0000-000000000000') {
                     // navigate to team site page
                     var win = window.open("../TeamSite/MyTeamSitePage.aspx?teamguid=" + teamguid, '_blank');
                     win.focus();
                 }
+            });
+
+            $('.teamsite-child').live('mouseover', function (e) {
+                $(this).children('.tile-status').removeClass('hide');
+            }).live('mouseout', function (e) {
+                $(this).children('.tile-status').removeClass('hide').addClass('hide');
             });
         }
         this.InitTeamSiteDivisions = function () {
@@ -181,7 +187,7 @@
                 url: baseUrl + "?requestType=getdivisions",
                 type: "POST",
                 dataType: "json",
-                data: { },
+                data: {},
                 timeout: 99000,
                 beforeSend: function () {
                 },
@@ -195,7 +201,7 @@
                         var color;
                         if (index % 2 == 0) {
                             color = 'bg-yellow';
-                            }
+                        }
                         else {
                             color = 'bg-green';
                         }
@@ -208,22 +214,33 @@
             });
         }
         this.GetTeamSiteAndSegments = function () {
-            
+
         }
         this.Utility = new function () {
             this.GetBaseUrl = function () {
                 var url = "http://" + window.location.hostname + ':' + window.location.port + '/Ajax/TeamAdminAjax';
                 return url;
             };
+
+            this.Sleep = function sleep(n) {
+                var start = new Date().getTime();
+                while (true) if (new Date().getTime() - start > n) break;
+            }
         }
-        
+
     }
 }(window.TeamSites = window.TeamSites || {}, jQuery));
 
 $(function () {
     TeamSites.teamsitesLoading.Init();
 
+
+
+});
+
+window.onload = function () {
+
     if ($('#divisionlist li')[0] != null) {
         $('#divisionlist li:first').trigger('click');
     }
-});
+}

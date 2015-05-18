@@ -1,0 +1,15 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using Application.MainBoundedContect.ViewModel.Tiles;
+using Domain.MainBoundedContext.Tiles.Aggregates;
+
+namespace Application.MainBoundedContect.Extentions
+{
+    public static class TileExtension
+    {
+        public static Tile ToTile(AppTile apptile) { }
+    }
+}

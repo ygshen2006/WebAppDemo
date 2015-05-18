@@ -107,7 +107,10 @@ namespace Infrastructor.SeedWork
         public virtual void Modify(TEntity item)
         {
             if (item != (TEntity)null)
+            {
                 _UnitOfWork.SetModified(item);
+                _UnitOfWork.Commit();
+            }
             else
             {
                 //LoggerFactory.CreateLog()
@@ -177,7 +180,7 @@ namespace Infrastructor.SeedWork
         /// <returns><see cref="Microsoft.Samples.NLayerApp.Domain.Seedwork.IRepository{TValueObject}"/></returns>
         public virtual IEnumerable<TEntity> GetFiltered(System.Linq.Expressions.Expression<Func<TEntity, bool>> filter)
         {
-            return GetSet().Where(filter);
+            return GetSet().AsNoTracking<TEntity>().Where(filter);
         }
 
         /// <summary>

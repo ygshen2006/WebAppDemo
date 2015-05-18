@@ -179,6 +179,7 @@
     <Content Include="Content\wangEditor-1.3.css" />
     <Content Include="Content\fonts\icomoon.svg" />
     <Content Include="Images\bg_repeat.png" />
+    <Content Include="Images\Blank_Folder.png" />
     <Content Include="Images\checkmark.png" />
     <Content Include="Images\default-team.png" />
     <Content Include="Images\downArrow.PNG" />
@@ -411,6 +412,7 @@
     <Content Include="TeamSite\TeamDashboard.aspx" />
     <Content Include="TeamSite\WebForm1.aspx" />
     <Content Include="TestPage.aspx" />
+    <Content Include="Utility\Test.html" />
     <Content Include="Utility\wangEditor_uploadImg_assist.html" />
     <Content Include="Welcome.aspx" />
     <Content Include="data.json" />

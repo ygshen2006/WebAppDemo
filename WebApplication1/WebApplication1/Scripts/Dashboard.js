@@ -1,5 +1,5 @@
 ﻿/// <reference path="jquery-1.10.2.min.js" />
-(function (URP, $, undefined){
+(function (URP, $, undefined) {
     URP.CustomizationTiles = new function () {
         var whiteColorMap = ['#4668C5', '#00188F', '#002050', '#0072C6', '#008272', '#007233', '#008A00', '#DC3C00', '#E81123', '#BA141A', '#B4009E', '#9B4F96', '#68217A', '#442359'];
         var minVal = -1;
@@ -73,6 +73,11 @@
 
 
         this.Init = function () {
+            $.ajaxSetup({
+                crossDomain: true,
+                cache: false,
+                async: true
+            });
             //alert('This is a test');
             refreshColorItem();
             $(document).on('click', '.grid .tile-spaceHoder', function () {
@@ -411,13 +416,7 @@
                     }
                 }
             });
-            $('.image-pickup input[type=text]').keydown(function (e) {
-                e.preventDefault();
-                return false;
-            });
-            $('.image-pickup input[type=text]').change(function (e) {
-                URP.CustomizationTiles.changeTileBackgroundImage();
-            });
+
             $('.tile-type').click(function () {
                 var tileId = $('.tile-selected').attr('id').substr(5);
                 var tile = getCurrentTileById(tileId);
@@ -458,23 +457,25 @@
                     $('.icon-input').addClass('collapse').removeClass('expand');
                 }
             });
-            //initilizeIconPanel();
-        }
 
+            initilizeIconPanel();
+
+        }
+      
 
         this.loadTiles = function () {
             $.ajax({
-                url: getBaseUrl() + '/_layouts/15/URPAjax/AdminAjax.aspx',
+                url: getBaseUrl() + '/Ajax/TeamDashBoardAjax',
                 cache: false,
                 type: 'Get',
                 data: { queryType: 'getadmintileinfo', SiteGUID: GetQueryString('SiteGUID') },
                 dataType: 'json',
                 timeout: 60000,
                 beforeSend: function () {
-                    $('<div class="mark"><div class="donut"></div></div>').appendTo($('.dashboard-body .grid'));
+                    //$('<div class="mark"><div class="donut"></div></div>').appendTo($('.dashboard-body .grid'));
                 },
                 complete: function () {
-                    $('.dashboard-body .grid .mark').remove();
+                    //$('.dashboard-body .grid .mark').remove();
                 },
                 error: function (XMLHttpRequest, textStatus, errorThrown) {
                     alert('status :' + XMLHttpRequest.status + '; readyState:' + XMLHttpRequest.readyState + '; textStatus:' + textStatus);
@@ -489,27 +490,37 @@
                     });
                     gridTiles = result;
                     refreshTiles(true);
-                    URP.CustomizationTiles.Intialize();
+                    //URP.CustomizationTiles.Init();
                 }
             });
         };
         this.changeTileBackgroundImage = function () {
-            var imagePath = $('.image-pickup input[type=text]').val();
+            var imagePath = $('#hiddenupload').val();
             var lastIndex = imagePath.lastIndexOf('.');
-            if ((lastIndex < 0) || (!['.png', '.jpg', '.jpeg', '.gif', '.bmp'].contains(imagePath.substr(lastIndex).toLowerCase()))) {
+            var tem = ['.png', '.jpg', '.jpeg', '.gif', '.bmp'];
+            if ((lastIndex < 0) || (tem.indexOf(imagePath.substr(lastIndex)) == 0)) {
                 $('.image-pickup input[type=text]').val('');
+                alert("请选择一个后缀为'.png', '.jpg', '.jpeg', '.gif', '.bmp'的文件");
+                return;
             }
+            var f = document.getElementById("hiddenupload").files;
 
-            var tile = getCurrentTileById($('.tile-selected').attr('id').substr(5));
-            clearSelected();
-            tile.selected = true;
-            if (/^\s*$/.test($('.image-pickup input[type=text]').val())) {
-                tile.backgroundImage = null;
-            } else {
-                tile.backgroundImage = $('.image-pickup input[type=text]').val();
-            }
-            refreshTiles();
+            uploadImageFile(f[0], function (result) {
+                // upload the img back to server
+                var tile = getCurrentTileById($('.tile-selected').attr('id').substr(5));
+                clearSelected();
+                tile.selected = true;
+                if (/^\s*$/.test(result)) {
+                    tile.backgroundImage = null;
+                } else {
+                    tile.backgroundImage = result;
+                }
+                refreshTiles();
+            });
+
+
         };
+
         this.hasChanged = false;
         function isDuplicate(tileId, tileTitle) {
             if (gridTiles.some(function (v) { return v.id != tileId && v.title.toLowerCase() == tileTitle.toLowerCase(); })) {
@@ -520,6 +531,7 @@
             }
             return false;
         }
+  
 
         function checkSaveState() {
             var changed = false;
@@ -575,13 +587,17 @@
                 $('.dashboard-body .action-area a.action-save').removeClass('action-disable');
             }
         }
+        function uploadImageFile(imageData, callBack) {
+            var url = getBaseUrl() + "/Ajax/FrontAjax?queryType=addPicture";
+            $.upload(url, imageData, callBack);
+        }
         function saveTiles() {
             var tilesData = JSON.stringify(gridTiles);
             $.ajax({
                 url: getBaseUrl() + '/Ajax/TeamDashBoardAjax',
-                type: 'Post',
                 data: { queryType: 'updateadmintileinfo', TilesData: tilesData, SiteGUID: GetQueryString('SiteGUID') },
-                dataType: 'json',
+                type: "POST",
+                dataType: "json",
                 timeout: 60000,
                 beforeSend: function () {
                     $('.dashboard-body').showLoading();
@@ -593,8 +609,8 @@
                     alert('status :' + XMLHttpRequest.status + '; readyState:' + XMLHttpRequest.readyState + '; textStatus:' + textStatus);
                 },
                 success: function (result) {
-                    if (result != '0') {
-                        alert(result);
+                    if (result.result == '0') {
+                        alert('更新失败！');
                     } else {
                         $(window).off('onbeforeunload')
                         window.location.href = $('.action-back').attr('href');
@@ -1614,12 +1630,36 @@
             }
             return result;
         }
+        function initilizeIconPanel() {
+            var i, iconNum, index = 1;
+            var tr;
+            $('.icon-picker table').html('');
+            tr = $('<tr></tr>').appendTo($('.icon-picker table')).append('<td icon="None">None</td>');
+            for (i = 57600; i < 57835; i++) {
+                if (index % 10 == 0) {
+                    tr = $('<tr></tr>').appendTo($('.icon-picker table'));
+                }
+                iconNum = Number(i).toString(16).toUpperCase();
+                $('<td></td>').html('&#x' + iconNum).appendTo(tr).attr('icon', iconNum);
+                index++;
+            }
+        }
     }
 
 })(window.URP = window.URP || {}, jQuery);
 
 $(function () {
     URP.CustomizationTiles.Init();
+    //URP.CustomizationTiles.loadTiles();
+    URP.CustomizationTiles.loadTiles();
+
+
+
+    $(window).on('onbeforeunload', function () {
+        if (!$('.dashboard-body .action-area a.action-save').hasClass('action-disable')) {
+            return 'Are you sure you want to leave current page without saving tiles.';
+        }
+    });
 });
 
 function allowDrop(ev) {

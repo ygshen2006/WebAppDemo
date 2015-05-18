@@ -21,7 +21,29 @@
     height: 108px;
     background-image: url(../images/SharePointProject/header.png);
 }
+.input-control {
+  display: inline-block;
+  min-height: 2.125rem;
+  height: 2.125rem;
+  position: relative;
+  min-width: 10.875rem;
+  vertical-align: middle;
+  margin: .325rem 0;
+  line-height: 1;
+}
+.input-control[data-role=select] {
+  height: auto;
+}
 
+.button {
+    height:30px;
+        width:30px;
+
+}
+    .button img {
+        height:30px;
+    width:30px;
+    }
 .dashboard-body {
     width: 1120px;
     margin: 0px auto;

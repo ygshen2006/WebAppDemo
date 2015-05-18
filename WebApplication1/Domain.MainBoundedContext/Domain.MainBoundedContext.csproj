@@ -109,6 +109,7 @@
     <Compile Include="Teams\Tag.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Tiles\Aggregates\ITileRepository.cs" />
     <Compile Include="Tiles\Aggregates\Tile.cs">
       <SubType>Code</SubType>
     </Compile>

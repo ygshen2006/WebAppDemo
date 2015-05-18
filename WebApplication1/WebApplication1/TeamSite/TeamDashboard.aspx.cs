@@ -11,7 +11,11 @@ namespace WebApplication1.TeamSite
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (!this.IsPostBack)
+            {
+                string url = Request.Headers.Get("Referer");
+                backTeamSite.NavigateUrl = url;
+            }
         }
     }
 }

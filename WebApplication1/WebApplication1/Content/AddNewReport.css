@@ -38,17 +38,19 @@
 #report-list {
     list-style: none;
     margin: 0 auto;
+    height:220px;
+    padding:10px;
 }
-
-    #report-list>li {
-        width: 1200px;
-        display: inline-block;
-        list-style: none;
-        margin: 0 10px 10px 0;
-        vertical-align: top;
-        text-align:left;
+    #report-list div {
+        cursor:pointer;
     }
 
+.collapse {
+    display:none;
+}
+.expand {
+    display:normal;
+}
 .pictureShowDiv {
     width: auto;
     height: auto;

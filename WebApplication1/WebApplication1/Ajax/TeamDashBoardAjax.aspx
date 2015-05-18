@@ -1,1 +1,1 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="TeamDashBoardAjax.aspx.cs" Inherits="WebApplication1.Ajax.TeamDashBoardAjax" %>
+﻿<%@ Page Language="C#" ValidateRequest="false" AutoEventWireup="true" CodeBehind="TeamDashBoardAjax.aspx.cs" Inherits="WebApplication1.Ajax.TeamDashBoardAjax" %>

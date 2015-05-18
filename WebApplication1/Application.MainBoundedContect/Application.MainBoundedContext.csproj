@@ -93,6 +93,7 @@
     <Compile Include="Extentions\CategoryExtention.cs" />
     <Compile Include="Extentions\DivisionExtentions.cs" />
     <Compile Include="Extentions\SegementExtensions.cs" />
+    <Compile Include="Extentions\TileExtension.cs" />
     <Compile Include="Extentions\UsefulLinksExtention.cs" />
     <Compile Include="Extentions\TeamSiteExtentions.cs" />
     <Compile Include="Extentions\UserExtensions.cs" />
@@ -102,6 +103,10 @@
     <Compile Include="Services\SiteAdmininstration\UsefulLinksService.cs" />
     <Compile Include="Services\SiteAdmininstration\TeamAppService.cs" />
     <Compile Include="Services\TeamList\TeamListService.cs" />
+    <Compile Include="Services\Tile\AppMyReportsTile.cs" />
+    <Compile Include="Services\Tile\AppTeamSiteCustomizedTile.cs" />
+    <Compile Include="Services\Tile\AppRecommendedTile.cs" />
+    <Compile Include="Services\Tile\AppMySubscriptionsTile.cs" />
     <Compile Include="Services\Tile\TileServices.cs" />
     <Compile Include="Services\Users\UserService.cs" />
     <Compile Include="Services\VerificationCode\VerificationCodeService.cs" />

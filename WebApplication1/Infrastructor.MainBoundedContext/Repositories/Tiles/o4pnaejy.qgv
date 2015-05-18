@@ -1,0 +1,22 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using Domain.MainBoundedContext.Tiles.Aggregates;
+
+namespace Infrastructor.MainBoundedContext.Repositories.Tiles
+{
+    public class TileRepository : ITileRepository
+    {
+        public void SaveTile()
+        {
+            throw new NotImplementedException();
+        }
+
+        public IEnumerable<Tile> GetTiles()
+        {
+            throw new NotImplementedException();
+        }
+    }
+}

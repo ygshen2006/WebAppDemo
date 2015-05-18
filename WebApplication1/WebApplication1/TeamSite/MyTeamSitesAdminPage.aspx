@@ -104,19 +104,19 @@
                                 </ul>
                             </nav>
                         </td>
-                        <td style="width: 70%; min-height: 500px;">
+                        <td style="width: 80%; min-height: 500px;">
                             <div class="tab_box" style="width: 100%; min-height: 1000px;">
                             </div>
                         </td>
 
-                            <td style="position: relative; width: 10%; min-height: 1000px">
+                         <%--   <td style="position: relative; width: 10%; min-height: 1000px">
                             <div class="input-control text searchteam" style="position:absolute; top:-1px; height:15px; width:100px;">
                                 <input id="teamnameinput" type="text" />
                                 <button class="btn-search"></button>
                                 <div class="teamseachzone"></div>
                             </div>
                            
-                        </td>
+                        </td>--%>
                     </tr>
                 </table>
             </div>

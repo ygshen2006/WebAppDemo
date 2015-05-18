@@ -8,11 +8,9 @@
     <link href="../Content/Dashboard.css" rel="stylesheet" />
 </head>
 <body>
-    <%--   <form id="form1" runat="server">
-    <div>
-    
-    </div>
-    </form>--%>
+<form id="form1" runat="server">
+
+  
     <div class="dashboard-body">
         <div class="grid-wrapper">
             <h1>选择一个磁贴</h1>
@@ -397,7 +395,11 @@
                             pickerbuttontext="Browse" validateurl="false"
                             useimageassetpicker="false" defaulttolastusedlocation="false"
                             id="sourceURL" maxlength="1000" tooltip="File Name" clientcallback="function(){changedBackgroundImage();}" />--%>
-                        <input type="text" />
+                            <%--<input type="button" id="selectPic" value="选择图像"/>
+                        <input type="text" class="filetobeupload"/>--%>
+    
+                        <input type="file" name="f" id="hiddenupload" onchange="URP.CustomizationTiles.changeTileBackgroundImage();"/>
+                        
                     </li>
                 </ul>
                 <ul class="image-overlay">
@@ -441,8 +443,10 @@
         <asp:HyperLink runat="server" ID="backTeamSite" Text="Cancel" CssClass="action-back"></asp:HyperLink>
     </div>
     </div>
+    </form>
     <script src="../Scripts/jquery-1.10.2.min.js"></script>
     <script src="../Scripts/jquery-1.10.2.js"></script>
+    <script src="../js/uploader/jquery.upload.js"></script>
     <script src="../Scripts/Dashboard.js"></script>
     <script src="../Scripts/jquery.showLoading.js"></script>
 </body>

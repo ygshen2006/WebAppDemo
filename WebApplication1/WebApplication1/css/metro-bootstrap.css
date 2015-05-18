@@ -7202,6 +7202,16 @@ a {
 .metro .treeview a .value {
   color: #0067cb;
 }
+.treeview .leaf {
+  vertical-align: middle;
+  display: inline-block;
+  color: inherit;
+}
+.treeview .leaf .icon {
+  width: 1rem;
+  height: 1rem;
+  text-align: center;
+}
 .metro .fluent-menu {
   font-size: 14px;
 }

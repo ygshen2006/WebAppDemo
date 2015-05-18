@@ -1,0 +1,18 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using Domain.MainBoundedContext.Tiles.Aggregates;
+
+namespace Application.MainBoundedContect.Services.Tile
+{
+    public class TileServices
+    {
+        private ITileRepository _tileRepository;
+
+        public TileServices(ITileRepository repository) {
+            _tileRepository = repository;
+        }
+    }
+}

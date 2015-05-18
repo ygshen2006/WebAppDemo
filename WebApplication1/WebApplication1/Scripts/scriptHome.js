@@ -209,6 +209,20 @@
         this.initiate = function () {
             // get the article type
 
+            $('#report-list div').live('click', function (e) {
+                if ($(this).attr('class') == "articleTypeDiv") {
+                    // Load all the categories for this article
+
+                }
+                else if ($(this).attr('class') == "articleTagDiv") {
+                    // Load all the tags for current team
+                }
+                else if ($(this).attr('class') == "articleTeamDiv") {
+                    // Load all the teams
+                }
+                else if ($(this).attr('class') == "articleStatusDiv") {
+                }
+            });
             // get the team sites
 
             // get the tags based on the team selected

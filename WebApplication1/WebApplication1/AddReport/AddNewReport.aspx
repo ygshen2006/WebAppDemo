@@ -14,6 +14,20 @@
             width: 600px;
             margin: 0px 30px;
         }
+
+        .articleTypeDiv, .articleStatusDiv, .articleTagDiv, .articleTeamDiv {
+            height: 20px;
+            line-height: 18px;
+            background-image: url("../images/downArrow.PNG");
+            background-repeat: no-repeat;
+            background-position: right center;
+            border: 1px #d9d9d9 solid;
+            z-index: 1;
+        }
+
+        ul {
+            list-style: none;
+        }
     </style>
 
     <link href="../css/metro-bootstrap.css" rel="stylesheet" />
@@ -115,66 +129,45 @@
                     </div>
                 </div>
             </header>
-
             <div class="content">
-                <div class="title-information">
-                    <ul id="report-list">
-                        <li>
-                            <div class="article-title-slash">
-                                文章标题:
-                            </div>
-                            <div class="input-control text error" style="width: 600px; height: 20px">
+                <ul id="report-list">
+                    <li>
+                        <ul style="width: 400px; height: 30px">
+                            <li>文章标题:</li>
+                            <li>
                                 <input type="text" placeholder="文章标题..." />
-                            </div>
-                        </li>
-                        <li>
-                            <div class="article-title-slash">文章类型:*</div>
-                            <div class="input-control select">
-                                <select id="articleType" style="width: 600px; height: 30px">
-                                    <option>1</option>
-                                    <option>2</option>
-                                    <option>3</option>
-                                </select>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="article-title-slash">文章标签：</div>
-                            <div class="input-control select">
-                                <select id="articleTags" style="width: 600px; height: 30px">
-                                    <option>1</option>
-                                    <option>2</option>
-                                    <option>3</option>
-                                </select>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="article-title-slash">所属团队 :</div>
-                            <div class="input-control select">
-                                <select id="teamBelong" style="width: 600px; height: 30px">
-                                    <option>1</option>
-                                    <option>2</option>
-                                    <option>3</option>
-                                </select>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="article-title-slash">状态:</div>
-                            <div class="input-control select">
-                                <select id="articleStatus" style="width: 600px; height: 30px">
-                                    <option>1</option>
-                                    <option>2</option>
-                                    <option>3</option>
-                                </select>
-                            </div>
-                        </li>
-                        <%--  <li><a href="#" class="addPic">添加图片...</a></li>--%>
-                    </ul>
-                    <%--  <div class="pictureShowDiv">
-                        <ul class="pict-show-in-body">
-                        </ul>
-                    </div>--%>
-                </div>
+                            </li>
+                            <li>文章类型</li>
+                            <li>
+                                <div class="articleTypeDiv"></div>
+                                <ul class="articleTypeDiv-sub collapse"></ul>
+                            </li>
+                               <li>所属团队 :</li>
+                            <li>
+                                <div class="articleTeamDiv"></div>
+                                <ul class="articleTeamDiv-sub collapse"></ul>
+                            </li>
 
+                            <li>文章标签：</li>
+                            <li>
+                                <div class="articleTagDiv"></div>
+                                <ul class="articleTagDiv-sub collapse"></ul>
+                            </li>
+                         
+
+                            <li>状态:</li>
+                            <li>
+                                <div class="articleStatusDiv"></div>
+                                <ul class="articleStatusDiv-sub collapse">
+
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+
+
+                    <%--  <li><a href="#" class="addPic">添加图片...</a></li>--%>
+                </ul>
 
                 <div class="head">
 
@@ -182,13 +175,15 @@
                         style="width: 200px; height: 420px"></textarea>
 
                     <div class="actionArea">
-                        <button class="button success block-shadow-success text-shadow resetBt2"  style="margin: 3px">提交</button>
+                        <button class="button success block-shadow-success text-shadow resetBt2" style="margin: 3px">提交</button>
                         <%--<input class="okBt" type="submit" value="确定" />--%>
                         <input class="resetBt2" type="reset" value="取消" style="margin: 3px" />
                     </div>
                 </div>
-
             </div>
+
+
+
             <%--<div class="selectPictureWin" style="display: none">
                 <div class="tab">
                     <div class="tab_menu">

@@ -59,26 +59,35 @@
             width: 90%;
             margin: 0 auto;
         }
-
+.hide {
+    display:none
+}
         .teamtitlefont {
             color: white;
         }
 
         .teamsitetile, .teamsitetile-seg{
-            float: left;
+            /*float: left;
             width: auto;
             height: 100px;
-            margin: 20px 10px;
+            margin: 20px 10px;*/
+
+             
+            margin: 5px;
+            float: left;
+            background-color: #ddd;
+            border: 2px solid #ddd;
+            cursor: pointer;
         }
 
-        
 
             .teamsitetile img {
-                max-width: 100%;
+                height:120px;
+                width:120px;
             }
 
         .teamsitetile-pic {
-            width: 300px;
+            width: 100px;
             height: 100px;
         }
 

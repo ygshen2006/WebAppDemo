@@ -2805,6 +2805,7 @@ input[type="button"].btn-block {
 
 .glyphicon-resize-small:before {
   content: "\e097";
+  
 }
 
 .glyphicon-exclamation-sign:before {

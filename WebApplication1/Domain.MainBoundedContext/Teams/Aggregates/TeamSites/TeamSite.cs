@@ -6,9 +6,8 @@ using Domain.SeedWork;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Domain.MainBoundedContext.Teams.Tags;
+using Domain.MainBoundedContext.Reports.Aggregates;
 
 namespace Domain.MainBoundedContext.Teams.Aggregates.TeamSites
 {

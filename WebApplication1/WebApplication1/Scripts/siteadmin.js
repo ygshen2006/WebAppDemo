@@ -102,6 +102,25 @@
                     }
                 });
             }
+            else if ($(this).attr('id') == 'status') {
+                ST.util.GetUsefulLinks($('.wrapper'), 0, function (result2) {
+                    if (result2 != null && result2.length > 0) {
+                        $('.child-link-list').children().remove();
+
+                        var str = '';
+                        $.each(result2, function (index, current) {
+                            
+                                str += "<tr><td><select class='select-parent-link'><option value=" + current.ParentId + ">" + current.ParentLink.LinkName + "</option></select></td><td><span class='child-link-name' Id='" + current.Id + "'>" + current.LinkName + "</span></td><td><span class='child-link-url'>" + current.URL + "</span></td>";
+
+                                str += "<td><a class='plink-delete' href='#'>删除...</a></td>";
+                                str += '</tr>';
+                            
+                        });
+
+                        $('.child-link-list').append(str);
+                    }
+                });
+            }
         }).hover(function () {
             $(this).addClass("hover");
         }, function () {

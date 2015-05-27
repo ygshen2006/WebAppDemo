@@ -104,7 +104,7 @@
                                     </li>
                                     <li><a href="#"><i class="icon-eye"></i>文章审批</a>
                                     </li>
-                                    <li><a href="#"><i class="icon-plus"></i>团队标签</a>
+                                    <li class="tagtab"><a href="#"><i class="icon-plus"></i>团队标签</a>
                                     </li>
                                     <%--load the divisions one by one with script--%>
                                 </ul>
@@ -175,13 +175,14 @@
                                                 <td>标签信息</td>
                                             </tr>
                                         </thead>
-                                        <tbody>
-                                            <tr><td colspan="2"><span style="font-style:italic; font-size:small">...暂时没有任何标签信息</span></td></tr>
+                                        <tbody class="tags">
                                         </tbody>
                                         <tfoot>
                                             <tr>
                                                 <td colspan="2">
-                                                    <a class="bg-darkGreen fg-white button small" href="#">添加</a>
+                                                    <a class="bg-darkGreen fg-white button small" id="addnewtag" href="#">添加</a>
+                                                    <a class="bg-darkGreen fg-white button small" id="submit" href="#">提交</a>
+
                                                 </td>
                                             </tr>
                                         </tfoot>
@@ -191,6 +192,7 @@
                         </td>
                     </tr>
                 </table>
+                <input type="hidden" id="siteguid" />
             </div>
 
 
@@ -227,7 +229,7 @@
     <script type="text/javascript">
         var sessionUser = '<%= Session["UserName"]%>';
         (function (Nav, $, undefined) {
-
+           
         })(window.Nav = window.Nav || {}, $, undefined);
         $(function () {
             // Load the team list in the detail panel below

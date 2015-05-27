@@ -7,13 +7,13 @@ namespace Infrastructor.MainBoundedContext.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.1-30610")]
-    public sealed partial class test : IMigrationMetadata
+    public sealed partial class Test : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(test));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(Test));
         
         string IMigrationMetadata.Id
         {
-            get { return "201407281322012_test"; }
+            get { return "201505270551546_Test"; }
         }
         
         string IMigrationMetadata.Source

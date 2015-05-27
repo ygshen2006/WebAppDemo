@@ -3,7 +3,7 @@
     Nav.Initiate = function (sessionUser) {
         Nav.util.initialNavigationBar(sessionUser);
 
-
+       
         $('#logoff').live('click', function (e) {
             e.preventDefault();
             Nav.util.LogOff();
@@ -21,26 +21,26 @@
             // Determin whether current user is a team admin
 
             // Team admin ?
-            if (sessionUser != "" && sessionUser!=undefined) {
-                    //If this user is a team admin?
+            if (sessionUser != "" && sessionUser != undefined) {
+                //If this user is a team admin?
                 var userName = sessionUser;
 
-                    Nav.util.VerifyUserHasTeam(userName, function (result) {
-                        if (result != null && result.length > 0) {
-                            // If current page is team site page
+                Nav.util.VerifyUserHasTeam(userName, function (result) {
+                    if (result != null && result.length > 0) {
+                        // If current page is team site page
 
-                            if (document.URL.indexOf("MyTeamSitePage")>-1) {
-                                str += "<li>"
-                            + "<a href='../TeamSite/TeamManagement.aspx' class='manage-team'>团队管理</a></li>";
-                                str += "<li><a id='dashboardid' href='../TeamSite/TeamDashboard.aspx?SiteGuid=" + $('#teamguidhidden').val() + "' class='manage-team'>团队Dashboard</a></li>";
-                            }
+                        if (document.URL.indexOf("MyTeamSitePage") > -1) {
+                            str += "<li>"
+                        + "<a href='../TeamSite/TeamManagement.aspx?SiteGuid="+$('#teamguidhidden').val() +"' class='manage-team'>团队管理</a></li>";
+                            str += "<li><a id='dashboardid' href='../TeamSite/TeamDashboard.aspx?SiteGuid=" + $('#teamguidhidden').val() + "' class='manage-team'>团队Dashboard</a></li>";
                         }
-                    });
+                    }
+                });
             }
 
 
             if (1 == 1) {
-                
+
                 str += "<li><a href='../ManageSite/SiteManagement.aspx' class='manage-site'>超级管理员</a></li>";
             }
             if ($('#login-link').length == 0) {
@@ -53,7 +53,7 @@
         };
         this.VerifyUserHasTeam = function (parameter, callBack) {
             var url = Nav.util.GetUrl();
-            url += "?requestType=getteamsforuser&userName="+parameter;
+            url += "?requestType=getteamsforuser&userName=" + parameter;
             $.ajax({
                 url: url,
                 type: "POST",
@@ -99,7 +99,7 @@
             });
         };
 
-        this.deleteAllCookies=function() {
+        this.deleteAllCookies = function () {
             var cookies = document.cookie.split(";");
 
             for (var i = 0; i < cookies.length; i++) {
@@ -109,8 +109,35 @@
                 document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT";
             }
         }
-    };
 
+        this.loginWithThirdParty = function (frontia) {
+            var AK = 'wqGAZ5IEwuDvIR42kEoyywhy';
+            frontia.init(AK);
 
+            var redirect_url = 'http://frontiajsdemo.duapp.com/social/qqdenglu.html';
+            // 初始化登录的配置
+            var options = {
+                response_type: 'token',
+                media_type: 'qqdenglu', // 登录 QQ 帐号
+                redirect_uri: redirect_url,
+                client_type: 'web'
+            };
+
+            // 登录
+            frontia.social.login(options);
+        }
+
+        function test_login() {
+            /// 当应用在QQ上注册成功以后我们可以在这个方法中将导航的用户名什么的改成QQ的
+            baidu.frontia.social.setLoginCallback({
+                success: function (user) {
+                    alert(user);
+                },
+                error: function (error) {
+                }
+            });
+        };
+
+    }
     
 })(window.Nav = window.Nav || {}, $, undefined);

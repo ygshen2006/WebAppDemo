@@ -1,16 +1,12 @@
-﻿using Domain.MainBoundedContext.Teams;
-using Domain.MainBoundedContext.Teams.Aggregates.Category;
+﻿using Domain.MainBoundedContext.Teams.Aggregates.Category;
 using Domain.MainBoundedContext.Teams.Aggregates.TeamSites;
 using Domain.SeedWork;
-using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Domain.MainBoundedContext.Users;
+using Domain.MainBoundedContext.Teams.Tags;
 
-namespace Domain.MainBoundedContext.Reports.Logics.Aggregates
+namespace Domain.MainBoundedContext.Reports.Aggregates
 {
     public class Report : Entity
     {

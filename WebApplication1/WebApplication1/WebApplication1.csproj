@@ -181,6 +181,7 @@
     <Content Include="Images\bg_repeat.png" />
     <Content Include="Images\Blank_Folder.png" />
     <Content Include="Images\checkmark.png" />
+    <Content Include="Images\close.png" />
     <Content Include="Images\default-team.png" />
     <Content Include="Images\downArrow.PNG" />
     <Content Include="Images\index.gif" />
@@ -210,6 +211,8 @@
     <Content Include="Images\s5_t.png" />
     <Content Include="Images\s5_tq.png" />
     <Content Include="Images\sideNav.png" />
+    <Content Include="Images\team-default.jpg" />
+    <Content Include="js\Baidu-Frontia-JS-1.0.0.js" />
     <Content Include="js\uploader\jquery.browse.js" />
     <Content Include="js\uploader\jquery.upload.js" />
     <Content Include="js\wangEditor-1.3.js" />
@@ -267,7 +270,6 @@
     <Content Include="Images\5.jpg" />
     <Content Include="Images\back-t.png" />
     <Content Include="Images\baidu.gif" />
-    <Content Include="Images\close.png" />
     <Content Include="Images\Intrests.jpg" />
     <Content Include="Images\admin-gear.png" />
     <Content Include="Images\fail.png" />
@@ -411,6 +413,7 @@
     <Content Include="TeamSite\MyTeamSitesAdminPage.aspx" />
     <Content Include="TeamSite\TeamDashboard.aspx" />
     <Content Include="TeamSite\WebForm1.aspx" />
+    <Content Include="Test.html" />
     <Content Include="TestPage.aspx" />
     <Content Include="Utility\Test.html" />
     <Content Include="Utility\wangEditor_uploadImg_assist.html" />

@@ -294,6 +294,9 @@
                                 <div class="col-md-offset-2 col-md-10">
                                     <asp:Button ValidationGroup="two" runat="server" ID="btLogin_Text" Text="登陆" redirect="../Personal/MyCenter.aspx" CssClass="btn-default-login" />
                                 </div>
+                                <div>
+                                    <a href="#" id="loginqq">QQ</a> | <a href="#" id="loginsina">Sina</a> | <a href="#" id="loginbaidu">Baidu</a>
+                                </div>
                             </div>
 
                             <div>
@@ -324,6 +327,7 @@
            <script src="Scripts/jquery-1.8.2.min.js"></script>
         <script src="Scripts/jquery.bpopup.min.js"></script>
         <script src="Scripts/jquery.showLoading.js"></script>
+        <script src="js/Baidu-Frontia-JS-1.0.0.js"></script>
     <script src="js/jquery/jquery.widget.min.js"></script>
     <script src="js/jquery/jquery.mousewheel.js"></script>
     <script src="js/prettify/prettify.js"></script>
@@ -336,13 +340,21 @@
 
         var sessionUser = '<%= Session["UserName"]%>';
 
-        (function (Reg, Nav, $, undefined) {
-        })(window.Reg = window.Reg || {},window.Nav = window.Nav || {}, $, undefined);
+        (function (frontia, Reg, Nav, $, undefined) {
+            Nav.util.test_login();
+
+            $('#loginqq').live('click', function (e) {
+                Nav.util.loginWithThirdParty(frontia);
+            });
+        })(baidu.frontia, window.Reg = window.Reg || {}, window.Nav = window.Nav || {}, $, undefined);
 
         $(document).ready(function () {
 
-            $(function () {
+            $(function (frontia) {
                 Reg.Init();
+
+               
+
                 Nav.Initiate(sessionUser);
             });
             

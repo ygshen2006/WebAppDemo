@@ -58,7 +58,10 @@ namespace WebApplication1.Ajax
             {
                 Response.Write(GetCategories(Request["parentonly"]));
             }
-
+            if (Request["requestType"] == "getallcategory")
+            {
+                Response.Write(GetAllCategories());
+            }
             if (Request["requestType"] == "addusefullinks")
             {
                 Response.Write(AddUsefulLinks());
@@ -119,6 +122,16 @@ namespace WebApplication1.Ajax
                 {
                     throw new ArgumentException("Could only get parent or child categories by this method");
                 }
+            }
+        }
+        private string GetAllCategories() {
+            JavaScriptSerializer jss = new JavaScriptSerializer();
+            using (MainDBUnitWorkContext context = new MainDBUnitWorkContext())
+            {
+                ICategoryRepository repository = new CategoryRepository(context);
+                CategoryService manager = new CategoryService(repository);
+
+               return jss.Serialize(manager.GetAllCategories(CategoryTypeEnum.All));
             }
         }
         private string GetUsefulLinks(string parentOnly)

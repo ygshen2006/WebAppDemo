@@ -98,6 +98,7 @@
     <Compile Include="Teams\Aggregates\Category\ICategoryRepository.cs" />
     <Compile Include="Teams\Aggregates\Division\IDivisionRepository.cs" />
     <Compile Include="Teams\Aggregates\Division\ISegmentRepository.cs" />
+    <Compile Include="Teams\Aggregates\Tags\ITagRepository.cs" />
     <Compile Include="Teams\Aggregates\TeamList\ITeamListRepository.cs" />
     <Compile Include="Teams\Aggregates\TeamList\TeamSiteTile.cs" />
     <Compile Include="Teams\Aggregates\UsefulLinks\IUsefulLinksRepository.cs" />
@@ -106,7 +107,7 @@
     <Compile Include="Teams\Aggregates\TeamSites\TeamSite.cs" />
     <Compile Include="Teams\Aggregates\UsefulLinks\UsefulLinks.cs" />
     <Compile Include="Teams\FilterField\TeamSiteGUID.cs" />
-    <Compile Include="Teams\Tag.cs">
+    <Compile Include="Teams\Aggregates\Tags\Tag.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Tiles\Aggregates\ITileRepository.cs" />

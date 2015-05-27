@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
 using Domain.MainBoundedContext.Reports.Logics.Aggregates;
+using Domain.MainBoundedContext.Reports.Aggregates;
 //using Microsoft.MSIT.ECO.UnifiedReporting.Domain.MainBoundedContext.ReportModule.Aggregates.ReportCatalogAgg;
 
 namespace Domain.MainBoundedContext.Logics

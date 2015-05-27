@@ -1,8 +1,6 @@
 ﻿<%@ Page ValidateRequest="false" Language="C#" AutoEventWireup="true" CodeBehind="AddNewReport.aspx.cs" Inherits="WebApplication1.AddReport.AddNewReport" %>
 
-
 <!DOCTYPE html>
-
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <style type="text/css">
@@ -15,15 +13,7 @@
             margin: 0px 30px;
         }
 
-        .articleTypeDiv, .articleStatusDiv, .articleTagDiv, .articleTeamDiv {
-            height: 20px;
-            line-height: 18px;
-            background-image: url("../images/downArrow.PNG");
-            background-repeat: no-repeat;
-            background-position: right center;
-            border: 1px #d9d9d9 solid;
-            z-index: 1;
-        }
+
 
         ul {
             list-style: none;
@@ -132,36 +122,47 @@
             <div class="content">
                 <ul id="report-list">
                     <li>
-                        <ul style="width: 400px; height: 30px">
-                            <li>文章标题:</li>
-                            <li>
-                                <input type="text" placeholder="文章标题..." />
+                        <ul style="width: 500px; height: 30px" id="artcle-information-board">
+                            <li class="a"><b>标题:</b></li>
+                            <li class="a">
+                                <input type="text" class="article-title-text" placeholder="标题..." />
                             </li>
-                            <li>文章类型</li>
-                            <li>
+                            <li class="a"><b>类型</b></li>
+                            <li class="a" style="position: relative">
                                 <div class="articleTypeDiv"></div>
-                                <ul class="articleTypeDiv-sub collapse"></ul>
+                                <ul class="articleTypeDiv-sub collapse">
+                                </ul>
                             </li>
-                               <li>所属团队 :</li>
-                            <li>
+                            <li class="a"><b>所属团队 :</b></li>
+                            <li class="a" style="position: relative">
                                 <div class="articleTeamDiv"></div>
                                 <ul class="articleTeamDiv-sub collapse"></ul>
                             </li>
 
-                            <li>文章标签：</li>
-                            <li>
+                              <li class="a"><b>标签：</b></li>
+                            <li class="a" style="position: relative">
                                 <div class="articleTagDiv"></div>
                                 <ul class="articleTagDiv-sub collapse"></ul>
                             </li>
-                         
 
-                            <li>状态:</li>
-                            <li>
+                            <li class="a"><b>状态:</b></li>
+                            <li class="a">
                                 <div class="articleStatusDiv"></div>
                                 <ul class="articleStatusDiv-sub collapse">
-
                                 </ul>
                             </li>
+
+                            <li class="a"><b>拥有者:</b></li>
+                            <li class="a" style="position: relative">
+                                <ul class="ownerarea">
+                                    <li>
+                                        <input type="text" class="owners-list" placeholder="请输入用户名..." /></li>
+                                </ul>
+                                <ul class="articleOwnerDiv-sub collapse"></ul>
+                            </li>
+                          
+
+                            
                         </ul>
                     </li>
 
@@ -180,6 +181,8 @@
                         <input class="resetBt2" type="reset" value="取消" style="margin: 3px" />
                     </div>
                 </div>
+
+                <input type="hidden" id="currentSelectedTeam"/>
             </div>
 
 
@@ -226,20 +229,8 @@
         })(window.Reg = window.Reg || {}, window.URP = window.URP || {}, window.Nav = window.Nav || {}, $, undefined);
 
         $(document).ready(function () {
-            //var editor = CKEDITOR.replace('editor1', {
-            //    language: 'zh-cn',
-            //    filebrowserBrowseUrl: '../ckfinder/ckfinder.html',
-            //    filebrowserImageBrowseUrl: '../ckfinder/ckfinder.html?type=Images',
-            //    filebrowserFlashBrowseUrl: '../ckfinder/ckfinder.html?type=Flash',
-            //    filebrowserUploadUrl: '../ckfinder/core/connector/aspx/connector?command=QuickUpload&type=Files',
-            //    filebrowserImageUploadUrl: '../ckfinder/core/connector/aspx/connector?command=QuickUpload&type=Images',
-            //    filebrowserFlashUploadUrl: '../ckfinder/core/connector/aspx/connector?command=QuickUpload&type=Flash',
-            //    height: 400,
-            //    width: 1100
-            //});
-            //CKFinder.setupCKEditor(editor, '../');
 
-
+            $('.article-title-text').focus();
 
             $('#editor1').wangEditor({
                 'uploadUrl': '../Utility/data.ashx'
@@ -258,6 +249,7 @@
 
             });
         });
+
 
         this.HTMLEncode = function (html) {
             var temp = document.createElement("div");

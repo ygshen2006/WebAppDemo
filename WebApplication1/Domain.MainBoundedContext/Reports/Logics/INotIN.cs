@@ -1,11 +1,7 @@
-﻿using Domain.SeedWork;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
-using Domain.MainBoundedContext.Reports.Logics.Aggregates;
+using Domain.MainBoundedContext.Reports.Aggregates;
 //using Microsoft.MSIT.ECO.UnifiedReporting.Domain.MainBoundedContext.ReportModule.Aggregates.ReportCatalogAgg;
 
 

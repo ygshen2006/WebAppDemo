@@ -6,6 +6,7 @@
     font-weight:bold;
     font-size: 15px;
     text-decoration: none;
+    background-color:rgba(194, 188, 188, 0.08);
 }
 
 .wrapper {
@@ -38,12 +39,13 @@
 #report-list {
     list-style: none;
     margin: 0 auto;
-    height:220px;
+    height:400px;
     padding:10px;
 }
     #report-list div {
         cursor:pointer;
     }
+ 
 
 .collapse {
     display:none;
@@ -296,4 +298,105 @@
 #TextBox1 {
     width:900px;
     margin:0 auto;
+}
+
+.articleTypeDiv-sub, .articleTeamDiv-sub, .articleStatusDiv-sub, .articleOwnerDiv-sub, .articleTagDiv-sub {
+    position:absolute;
+    top:21px;
+    padding:5px;
+    width:385px;
+    border:1px dotted #ccc;
+    background-color:#fff;
+    cursor:pointer;
+    overflow:auto;
+    z-index:3;
+}
+
+.owners-list {
+    height:20px;
+    width:150px;
+    resize:none;
+    overflow:auto;
+}
+.ownerarea {
+    padding-left:0px;
+}
+    .ownerarea li {
+        list-style:none;
+        float:left;
+    }
+.seperateowner {
+    width:50px;
+    background:url("../images/close.png");
+    background-position:right;
+}
+    .articleTypeDiv, .articleStatusDiv, .articleTagDiv, .articleTeamDiv, .articleOwnerDiv {
+            height: 20px;
+            line-height: 18px;
+            background-image: url("../images/downArrow.PNG");
+            background-repeat: no-repeat;
+            background-position: right center;
+            border: 1px #d9d9d9 solid;
+            z-index: 1;
+        }
+
+#artcle-information-board .a:nth-child(2n+1) {
+    padding-top:19px;
+}
+#artcle-information-board {
+    padding:0px 5px;
+}
+.article-title-text {
+    width:400px;
+}
+.select-tool-tips {
+    font-size:small;
+    font-style:italic;
+}
+.selectedCategories {
+    padding-left:10px;
+}
+.selectedCategories li{
+    float:left;
+           list-style:none;
+           margin-right:5px;
+}
+.teampicsmall img {
+    width:50px;
+    height:50px;
+    cursor:pointer;
+}
+.articleTeamDiv-sub li {
+    list-style:none;
+}
+.articleTeamDiv-sub li {
+    padding:5px;
+    
+}
+    .articleTeamDiv-sub li:hover {
+        background-color:aliceblue
+    }
+
+    .articleOwnerDiv-sub li {
+    list-style:none;
+}
+.articleOwnerDiv-sub li {
+    padding:5px;
+    
+}
+    .articleOwnerDiv-sub li:hover {
+        background-color:aliceblue
+    }
+
+.test {
+    background:url("../Images/close.png");
+    background-repeat:no-repeat;
+    background-position:right;
+    cursor:pointer;
+    width:60px;
+    margin:0 20px;
+    border:0.8px solid;
+}
+.disabled1 {
+
 }

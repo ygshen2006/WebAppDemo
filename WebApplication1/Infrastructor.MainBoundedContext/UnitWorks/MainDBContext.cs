@@ -1,14 +1,11 @@
 ﻿using Domain.MainBoundedContext.Aggregates.Division;
-using Domain.MainBoundedContext.Teams;
 using Domain.MainBoundedContext.Teams.Aggregates.Category;
 using Domain.MainBoundedContext.Teams.Aggregates.TeamList;
 using Domain.MainBoundedContext.Teams.Aggregates.TeamSites;
 using Domain.MainBoundedContext.Teams.Aggregates.UsefulLinks;
 using Domain.MainBoundedContext.Users;
-using Infrastructor.MainBoundedContext.UnitWorks.Mapping;
 using Infrastructor.SeedWork;
 using Microsoft.AspNet.Identity.EntityFramework;
-using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
@@ -16,11 +13,10 @@ using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Data.SqlClient;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Domain.MainBoundedContext.Reports.Logics.Aggregates;
 using Domain.MainBoundedContext.Reports.Logics.Aggregates.Tiles;
 using Domain.MainBoundedContext.Tiles.Aggregates;
+using Domain.MainBoundedContext.Teams.Tags;
+using Domain.MainBoundedContext.Reports.Aggregates;
 
 namespace Infrastructor.MainBoundedContext.UnitWorks
 {
@@ -33,6 +29,9 @@ namespace Infrastructor.MainBoundedContext.UnitWorks
         {
             //this.Configuration.ProxyCreationEnabled = false;
             this.Configuration.LazyLoadingEnabled = true;
+
+            Database.SetInitializer(new MigrateDatabaseToLatestVersion<MainDBUnitWorkContext,
+                Infrastructor.MainBoundedContext.Migrations.Configuration>("MyDBConnectionString"));
         }
 
         #endregion
@@ -219,8 +218,10 @@ namespace Infrastructor.MainBoundedContext.UnitWorks
             }
         }
         #endregion
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
+
             modelBuilder.Entity<IdentityUser>().ToTable("Users", "dbo").HasKey<string>(l => l.Id);
             modelBuilder.Entity<IdentityUserLogin>().HasKey<string>(l => l.UserId);
             modelBuilder.Entity<IdentityUserClaim>().HasKey<string>(l => l.UserId);

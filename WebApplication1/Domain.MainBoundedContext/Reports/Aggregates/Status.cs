@@ -6,12 +6,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Domain.MainBoundedContext.Reports.Logics.Aggregates
+namespace Domain.MainBoundedContext.Reports.Aggregates
 {
     public class Status:Entity
     {
-        [Required]
-        public string Name;
+        public string Name { get; set; }
 
         public virtual ICollection<Report> Reports { get; set; }
     }

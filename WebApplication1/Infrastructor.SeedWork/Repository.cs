@@ -136,7 +136,7 @@ namespace Infrastructor.SeedWork
         /// <returns><see cref="Microsoft.Samples.NLayerApp.Domain.Seedwork.IRepository{TValueObject}"/></returns>
         public virtual IEnumerable<TEntity> GetAll()
         {
-            return GetSet();
+            return GetSet().AsNoTracking<TEntity>();
         }
         /// <summary>
         /// <see cref="Microsoft.Samples.NLayerApp.Domain.Seedwork.IRepository{TValueObject}"/>

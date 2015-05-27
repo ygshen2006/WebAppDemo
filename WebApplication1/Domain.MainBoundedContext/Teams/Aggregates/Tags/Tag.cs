@@ -7,8 +7,9 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Domain.MainBoundedContext.Reports.Aggregates;
 
-namespace Domain.MainBoundedContext.Teams
+namespace Domain.MainBoundedContext.Teams.Tags
 {
    public class Tag: Entity
     {

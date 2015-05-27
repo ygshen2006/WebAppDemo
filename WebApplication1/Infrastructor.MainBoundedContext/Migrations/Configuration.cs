@@ -4,12 +4,14 @@ namespace Infrastructor.MainBoundedContext.Migrations
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
+    using Domain.MainBoundedContext.Reports.Aggregates;
+    using Domain.MainBoundedContext.Reports.Logics.Aggregates;
 
     internal sealed class Configuration : DbMigrationsConfiguration<Infrastructor.MainBoundedContext.UnitWorks.MainDBUnitWorkContext>
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = false;
+            AutomaticMigrationsEnabled = true;
             ContextKey = "Infrastructor.MainBoundedContext.UnitWorks.MainDBUnitWorkContext";
         }
 
@@ -27,6 +29,10 @@ namespace Infrastructor.MainBoundedContext.Migrations
             //      new Person { FullName = "Rowan Miller" }
             //    );
             //
+            context.Status.AddOrUpdate(p => p.Name,
+                new Status { Name = "通过" },
+                new Status { Name = "等待审批" }
+                );
         }
     }
 }

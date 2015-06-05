@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Application.MainBoundedContect.ViewModel.TeamSites;
+using Domain.MainBoundedContext.Reports.Aggregates;
 using Domain.MainBoundedContext.Teams.Tags;
 
 namespace Application.MainBoundedContect.Extentions
@@ -25,7 +26,26 @@ namespace Application.MainBoundedContect.Extentions
             {
                 Id = tag.Id.GetValueOrDefault(),
                 TagName = tag.Title,
-                  TeamSiteId=tag.TeamId
+                TeamSiteId = tag.TeamId
+            };
+        }
+
+
+        public static AppStatus ToAppStatus(this Status stat)
+        {
+            return new AppStatus()
+            {
+                Id = stat.Id,
+                Name = stat.Name
+            };
+        }
+
+        public static Status ToStatus(this AppStatus stat)
+        {
+            return new Status()
+            {
+                Id = stat.Id.GetValueOrDefault(),
+                Name = stat.Name
             };
         }
 

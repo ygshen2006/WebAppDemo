@@ -40,7 +40,7 @@ namespace Application.MainBoundedContect.Extentions
                 TeamLogo = team.TeamLogo,
                 TeamOwners = team.TeamOwnerObjectList == null ? null : team.TeamOwnerObjectList.Select(_ => userRepository.GetUserByName(_.UserName)).ToList<User>(),
                 Tags = team.Tags,
-                Reports = team.ReportsRelated,
+                //Reports = team.ReportsRelated,
                 Tiles = team.Tiles
             };
         }

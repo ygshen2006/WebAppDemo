@@ -23,8 +23,8 @@ namespace Application.MainBoundedContect.Extentions
                 ParentId = cat.CategoryParentId,
                 ParentCategory = cat.ParentCategory == null ? null : cat.ParentCategory.ToAppCategory(),
                 ChildCount = (cat.ChildCategory != null) ? cat.ChildCategory.Count() : 0,
-                ChildCategories =cat.ChildCategory==null? null: cat.ChildCategory.Select(_=>new AppCategory() { Id=_.Id, CategoryName=_.Name, ParentId=_.CategoryParentId}),
-                Reports = null
+                ChildCategories =cat.ChildCategory==null? null: cat.ChildCategory.Select(_=>new AppCategory() { Id=_.Id, CategoryName=_.Name, ParentId=_.CategoryParentId})
+               // Reports = null
             };
             return t;
         }

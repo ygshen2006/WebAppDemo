@@ -29,9 +29,6 @@ namespace Domain.MainBoundedContext.Reports.Aggregates
         public string OtherPicture9;
         public string OtherPicture8;
 
-        public int ReportTypeId;
-        public virtual ReportType ReportType { get; set; }
-
         public int TeamSiteId;
         public virtual TeamSite TeamSite { get; set; }
 
@@ -43,5 +40,7 @@ namespace Domain.MainBoundedContext.Reports.Aggregates
 
         public virtual ICollection<User> Owners
         { get; set; }
+
+        public string ReportContent { get; set; }
     }
 }

@@ -8,6 +8,7 @@ using Domain.MainBoundedContext.Teams.Aggregates.Tags;
 using Domain.MainBoundedContext.Teams.Aggregates.TeamSites;
 using Application.MainBoundedContect.Extentions;
 using Domain.MainBoundedContext.Teams.Tags;
+using Domain.MainBoundedContext.Teams.Aggregates.ReportStatus;
 
 namespace Application.MainBoundedContect.Services.TeamAdmin
 {
@@ -15,10 +16,13 @@ namespace Application.MainBoundedContect.Services.TeamAdmin
     {
         private ITagRepository _tagRepository;
         private ITeamRepository _teamRepositry;
+        private IStatusRepository _statusRepository;
 
         public TeamAdminService(ITagRepository tagRepository,
-            ITeamRepository teamRepositry)
+            ITeamRepository teamRepositry,
+            IStatusRepository statusRepository)
         {
+            _statusRepository = statusRepository;
             _teamRepositry = teamRepositry;
             _tagRepository = tagRepository;
         }
@@ -36,6 +40,9 @@ namespace Application.MainBoundedContect.Services.TeamAdmin
             return _tagRepository.GetAll().FirstOrDefault(_ => _.Id == id).ToAppTeamTag();
         }
 
+        public IEnumerable<AppStatus> GetStatusByRole(int roleId) {
+            return _statusRepository.GetStatusByUserRole(roleId).Select(_=>_.ToAppStatus());
+        }
         public void ModifyTags(IEnumerable<AppTeamTag> tags) {
             List<Tag> tagsAdd = new List<Tag>();
             List<Tag> tagsModify = new List<Tag>();

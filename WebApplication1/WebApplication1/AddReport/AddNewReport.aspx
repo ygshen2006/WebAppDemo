@@ -122,32 +122,32 @@
             <div class="content">
                 <ul id="report-list">
                     <li>
-                        <ul style="width: 500px; height: 30px" id="artcle-information-board">
+                        <ul style="width: 600px; height: 30px" id="artcle-information-board">
                             <li class="a"><b>标题:</b></li>
                             <li class="a">
-                                <input type="text" class="article-title-text" placeholder="标题..." />
+                               <input type="text" class="article-title-text" placeholder="标题..." /> <label style="color:red; margin-left:10px;" class="hide">* 标题不能为空</label>
                             </li>
                             <li class="a"><b>类型</b></li>
                             <li class="a" style="position: relative">
-                                <div class="articleTypeDiv"></div>
+                                <div class="articleTypeDiv"></div> <label style="color:red;" class="hide">* 文章类型不能为空</label>
                                 <ul class="articleTypeDiv-sub collapse">
                                 </ul>
                             </li>
                             <li class="a"><b>所属团队 :</b></li>
                             <li class="a" style="position: relative">
-                                <div class="articleTeamDiv"></div>
+                                <div class="articleTeamDiv"></div><label style="color:red;" class="hide">* 所属团队不能为空</label>
                                 <ul class="articleTeamDiv-sub collapse"></ul>
                             </li>
 
                               <li class="a"><b>标签：</b></li>
                             <li class="a" style="position: relative">
-                                <div class="articleTagDiv"></div>
+                                <div class="articleTagDiv"></div><label style="color:red;" class="hide">* 标签不能为空</label>
                                 <ul class="articleTagDiv-sub collapse"></ul>
                             </li>
 
                             <li class="a"><b>状态:</b></li>
-                            <li class="a">
-                                <div class="articleStatusDiv"></div>
+                            <li class="a" style="position: relative">
+                                <div class="articleStatusDiv"></div><label style="color:red;" class="hide">* 状态不能为空</label>
                                 <ul class="articleStatusDiv-sub collapse">
                                 </ul>
                             </li>
@@ -156,7 +156,7 @@
                             <li class="a" style="position: relative">
                                 <ul class="ownerarea">
                                     <li>
-                                        <input type="text" class="owners-list" placeholder="请输入用户名..." /></li>
+                                        <input type="text" class="owners-list" placeholder="请输入用户名..." /><label style="color:red;" class="hide">* 拥有者不能为空</label></li>
                                 </ul>
                                 <ul class="articleOwnerDiv-sub collapse"></ul>
                             </li>
@@ -171,12 +171,11 @@
                 </ul>
 
                 <div class="head">
-
-                    <textarea id="editor1" name="editor1" runat="server"
+                    <textarea id="editor1" name="editor1"
                         style="width: 200px; height: 420px"></textarea>
-
+                    <label style="color:red;" class="hide">* 文章内容不能为空</label>
                     <div class="actionArea">
-                        <button class="button success block-shadow-success text-shadow resetBt2" style="margin: 3px">提交</button>
+                        <input type="button" value="提交" id="submitarticle" class="button success block-shadow-success text-shadow resetBt2" style="margin: 3px" />
                         <%--<input class="okBt" type="submit" value="确定" />--%>
                         <input class="resetBt2" type="reset" value="取消" style="margin: 3px" />
                     </div>

@@ -20,18 +20,47 @@ namespace WebApplication1.Ajax
                 TeamTagRepository tagRepository = new TeamTagRepository(context);
 
                 TeamRepository teamRepository = new TeamRepository(context);
-                TeamAdminService tService = new TeamAdminService(tagRepository, teamRepository);
+                TeamStatusRepository statusRepository = new TeamStatusRepository(context);
+                TeamAdminService tService = new TeamAdminService(tagRepository, teamRepository, statusRepository);
                 var teamGuid = Request.Params["SiteGUID"].ToString();
                 Guid guid = Guid.Parse(teamGuid);
                 int teamId = teamRepository.GetFiltered(_ => _.TeamGuid == guid).FirstOrDefault().Id;
 
+                var UserName = Session["UserName"];
+
+                if (Request["queryType"] == "getreportstatus")
+                {
+                    // If current user is an admin. 
+                    var team = teamRepository.GetAll().FirstOrDefault(_ => _.Id == teamId);
+                    if (UserName == null)
+                    {
+                        Response.Redirect("../MyAccounts/NoLoginPage.aspx");
+                    }
+                    else
+                    {
+                        List<AppStatus> status = new List<AppStatus>();
+
+                        bool isAdmin = team.TeamOwners.FirstOrDefault(_ => _.UserName == UserName.ToString().Trim())!=null;
+                        if (isAdmin)
+                        {
+                            status = tService.GetStatusByRole(1).ToList<AppStatus>();
+                        }
+                        else
+                        {
+                            status = tService.GetStatusByRole(0).ToList<AppStatus>();
+                        }
+                        string r = jss.Serialize(status);
+                        Response.Write(r);
+                    }
+                }
                 if (Request["queryType"] == "getsitetags")
                 {
                     var tags = tService.GetTagsByTeamId(Guid.Parse(teamGuid));
 
                     Response.Write(jss.Serialize(tags));
                 }
-                if (Request["queryType"] == "updatetags") {
+                if (Request["queryType"] == "updatetags")
+                {
 
                     List<AppTeamTag> tags = new List<AppTeamTag>();
                     tags = jss.Deserialize<List<AppTeamTag>>(Request.Params["TagData"]);
@@ -62,7 +91,8 @@ namespace WebApplication1.Ajax
                             appTag.TeamId = teamId;
                             tagsUpdate.Add(appTag);
                         }
-                        else {
+                        else
+                        {
                             AppTeamTag appTag = tService.GetTagById(para.Id.Value);
                             if (appTag == null) continue;
                             appTag.Status = tagStatus.Modify;

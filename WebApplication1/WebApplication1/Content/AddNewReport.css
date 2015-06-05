@@ -39,7 +39,7 @@
 #report-list {
     list-style: none;
     margin: 0 auto;
-    height:400px;
+    height:450px;
     padding:10px;
 }
     #report-list div {
@@ -331,13 +331,16 @@
     background-position:right;
 }
     .articleTypeDiv, .articleStatusDiv, .articleTagDiv, .articleTeamDiv, .articleOwnerDiv {
-            height: 20px;
+        width:400px;    
+        height: 20px;
             line-height: 18px;
             background-image: url("../images/downArrow.PNG");
             background-repeat: no-repeat;
             background-position: right center;
             border: 1px #d9d9d9 solid;
             z-index: 1;
+    background-color:#fff;
+            
         }
 
 #artcle-information-board .a:nth-child(2n+1) {
@@ -388,6 +391,9 @@
         background-color:aliceblue
     }
 
+      .articleStatusDiv-sub li:hover {
+        background-color:aliceblue
+    }
 .test {
     background:url("../Images/close.png");
     background-repeat:no-repeat;

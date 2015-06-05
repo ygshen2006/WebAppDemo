@@ -232,7 +232,8 @@
                     $('.articleOwnerDiv-sub').addClass('collapse');
                 }
 
-                if ($('.articleStatusDiv').hasClass('expands')) {
+
+                if ($('.articleStatusDiv').hasClass('expands') && $('.articleStatusDiv-sub').hasClass('expands')) {
                     $('.articleStatusDiv-sub').addClass('collapse');
                 }
             });
@@ -258,7 +259,7 @@
                                 if (current.ParentId == null) {
                                     str += "<li><ul><input class='pc' onchange='URP.AddReport.unionSelect(this)' type='checkbox' value='" + current.Id + "'>" + current.CategoryName + "</input>";
                                     $.each(current.ChildCategories, function (i, c) {
-                                        if (selectedcategories.some(function (v) { return v.cid == c.Id; })) {
+                                        if (selectedcategories.some(function (v) { return v.Id == c.Id; })) {
                                             str += "<li style='padding-left:10px'><input checked='checked' class='cc' onchange='URP.AddReport.childSelect(this)' type='checkbox' value='" + c.Id + "' /><span>" + c.CategoryName + "</span></li>";
                                         }
                                         else {
@@ -313,8 +314,8 @@
             });
             $('.articleTeamDiv-sub li').live('click', function (e) {
                 var teamNameTag = $(this).find('span')[0];
-                selectedteams = [];
-                selectedteams.push({ "TeamId": $(this).attr('tag'), "TeamName": $(teamNameTag).text() });
+                selectedteams = {};
+                selectedteams={ "Id": $(this).attr('tag'), "TeamName": $(teamNameTag).text() };
                 $('.articleTeamDiv').text('').append("<span>" + $(teamNameTag).text() + "</span>");
                 $('#currentSelectedTeam').val($(this).attr('tag1'));
             });
@@ -369,14 +370,16 @@
                     }
                 });
             });
+
             function CheckIfUserExists(value, index, ar) {
 
             }
+
             $('.articleOwnerDiv-sub li').live('click', function (e) {
                 var selectedUser = $(this);
                 // add the selected users to the array list
 
-                selectedOwners.push({ "UserId": $(this).attr('tag'), "UserName": $(selectedUser).find('.un').text().trim() });
+                selectedOwners.push({ "Id": $(this).attr('tag'), "UserName": $(selectedUser).find('.un').text().trim() });
                 // add the item to the selected list
                 var newItem = "<li class='test' tag='" + $(this).attr('tag') + "'><span tag='" + $(this).attr('tag') + "' class='selectedUserShow'>" + $(selectedUser).text() + ";</span></li>";
                 $('.ownerarea').append(newItem);
@@ -385,6 +388,7 @@
                     $('.articleOwnerDiv-sub').addClass('collapse');
                 }
             });
+
             $('.selectedUserShow').live('click', function (e) {
                 $(this).remove();
 
@@ -444,12 +448,83 @@
             });
 
 
+            $('.articleStatusDiv').live('click', function (e) {
+                if ($('#currentSelectedTeam').val() == '') {
+                    alert('请先选择一个团队');
+                    return;
+                }
+
+                if (!$(this).hasClass('expands')) {
+                    $('.articleStatusDiv-sub').removeClass('collapse').addClass('expands');
+                    $(this).removeClass('expands').addClass('expands');
+
+                    $('.articleStatusDiv-sub').children().remove();
+                    var str = "";
+
+                    URP.AddReport.LoadStatus($(this), $('#currentSelectedTeam').val(), function (result) {
+                        if (result != null && result.length > 0) {
+                            $.each(result, function (index, current) {
+                                var icon = "";
+                                if (current.Name == "通过") {
+                                    icon = "../Images/approve.png";
+                                }
+                                else {
+                                    icon = "../Images/submit.png";
+                                }
+
+                                str += "<li tag='"+current.Id+"'><img src='" + icon + "' />" + current.Name + "</li>";
+                            });
+
+                            $('.articleStatusDiv-sub').append(str);
+                        }
+                    });
+
+                }
+                else {
+                    $(this).removeClass('expands');
+                    $('.articleStatusDiv-sub').removeClass('collapse').addClass('collapse');
+                }
+                e.stopPropagation();
+            });
+
+
+            $('.articleStatusDiv-sub li').live('click', function (e) {
+                $('.articleStatusDiv').html('');
+                $('.articleStatusDiv').html($(this).text());
+                currentStatus ={"Id":$(this).attr('tag')};
+            });
+
+            $('#submitarticle').live('click', function (e) {
+                e.preventDefault();
+
+                articleTitle = URP.util.HTMLEncode($('.article-title-text').val().trim());
+                articleContent = URP.util.HTMLEncode($('#editor1').val().trim());
+
+                // validate the must input fields
+                var a = URP.AddReport.validate(articleTitle, $('.article-title-text'));
+                var b = URP.AddReport.validate(selectedcategories, $('.articleTypeDiv'));
+                var c = URP.AddReport.validate(selectedteams, $('.articleTeamDiv'));
+                var d = URP.AddReport.validate(selectedTags, $('.articleTagDiv'));
+                var e = URP.AddReport.validate(currentStatus, $('.articleStatusDiv'));
+                var f = URP.AddReport.validate(selectedOwners, $('.owners-list'));
+                var g = URP.AddReport.validate(articleContent, $('#editor1'));
+
+                if (a && b && c && d && e && f && g) {
+                    // do submit
+                    URP.AddReport.UploadArticle($('.wrapper'), function (result) {
+
+                    });
+                }
+            });
         };
 
         var selectedcategories = [];
-        var selectedteams = [];
+        var selectedteams = {};
         var selectedOwners = [];
         var selectedTags = [];
+        var currentStatus = {};
+        var articleTitle = "";
+        var articleContent = "";
         this.LoadCategories = function (loadingArea, callBack) {
 
             var url = "http://" + window.location.hostname + ':' + window.location.port + '/Ajax/SiteAdminAjax';
@@ -555,6 +630,64 @@
             });
         }
 
+        this.LoadStatus = function (loadingArea, teamId, callBack) {
+            var url = "http://" + window.location.hostname + ':' + window.location.port + '/Ajax/TeamSiteAdminAjax';
+
+            $.ajax({
+                url: url + "?queryType=getreportstatus&SiteGUID=" + teamId,
+                type: "POST",
+                dataType: "json",
+                timeout: 99000,
+                beforeSend: function () {
+                    loadingArea.showLoading();
+                },
+                error: function (xhr, status, error) {
+                    alert('Error found any teams');
+                    console.log(error);
+                },
+                success: function (result) {
+                    if (callBack) {
+                        callBack(result);
+                    }
+                },
+                complete: function () {
+                    loadingArea.hideLoading();
+                },
+            });
+        }
+
+        this.UploadArticle = function (loadingArea, callBack) {
+            var url = "http://" + window.location.hostname + ':' + window.location.port + '/Ajax/AddNewReport';
+            var articleData = {
+                Title: articleTitle, Categories: selectedcategories,
+                Team: selectedteams, Owners: selectedOwners, Tags: selectedTags, Status: currentStatus, Content: articleContent
+            };
+
+            var articleDataStr = JSON.stringify(articleData);
+
+            $.ajax({
+                url: url + "?requestType=uploadarticle",
+                data: { articleData: articleDataStr },
+                type: "POST",
+                dataType: "json",
+                timeout: 99000,
+                beforeSend: function () {
+                    loadingArea.showLoading();
+                },
+                error: function (xhr, status, error) {
+                    alert('Error upload article');
+                    console.log(error);
+                },
+                success: function (result) {
+                    if (callBack) {
+                        callBack(result);
+                    }
+                },
+                complete: function () {
+                    loadingArea.hideLoading();
+                },
+            });
+        }
 
         this.unionSelect = function (item) {
 
@@ -603,17 +736,28 @@
             URP.AddReport.updateTheSelectedCategories();
         }
 
+        this.validate = function (item, control) {
+            var nextchild = $(control).next();
+            if (item == null || item.length == 0) {
+                $(nextchild).removeClass('hide');
+                return false;
+            }
+            else {
+                $(nextchild).removeClass('hide').addClass('hide');
+                return true;
+            }
+        }
 
         this.TagSelect = function (item, itemvalue) {
 
             var status = $(item).attr('checked');
             if (status == 'checked') {
-                selectedTags.push({ "tagid": $(item).attr('tag'), "tagname": itemvalue });
+                selectedTags.push({ "Id": $(item).attr('tag'), "Title": itemvalue });
             }
             else {
                 var j = 0;
                 for (var i = 0; i < selectedTags.length; i++) {
-                    if (selectedTags[i].tagid == $(item).attr('tag')) {
+                    if (selectedTags[i].Id == $(item).attr('tag')) {
                         j = i;
                         break;
                     }
@@ -623,10 +767,11 @@
             updateTagsInSelectZone();
 
         }
+
         function updateTagsInSelectZone() {
             var str = "";
             $.each(selectedTags, function (index, current) {
-                str += current.tagname + "; ";
+                str += current.Title + "; ";
             });
             $('.articleTagDiv').html(str);
         }
@@ -637,14 +782,14 @@
 
             $.each($('.cc'), function (index, current) {
                 if ($(this).attr('checked') == 'checked') {
-                    selectedcategories.push({ "cid": $(this).val(), "ctext": $(this).next('span').text() });
+                    selectedcategories.push({ "Id": $(this).val(), "CategoryName": $(this).next('span').text() });
                 }
             });
 
             // Update the selected items div
             var selectedDiv = "<ul class='selectedCategories'>";
             $.each(selectedcategories, function (index, current) {
-                selectedDiv += "<li>" + current.ctext + ";</li>";
+                selectedDiv += "<li>" + current.CategoryName + ";</li>";
             });
             selectedDiv += "</ul>";
 
@@ -748,6 +893,14 @@
                 }
             });
         };
+
+        this.HTMLEncode = function (html) {
+            var temp = document.createElement("div");
+            (temp.textContent != null) ? (temp.textContent = html) : (temp.innerText = html);
+            var output = temp.innerHTML;
+            temp = null;
+            return output;
+        }
         this.HTMLDecode = function (text) {
             var temp = document.createElement("div");
             temp.innerHTML = text;

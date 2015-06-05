@@ -5,7 +5,15 @@
 .ms-WPBody {
     border-color: #fff;
 }
-
+  .icon svg {
+            width: 30px;
+            height: 30px;
+            fill: red;
+        }
+.grid svg {
+               width: 60px;
+            height: 60px;
+}
 .dashboard-body ul {
     list-style: none;
 }
@@ -388,7 +396,7 @@
             left: -306px;
             padding: 5px;
             width: 500px;
-            height: 500px;
+            height: 400px;
             background-color: #fff;
             border: 1px solid #ccc;
             overflow: scroll;

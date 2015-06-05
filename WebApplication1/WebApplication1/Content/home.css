@@ -1,0 +1,275 @@
+﻿  .container {
+            width: 1040px;
+        }
+
+        .user-name-link {
+            color: white;
+        }
+
+        body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        #masthead {
+            display: block;
+            position: relative;
+            width: 100%;
+            height: 100%;
+            min-height: 300px;
+            max-height: 600px;
+        }
+
+        .slides, .flex-control-nav, .flex-direction-nav {
+            margin: 0px;
+            padding: 0px;
+            list-style: outside none none;
+        }
+
+        html[xmlns] .slides {
+            display: block;
+        }
+
+        #key-art ul.slides {
+            margin: 0px;
+        }
+
+        #key-art {
+            position: relative;
+            margin: 0px auto;
+            display: block;
+            min-width: 800px;
+            max-width: 1600px;
+            min-height: 300px;
+            max-height: 600px;
+        }
+
+        #masthead.controls ol.flex-control-nav {
+            bottom: 0px;
+            width: 30%;
+            left: 35%;
+            padding-bottom: 10px;
+        }
+
+        .flex-control-nav {
+            width: 100%;
+            position: absolute;
+            bottom: -30px;
+            text-align: center;
+        }
+
+        .slides, .flex-control-nav, .flex-direction-nav {
+            margin: 0px;
+            padding: 0px;
+            list-style: outside none none;
+        }
+
+
+        #masthead #key-art ul.slides li {
+            min-width: 100%;
+            height: 100%;
+            position: absolute;
+            overflow: hidden;
+        }
+
+        #masthead.controls ol.flex-control-nav li {
+            margin: 0px 4px;
+        }
+
+        .flex-control-nav li {
+            display: inline-block;
+        }
+
+        .iframe-hacker {
+            display: none;
+        }
+
+        #inner-wrap {
+            max-width: 1600px;
+            margin: 0px auto;
+            position: relative;
+            overflow: hidden;
+        }
+
+        body {
+            min-width: 980px;
+        }
+
+        #wrap {
+            height: auto;
+            min-height: 100%;
+            max-width: 1616px;
+            margin: 0px auto;
+            position: relative;
+            padding: 0px;
+        }
+
+            #wrap #page-left-shadow {
+                left: 0px;
+                top: 0px;
+                position: absolute;
+                background-position: -14px 0px;
+                background-repeat: repeat-y;
+                width: 8px;
+                height: 100%;
+            }
+
+        #page-bottom-shadow {
+            bottom: 0px;
+            position: absolute;
+            background-position: -14px 0px;
+            background-repeat: repeat-x;
+            width: 100%;
+            height: 8px;
+        }
+
+        .repeat-y-sprite, #page-left-shadow, #page-right-shadow {
+            background: transparent url("http://static.huluim.com/huluguru/common/repeat-y-sf0c33273bd.png") no-repeat scroll 0% 0%;
+        }
+
+        #page-right-shadow {
+            right: 0px;
+            top: 0px;
+            position: absolute;
+            background-position: -24px 0px;
+            background-repeat: repeat-y;
+            width: 8px;
+            height: 100%;
+        }
+
+        .z-index-layer-1 {
+            z-index: -1;
+        }
+
+
+        #masthead #key-art ul.slides .plus-promo-v2 .keyart {
+            width: 100%;
+            height: 100%;
+        }
+
+        #masthead #key-art ul.slides li img.keyart {
+            position: absolute;
+            left: 0px;
+            top: 0px;
+            max-width: 100%;
+        }
+
+        #masthead #key-art ul.slides .plus-promo-v2 .metadata.top {
+            bottom: 0px;
+            height: 100%;
+        }
+
+        #masthead #key-art ul.slides .plus-promo-v2 .metadata {
+            width: auto !important;
+        }
+
+        #masthead #key-art ul.slides li div.metadata {
+            text-shadow: 0px 0px 1px #AAA;
+            position: absolute;
+        }
+
+        #masthead #key-art ul.slides li .transparent-click-area {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            left: 0px;
+            top: 0px;
+            background: #000 none repeat scroll 0% 0%;
+            opacity: 0;
+        }
+
+        a {
+            outline: medium none;
+            color: #444;
+            text-decoration: none;
+            font-weight: normal;
+        }
+
+        html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td {
+            font-family: Helvetica,Arial,Verdana,sans-serif;
+            line-height: 1.7em;
+        }
+
+        .slides, .flex-control-nav, .flex-direction-nav {
+            list-style: outside none none;
+        }
+
+        #masthead.controls ol.flex-control-nav {
+            bottom: 0px;
+            width: 30%;
+            left: 35%;
+            padding-bottom: 10px;
+        }
+
+        .flex-control-nav {
+            width: 100%;
+            position: absolute;
+            bottom: -30px;
+            text-align: center;
+        }
+
+        .slides, .flex-control-nav, .flex-direction-nav {
+            margin: 0px;
+            padding: 0px;
+            list-style: outside none none;
+        }
+
+        #masthead.controls ol.flex-control-nav li a {
+            text-indent: 110%;
+            white-space: nowrap;
+            overflow: hidden;
+            border-radius: 8px;
+            background-repeat: no-repeat;
+            background-position: -5px -35px;
+            height: 8px;
+            width: 8px;
+            background-color: transparent;
+            display: block;
+            cursor: pointer;
+        }
+
+            .masthead-sprite, #masthead #key-art ul.slides li .play-button, #masthead #key-art ul.slides li .add-to-queue-button, #masthead #key-art ul.slides li .add-to-queue-button.hover, #masthead #key-art ul.slides li .remove-from-queue-button, #masthead #key-art ul.slides li .add-to-favorites-button, #masthead #key-art ul.slides li .add-to-favorites-button.hover, #masthead #key-art ul.slides li .remove-from-favorites-button, #masthead #key-art ul.slides li .add-to-watchlist, #masthead #key-art ul.slides li .add-to-watchlist:hover, #masthead #key-art ul.slides li .add-to-watchlist.hover, #masthead #key-art ul.slides li .remove-from-watchlist, #masthead #key-art ul.slides li .remove-from-watchlist:hover, #masthead #key-art ul.slides li .remove-from-watchlist.hover, #masthead #key-art ul.slides .plus-promo .try-button .button-arrow-icon, #masthead.small #key-art ul.slides li .add-to-queue-button, #masthead.small #key-art ul.slides li .add-to-queue-button.hover, #masthead.small #key-art ul.slides li .remove-from-queue-button, #masthead.small #key-art ul.slides li .add-to-favorites-button, #masthead.small #key-art ul.slides li .add-to-favorites-button.hover, #masthead.small #key-art ul.slides li .remove-from-favorites-button, #masthead .left-arrow .arrow-icon, #masthead .left-arrow.hover .arrow-icon, #masthead .right-arrow .arrow-icon, #masthead .right-arrow.hover .arrow-icon, body.small #masthead.small #key-art ul.slides .plus-promo .try-button .button-arrow-icon, #masthead.controls ol.flex-control-nav li a, #masthead.controls ol.flex-control-nav li a.active, .player-tray .tray.TYPE_S_ONE_ROW .prev, .embed-tray .tray.TYPE_S_ONE_ROW .prev, .player-tray .tray.TYPE_S_ONE_ROW .prev:hover, .embed-tray .tray.TYPE_S_ONE_ROW .prev:hover, .player-tray .tray.TYPE_S_ONE_ROW .next, .embed-tray .tray.TYPE_S_ONE_ROW .next, .player-tray .tray.TYPE_S_ONE_ROW .next:hover, .embed-tray .tray.TYPE_S_ONE_ROW .next:hover, #key-art .play-button {
+                background: transparent url("http://static.huluim.com/huluguru/masthead-sf61c590a59.png") no-repeat scroll 0% 0%;
+            }
+
+        a {
+            outline: medium none;
+            color: #444;
+            text-decoration: none;
+            font-weight: normal;
+        }
+
+        #masthead.controls ol.flex-control-nav li a.active {
+            background-repeat: no-repeat;
+            background-position: -13px -35px;
+            height: 8px;
+            width: 8px;
+            background-color: transparent;
+        }
+
+        #masthead.controls ol.flex-control-nav li a {
+            text-indent: 110%;
+            white-space: nowrap;
+            overflow: hidden;
+            border-radius: 8px;
+            background-repeat: no-repeat;
+            background-position: -5px -35px;
+            height: 8px;
+            width: 8px;
+            background-color: transparent;
+            display: block;
+            cursor: pointer;
+        }
+
+        #masthead .left-arrow {
+            left: 0px;
+        }
+
+        #masthead .left-arrow, #masthead .right-arrow {
+            position: absolute;
+            width: 64px;
+            height: 64px;
+            top: 50%;
+            margin-top: -32px;
+        }

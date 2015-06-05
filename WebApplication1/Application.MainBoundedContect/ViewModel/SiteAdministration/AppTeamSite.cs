@@ -22,7 +22,7 @@ namespace Application.MainBoundedContect.ViewModel.SiteAdministration
         public int TeamIntrestId { get; set; }
 
         public ICollection<Tag> Tags;
-        public ICollection<Report> ReportsRelated;
+       // public ICollection<Report> ReportsRelated;
         public ICollection<Tile> Tiles;
         public AppTeamSite() {
             TeamOwnerObjectList = new List<UserLoginApp>();

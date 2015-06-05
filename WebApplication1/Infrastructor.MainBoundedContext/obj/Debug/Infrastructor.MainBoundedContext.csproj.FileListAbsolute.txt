@@ -78,3 +78,4 @@ E:\MyWebApp\WebAppDemo\WebApplication1\Infrastructor.MainBoundedContext\obj\Debu
 E:\MyWebApp\WebAppDemo\WebApplication1\Infrastructor.MainBoundedContext\obj\Debug\Infrastructor.MainBoundedContext.pdb
 D:\MyGit\WebAppDemo\WebApplication1\Infrastructor.MainBoundedContext\obj\Debug\Infrastructor.MainBoundedContext.Migrations.Test.resources
 D:\MyGit\WebAppDemo\WebApplication1\Infrastructor.MainBoundedContext\obj\Debug\Infrastructor.MainBoundedContext.csproj.GenerateResource.Cache
+D:\MyGit\WebAppDemo\WebApplication1\Infrastructor.MainBoundedContext\obj\Debug\Infrastructor.MainBoundedContext.Migrations.Upgrade.resources

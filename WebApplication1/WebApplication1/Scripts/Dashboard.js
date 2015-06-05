@@ -323,7 +323,9 @@
                             $('.show-count select').val('Lower-right');
                             $('.icon .icon-input').html($(this).html());
                             $('.icon .icon-input').attr('icon', $(this).attr('icon'));
-                            tile.icon = '&#x' + $(this).attr('icon');
+                            // tile.icon = '&#x' + $(this).attr('icon');
+                            tile.icon = $(this).html();
+
                             tile.shownCount = 'Lower-right';
                         } else {
                             if (tile.icon == null || /^\s*$/.test(tile.icon)) {
@@ -337,7 +339,9 @@
                     } else {
                         $('.icon .icon-input').html($(this).html());
                         $('.icon .icon-input').attr('icon', $(this).attr('icon'));
-                        tile.icon = '&#x' + $(this).attr('icon');
+                        // tile.icon = '&#x' + $(this).attr('icon');
+                        tile.icon = $(this).html();
+
                     }
                 } else {
                     tile.icon = null;
@@ -1631,18 +1635,18 @@
             return result;
         }
         function initilizeIconPanel() {
-            var i, iconNum, index = 1;
-            var tr;
-            $('.icon-picker table').html('');
-            tr = $('<tr></tr>').appendTo($('.icon-picker table')).append('<td icon="None">None</td>');
-            for (i = 57600; i < 57835; i++) {
-                if (index % 10 == 0) {
-                    tr = $('<tr></tr>').appendTo($('.icon-picker table'));
-                }
-                iconNum = Number(i).toString(16).toUpperCase();
-                $('<td></td>').html('&#x' + iconNum).appendTo(tr).attr('icon', iconNum);
-                index++;
-            }
+            //var i, iconNum, index = 1;
+            //var tr;
+            //$('.icon-picker table').html('');
+            //tr = $('<tr></tr>').appendTo($('.icon-picker table')).append('<td icon="None">None</td>');
+            //for (i = 57600; i < 57835; i++) {
+            //    if (index % 10 == 0) {
+            //        tr = $('<tr></tr>').appendTo($('.icon-picker table'));
+            //    }
+            //    iconNum = Number(i).toString(16).toUpperCase();
+            //    $('<td></td>').html('&#x' + iconNum).appendTo(tr).attr('icon', iconNum);
+            //    index++;
+            //}
         }
     }
 

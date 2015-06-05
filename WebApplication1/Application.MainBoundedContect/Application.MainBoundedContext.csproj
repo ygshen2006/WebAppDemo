@@ -92,6 +92,7 @@
     <Compile Include="Enums\Eums.cs" />
     <Compile Include="Extentions\CategoryExtention.cs" />
     <Compile Include="Extentions\DivisionExtentions.cs" />
+    <Compile Include="Extentions\ReportExtensions.cs" />
     <Compile Include="Extentions\SegementExtensions.cs" />
     <Compile Include="Extentions\TeamTagExtension.cs" />
     <Compile Include="Extentions\TileExtension.cs" />
@@ -103,6 +104,8 @@
     <Compile Include="Services\SiteAdmininstration\CategoryService.cs" />
     <Compile Include="Services\SiteAdmininstration\UsefulLinksService.cs" />
     <Compile Include="Services\SiteAdmininstration\TeamAppService.cs" />
+    <Compile Include="ViewModel\Report\AppReport.cs" />
+    <Compile Include="ViewModel\TeamSites\AppStatus.cs" />
     <Compile Include="ViewModel\TeamSites\AppTeamTag.cs" />
     <Compile Include="Services\TeamAdmin\TeamAdminService.cs" />
     <Compile Include="Services\TeamList\TeamListService.cs" />

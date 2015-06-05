@@ -4099,6 +4099,7 @@ a {
   font-family: metroSysIcons;
   font-size: .7em;
   content: '\e001';
+  color:white;
 }
 .metro .dropdown-toggle.no-marker:after {
   content: "";

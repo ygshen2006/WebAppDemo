@@ -69,6 +69,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AppFilterField.cs" />
+    <Compile Include="Reports\Aggregates\IReportRepository.cs" />
     <Compile Include="Reports\Logics\AND.cs" />
     <Compile Include="Reports\Logics\Constant.cs" />
     <Compile Include="Reports\Logics\Equal.cs" />
@@ -88,7 +89,6 @@
     <Compile Include="Reports\Logics\ParameterProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Reports\Aggregates\Report.cs" />
-    <Compile Include="Reports\Aggregates\ReportType.cs" />
     <Compile Include="Reports\Aggregates\Status.cs" />
     <Compile Include="Reports\Aggregates\Tiles\TileQueryLogic.cs" />
     <Compile Include="Reports\FilterField\ReportOwnerAlias.cs" />
@@ -98,6 +98,7 @@
     <Compile Include="Teams\Aggregates\Category\ICategoryRepository.cs" />
     <Compile Include="Teams\Aggregates\Division\IDivisionRepository.cs" />
     <Compile Include="Teams\Aggregates\Division\ISegmentRepository.cs" />
+    <Compile Include="Teams\Aggregates\ReportStatus\IStatusRepository.cs" />
     <Compile Include="Teams\Aggregates\Tags\ITagRepository.cs" />
     <Compile Include="Teams\Aggregates\TeamList\ITeamListRepository.cs" />
     <Compile Include="Teams\Aggregates\TeamList\TeamSiteTile.cs" />

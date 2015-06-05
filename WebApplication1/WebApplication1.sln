@@ -1,6 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
+# Visual Studio 2013
+VisualStudioVersion = 12.0.21005.1
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApplication1", "WebApplication1\WebApplication1.csproj", "{33A1F240-B922-4960-80A2-2F49934AAA67}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BoundedContext", "BoundedContext", "{A3589574-235F-457D-86F3-229F8BF4A904}"
@@ -34,42 +36,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ReadMe", "ReadMe", "{DC6D3F
 		LearningArticles.txt = LearningArticles.txt
 	EndProjectSection
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ReferenceDlls", "ReferenceDlls", "{3B33A7C7-6D50-442C-A686-45A524A4B2D1}"
-	ProjectSection(SolutionItems) = preProject
-		WebApplication1\bin\CKFinder.dll = WebApplication1\bin\CKFinder.dll
-		WebApplication1\bin\CKFinder.pdb = WebApplication1\bin\CKFinder.pdb
-	EndProjectSection
-EndProject
 Global
-	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 7
-		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
-		SccTeamFoundationServer = https://johnshen.visualstudio.com/defaultcollection
-		SccLocalPath0 = .
-		SccProjectUniqueName1 = WebApplication1\\WebApplication1.csproj
-		SccProjectName1 = WebApplication1
-		SccLocalPath1 = WebApplication1
-		SccProjectUniqueName2 = Domain.MainBoundedContext\\Domain.MainBoundedContext.csproj
-		SccProjectTopLevelParentUniqueName2 = WebApplication1.sln
-		SccProjectName2 = Domain.MainBoundedContext
-		SccLocalPath2 = Domain.MainBoundedContext
-		SccProjectUniqueName3 = Infrastructor.MainBoundedContext\\Infrastructor.MainBoundedContext.csproj
-		SccProjectTopLevelParentUniqueName3 = WebApplication1.sln
-		SccProjectName3 = Infrastructor.MainBoundedContext
-		SccLocalPath3 = Infrastructor.MainBoundedContext
-		SccProjectUniqueName4 = Application.MainBoundedContect\\Application.MainBoundedContext.csproj
-		SccProjectTopLevelParentUniqueName4 = WebApplication1.sln
-		SccProjectName4 = Application.MainBoundedContect
-		SccLocalPath4 = Application.MainBoundedContect
-		SccProjectUniqueName5 = Domain.SeedWork\\Domain.SeedWork.csproj
-		SccProjectTopLevelParentUniqueName5 = WebApplication1.sln
-		SccProjectName5 = Domain.SeedWork
-		SccLocalPath5 = Domain.SeedWork
-		SccProjectUniqueName6 = Infrastructor.SeedWork\\Infrastructor.SeedWork.csproj
-		SccProjectTopLevelParentUniqueName6 = WebApplication1.sln
-		SccProjectName6 = Infrastructor.SeedWork
-		SccLocalPath6 = Infrastructor.SeedWork
-	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU

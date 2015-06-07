@@ -273,3 +273,538 @@
             top: 50%;
             margin-top: -32px;
         }
+
+        .iframe-hacker {
+    display: none;
+}
+        #masthead .left-arrow {
+    left: 0px;
+}
+#masthead .left-arrow, #masthead .right-arrow {
+    position: absolute;
+    width: 64px;
+    height: 64px;
+    top: 50%;
+    margin-top: -32px;
+}
+a {
+    outline: medium none;
+    color: #444;
+    text-decoration: none;
+    font-weight: normal;
+}
+#masthead .left-arrow .arrow-icon {
+    position: absolute;
+    left: 22px;
+    top: 15px;
+    background-repeat: no-repeat;
+    background-position: -29px -35px;
+    height: 35px;
+    width: 20px;
+}
+#masthead .right-arrow.hover .arrow-icon {
+    background-repeat: no-repeat;
+    background-position: -49px -35px;
+    height: 35px;
+    width: 20px;
+}
+
+#masthead .right-arrow .arrow-icon {
+    position: absolute;
+    right: 22px;
+    top: 15px;
+    background-repeat: no-repeat;
+    background-position: -42px 0px;
+    height: 35px;
+    width: 20px;
+}
+#masthead .right-arrow {
+    right: 0px;
+}
+
+
+
+.destination_type {
+    margin-top: 30px;
+}
+.type_content {
+    width: 1180px;
+    height: 440px;
+    margin-bottom: 80px;
+}
+
+.type_content .type_nav {
+    position: absolute;
+    width: 280px;
+    height: 440px;
+    background: transparent url("http://pages.c-ctrip.com/gs_static/act/img/left_box.png?t=b043443599de62f2837cd0bb5955733c") no-repeat scroll 0% 0%;
+    text-align: center;
+    vertical-align: middle;
+    float: left;
+}
+.type_content .type_nav a {
+    width: 280px;
+    height: 440px;
+    display: block;
+    text-decoration: none;
+    color: #FFF;
+}
+.type_content .type_nav a h1 {
+    width: 280px;
+    height: 47px;
+    position: absolute;
+    top: 262px;
+    left: 0px;
+    font: 500 47px/47px Tahoma,Verdana,Arial,"Microsoft YaHei",SimSun,sans-serif;
+    text-decoration: none;
+}
+.type_content .type_nav a em {
+    position: absolute;
+    top: 338px;
+    left: 50px;
+    width: 180px;
+    height: 0px;
+    border-bottom: 1px solid #FFF;
+    display: block;
+}
+.type_content .type_nav a h2 {
+    width: 88px;
+    position: absolute;
+    top: 320px;
+    left: 96px;
+    font: 500 33px/34px Tahoma,Verdana,Arial,"Microsoft YaHei",SimSun,sans-serif;
+    background: #84A2D4 none repeat scroll 0% 0%;
+}
+.type_scroll {
+    margin-left: 280px;
+    height: 440px;
+    width: 900px;
+    position: absolute;
+}
+.type-viewport {
+    position: relative;
+    width: 900px;
+    height: 460px;
+    overflow: hidden;
+    padding-left: 10px;
+}
+.type_list {
+    height: 440px;
+}
+.type_list li {
+    height: 460px;
+    overflow: hidden;
+}
+.type_list li a {
+    width: 280px;
+    height: 210px;
+    overflow: hidden;
+}
+.type_list li a {
+    position: relative;
+    display: block;
+    text-decoration: none;
+    margin-bottom: 20px;
+    background: transparent url("http://pages.c-ctrip.com/gs_static/act/img/img_back.png?t=1134e14c6b099bd323575b6055d98fbf") no-repeat scroll 0% 0%;
+    width: 280px;
+    height: 210px;
+    overflow: hidden;
+}
+.type_list li a span {
+    position: absolute;
+    width: 270px;
+    height: 38px;
+    line-height: 38px;
+    bottom: 0px;
+    left: 0px;
+    background: #FFF none repeat scroll 0% 0%;
+    font-size: 18px;
+    padding-left: 10px;
+    color: #444;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+#gs_feedback_gotop .side_fixed {
+    position: fixed;
+    right: 0px !important;
+    top: 300px !important;
+    height: 60px;
+}
+#gs_feedback_gotop .side_fixed {
+    bottom: 50px;
+    z-index: 140;
+}
+#gs_feedback_gotop .to_top {
+    width: 40px !important;
+    height: 60px !important;
+    padding: 0px;
+    background: transparent url("../Images/Homepage/right_share.png") no-repeat scroll 0px 0px !important;
+}
+#gs_feedback_gotop .to_top {
+    position: relative;
+    display: block;
+    width: 35px;
+    height: 0px;
+    margin-left: -8px;
+    margin-bottom: 2px;
+    padding-top: 35px;
+    overflow: hidden;
+    cursor: pointer;
+    z-index: 2;
+    visibility: hidden;
+}
+
+.appd_wrap_open {
+    position: fixed;
+    z-index: 99999;
+    left: 0px;
+    bottom: 90px;
+    width: 44px;
+    height: 95px;
+    overflow: hidden;
+    cursor:pointer;
+}
+
+.appd_wrap_open_cnt {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    background: transparent url("http://webresource.c-ctrip.com/ResUnionOnline/R3/float/pic/app_wrap_open.png") repeat scroll 0% 0%;
+}
+
+
+.appd_wrap_pop_cnt {
+    position: absolute;
+    left: 0px;
+    bottom: 0px;
+    width: 100%;
+    background: transparent url("http://pic.c-ctrip.com/index/bg_mask20131029.png") repeat-x scroll 0px -225px;
+}
+.appd_wrap_pop {
+    display: none;
+    position: fixed;
+    z-index: 99998;
+    left: 0px;
+    bottom: 0px;
+    width: 100%;
+    height: 205px;
+    overflow: hidden;
+}
+.appd_wrap_pop_box {
+    position: relative;
+    z-index: 1;
+    width: 980px;
+    height: 185px;
+    margin: 0px auto;
+    font: 12px/1.5 arial,Simsun,sans-serif;
+    color: #333;
+}
+.appd_wrap_pop .appd_wrap_close {
+    position: absolute;
+    top: 10px;
+    right: 0px;
+    font: 38px Simsun;
+    color: #9AA1A8;
+    outline: 0px none;
+}
+.appd_wrap_pop a {
+    text-decoration: none;
+}
+
+.pic_for_gift {
+    top: -20px;
+    width: 233px;
+    height: 205px;
+    background: transparent url("http://webresource.c-ctrip.com/ResUnionOnline/R3/float/pic/gift_float_ppl.png") repeat scroll 0% 0%;
+}
+.appd_wrap_pop_pic_phone {
+    position: absolute;
+}
+.style_for_gift {
+    left: 530px;
+    width: 260px;
+}
+.appd_wrap_pop_text {
+    position: absolute;
+    top: 30px;
+    right:120px;
+    font-family: "Segoe UI";
+    color: #FFF;
+}
+.style_for_gift .word_1 {
+    color:white;
+
+    font-size: 36px;
+    line-height: 1.1;
+}
+.appd_wrap_pop input, .appd_wrap_pop p {
+    margin: 0px;
+    padding: 0px;
+}
+.style_for_gift .word_1 span {
+    color:white;
+    font-size: 50px;
+}
+.style_for_gift .word_2 {
+    color:white;
+    font-size: 17px;
+    line-height: 2;
+}
+.appd_wrap_pop input, .appd_wrap_pop p {
+    margin: 0px;
+    padding: 0px;
+}
+.style_for_gift .word_3 {
+    color:white;
+
+    margin-top: 5px;
+}
+.appd_wrap_pop input, .appd_wrap_pop p {
+    margin: 0px;
+    padding: 0px;
+}
+img, fieldset {
+    border: medium none;
+    vertical-align: middle;
+}
+
+.type_scroll .bx-prev.disabled {
+    background-position: 0px -50px;
+    cursor: default;
+}
+.type_scroll .bx-prev {
+    background-position: 0px 0px;
+    left: -20px;
+}
+.type_scroll .bx-prev, .type_scroll .bx-next {
+    position: absolute;
+    display: inline-block;
+    width: 22px;
+    height: 36px;
+    overflow: hidden;
+    top: 205px;
+    background: transparent url("http://pages.c-ctrip.com/gs_static/act/img/nav_icon.png?t=6b262e4b8eaca9fa5c67611d2f00aa89") no-repeat scroll 0% 0%;
+    cursor: pointer;
+}
+.type_scroll .bx-next {
+    background-position: -27px 0px;
+    right: -40px;
+}
+
+
+.destination_type .type_nav a i {
+    background-position: 0px 0px;
+}
+.type_content .type_nav a i {
+    position: absolute;
+    top: 92px;
+    left: 55px;
+    width: 170px;
+    height: 145px;
+    background: transparent url("http://pages.c-ctrip.com/gs_static/act/img/left_icon.png?t=d82a184ba9848d0139ea9d6dbab4bc23") no-repeat scroll 0% 0%;
+}
+
+.type_content .type_nav a h1 {
+    color:white;
+    width: 280px;
+    height: 47px;
+    position: absolute;
+    top: 262px;
+    left: 0px;
+    font: 500 47px/47px Tahoma,Verdana,Arial,"Sego UI",SimSun,sans-serif;
+    text-decoration: none;
+}
+
+.mod {
+    width: 1180px;
+    margin: 28px auto 0px;
+}
+
+.car .mod-bd, .buy .mod-bd, .play .mod-bd, .guide .mod-bd {
+    height: 600px;
+    overflow: hidden;
+}
+.metro div, .metro span, .metro p {
+    font-family: "Segoe UI_","Open Sans",Verdana,Arial,Helvetica,sans-serif;
+    font-weight: normal;
+    font-style: normal;
+}
+.mod-bd {
+    background: #FFF none repeat scroll 0% 0%;
+    border-width: medium 1px 1px;
+    border-style: none solid solid;
+    border-color: -moz-use-text-color #E0E0E0 #E0E0E0;
+    -moz-border-top-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    border-image: none;
+    overflow: hidden;
+}
+
+.mod-bd::before, .mod-bd::after, .mod::before, .mod::after {
+    display: table;
+    content: "";
+    line-height: 0;
+}
+.mod-hd {
+    position: relative;
+    height: 36px;
+    padding-left: 11px;
+    border-bottom: 2px solid #3983E5;
+    text-align: left;
+}
+.title {
+    font: 16px/26px "Microsoft YaHei","SimHei",SimSun,Tahoma,Verdana,Arial,sans-serif;
+}
+.title .current {
+    color: #06C;
+}
+.title .current i {
+    display: inline-block;
+}
+.title i {
+    position: absolute;
+    left: 50%;
+    margin-left: -3px;
+    bottom: 3px;
+    display: none;
+    width: 0px;
+    height: 0px;
+    overflow: hidden;
+    line-height: 0;
+    font-size: 0px;
+    vertical-align: middle;
+    border-width: 0px 6px 6px;
+    border-style: none solid solid;
+    border-color: -moz-use-text-color transparent #3983E5;
+}
+.car .mod-bd, .buy .mod-bd, .play .mod-bd, .guide .mod-bd {
+    overflow: hidden;
+}
+.mod-bd {
+    background: #FFF none repeat scroll 0% 0%;
+    border-width: medium 1px 1px;
+    border-style: none solid solid;
+    border-color: -moz-use-text-color #E0E0E0 #E0E0E0;
+    -moz-border-top-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    border-image: none;
+    overflow: hidden;
+}
+.car .product, .play .product, .buy .product, .guide .product, .car .entrance, .play .entrance, .buy .entrance, .guide .entrance {
+    overflow: hidden;
+}
+.entrance {
+    float: left;
+    display: inline;
+    width: 187px;
+    padding: 0px 20px 15px;
+    margin-right: -3px;
+    overflow: auto;
+}
+
+
+.product {
+    position: relative;
+    height: 600px;
+    margin-left: 229px;
+    padding: 15px 19px;
+    border-left: 1px dotted #A3A3A3;
+    overflow:auto;
+}
+.inner-tabs-nav {
+    height: 20px;
+    margin-bottom: 10px;
+}
+ul, ol {
+    list-style: outside none none;
+}
+.inner-tabs-nav li.active {
+    background: #3983E5 none repeat scroll 0% 0%;
+    color: #FFF;
+    border-radius: 3px;
+}
+.inner-tabs-nav li {
+    float: left;
+    display: inline-block;
+    line-height: 20px;
+    margin-right: 15px;
+    padding: 0px 8px;
+}
+.inner-tabs-nav::before, .inner-tabs-nav::after {
+    display: table;
+    content: "";
+    line-height: 0;
+}
+.linked-more {
+    position: absolute;
+    right: 20px;
+    top: 15px;
+}
+a {
+    color: #3983E5;
+    text-decoration: none;
+}
+.car .product-bd, .play .product-bd, .buy .product-bd, .guide .product-bd {
+    margin-left: -10px;
+}
+
+.car .inner-tab-panel, .play .inner-tab-panel, .buy .inner-tab-panel, .guide .inner-tab-panel {
+    margin-left: 0px;
+    padding-right: 0px;
+}
+.product-item {
+    position: relative;
+    width: 220px;
+    float: left;
+    margin: 0px 0px 10px 10px;
+    overflow: hidden;
+}
+.item-thumbnail {
+    position: relative;
+    width: 220px;
+    height: 110px;
+    margin-bottom: 3px;
+    overflow: hidden;
+}
+.item-thumbnail img {
+    transition: transform 0.3s ease 0s;
+    width: 220px;
+}
+img, fieldset {
+    border: medium none;
+    vertical-align: middle;
+}
+.item-name {
+    height: 16px;
+    line-height: 16px;
+    text-align: left;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.item-type {
+    display: block;
+    color: #999;
+    line-height: 35px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    text-align: left;
+}
+.item-label {
+    float: right;
+    overflow: hidden;
+    margin: 7px 0px 0px;
+}
+.keyword-short a {
+    display: inline-block;
+    max-width: 72px;
+    overflow: hidden;
+}

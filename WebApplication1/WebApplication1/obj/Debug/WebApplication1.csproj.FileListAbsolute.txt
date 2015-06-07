@@ -227,7 +227,6 @@ E:\MyWebApp\WebAppDemo\WebApplication1\WebApplication1\bin\Domain.MainBoundedCon
 E:\MyWebApp\WebAppDemo\WebApplication1\WebApplication1\bin\Domain.SeedWork.pdb
 E:\MyWebApp\WebAppDemo\WebApplication1\WebApplication1\bin\Infrastructor.MainBoundedContext.pdb
 E:\MyWebApp\WebAppDemo\WebApplication1\WebApplication1\bin\Infrastructor.SeedWork.pdb
-E:\MyWebApp\WebAppDemo\WebApplication1\WebApplication1\bin\CKFinder.pdb
 E:\MyWebApp\WebAppDemo\WebApplication1\WebApplication1\bin\EntityFramework.xml
 E:\MyWebApp\WebAppDemo\WebApplication1\WebApplication1\bin\EntityFramework.SqlServer.xml
 E:\MyWebApp\WebAppDemo\WebApplication1\WebApplication1\bin\Microsoft.AspNet.Identity.Core.xml

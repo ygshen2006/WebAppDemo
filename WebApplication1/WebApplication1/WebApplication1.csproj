@@ -190,6 +190,7 @@
     <Content Include="Images\default-team.png" />
     <Content Include="Images\downArrow.PNG" />
     <Content Include="Images\Homepage\repeat-y-sf0c33273bd.png" />
+    <Content Include="Images\Homepage\right_share.png" />
     <Content Include="Images\index.gif" />
     <Content Include="Images\isguidex.png" />
     <Content Include="Images\run.jpg" />
@@ -224,6 +225,7 @@
     <Content Include="js\uploader\jquery.upload.js" />
     <Content Include="js\wangEditor-1.3.js" />
     <Content Include="Scripts\Dashboard.js" />
+    <Content Include="Scripts\HomePage.js" />
     <Content Include="Scripts\JavaScript1.js" />
     <Content Include="Scripts\myteampagejs.js" />
     <Content Include="Scripts\skin\segment-icon.png" />

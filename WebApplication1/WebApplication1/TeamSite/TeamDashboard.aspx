@@ -9,8 +9,6 @@
 </head>
 <body>
     <form id="form1" runat="server">
-
-
         <div class="dashboard-body">
             <div class="grid-wrapper">
                 <h1>选择一个磁贴</h1>
@@ -46,9 +44,6 @@
                 <a class="tile-create">&#x002b; 新建磁贴</a>
                 <a class="tile-delete">&#xE014; 删除磁贴</a>
             </div>
-
-
-
 
             <div class="feature-area">
                 <div class="feature-area-left">
@@ -620,7 +615,6 @@
                 </div>
             </div>
             <hr style="clear: both;" />
-
             <div class="action-area">
                 <a class="action-save action-disable">Save Dashboard</a>
                 <a class="action-cancel">Cancel</a>

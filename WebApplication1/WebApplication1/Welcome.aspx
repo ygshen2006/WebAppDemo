@@ -10,8 +10,8 @@
     <link href="Content/home.css" rel="stylesheet" />
 
 
-    <title></title>
-    
+    <title>首页</title>
+
 </head>
 <body class="metro">
 
@@ -39,8 +39,7 @@
                             <a class="dropdown-toggle" href="#">随便看看</a>
                             <ul class="dropdown-menu place-center dark" data-role="dropdown" data-show="hover">
                                 <li><a href="#">功能描述</a></li>
-                                <li><a href="TeamSite/MyTeamSitesAdminPage.aspx">团队查找</a></li>
-                                <li><a href="#">我的团队</a></li>
+                                <li><a href="TeamSite/MyTeamSitesAdminPage.aspx">企业查找</a></li>
                             </ul>
 
 
@@ -158,55 +157,59 @@
                                     </div>
                                 </li>
                                 <li style="width: 100%; float: left; margin-right: -100%; display: none;" masthead-position="4">
-                                    <img src="http://ib.huluim.com/assets/new-mastheads/izombie_astroburger.png?size=1600x600" class="keyart" alt="iZombie - Astroburger">
-                                    <div class="gradient-overlay ad-root ">
-                                        <div style="opacity: 0;" class="play-button smart-hover hidden" hover-action="idleAware"></div>
-                                        <div style="left: 87px; display: none;" class="metadata top left">
-                                            <div style="opacity: 1;" class="promotional-text">
-                                                <div class="shadow">Watch the Full Episode</div>
-                                                <div class="origin">Watch the Full Episode</div>
+                                    <div class="plus-promo-v2">
+                                        <img src="http://ib.huluim.com/assets/new-mastheads/izombie_astroburger.png?size=1600x600" class="keyart" alt="iZombie - Astroburger">
+                                        <div class="gradient-overlay ad-root ">
+                                            <div style="opacity: 0;" class="play-button smart-hover hidden" hover-action="idleAware"></div>
+                                            <div style="left: 87px; display: none;" class="metadata top left">
+                                                <div style="opacity: 1;" class="promotional-text">
+                                                    <div class="shadow">Watch the Full Episode</div>
+                                                    <div class="origin">Watch the Full Episode</div>
+                                                </div>
+                                                <div style="opacity: 1;" class="headline">
+                                                    <div class="shadow">iZombie</div>
+                                                    <div class="origin">iZombie</div>
+                                                </div>
+                                                <div style="opacity: 1;" class="title">
+                                                    <div class="shadow">Astroburger</div>
+                                                    <div class="origin">Astroburger</div>
+                                                </div>
+                                                <div style="opacity: 1;" class="description">
+                                                    <div class="shadow">When someone close to Major dies of an apparent suicide, Liv consumes the brains, resulting in a mix of reality and paranoia.</div>
+                                                    <div class="origin">When someone close to Major dies of an apparent suicide, Liv consumes the brains, resulting in a mix of reality and paranoia.</div>
+                                                </div>
                                             </div>
-                                            <div style="opacity: 1;" class="headline">
-                                                <div class="shadow">iZombie</div>
-                                                <div class="origin">iZombie</div>
-                                            </div>
-                                            <div style="opacity: 1;" class="title">
-                                                <div class="shadow">Astroburger</div>
-                                                <div class="origin">Astroburger</div>
-                                            </div>
-                                            <div style="opacity: 1;" class="description">
-                                                <div class="shadow">When someone close to Major dies of an apparent suicide, Liv consumes the brains, resulting in a mix of reality and paranoia.</div>
-                                                <div class="origin">When someone close to Major dies of an apparent suicide, Liv consumes the brains, resulting in a mix of reality and paranoia.</div>
-                                            </div>
+                                            <a class="transparent-click-area beacon beacon-click" href="/watch/795838" click-event-type="sitetracking,masthead/click"></a>
+                                            <div style="left: 87px; opacity: 1; display: none;" class="metadata bottom left"><span><a style="display: inline; opacity: 0;" class="add-to-queue-button save-button smart-hover hidden" hover-action="idleAware" href="javascript:void(0)"></a><a style="display: none; opacity: 0;" class="remove-from-queue-button remove-button smart-hover hidden" hover-action="idleAware" href="javascript:void(0)"></a></span></div>
                                         </div>
-                                        <a class="transparent-click-area beacon beacon-click" href="/watch/795838" click-event-type="sitetracking,masthead/click"></a>
-                                        <div style="left: 87px; opacity: 1; display: none;" class="metadata bottom left"><span><a style="display: inline; opacity: 0;" class="add-to-queue-button save-button smart-hover hidden" hover-action="idleAware" href="javascript:void(0)"></a><a style="display: none; opacity: 0;" class="remove-from-queue-button remove-button smart-hover hidden" hover-action="idleAware" href="javascript:void(0)"></a></span></div>
                                     </div>
                                 </li>
                                 <li style="width: 100%; float: left; margin-right: -100%; display: none;" masthead-position="5">
-                                    <img src="http://ib.huluim.com/assets/new-mastheads/bullseye_runaway_train_06-03-2015_mh.png?size=1600x600" class="keyart" alt="Bullseye - Runaway Train">
-                                    <div class="gradient-overlay ad-root ">
-                                        <div style="opacity: 0;" class="play-button smart-hover hidden" hover-action="idleAware"></div>
-                                        <div style="left: 87px; display: none;" class="metadata top left">
-                                            <div style="opacity: 1;" class="promotional-text">
-                                                <div class="shadow">Watch the All-New Episode</div>
-                                                <div class="origin">Watch the All-New Episode</div>
+                                    <div class="plus-promo-v2">
+                                        <img src="http://ib.huluim.com/assets/new-mastheads/bullseye_runaway_train_06-03-2015_mh.png?size=1600x600" class="keyart" alt="Bullseye - Runaway Train">
+                                        <div class="gradient-overlay ad-root ">
+                                            <div style="opacity: 0;" class="play-button smart-hover hidden" hover-action="idleAware"></div>
+                                            <div style="left: 87px; display: none;" class="metadata top left">
+                                                <div style="opacity: 1;" class="promotional-text">
+                                                    <div class="shadow">Watch the All-New Episode</div>
+                                                    <div class="origin">Watch the All-New Episode</div>
+                                                </div>
+                                                <div style="opacity: 1;" class="headline">
+                                                    <div class="shadow">Bullseye</div>
+                                                    <div class="origin">Bullseye</div>
+                                                </div>
+                                                <div style="opacity: 1;" class="title">
+                                                    <div class="shadow">Runaway Train</div>
+                                                    <div class="origin">Runaway Train</div>
+                                                </div>
+                                                <div style="opacity: 1;" class="description">
+                                                    <div class="shadow">Share the adrenaline high as eight more contestants push their bodies and minds to the extreme.</div>
+                                                    <div class="origin">Share the adrenaline high as eight more contestants push their bodies and minds to the extreme.</div>
+                                                </div>
                                             </div>
-                                            <div style="opacity: 1;" class="headline">
-                                                <div class="shadow">Bullseye</div>
-                                                <div class="origin">Bullseye</div>
-                                            </div>
-                                            <div style="opacity: 1;" class="title">
-                                                <div class="shadow">Runaway Train</div>
-                                                <div class="origin">Runaway Train</div>
-                                            </div>
-                                            <div style="opacity: 1;" class="description">
-                                                <div class="shadow">Share the adrenaline high as eight more contestants push their bodies and minds to the extreme.</div>
-                                                <div class="origin">Share the adrenaline high as eight more contestants push their bodies and minds to the extreme.</div>
-                                            </div>
+                                            <a class="transparent-click-area beacon beacon-click" href="/watch/799011" click-event-type="sitetracking,masthead/click"></a>
+                                            <div style="left: 87px; opacity: 1; display: none;" class="metadata bottom left"><span><a style="display: inline; opacity: 0;" class="add-to-queue-button save-button smart-hover hidden" hover-action="idleAware" href="javascript:void(0)"></a><a style="display: none; opacity: 0;" class="remove-from-queue-button remove-button smart-hover hidden" hover-action="idleAware" href="javascript:void(0)"></a></span></div>
                                         </div>
-                                        <a class="transparent-click-area beacon beacon-click" href="/watch/799011" click-event-type="sitetracking,masthead/click"></a>
-                                        <div style="left: 87px; opacity: 1; display: none;" class="metadata bottom left"><span><a style="display: inline; opacity: 0;" class="add-to-queue-button save-button smart-hover hidden" hover-action="idleAware" href="javascript:void(0)"></a><a style="display: none; opacity: 0;" class="remove-from-queue-button remove-button smart-hover hidden" hover-action="idleAware" href="javascript:void(0)"></a></span></div>
                                     </div>
                                 </li>
                             </ul>
@@ -222,148 +225,234 @@
                         <div iframe-added="1" class="left-arrow-container smart-hover iframe-hacker-container" hover-action="spotlight" href="javascript:void(0)" style="z-index: 1">
                             <iframe style="height: 100%; width: 100%;" class="iframe-hacker"></iframe>
                             <a class="left-arrow smart-hover" hover-action="spotlight" href="javascript:void(0)">
-                                <div style="opacity: 0;" class="arrow-icon smart-hover hidden" hover-action="idleAware"></div>
+                                <div style="opacity: 0;" class="arrow-icon smart-hover" hover-action="idleAware"></div>
                             </a>
                         </div>
                         <div iframe-added="1" class="right-arrow-container smart-hover iframe-hacker-container" hover-action="spotlight" href="javascript:void(0)" style="z-index: 1">
                             <iframe style="height: 100%; width: 100%;" class="iframe-hacker"></iframe>
                             <a class="right-arrow smart-hover" hover-action="spotlight" href="javascript:void(0)">
-                                <div style="opacity: 0;" class="arrow-icon smart-hover hidden" hover-action="idleAware"></div>
+                                <div style="opacity: 0;" class="arrow-icon smart-hover" hover-action="idleAware"></div>
                             </a>
                         </div>
                     </div>
                 </div>
             </div>
-            <div style="margin-top: 20px; width: 90%" class="main-content clearfix container">
-                <div class="tile-area no-padding clearfix">
-                    <div class="tile-group no-margin no-padding clearfix" style="width: 100%">
+            <div style="margin-top: 20px; width: 1200px; margin: 0px auto">
+                <div id="destination" class="type_content  destination_type cf">
+                    <div class="type_nav">
+                        <a href="/2014/list-place.html" target="_blank" title=""><i></i>
+                            <h1>企业展示</h1>
 
+                        </a>
+                    </div>
+                    <div class="type_scroll">
+                        <div class="type-viewport">
+                            <div style="max-width: 880px; margin: 0px auto;" class="bx-wrapper">
+                                <div style="width: 100%; overflow: hidden; position: relative; height: 460px;" class="bx-viewport">
+                                    <ul style="width: 915%; position: relative; transition-duration: 0s; transform: translate3d(0px, 0px, 0px);" class="type_list destination_list">
+                                        <li style="float: left; list-style: none; position: relative; width: 280px; margin-right: 20px;">
+                                            <a href="/2014/place/guoneilvyouchengshi.html" target="_blank">
+                                                <img style="width: 280; height: 210;" src="http://youimg1.c-ctrip.com/target/fd/tg/g1/M09/6B/C7/CghzflSqQluAaK3_AAB2yroAjKA293.jpg" alt="">
+                                                <span>国内最佳旅游城市</span></a>
+                                            <a href="/2014/place/haiwailvyou.html" target="_blank">
+                                                <img style="width: 280; height: 210;" src="http://youimg1.c-ctrip.com/target/fd/tg/g2/M03/6F/12/CghzgVSqQqaAdOWYAABPXZFQAYo045.jpg" alt="">
+                                                <span>海外最佳旅游城市</span></a>
+                                        </li>
+                                        <li style="float: left; list-style: none; position: relative; width: 280px; margin-right: 20px;">
+                                            <a href="/2014/place/guoneilvyoujingqu.html" target="_blank">
+                                                <img style="width: 280; height: 210;" src="http://youimg1.c-ctrip.com/target/fd/tg/g2/M09/6F/35/CghzgFSqQnqAeoXvAABaxI9K5pA847.jpg" alt="">
+                                                <span>国内最佳旅游景区</span></a>
+                                            <a href="/2014/place/shehuayou.html" target="_blank">
+                                                <img style="width: 280; height: 210;" src="http://youimg1.c-ctrip.com/target/fd/tg/g2/M00/6F/6B/CghzgFSqQsqAK6ctAABXXf1KCPQ100.jpg" alt="">
+                                                <span>最佳奢华游目的地</span></a>
+                                        </li>
+                                        <li style="float: left; list-style: none; position: relative; width: 280px; margin-right: 20px;">
+                                            <a href="/2014/place/haidaoyou.html" target="_blank">
+                                                <img style="width: 280; height: 210;" src="http://youimg1.c-ctrip.com/target/fd/tg/g1/M05/6C/15/CghzfVSqQoyASrnuAABJF-ZUID0493.jpg" alt="">
+                                                <span>最佳海岛游目的地</span></a>
+                                            <a href="/2014/place/qinziyou.html" target="_blank">
+                                                <img style="width: 280; height: 210;" src="http://youimg1.c-ctrip.com/target/fd/tg/g2/M02/6F/61/CghzgFSqQraAMVbGAACH9O4Y4Mk672.jpg" alt="">
+                                                <span>最佳亲子游目的地</span></a>
+                                        </li>
+                                        <li style="float: left; list-style: none; position: relative; width: 280px; margin-right: 20px;">
+                                            <a href="/2014/place/balinghou.html" target="_blank">
+                                                <img style="width: 280; height: 210;" src="http://youimg1.c-ctrip.com/target/fd/tg/g2/M09/6E/B3/Cghzf1SqQjaAf6Q8AACDIK2pcPs951.jpg" alt="">
+                                                <span>80后最爱目的地</span></a>
+                                            <a href="/2014/place/zizhuyou.html" target="_blank">
+                                                <img style="width: 280; height: 210;" src="http://youimg1.c-ctrip.com/target/fd/tg/g2/M05/6F/2C/Cghzf1SqQveAUymzAAB2UInP-Tk504.jpg" alt="">
+                                                <span>最佳自助游目的地</span></a>
+                                        </li>
+                                        <li style="float: left; list-style: none; position: relative; width: 280px; margin-right: 20px;">
+                                            <a href="/2014/place/daxuesheng.html" target="_blank">
+                                                <img style="width: 280; height: 210;" src="http://youimg1.c-ctrip.com/target/fd/tg/g2/M0A/6E/BA/Cghzf1SqQkCAbLJGAABzKWd-Xvs500.jpg" alt="">
+                                                <span>大学生最爱目的地</span></a>
+                                            <a href="/2014/place/changjialvxing.html" target="_blank">
+                                                <img style="width: 280; height: 210;" src="http://youimg1.c-ctrip.com/target/fd/tg/g2/M03/6F/71/CghzgFSqQtWAJ88vAACDemChKsQ561.jpg" alt="">
+                                                <span>最佳长假旅行目的地</span></a>
+                                        </li>
+                                        <li style="float: left; list-style: none; position: relative; width: 280px; margin-right: 20px;">
+                                            <a href="/2014/place/zijiayou.html" target="_blank">
+                                                <img style="width: 280; height: 210;" src="http://youimg1.c-ctrip.com/target/fd/tg/g1/M0B/6C/4C/CghzfVSqQuaAUFieAABzzi-H72k188.jpg" alt="">
+                                                <span>最佳自驾游目的地</span></a>
+                                            <a href="/2014/place/gouwu.html" target="_blank">
+                                                <img style="width: 280; height: 210;" src="http://youimg1.c-ctrip.com/target/fd/tg/g1/M07/6B/BD/CghzflSqQkyAcVqEAABkaPxRMCI662.jpg" alt="">
+                                                <span>最佳购物目的地</span></a>
+                                        </li>
+                                        <li style="float: left; list-style: none; position: relative; width: 280px; margin-right: 20px;">
+                                            <a href="/2014/place/qianli.html" target="_blank">
+                                                <img style="width: 280; height: 210;" src="http://youimg1.c-ctrip.com/target/fd/tg/g2/M08/6F/2D/Cghzf1SqQwKAEsr3AACYlj7V1E0918.jpg" alt="">
+                                                <span>最具潜力目的地</span></a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="bx-controls"></div>
+                            </div>
 
-                        <div class="tile quadro double-vertical ol-transparent" style="width: 40%">
-                            <div class="tile-content">
-                                <div class="carousel" data-role="carousel" data-height="100%" data-width="100%" data-controls="false">
-                                    <div class="slide">
-                                        <img src="Images/Homepage/1.jpg" />
-                                    </div>
-                                    <div class="slide">
-                                        <img src="Images/Homepage/2.jpg" />
-                                    </div>
-                                    <div class="slide">
-                                        <img src="Images/Homepage/3.jpg" />
-                                    </div>
-                                </div>
-                            </div>
                         </div>
-                        <div style="display: block; float: left">
-                            <div class="tile bg-lightBlue ol-transparent">
-                                <div class="tile-content icon">
-                                    <span class="icon-blogger" title="博客园"></span>
-                                </div>
-                            </div>
-                            <div class="tile bg-orange ol-transparent">
-                                <div class="tile-content icon">
-                                    <span class="icon-share" title="我的看看"></span>
-                                </div>
-                            </div>
-                        </div>
-                        <div style="display: block; margin-top: 130px">
-
-                            <div class="tile ol-transparent bg-teal">
-                                <div class="tile-content icon">
-                                    <span class="icon-user-3" title="随便看看"></span>
-                                </div>
-                            </div>
-                            <div class="tile ol-transparent bg-green">
-                                <div class="tile-content icon">
-                                    <span class="icon-briefcase" title="管理中心"></span>
-                                </div>
-                            </div>
-                        </div>
-                        <%--<div class="tile triple double-vertical ol-transparent bg-white">
-                            <div class="tile-content">
-                                <div class="panel no-border">
-                                    <div class="panel-header bg-darkRed fg-white">最新看看</div>
-                                    <div class="panel-content fg-dark nlp nrp">
-                                        <img src="Images/1.jpg" class="place-left margin10 nlm ntm size2" />
-                                        <strong>美文共欣赏</strong> 我是一篇最近刚刚上线的美文，至于内容吗我想我还是先不写了吧。从网上copy一段：）新华网北京７月１５日电（记者王帆）在出席金砖国家领导人第六次会晤，对巴西、阿根廷、委内瑞拉
-                               
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="tile triple double-vertical ol-transparent bg-white">
-                            <div class="tile-content">
-                                <div class="panel no-border">
-                                    <div class="panel-header bg-pink fg-white">最新团队</div>
-                                    <div class="panel-content fg-dark nlp nrp">
-                                        <img src="Images/2.jpg" class="place-left margin10 nlm ntm size2">
-                                        <strong>集思广益团</strong>新华网北京７月１５日电（记者王帆）在出席金砖国家领导人第六次会晤，对巴西、阿根廷、委内瑞拉、古巴进行国事访问并出席中国－拉美和加勒比国家领导人会晤前夕，国家主席习近平接受了巴西《经济价值报》、阿根廷《国民报》、委内瑞拉国家通讯社、古巴拉丁美洲通讯社的联合采访，就金砖国家合作、中国同四国双边关系、中拉关系、国际关系民主化、中国改革发展、中国外交政策及国际作用等阐述了看法和主张。下面梳理习主席在接受采访时引用的那些经典词句。
-                                    </div>
-                                </div>
-                            </div>
-                        </div>--%>
-
-                        <div style="margin-top: -150px; height: 270px; width: 398px; display: block; float: left">
-                            <img style="height: 270px; width: 398px;" src="Images/Homepage/4.jpg" />
+                        <div>
+                            <span class="bxx-prev" id="destination_prev"><a class="bx-prev disabled" href=""></a></span><span class="bxx-next" id="destination_next">
+                                <a class="bx-next" href=""></a></span>
                         </div>
                     </div>
-                    <!-- End first group -->
+                </div>
+            </div>
+            <div style="margin-top: 20px; width: 1200px; margin: 0px auto">
+                <div id="destination" class="type_content  destination_type cf">
+                    <div class="type_nav">
+                        <a href="/2014/list-place.html" target="_blank" title=""><i></i>
+                            <h1>今日最新</h1>
 
-
-
-                    <div class="tile-group no-margin no-padding1 clearfix" style="width: 100%;">
-                        <a href="#"><span class="tile-group-title fg-orange">团队风采 <span class="icon-arrow-right-5"></span></span></a>
-                        <div class="tile quadro double-vertical ol-transparent" style="width: 274px; margin-left: -40px; height: 300px">
-                            <ul id="teamZone" style="list-style: none; width: 274px; margin-top: -8px; border: solid 1px; border-radius: 2px; vertical-align: baseline">
-                                <%for (var i = 0; i < 24; i++)
-                                  {
-                                      var color = (i % 2) == 0 ? "#b0c62a" : "#a4bc10";
-                                %>
-
-                                <li style="float: left; width: 75px; color: white; height: 60px; border: solid 1px; border-color: #96b718; background-color: <%: color %>"></li>
-
-                                <%} %>
-                            </ul>
-                        </div>
-                        <div class="tile double ol-transparent" style="width: 240px; height: 300px"></div>
-                        <div style="width: 120px; float: left">
-                            <div class="tile ol-transparent" style="width: 110px; height: 145px"></div>
-                            <div class="tile ol-transparent" style="width: 110px; height: 145px"></div>
-
-                        </div>
-                        <div class="tile double ol-transparent" style="width: 200px; height: 300px"></div>
-                        <div class="tile double ol-transparent" style="width: 150px; height: 300px"></div>
-
-                        <div class="tile double ol-transparent" style="width: 160px; height: 300px"></div>
-
-                        <%--
-                        <div class="tile ol-transparent"></div>
-                        <div class="tile ol-transparent"></div>
-                        <div class="tile ol-transparent"></div>--%>
+                        </a>
                     </div>
+                    <div class="type_scroll">
+                        <div class="type-viewport">
+                            <div style="max-width: 880px; margin: 0px auto;" class="bx-wrapper">
+                                <div style="width: 100%; overflow: hidden; position: relative; height: 460px;" class="bx-viewport">
+                                    <ul style="width: 915%; position: relative; transition-duration: 0s; transform: translate3d(0px, 0px, 0px);" class="type_list destination_list">
+                                        <li style="float: left; list-style: none; position: relative; width: 280px; margin-right: 20px;">
+                                            <a href="/2014/place/guoneilvyouchengshi.html" target="_blank">
+                                                <img style="width: 280; height: 210;" src="http://youimg1.c-ctrip.com/target/fd/tg/g1/M09/6B/C7/CghzflSqQluAaK3_AAB2yroAjKA293.jpg" alt="">
+                                                <span>国内最佳旅游城市</span></a>
+                                            <a href="/2014/place/haiwailvyou.html" target="_blank">
+                                                <img style="width: 280; height: 210;" src="http://youimg1.c-ctrip.com/target/fd/tg/g2/M03/6F/12/CghzgVSqQqaAdOWYAABPXZFQAYo045.jpg" alt="">
+                                                <span>海外最佳旅游城市</span></a>
+                                        </li>
+                                        <li style="float: left; list-style: none; position: relative; width: 280px; margin-right: 20px;">
+                                            <a href="/2014/place/guoneilvyoujingqu.html" target="_blank">
+                                                <img style="width: 280; height: 210;" src="http://youimg1.c-ctrip.com/target/fd/tg/g2/M09/6F/35/CghzgFSqQnqAeoXvAABaxI9K5pA847.jpg" alt="">
+                                                <span>国内最佳旅游景区</span></a>
+                                            <a href="/2014/place/shehuayou.html" target="_blank">
+                                                <img style="width: 280; height: 210;" src="http://youimg1.c-ctrip.com/target/fd/tg/g2/M00/6F/6B/CghzgFSqQsqAK6ctAABXXf1KCPQ100.jpg" alt="">
+                                                <span>最佳奢华游目的地</span></a>
+                                        </li>
+                                        <li style="float: left; list-style: none; position: relative; width: 280px; margin-right: 20px;">
+                                            <a href="/2014/place/haidaoyou.html" target="_blank">
+                                                <img style="width: 280; height: 210;" src="http://youimg1.c-ctrip.com/target/fd/tg/g1/M05/6C/15/CghzfVSqQoyASrnuAABJF-ZUID0493.jpg" alt="">
+                                                <span>最佳海岛游目的地</span></a>
+                                            <a href="/2014/place/qinziyou.html" target="_blank">
+                                                <img style="width: 280; height: 210;" src="http://youimg1.c-ctrip.com/target/fd/tg/g2/M02/6F/61/CghzgFSqQraAMVbGAACH9O4Y4Mk672.jpg" alt="">
+                                                <span>最佳亲子游目的地</span></a>
+                                        </li>
+                                        <li style="float: left; list-style: none; position: relative; width: 280px; margin-right: 20px;">
+                                            <a href="/2014/place/balinghou.html" target="_blank">
+                                                <img style="width: 280; height: 210;" src="http://youimg1.c-ctrip.com/target/fd/tg/g2/M09/6E/B3/Cghzf1SqQjaAf6Q8AACDIK2pcPs951.jpg" alt="">
+                                                <span>80后最爱目的地</span></a>
+                                            <a href="/2014/place/zizhuyou.html" target="_blank">
+                                                <img style="width: 280; height: 210;" src="http://youimg1.c-ctrip.com/target/fd/tg/g2/M05/6F/2C/Cghzf1SqQveAUymzAAB2UInP-Tk504.jpg" alt="">
+                                                <span>最佳自助游目的地</span></a>
+                                        </li>
+                                        <li style="float: left; list-style: none; position: relative; width: 280px; margin-right: 20px;">
+                                            <a href="/2014/place/daxuesheng.html" target="_blank">
+                                                <img style="width: 280; height: 210;" src="http://youimg1.c-ctrip.com/target/fd/tg/g2/M0A/6E/BA/Cghzf1SqQkCAbLJGAABzKWd-Xvs500.jpg" alt="">
+                                                <span>大学生最爱目的地</span></a>
+                                            <a href="/2014/place/changjialvxing.html" target="_blank">
+                                                <img style="width: 280; height: 210;" src="http://youimg1.c-ctrip.com/target/fd/tg/g2/M03/6F/71/CghzgFSqQtWAJ88vAACDemChKsQ561.jpg" alt="">
+                                                <span>最佳长假旅行目的地</span></a>
+                                        </li>
+                                        <li style="float: left; list-style: none; position: relative; width: 280px; margin-right: 20px;">
+                                            <a href="/2014/place/zijiayou.html" target="_blank">
+                                                <img style="width: 280; height: 210;" src="http://youimg1.c-ctrip.com/target/fd/tg/g1/M0B/6C/4C/CghzfVSqQuaAUFieAABzzi-H72k188.jpg" alt="">
+                                                <span>最佳自驾游目的地</span></a>
+                                            <a href="/2014/place/gouwu.html" target="_blank">
+                                                <img style="width: 280; height: 210;" src="http://youimg1.c-ctrip.com/target/fd/tg/g1/M07/6B/BD/CghzflSqQkyAcVqEAABkaPxRMCI662.jpg" alt="">
+                                                <span>最佳购物目的地</span></a>
+                                        </li>
+                                        <li style="float: left; list-style: none; position: relative; width: 280px; margin-right: 20px;">
+                                            <a href="/2014/place/qianli.html" target="_blank">
+                                                <img style="width: 280; height: 210;" src="http://youimg1.c-ctrip.com/target/fd/tg/g2/M08/6F/2D/Cghzf1SqQwKAEsr3AACYlj7V1E0918.jpg" alt="">
+                                                <span>最具潜力目的地</span></a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="bx-controls"></div>
+                            </div>
 
-                    <div class="tile-group no-margin no-padding1 clearfix" style="width: 100%;">
-                        <a href="#"><span class="tile-group-title fg-cobalt">最热文章 <span class="icon-arrow-right-5"></span></span></a>
-                        <div class="tile quadro double-vertical ol-transparent" style="width: 274px; margin-left: -40px; height: 300px">
-                            <ul style="list-style: none; width: 274px; margin-top: -8px; border: solid 1px; border-radius: 2px; vertical-align: baseline">
-                                <%for (var i = 0; i < 24; i++)
-                                  {
-                                      var color = (i % 2) == 0 ? "#7e65ab" : "#846cb0";
-                                %>
-
-                                <li style="float: left; width: 81px; color: white; height: 62px; border: solid 1px; border-color: #795fa6; background-color: <%: color %>"></li>
-
-                                <%} %>
-                            </ul>
                         </div>
-                        <div class="tile double ol-transparent" style="width: 240px; height: 300px"></div>
-                        <div class="tile ol-transparent" style="width: 205px; height: 145px"></div>
-                        <div class="tile ol-transparent" style="width: 205px; height: 145px"></div>
-                        <div class="tile ol-transparent" style="width: 205px; height: 145px"></div>
-                        <div class="tile ol-transparent" style="width: 205px; height: 145px"></div>
-                        <div class="tile ol-transparent" style="width: 205px; height: 145px"></div>
-                        <div class="tile ol-transparent" style="width: 205px; height: 145px"></div>
+                        <div>
+                            <span class="bxx-prev" id="destination_prev"><a class="bx-prev disabled" href=""></a></span><span class="bxx-next" id="destination_next">
+                                <a class="bx-next" href=""></a></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div style="margin-top: 20px; width: 1200px; margin: 0px auto">
+                <div class="mod buy">
+                    <div class="mod-hd">
+                        <h2 class="title">
+                            <span class="current" idx="1">热门分类<i></i></span>
+                        </h2>
+                    </div>
+                    <div class="mod-bd">
+                        <div class="mod-bd-panel" idx="1" style="display: block;">
+                            <div class="entrance">
+                                <dl class="keyword-short">
+                                    <dt>企业</dt>
+                                    <dd><span class="entrance-item" title="日本"><a href="http://g.ctrip.com/merchant/list/3o078o99999o99999o99o999o99?gsourcetype=3#ctm_ref=ssc_hp_gw_sp_txt_2" target="_blank">日本</a><span class="icon_hot"></span></span><span class="entrance-item" title="法国"><a href="http://g.ctrip.com/merchant/list/2o031o99999o99999o99o999o99?gsourcetype=3#ctm_ref=ssc_hp_gw_sp_txt_2" target="_blank">法国</a></span><span class="entrance-item" title="韩国"><a href="http://g.ctrip.com/merchant/list/3o042o99999o99999o99o999o99?gsourcetype=3#ctm_ref=ssc_hp_gw_sp_txt_2" target="_blank">韩国</a><span class="icon_hot"></span></span><span class="entrance-item" title="香港"><a href="http://g.ctrip.com/merchant/list/3o0-1o99999o99999o99o999o99?gsourcetype=3#ctm_ref=ssc_hp_gw_sp_txt_2" target="_blank">香港</a></span><span class="entrance-item" title="美国"><a href="http://g.ctrip.com/merchant/list/1o066o99999o99999o99o999o99?gsourcetype=3#ctm_ref=ssc_hp_gw_sp_txt_2" target="_blank">美国</a></span><span class="entrance-item" title="新加坡"><a href="http://g.ctrip.com/merchant/list/3o003o99999o99999o99o999o99?gsourcetype=3#ctm_ref=ssc_hp_gw_sp_txt_2" target="_blank">新加坡</a></span><span class="entrance-item" title="英国"><a href="http://g.ctrip.com/merchant/list/2o109o99999o99999o99o999o99?gsourcetype=3#ctm_ref=ssc_hp_gw_sp_txt_2" target="_blank">英国</a></span><span class="entrance-item" title="德国"><a href="http://g.ctrip.com/merchant/list/2o028o99999o99999o99o999o99?gsourcetype=3#ctm_ref=ssc_hp_gw_sp_txt_2" target="_blank">德国</a></span><span class="entrance-item" title="意大利"><a href="http://g.ctrip.com/merchant/list/2o106o99999o99999o99o999o99?gsourcetype=3#ctm_ref=ssc_hp_gw_sp_txt_2" target="_blank">意大利</a></span><span class="entrance-item" title="西班牙"><a href="http://g.ctrip.com/merchant/list/2o095o99999o99999o99o999o99?gsourcetype=3#ctm_ref=ssc_hp_gw_sp_txt_2" target="_blank">西班牙</a></span><span class="entrance-item" title="瑞士"><a href="http://g.ctrip.com/merchant/list/2o080o99999o99999o99o999o99?gsourcetype=3#ctm_ref=ssc_hp_gw_sp_txt_2" target="_blank">瑞士</a></span><span class="entrance-item" title="澳大利亚"><a href="http://g.ctrip.com/merchant/list/3o015o99999o99999o99o999o99?gsourcetype=3#ctm_ref=ssc_hp_gw_sp_txt_2" target="_blank">澳大利亚</a></span></dd>
+                                </dl>
+                            </div>
 
+                            <div class="product">
+                                <div class="product-hd">
+                                    <ul class="inner-tabs-nav">
+                                        <li class="active"><a href="javascript:void(0);" pinyin="QuanMinFangShuJia">全民放暑假</a></li>
+                                        <li><a href="javascript:void(0);" pinyin="MianShuiDian">免税店</a></li>
+                                        <li><a href="javascript:void(0);" pinyin="BaiHuo">百货</a></li>
+                                        <li><a href="javascript:void(0);" pinyin="GouWuCun">购物村</a></li>
+                                        <li><a href="javascript:void(0);" pinyin="JingPinDian">精品店</a></li>
+                                    </ul>
+                                    <a href="http://g.ctrip.com/#ctm_ref=ssc_hp_gw_sp_more_1" class="linked-more">更多全球名店 <i class="i_index_next"></i></a>
+                                </div>
+                                <div class="product-bd">
+                                    <div class="inner-tab-panel active">
+                                        <div class="product-item" title="DFS旗下T广场（香港广东道店）DFS T Galleria Hong Kong, Canton Road"><a href="http://g.ctrip.com/merchant/detail/140?gsourcetype=3#ctm_ref=ssc_hp_gw_sp_pro_1" target="_blank">
+                                            <p class="item-thumbnail">
+                                                <img src="http://youimg1.c-ctrip.com/target/tg/055/599/064/3f75ab8fcbab4629bb92db8ea6a43fa4.jpg" alt="DFS旗下T广场（香港广东道店）DFS T Galleria Hong Kong, Canton Road"></p>
+                                            <p class="item-name">DFS旗下T广场（香港广东道店）DFS T Galleria Hong Kong, Canton Road</p>
+                                            <p class="item-info"><span class="item-label"><span class="tag_orange_empty">返现</span></span><span class="item-type">中国 • 香港</span></p>
+                                        </a></div>
+                                        <div class="product-item" title="老佛爷百货公司（奥斯曼旗舰店）Galeries Lafayette Haussmann"><a href="http://g.ctrip.com/merchant/detail/21?gsourcetype=3#ctm_ref=ssc_hp_gw_sp_pro_1" target="_blank">
+                                            <p class="item-thumbnail">
+                                                <img src="http://youimg1.c-ctrip.com/target/tg/602/105/289/228a16d1c4844dbebcae5d1b3c88db34.jpg" alt="老佛爷百货公司（奥斯曼旗舰店）Galeries Lafayette Haussmann"></p>
+                                            <p class="item-name">老佛爷百货公司（奥斯曼旗舰店）Galeries Lafayette Haussmann</p>
+                                            <p class="item-info"><span class="item-label"><span class="tag_red_empty">赠礼</span></span><span class="item-type">法国 • 巴黎</span></p>
+                                        </a></div>
+                                        <div class="product-item" title="周大福（尖沙咀河内道店）Chow Tai Fook"><a href="http://g.ctrip.com/merchant/detail/607?gsourcetype=3#ctm_ref=ssc_hp_gw_sp_pro_1" target="_blank">
+                                            <p class="item-thumbnail">
+                                                <img src="http://youimg1.c-ctrip.com/target/fd/tg/g2/M09/01/D3/Cghzf1SrqjSAB15AAAEY4YiJ6Ss880.jpg" alt="周大福（尖沙咀河内道店）Chow Tai Fook"></p>
+                                            <p class="item-name">周大福（尖沙咀河内道店）Chow Tai Fook</p>
+                                            <p class="item-info"><span class="item-label"><span class="tag_orange_empty">返现</span></span><span class="item-type">中国 • 香港</span></p>
+                                        </a></div>
+                                        <div class="product-item" title="Laox（银座总店）Laox"><a href="http://g.ctrip.com/merchant/detail/499?gsourcetype=3#ctm_ref=ssc_hp_gw_sp_pro_1" target="_blank">
+                                            <p class="item-thumbnail">
+                                                <img src="http://youimg1.c-ctrip.com/target/tg/440/050/744/582b8dbec24b4b7fbcc67db60d4a3ebe.jpg" alt="Laox（银座总店）Laox"></p>
+                                            <p class="item-name">Laox（银座总店）Laox</p>
+                                            <p class="item-info"><span class="item-label"><span class="tag_blue_empty">优惠</span></span><span class="item-type">日本 • 东京</span></p>
+                                        </a></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- procudt end -->
+                        </div>
                     </div>
                 </div>
             </div>
@@ -437,7 +526,30 @@
             </footer>
         </div>
 
+        <div id="gs_feedback_gotop">
+            <div class="side_fixed">
+                <a class="to_top" title="回到顶端" href="javascript:;" id="gotop2" style="visibility: hidden; display: block;">&nbsp;</a>
+            </div>
+        </div>
+        <div style="display: block;" class="appd_wrap_open" id="appd_wrap_open">
+            <div style="left: 0%;" class="appd_wrap_open_cnt" id="appd_wrap_open_cnt"></div>
+        </div>
 
+        <div style="display: block;" class="appd_wrap_pop" id="appd_wrap_pop">
+            <div style="left: -100%;" class="appd_wrap_pop_cnt" id="appd_wrap_pop_cnt">
+                <div class="appd_wrap_pop_box">
+                    <a href="javascript:;" class="appd_wrap_close" title="关闭" id="appd_wrap_close">×</a>
+                    <div class="appd_wrap_pop_pic_phone pic_for_gift"></div>
+                    <div class="appd_wrap_pop_text style_for_gift">
+                        <p class="word_1">赶快来注册吧 </p>
+                        <p class="word_3">
+                            <a id="pcFloatGift" href="http://pages.ctrip.com/commerce/promote/201506/other/nl/index.html">
+                                <img src="http://webresource.c-ctrip.com/ResUnionOnline/R3/float/pic/gift_float_btn.png" alt="" height="33" width="116"></a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
         <script src="Scripts/jquery-1.8.2.min.js"></script>
         <script src="Scripts/jquery.bpopup.min.js"></script>
         <script src="Scripts/jquery.showLoading.js"></script>
@@ -450,33 +562,25 @@
         <script src="Scripts/navigation.js"></script>
         <script src="Scripts/register.js"></script>
         <script src="js/hitua.js"></script>
+        <script src="Scripts/HomePage.js"></script>
         <script type="text/javascript">
-
-            var sessionUser = '<%= Session["UserName"]%>';
-
-            (function (frontia, Reg, Nav, $, undefined) {
+            (function (frontia, Reg, Home, Nav, $, undefined) {
                 // Nav.util.test_login();
-
+                var sessionUser = '<%= Session["UserName"]%>';
                 $('#loginqq').live('click', function (e) {
                     Nav.util.loginWithThirdParty(frontia);
                 });
-            })(baidu.frontia, window.Reg = window.Reg || {}, window.Nav = window.Nav || {}, $, undefined);
+
+            })(baidu.frontia, window.Reg = window.Reg || {}, window.Home = window.Home || {}, window.Nav = window.Nav || {}, $, undefined);
 
             $(document).ready(function () {
+                Home.Top.Init();
 
                 $(function (frontia) {
                     Reg.Init();
-
-
-
                     Nav.Initiate(sessionUser);
                 });
-
-                //$('#teamZone li:even').css('background-color', 'red').end().;
-                //$('#teamZone li:odd').css('background-color', 'blak');
             });
-
-
         </script>
     </form>
 

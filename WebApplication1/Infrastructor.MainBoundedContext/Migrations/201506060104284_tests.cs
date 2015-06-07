@@ -3,7 +3,7 @@ namespace Infrastructor.MainBoundedContext.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class Test : DbMigration
+    public partial class tests : DbMigration
     {
         public override void Up()
         {

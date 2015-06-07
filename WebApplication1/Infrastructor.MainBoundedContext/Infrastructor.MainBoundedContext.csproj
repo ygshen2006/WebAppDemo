@@ -73,13 +73,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Migrations\201505270551546_Test.cs" />
-    <Compile Include="Migrations\201505270551546_Test.Designer.cs">
-      <DependentUpon>201505270551546_Test.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201506040458459_Upgrade.cs" />
-    <Compile Include="Migrations\201506040458459_Upgrade.Designer.cs">
-      <DependentUpon>201506040458459_Upgrade.cs</DependentUpon>
+    <Compile Include="Migrations\201506060104284_tests.cs" />
+    <Compile Include="Migrations\201506060104284_tests.Designer.cs">
+      <DependentUpon>201506060104284_tests.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -124,11 +120,8 @@
     <Content Include="Scripts\Data_Change_001.sql" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201505270551546_Test.resx">
-      <DependentUpon>201505270551546_Test.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201506040458459_Upgrade.resx">
-      <DependentUpon>201506040458459_Upgrade.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201506060104284_tests.resx">
+      <DependentUpon>201506060104284_tests.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

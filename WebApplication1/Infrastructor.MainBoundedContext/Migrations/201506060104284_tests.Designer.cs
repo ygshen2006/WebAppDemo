@@ -7,18 +7,18 @@ namespace Infrastructor.MainBoundedContext.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.1-30610")]
-    public sealed partial class Upgrade : IMigrationMetadata
+    public sealed partial class tests : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(Upgrade));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(tests));
         
         string IMigrationMetadata.Id
         {
-            get { return "201506040458459_Upgrade"; }
+            get { return "201506060104284_tests"; }
         }
         
         string IMigrationMetadata.Source
         {
-            get { return null; }
+            get { return Resources.GetString("Source"); }
         }
         
         string IMigrationMetadata.Target

@@ -25,14 +25,18 @@ namespace Infrastructor.MainBoundedContext.Repositories.SiteAdmin
         public bool RelateTeamSiteWithSegement(Guid teamGuid, int segmentId) {
             var team = this.GetAll().Where(_ => _.TeamGuid == teamGuid).FirstOrDefault();
             team.SegmentId = segmentId;
-            this.UnitOfWork.Commit();
+            
+            this.Modify(team);
+
             return true;
         }
 
         public bool UnrelateTeamSitesWithSegment() {
             var allRelatedTeams = this.GetAll().Where(_ => _.Segment != null);
+            
             foreach (var t in allRelatedTeams) {
                 t.Segment = null;
+                this.TrackItem(t);
             }
             return true;
         }

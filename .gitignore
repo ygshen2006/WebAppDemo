@@ -5,7 +5,7 @@
 *.suo
 *.user
 *.sln.docstates
-
+WebApplication1/Application.MainBoundedContect/bin/Debug/
 #Auto Generate files
 __ConfigTemp/
 

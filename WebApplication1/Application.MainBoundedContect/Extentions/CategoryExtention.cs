@@ -31,9 +31,6 @@ namespace Application.MainBoundedContect.Extentions
 
         public static Category ToCategory(this AppCategory cat)
         {
-            //using (MainDBUnitWorkContext context = new MainDBUnitWorkContext())
-            //{
-                //ICategoryRepository _catRepo = new CategoryRepository(context);
             return new Category()
             {
                 Id = cat.Id.GetValueOrDefault(),
@@ -41,7 +38,6 @@ namespace Application.MainBoundedContect.Extentions
                 Name = cat.CategoryName,
                 Reports = null
             };
-            //}
         }
     }
 }

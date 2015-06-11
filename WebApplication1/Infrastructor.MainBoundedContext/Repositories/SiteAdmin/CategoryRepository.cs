@@ -28,7 +28,8 @@ namespace Infrastructor.MainBoundedContext.Repositories.SiteAdmin
         }
         public IEnumerable<Category> GetChildCategories()
         {
-            return this.GetAll().Where(_ => _.CategoryParentId.HasValue == true);
+            var temp = this.GetAll(true).Where(_ => _.CategoryParentId.HasValue == true);
+            return temp;
         }
 
     }

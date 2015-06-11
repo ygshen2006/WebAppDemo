@@ -70,7 +70,7 @@
                         var str = '';
                         $('.child-category-list').children().remove();
                         $.each(resultNew, function (index, current) {
-                            str += "<tr><td><select class='select-parent-category'><option value='" + current.ParentId + "' selected='true'>" + current.ParentCategory!=null?current.ParentCategory.CategoryName:"" + "</option></select></td><td><span class='child-category-name' PId=" + current.Id + ">" + current.CategoryName + "</span></td>";
+                            str += "<tr><td><select class='select-parent-category'><option value='" + current.ParentId + "' selected='true'>" + current.ParentCategory.CategoryName + "</option></select></td><td><span class='child-category-name' PId=" + current.Id + ">" + current.CategoryName + "</span></td>";
                             if (current.Reports == null) {
                                 str += "<td><a href='#' class='category-delete'>删除...</a></td>";
                             }

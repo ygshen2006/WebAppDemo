@@ -35,7 +35,6 @@ namespace Infrastructor.MainBoundedContext.Repositories.SiteAdmin
         {
             // See if this segment has child related
             var segment = this.GetAll().Where(_ => _.Id == id).FirstOrDefault();
-            this.TrackItem(segment);
             if (segment == null)
             {
                 // doesn't exist

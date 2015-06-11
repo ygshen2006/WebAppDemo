@@ -23,7 +23,6 @@ D:\MyGit\WebAppDemo\WebApplication1\Domain.SeedWork\bin\Debug\EntityFramework.xm
 D:\MyGit\WebAppDemo\WebApplication1\Domain.SeedWork\bin\Debug\EntityFramework.SqlServer.xml
 D:\MyGit\WebAppDemo\WebApplication1\Domain.SeedWork\bin\Debug\Microsoft.AspNet.Identity.Core.xml
 D:\MyGit\WebAppDemo\WebApplication1\Domain.SeedWork\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
-D:\MyGit\WebAppDemo\WebApplication1\Domain.SeedWork\obj\Debug\Domain.SeedWork.csprojResolveAssemblyReference.cache
 D:\MyGit\WebAppDemo\WebApplication1\Domain.SeedWork\obj\Debug\Domain.SeedWork.dll
 D:\MyGit\WebAppDemo\WebApplication1\Domain.SeedWork\obj\Debug\Domain.SeedWork.pdb
 E:\MyWebApp\WebAppDemo\WebApplication1\Domain.SeedWork\bin\Debug\Domain.SeedWork.dll.config

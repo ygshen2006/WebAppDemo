@@ -42,9 +42,8 @@ namespace Infrastructor.MainBoundedContext.Repositories.SiteAdmin
        }
 
        public bool RemoveAllDivisions() {
-           var diviosions = this.GetAll();
+           var diviosions = this.GetAll().ToList();
            foreach (var d in diviosions) {
-               this.TrackItem(d);
                this.Remove(d);
            }
 

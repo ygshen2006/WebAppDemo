@@ -635,7 +635,7 @@ img, fieldset {
 .mod-bd {
     background: #FFF none repeat scroll 0% 0%;
     border-width: medium 1px 1px;
-    border-style: none solid solid;
+    border-style: none dotted dotted;
     border-color: -moz-use-text-color #E0E0E0 #E0E0E0;
     -moz-border-top-colors: none;
     -moz-border-right-colors: none;
@@ -683,18 +683,6 @@ img, fieldset {
     border-color: -moz-use-text-color transparent #3983E5;
 }
 .car .mod-bd, .buy .mod-bd, .play .mod-bd, .guide .mod-bd {
-    overflow: hidden;
-}
-.mod-bd {
-    background: #FFF none repeat scroll 0% 0%;
-    border-width: medium 1px 1px;
-    border-style: none solid solid;
-    border-color: -moz-use-text-color #E0E0E0 #E0E0E0;
-    -moz-border-top-colors: none;
-    -moz-border-right-colors: none;
-    -moz-border-bottom-colors: none;
-    -moz-border-left-colors: none;
-    border-image: none;
     overflow: hidden;
 }
 .car .product, .play .product, .buy .product, .guide .product, .car .entrance, .play .entrance, .buy .entrance, .guide .entrance {

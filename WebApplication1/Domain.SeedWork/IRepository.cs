@@ -61,7 +61,7 @@ namespace Domain.SeedWork
         /// Get all elements of type TEntity in repository
         /// </summary>
         /// <returns>List of selected elements</returns>
-        IEnumerable<TEntity> GetAll();
+        IEnumerable<TEntity> GetAll(bool asTracking);
 
         /// <summary>
         /// Get all elements of type TEntity that matching a

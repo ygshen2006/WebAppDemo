@@ -23,7 +23,7 @@ namespace Infrastructor.MainBoundedContext.Repositories.SiteAdmin
         }
 
         public bool RelateTeamSiteWithSegement(Guid teamGuid, int segmentId) {
-            var team = this.GetAll().Where(_ => _.TeamGuid == teamGuid).FirstOrDefault();
+            var team = this.GetAll(true).Where(_ => _.TeamGuid == teamGuid).FirstOrDefault();
             team.SegmentId = segmentId;
             
             this.Modify(team);
@@ -32,11 +32,11 @@ namespace Infrastructor.MainBoundedContext.Repositories.SiteAdmin
         }
 
         public bool UnrelateTeamSitesWithSegment() {
-            var allRelatedTeams = this.GetAll().Where(_ => _.Segment != null);
+            var allRelatedTeams = this.GetAll(true).Where(_ => _.Segment != null).ToList<TeamSite>();
             
             foreach (var t in allRelatedTeams) {
                 t.Segment = null;
-                this.TrackItem(t);
+                this.Modify(t);
             }
             return true;
         }

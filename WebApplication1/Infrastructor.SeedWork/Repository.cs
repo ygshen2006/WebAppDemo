@@ -73,7 +73,7 @@ namespace Infrastructor.SeedWork
             {
                 //attach item if not exist
 
-               _UnitOfWork.Attach(item);
+                _UnitOfWork.Attach(item);
 
                 //set as "removed"
                 GetSet().Remove(item);
@@ -134,10 +134,17 @@ namespace Infrastructor.SeedWork
         /// <see cref="Microsoft.Samples.NLayerApp.Domain.Seedwork.IRepository{TValueObject}"/>
         /// </summary>
         /// <returns><see cref="Microsoft.Samples.NLayerApp.Domain.Seedwork.IRepository{TValueObject}"/></returns>
-        public virtual IEnumerable<TEntity> GetAll()
+        public virtual IEnumerable<TEntity> GetAll(bool allowTrack = false)
         {
+            if (allowTrack)
+            {
+                return GetSet();
+            }
+
             return GetSet().AsNoTracking<TEntity>();
         }
+
+
         /// <summary>
         /// <see cref="Microsoft.Samples.NLayerApp.Domain.Seedwork.IRepository{TValueObject}"/>
         /// </summary>

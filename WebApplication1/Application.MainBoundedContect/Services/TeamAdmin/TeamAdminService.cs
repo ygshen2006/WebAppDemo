@@ -37,7 +37,7 @@ namespace Application.MainBoundedContect.Services.TeamAdmin
         {
             // get team id
 
-            return _tagRepository.GetAll().FirstOrDefault(_ => _.Id == id).ToAppTeamTag();
+            return _tagRepository.GetAll(false).FirstOrDefault(_ => _.Id == id).ToAppTeamTag();
         }
 
         public IEnumerable<AppStatus> GetStatusByRole(int roleId) {

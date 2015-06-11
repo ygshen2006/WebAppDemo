@@ -37,14 +37,13 @@ namespace Application.MainBoundedContect.Services.SiteAdmininstration
        public string SaveTeamSiteHierarchy(IEnumerable<AppDivisions> paramDes) {
            // Break the teamsite and segement relation
            teamRepository.UnrelateTeamSitesWithSegment();
-           teamRepository.UnitOfWork.Commit();
-
+          // teamRepository.UnitOfWork.Commit();
            var subSegments = segRepository.GetFiltered(_ => _.ParentSegement != null);
            foreach (var sub in subSegments)
            {
                segRepository.RemoveSegementById(sub.Id);
+               segRepository.UnitOfWork.Commit();
            }
-           segRepository.UnitOfWork.Commit();
 
            repository.RemoveAllDivisions();
            repository.UnitOfWork.Commit();

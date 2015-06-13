@@ -85,16 +85,20 @@ namespace Application.MainBoundedContect.Services.SiteAdmininstration
                     team.TeamGuid = Guid.NewGuid();
                     // Set owner list
                     var teamOwnersStr = team.TeamOwners.Split(';');
+
+                    TeamSite addedTeam = team.ToTeamSite();
+                    addedTeam.TeamOwners = new List<User>();
+
                     foreach (var t in teamOwnersStr)
                     {
                         if(t.Trim()!="")
-                        { 
-                        var user = _userRepository.GetUserByName(t).ToAppUser();
-                        team.TeamOwnerObjectList.Add(user);
+                        {
+                           addedTeam.TeamOwners.Add(_userRepository.GetUserByName(t));
                         }
                     }
 
-                    _teamRepository.Add(team.ToTeamSite(_userRepository));
+
+                    _teamRepository.Add(addedTeam);
                 }
             }
             //Submit changes

@@ -183,6 +183,7 @@
     <Content Include="css\Instruction.txt" />
     <Content Include="css\sprite.svg" />
     <Content Include="Images\approve.png" />
+    <Content Include="Images\bg_img.png" />
     <Content Include="Images\bg_repeat.png" />
     <Content Include="Images\Blank_Folder.png" />
     <Content Include="Images\checkmark.png" />

@@ -21,7 +21,8 @@ namespace Infrastructor.MainBoundedContext.Repositories.Reports
 
         public void AddReport(Domain.MainBoundedContext.Reports.Aggregates.Report r)
         {
-
+            this.Add(r);
+            this.UnitOfWork.Commit();
         }
 
         public void UpdateReport(Domain.MainBoundedContext.Reports.Aggregates.Report r)

@@ -229,6 +229,39 @@
         cursor: pointer;
         background-color: darkblue;
     }
+    .edit-unit-panel .edit-tag-btns, .edit-tag-panel .edit-tag-btns {
+    padding: 5px 0px 20px 75px;
+}
+    a.sc-btn2, a.sc-btn {
+    text-align: center;
+    line-height: 27px;
+    font-size: 14px;
+    float: left;
+    background-color: #EA5449;
+    overflow: hidden;
+    border-radius: 18px;
+    width: 114px;
+    height: 28px;
+    color: #FFF;
+    text-decoration: none;
+    transition: border-radius 0.2s ease-in-out 0s;
+}
+        a.sc-btn2, a.sc-btn:hover {
+            border-radius: 0px;
+        }
+    .cancel-btn {
+    margin: 0px 0px 0px 20px;
+}
+    a.sc-btn:link span, a.sc-btn:visited span, a.sc-btn:hover span, a.sc-btn:active span {
+    display: block;
+    cursor: pointer;
+    color: #FFF;
+}
+
+
+#editor1 {
+    cursor: none;
+}
 
 .secondAddPicBt {
     display: none;
@@ -314,16 +347,17 @@
 
 .owners-list {
     height:20px;
-    width:150px;
     resize:none;
     overflow:auto;
+    width:390px;
 }
 .ownerarea {
     padding-left:0px;
+    list-style:none;
+
 }
     .ownerarea li {
         list-style:none;
-        float:left;
     }
 .seperateowner {
     width:50px;
@@ -394,15 +428,65 @@
       .articleStatusDiv-sub li:hover {
         background-color:aliceblue
     }
-.test {
+/*.test {
+    background-color:#EA5449;
+    cursor:pointer;
+    width:120px;
+    overflow-x:auto;
+    margin:0 20px;
+    border-radius: 10px;
+    color:white;
+    
+}
+    .test:hover {
+        border-radius: 0px;
+    transition: border-radius 0.2s ease-in-out 0s;
     background:url("../Images/close.png");
     background-repeat:no-repeat;
     background-position:right;
-    cursor:pointer;
-    width:60px;
-    margin:0 20px;
-    border:0.8px solid;
-}
+    color:black;
+
+    }*/
 .disabled1 {
 
+}
+
+.ui-search-filter-opts {
+    list-style: outside none none;
+}
+.ui-search-filter-opts li {
+    float: left;
+    border: 1px solid #FD900F;
+    height: 14px;
+    line-height: 14px;
+    background: #FFF none repeat scroll 0% 0%;
+    margin: 0px 10px 7px 0px;
+    position: relative;
+    padding: 3px 18px 3px 4px;
+    overflow: hidden;
+    height:20px;
+
+    margin-left: -40px;
+margin-top: 5px;
+margin-right:45px;
+    border-radius: 10px;
+
+}
+    .ui-search-filter-opts li:hover {
+         border-radius: 0px;
+    transition: border-radius 0.2s ease-in-out 0s;
+    cursor:pointer;
+    }
+.ui-search-filter-close {
+    background-image: url("../Images/bg_img.png");
+    background-repeat: no-repeat;
+    background-position: -152px -46px;
+    display: inline-block;
+    height: 14px;
+    margin-left: 7px;
+    vertical-align: middle;
+    position: absolute;
+    right: 5px;
+    top: 3px;
+    width: 8px;
 }

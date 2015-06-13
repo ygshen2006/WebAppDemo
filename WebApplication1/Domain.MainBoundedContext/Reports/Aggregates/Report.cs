@@ -29,10 +29,10 @@ namespace Domain.MainBoundedContext.Reports.Aggregates
         public string OtherPicture9;
         public string OtherPicture8;
 
-        public int TeamSiteId;
+        public int TeamSiteId { get; set; }
         public virtual TeamSite TeamSite { get; set; }
 
-        public int ReportStatusId;
+        public int StatusId { get; set; }
         public virtual Status ReportStatus { get; set; }
 
         public virtual ICollection<Tag> Tags { get; set; }

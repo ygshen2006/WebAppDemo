@@ -61,9 +61,6 @@ namespace Application.MainBoundedContect.Extentions
                    HeadPhoto=u.UserPhoto,
                      Sex=u.Sex,
                      Id=u.Id
-                     
-                     
-                    
             };
         }
     }

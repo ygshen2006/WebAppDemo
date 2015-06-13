@@ -1,4 +1,5 @@
-﻿using Domain.MainBoundedContext.Teams;
+﻿using Domain.MainBoundedContext.Reports.Aggregates;
+using Domain.MainBoundedContext.Teams;
 using Domain.MainBoundedContext.Teams.Aggregates.TeamSites;
 using Domain.SeedWork;
 using Microsoft.AspNet.Identity.EntityFramework;
@@ -18,6 +19,8 @@ namespace Domain.MainBoundedContext.Users
         public bool Sex { get; set; }
         public string HeadPhoto { get; set; }
         public virtual ICollection<TeamSite> TeamsOwn { get; set; }
+        public virtual ICollection<Report> Reports { get; set; }
+
         public virtual ICollection<PersonalInformation> PeopleInformation { get; set; }
 
         //public virtual ICollection<CatalogData> SubscribedData { get; set; }

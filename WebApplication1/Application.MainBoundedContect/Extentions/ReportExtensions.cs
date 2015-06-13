@@ -36,10 +36,11 @@ namespace Application.MainBoundedContect.Extentions
             {
                 Title = report.Title,
                 ReportContent = report.Content,
-                Owners = report.Owners.Select(_ => _.ToUser()).ToList(),
-                 //TeamSite=report.Team.ToTeamSite()
+                TeamSiteId=report.Team.Id.GetValueOrDefault(),
+                //Owners = report.Owners.Select(_ => _.ToUser()).ToList(),
+                //TeamSite=report.Team.ToTeamSite(),
                 Id = report.Id.GetValueOrDefault(),
-                ReportStatus = report.Status.ToStatus()
+                StatusId = report.Status.Id.GetValueOrDefault()
             };
         }
     }

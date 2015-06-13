@@ -77,7 +77,7 @@ E:\MyWebApp\WebAppDemo\WebApplication1\Infrastructor.MainBoundedContext\obj\Debu
 E:\MyWebApp\WebAppDemo\WebApplication1\Infrastructor.MainBoundedContext\obj\Debug\Infrastructor.MainBoundedContext.dll
 E:\MyWebApp\WebAppDemo\WebApplication1\Infrastructor.MainBoundedContext\obj\Debug\Infrastructor.MainBoundedContext.pdb
 D:\MyGit\WebAppDemo\WebApplication1\Infrastructor.MainBoundedContext\obj\Debug\Infrastructor.MainBoundedContext.csproj.GenerateResource.Cache
-E:\MyWebApp\WebAppDemo\WebApplication1\Infrastructor.MainBoundedContext\obj\Debug\Infrastructor.MainBoundedContext.Migrations.tests.resources
-E:\MyWebApp\WebAppDemo\WebApplication1\Infrastructor.MainBoundedContext\obj\Debug\Infrastructor.MainBoundedContext.csproj.GenerateResource.Cache
 D:\MyGit\WebAppDemo\WebApplication1\Infrastructor.MainBoundedContext\obj\Debug\Infrastructor.MainBoundedContext.Migrations.tests.resources
 D:\MyGit\WebAppDemo\WebApplication1\Infrastructor.MainBoundedContext\obj\Debug\Infrastructor.MainBoundedContext.Migrations.test.resources
+E:\MyWebApp\WebAppDemo\WebApplication1\Infrastructor.MainBoundedContext\obj\Debug\Infrastructor.MainBoundedContext.Migrations.testdd.resources
+E:\MyWebApp\WebAppDemo\WebApplication1\Infrastructor.MainBoundedContext\obj\Debug\Infrastructor.MainBoundedContext.csproj.GenerateResource.Cache

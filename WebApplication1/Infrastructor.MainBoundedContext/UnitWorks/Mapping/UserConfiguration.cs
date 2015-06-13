@@ -12,6 +12,7 @@ namespace Infrastructor.MainBoundedContext.UnitWorks.Mapping
     {
         public UserConfiguration()
         {
+            
         }
     }
 }

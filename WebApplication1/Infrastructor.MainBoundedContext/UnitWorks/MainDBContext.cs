@@ -29,7 +29,7 @@ namespace Infrastructor.MainBoundedContext.UnitWorks
         {
             //this.Configuration.ProxyCreationEnabled = false;
             this.Configuration.LazyLoadingEnabled = true;
-
+            
             Database.SetInitializer(new MigrateDatabaseToLatestVersion<MainDBUnitWorkContext,
                 Infrastructor.MainBoundedContext.Migrations.Configuration>("MyDBConnectionString"));
         }
@@ -76,10 +76,10 @@ namespace Infrastructor.MainBoundedContext.UnitWorks
         {
             get { return _PersonInformation ?? base.Set<PersonalInformation>(); }
         }
-        private IDbSet<Report> _reports;
+        private IDbSet<Report> _report;
         public IDbSet<Report> Reports
         {
-            get { return _reports ?? base.Set<Report>(); }
+            get { return _report ?? base.Set<Report>(); }
         }
         private IDbSet<Tag> _tags;
         public IDbSet<Tag> Tags
@@ -245,6 +245,10 @@ namespace Infrastructor.MainBoundedContext.UnitWorks
             modelBuilder.Entity<Report>().HasMany(r => r.Catagories)
                 .WithMany(t => t.Reports).Map(m => { m.ToTable("ReportCategories"); m.MapLeftKey("ReportId"); m.MapRightKey("CategoryId"); });
 
+            modelBuilder.Entity<Report>().HasMany(r => r.Owners)
+                .WithMany(t => t.Reports).Map(m => { m.ToTable("ReportOwners"); m.MapLeftKey("ReportId"); m.MapRightKey("UserId"); });
+
+
             modelBuilder.Entity<UsefulLinks>().
                 HasOptional(_ => _.ParentUsefulLink).
                 WithMany(_ => _.Childs).
@@ -273,6 +277,18 @@ namespace Infrastructor.MainBoundedContext.UnitWorks
                 .HasOptional(_ => _.ParentCategory)
                 .WithMany(_ => _.ChildCategory)
                 .HasForeignKey(_ => _.CategoryParentId);
+
+            modelBuilder.Entity<Report>()
+             .HasRequired(_ => _.TeamSite)
+             .WithMany(_ => _.Reports)
+             .HasForeignKey(_ => _.TeamSiteId)
+             .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<Report>()
+             .HasRequired(_ => _.ReportStatus)
+             .WithMany(_ => _.Reports)
+             .HasForeignKey(_ => _.StatusId)
+             .WillCascadeOnDelete(false);
 
             // Tile and Team is a one to many logic
             //modelBuilder.Entity<Tile>()

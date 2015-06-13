@@ -381,17 +381,17 @@
 
                 selectedOwners.push({ "Id": $(this).attr('tag'), "UserName": $(selectedUser).find('.un').text().trim() });
                 // add the item to the selected list
-                var newItem = "<li class='test' tag='" + $(this).attr('tag') + "'><span tag='" + $(this).attr('tag') + "' class='selectedUserShow'>" + $(selectedUser).text() + ";</span></li>";
-                $('.ownerarea').append(newItem);
+                var newItem = "<li tag='" + $(this).attr('tag') + "'><span tag='" + $(this).attr('tag') + "' class='selectedUserShow'>" + $(selectedUser).text() + "</span><a href='#' class='ui-search-filter-close'></a></li>";
+                $('.ui-search-filter-opts').append(newItem);
                 $('.articleOwnerDiv-sub').children().remove();
                 if (!$('.articleOwnerDiv-sub').hasClass('collapse')) {
                     $('.articleOwnerDiv-sub').addClass('collapse');
                 }
             });
 
-            $('.selectedUserShow').live('click', function (e) {
-                $(this).remove();
-
+            $('.ui-search-filter-close').live('click', function (e) {
+                $(this).parent().remove();
+                
                 URP.AddReport.updateTheSelectedOwners($(this).text().trim());
             });
 

@@ -120,34 +120,43 @@
                 </div>
             </header>
             <div class="content">
+
+
+
                 <ul id="report-list">
                     <li>
                         <ul style="width: 600px; height: 30px" id="artcle-information-board">
                             <li class="a"><b>标题:</b></li>
                             <li class="a">
-                               <input type="text" class="article-title-text" placeholder="标题..." /> <label style="color:red; margin-left:10px;" class="hide">* 标题不能为空</label>
+                                <input type="text" class="article-title-text" placeholder="标题..." tabindex="0"/>
+                                <label style="color: red; margin-left: 10px;" class="hide">* 标题不能为空</label>
                             </li>
+
                             <li class="a"><b>类型</b></li>
                             <li class="a" style="position: relative">
-                                <div class="articleTypeDiv"></div> <label style="color:red;" class="hide">* 文章类型不能为空</label>
+                                <div class="articleTypeDiv" tabindex="1"></div>
+                                <label style="color: red;" class="hide">* 文章类型不能为空</label>
                                 <ul class="articleTypeDiv-sub collapse">
                                 </ul>
                             </li>
                             <li class="a"><b>所属团队 :</b></li>
                             <li class="a" style="position: relative">
-                                <div class="articleTeamDiv"></div><label style="color:red;" class="hide">* 所属团队不能为空</label>
+                                <div class="articleTeamDiv" tabindex="2"></div>
+                                <label style="color: red;" class="hide">* 所属团队不能为空</label>
                                 <ul class="articleTeamDiv-sub collapse"></ul>
                             </li>
 
-                              <li class="a"><b>标签：</b></li>
+                            <li class="a"><b>标签：</b></li>
                             <li class="a" style="position: relative">
-                                <div class="articleTagDiv"></div><label style="color:red;" class="hide">* 标签不能为空</label>
+                                <div class="articleTagDiv" tabindex="3"></div>
+                                <label style="color: red;" class="hide">* 标签不能为空</label>
                                 <ul class="articleTagDiv-sub collapse"></ul>
                             </li>
 
                             <li class="a"><b>状态:</b></li>
                             <li class="a" style="position: relative">
-                                <div class="articleStatusDiv"></div><label style="color:red;" class="hide">* 状态不能为空</label>
+                                <div class="articleStatusDiv" tabindex="4"></div>
+                                <label style="color: red;" class="hide">* 状态不能为空</label>
                                 <ul class="articleStatusDiv-sub collapse">
                                 </ul>
                             </li>
@@ -156,13 +165,27 @@
                             <li class="a" style="position: relative">
                                 <ul class="ownerarea">
                                     <li>
-                                        <input type="text" class="owners-list" placeholder="请输入用户名..." /><label style="color:red;" class="hide">* 拥有者不能为空</label></li>
+                                        <input type="text" class="owners-list" placeholder="请输入用户名..." tabindex="4"/><label style="color: red;" class="hide">* 拥有者不能为空</label></li>
+
+                                    <li>
+                                        <ul class="ui-search-filter-opts">
+
+                                        </ul>
+                                    </li>
                                 </ul>
                                 <ul class="articleOwnerDiv-sub collapse"></ul>
                             </li>
-                          
+                            <li style="width:1200px; margin: 0 auto; margin-top:40px;">
+                                <div class="head">
+                                    <textarea id="editor1" name="editor1" tabindex="5"
+                                        style="width: 200px; height: 420px"></textarea>
+                                    <label style="color: red;" class="hide">* 文章内容不能为空</label>
+                                
+                                    <p class="edit-tag-btns" style="float:right;margin-top:30px;"><a id="submitarticle" href="#" class="__saveTagBtn save-tag-btn sc-btn" type="submit"><span>保存</span></a><a href="#" class="__cancelBtn cancel-btn sc-btn" type="submit"><span>取消</span></a></p>
+                                </div>
+                            </li>
 
-                            
+
                         </ul>
                     </li>
 
@@ -170,18 +193,7 @@
                     <%--  <li><a href="#" class="addPic">添加图片...</a></li>--%>
                 </ul>
 
-                <div class="head">
-                    <textarea id="editor1" name="editor1"
-                        style="width: 200px; height: 420px"></textarea>
-                    <label style="color:red;" class="hide">* 文章内容不能为空</label>
-                    <div class="actionArea">
-                        <input type="button" value="提交" id="submitarticle" class="button success block-shadow-success text-shadow resetBt2" style="margin: 3px" />
-                        <%--<input class="okBt" type="submit" value="确定" />--%>
-                        <input class="resetBt2" type="reset" value="取消" style="margin: 3px" />
-                    </div>
-                </div>
-
-                <input type="hidden" id="currentSelectedTeam"/>
+                <input type="hidden" id="currentSelectedTeam" />
             </div>
 
 

@@ -59,13 +59,13 @@ namespace Domain.MainBoundedContext.Reports.Logics.FilterField
         #region Expression Part
         public Expression<Func<Report, Boolean>> GetINExpression(IEnumerable<Int32> values)
         {
-            Expression<Func<Report, Boolean>> exp = _ => values.Contains(_.ReportStatusId);
+            Expression<Func<Report, Boolean>> exp = _ => values.Contains(_.StatusId);
             return exp;
         }
 
         public Expression<Func<Report, Boolean>> GetEqualExpression(Int32 value)
         {
-            Expression<Func<Report, Boolean>> exp = _ => _.ReportStatusId == value;
+            Expression<Func<Report, Boolean>> exp = _ => _.StatusId == value;
             return exp;
         }
         #endregion

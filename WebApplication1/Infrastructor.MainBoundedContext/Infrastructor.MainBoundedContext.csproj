@@ -73,13 +73,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Migrations\201506060104284_tests.cs" />
-    <Compile Include="Migrations\201506060104284_tests.Designer.cs">
-      <DependentUpon>201506060104284_tests.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201506080415446_test.cs" />
-    <Compile Include="Migrations\201506080415446_test.Designer.cs">
-      <DependentUpon>201506080415446_test.cs</DependentUpon>
+    <Compile Include="Migrations\201506131458469_testdd.cs" />
+    <Compile Include="Migrations\201506131458469_testdd.Designer.cs">
+      <DependentUpon>201506131458469_testdd.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -124,11 +120,8 @@
     <Content Include="Scripts\Data_Change_001.sql" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201506060104284_tests.resx">
-      <DependentUpon>201506060104284_tests.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201506080415446_test.resx">
-      <DependentUpon>201506080415446_test.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201506131458469_testdd.resx">
+      <DependentUpon>201506131458469_testdd.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

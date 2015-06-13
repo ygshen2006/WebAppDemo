@@ -10,6 +10,9 @@ using Application.MainBoundedContect.Services.Report;
 using Application.MainBoundedContect.ViewModel.Report;
 using Infrastructor.MainBoundedContext.Repositories.Reports;
 using Infrastructor.MainBoundedContext.UnitWorks;
+using Infrastructor.MainBoundedContext.Repositories.Users;
+using Infrastructor.MainBoundedContext.Repositories.SiteAdmin;
+using Infrastructor.MainBoundedContext.Repositories.TeamAdmin;
 
 namespace WebApplication1.Ajax
 {
@@ -31,8 +34,12 @@ namespace WebApplication1.Ajax
             using (MainDBUnitWorkContext context = new MainDBUnitWorkContext())
             {
                 ReportRepository repository = new ReportRepository(context);
+                UserRepository uRepository = new UserRepository(context);
+                TeamRepository tRepository = new TeamRepository(context);
+                CategoryRepository cRepository = new CategoryRepository(context);
+                TeamTagRepository tagRepository = new TeamTagRepository(context);
 
-                EditReportService service = new EditReportService(repository);
+                EditReportService service = new EditReportService(repository, uRepository, tRepository, cRepository, tagRepository);
                 service.AddReport(paramDes);
             }
             return "";

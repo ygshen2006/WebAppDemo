@@ -37,6 +37,8 @@ namespace WebApplication1.Ajax
             if (Request.Params["queryType"] == "getadmintileinfo") {
                 Response.Write(LoadTeamTiles());
             }
+
+          
         }
 
         private void UpdateTileInformation() {

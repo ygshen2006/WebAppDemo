@@ -621,9 +621,30 @@
                 <asp:HyperLink runat="server" ID="backTeamSite" Text="Cancel" CssClass="action-back"></asp:HyperLink>
             </div>
         </div>
+
+         <div class="popupWindow">
+        <h1>选择磁贴查询条件</h1>
+        <select class="select-tileType">
+            <option value="Selected">特定的</option>
+            <option value="Filtered">按条件过滤</option>
+            <option value="Tagged">依照标选择</option>
+        </select>
+        <div class="reportListAjaxData" style="">
+            <div class="Static"></div>
+            <div class="Selected"></div>
+            <div class="Filtered"></div>
+            <div class="Tagged"></div>
+        </div>
+        
+        <div class="ajaxButtons">
+            <input class="popupSave" type="button" value="Save" />
+            <input class="popupCancel" type="button" value="Cancel" />
+        </div>
+    </div>
     </form>
     <script src="../Scripts/jquery-1.10.2.min.js"></script>
     <script src="../Scripts/jquery-1.10.2.js"></script>
+    <script src="../Scripts/jquery.bpopup.min.js"></script>
     <script src="../js/uploader/jquery.upload.js"></script>
     <script src="../Scripts/Dashboard.js"></script>
     <script src="../Scripts/jquery.showLoading.js"></script>

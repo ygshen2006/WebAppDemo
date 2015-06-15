@@ -96,7 +96,20 @@ namespace Application.MainBoundedContect.Services.SiteAdmininstration
                            addedTeam.TeamOwners.Add(_userRepository.GetUserByName(t));
                         }
                     }
+                    Domain.MainBoundedContext.Tiles.Aggregates.Tile tile= new Domain.MainBoundedContext.Tiles.Aggregates.Tile();
+                    //INSERT INTO Tiles VALUES('All Reports','1',@TeamSiteID,2,null,4,0,0,1,1,'#6DC2E9','','','','Centered',0)
+                    tile.Title="All Reports";
+                    tile.IsCustomized = true;
+                    tile.TileType = 2;
+                    tile.LogicStringType = 4;
+                    tile.Top = 4;
+                    tile.Left = 0;
+                    tile.Width = 1;
+                    tile.Height = 1;
+                    tile.BackgroundColor = "#6DC2E9";
+                    tile.ReportCountStyle = "Centered";
 
+                    addedTeam.Tiles.Add(tile);
 
                     _teamRepository.Add(addedTeam);
                 }

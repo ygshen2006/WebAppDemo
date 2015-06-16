@@ -464,6 +464,19 @@
 
             initilizeIconPanel();
 
+            $('.popupSave').click(function () {
+                if (SaveLogicType() == true) {
+                    $('.popupWindow').bPopup().close();
+                    $('.popupWindow .reportListAjaxData .Filtered .filterItem .filterExpand').each(function () {
+                        $(this).removeClass('filterExpand').addClass('filterCollopse');
+                        $(this).parent().children('ul').slideUp();
+                    });
+                }
+            });
+
+            $('.popupCancel').click(function (e) {
+                $('.popupWindow').bPopup().close();
+            });
         }
       
 
@@ -486,9 +499,9 @@
                 },
                 success: function (result) {
                     result.forEach(function (v) {
-                        //if (v.LogicType != 'Filtered' && v.LogicType != 'Selected' & v.LogicType != 'Tagged') {
-                        //    v.LogicType = 'Static'
-                        //}                    
+                        if (v.LogicType != 'Filtered' && v.LogicType != 'Selected' & v.LogicType != 'Tagged') {
+                            v.LogicType = 'Static'
+                        }                    
                         v.onGrid = true;
                         originalTiles.push({}, v);
                     });
@@ -627,7 +640,9 @@
             var tile = getCurrentTileById($('.tile-selected').attr('id').substr(5));
             $('.select-tileType').prop('disabled', false);
             switch (logicType) {
-              
+                case 'Static':
+                    $('.popupWindow .reportListAjaxData .Static').show().addClass('shown');
+                    break;
                 case 'Selected':
                     {
                         $('.popupWindow .reportListAjaxData .Selected').show().addClass('shown');
@@ -781,11 +796,7 @@
             tile.LogicType = LogicType;
             $('.label-tile-type').text(LogicType);
             tile.LogicString = LogicString;
-            if (LogicType == 'Selected') {
-                tile.autoLaunch = $('.autolaunch input[type=checkbox]').prop('checked');
-            } else {
-                tile.autoLaunch = false;
-            }
+       
 
             updateCount(tile);
             if (!URP.CustomizationTiles.hasChanged) {
@@ -827,7 +838,7 @@
         }
         function getReportsForSelected(callBack) {
             $.ajax({
-                url: getBaseUrl() + '/Ajax/TeamAdminAjax',
+                url: getBaseUrl() + '/Ajax/AddNewReport',
                 type: 'Get',
                 cache: false,
                 data: { queryType: 'getadmintilereport', TileID: 0, SiteGUID: GetQueryString('SiteGUID') },
@@ -1645,8 +1656,6 @@ $(function () {
     URP.CustomizationTiles.Init();
     //URP.CustomizationTiles.loadTiles();
     URP.CustomizationTiles.loadTiles();
-
-
 
     $(window).on('onbeforeunload', function () {
         if (!$('.dashboard-body .action-area a.action-save').hasClass('action-disable')) {

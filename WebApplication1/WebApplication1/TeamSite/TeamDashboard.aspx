@@ -625,6 +625,8 @@
          <div class="popupWindow">
         <h1>选择磁贴查询条件</h1>
         <select class="select-tileType">
+            <option value="Static" selected="selected">空白的</option>
+
             <option value="Selected">特定的</option>
             <option value="Filtered">按条件过滤</option>
             <option value="Tagged">依照标选择</option>
@@ -637,8 +639,8 @@
         </div>
         
         <div class="ajaxButtons">
-            <input class="popupSave" type="button" value="Save" />
-            <input class="popupCancel" type="button" value="Cancel" />
+            <input class="popupSave" type="button" value="保存" />
+            <input class="popupCancel" type="button" value="取消" />
         </div>
     </div>
     </form>

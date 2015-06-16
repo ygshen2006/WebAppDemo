@@ -6,15 +6,20 @@ using System.Threading.Tasks;
 using Application.MainBoundedContect.ViewModel.Tiles;
 using Domain.MainBoundedContext.Tiles.Aggregates;
 using Application.MainBoundedContect.Extentions;
+using Application.MainBoundedContect.Enums;
+using Application.MainBoundedContect.ViewModel.Report;
+using Domain.MainBoundedContext.Logics;
+using Domain.MainBoundedContext.Teams.Aggregates.TeamSites;
 
 namespace Application.MainBoundedContect.Services.Tile
 {
     public class TileServices
     {
         private ITileRepository _tileRepository;
-
-        public TileServices(ITileRepository repository) {
+        private ITeamRepository _teamRepository;
+        public TileServices(ITileRepository repository, ITeamRepository teamRepository=null) {
             _tileRepository = repository;
+            _teamRepository = teamRepository;
         }
 
         public void ModifyTile(List<AppTile> tiles) {
@@ -22,7 +27,30 @@ namespace Application.MainBoundedContect.Services.Tile
                 ModifyTile(tile);
             }
         }
+        /// <summary>
+        /// Get all reports of a team based on the team site guid
+        /// </summary>
+        /// <param name="userAlias"></param>
+        /// <param name="teamSiteGuid"></param>
+        /// <param name="isAdmin"></param>
+        /// <param name="sortField"></param>
+        /// <param name="sortOrder"></param>
+        /// <returns></returns>
+        public IEnumerable<AppReport> GetAllReportsOfTeamSite(String userAlias, String teamSiteGuid, Boolean isAdmin,
+          SortField sortField, SortOrder sortOrder)
+        {
 
+            int teamId = _teamRepository.GetFiltered(_ => _.TeamGuid == new Guid(teamSiteGuid)).FirstOrDefault().Id;
+            int allreportsTileId = _tileRepository.GetAllReportsTileId(teamId);
+
+            ParameterProvider pp = new ParameterProvider();
+            pp.AddParameter(ContextVariable.CurrentTeamSiteGuid.ToString(), new Guid(teamSiteGuid));
+            pp.AddParameter(ContextVariable.CurrentUser.ToString(), userAlias);
+            pp.AddParameter(ContextVariable.TeamSiteGuidUnderControl.ToString(), new List<Guid> { new Guid(teamSiteGuid) });
+
+            return null;
+
+        }
         public List<AppTile> GetTilesByTeamId(int id) {
             List<AppTile> aTiles = new List<AppTile>();
             foreach (var t in _tileRepository.GetTilesByTeamId(id)) {

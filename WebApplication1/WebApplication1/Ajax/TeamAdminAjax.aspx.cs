@@ -51,11 +51,7 @@ namespace WebApplication1.Ajax
                     var tem = jss.Serialize(appService.GetTeamsWithTitle(teamname));
                     Response.Write(tem);
                 }
-                if (Request.Params["queryType"] == "getadmintilereport")
-                {
-                    // get all the report
-
-                }
+             
 
                 if (Request.Params["queryType"] == "gettilefilterlist")
                 {

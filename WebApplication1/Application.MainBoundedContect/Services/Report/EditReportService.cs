@@ -11,6 +11,8 @@ using Application.MainBoundedContect.Extentions;
 using Domain.MainBoundedContext.Users;
 using Domain.MainBoundedContext.Teams.Tags;
 using Domain.MainBoundedContext.Teams.Aggregates.Tags;
+using Application.MainBoundedContect.Enums;
+using Domain.MainBoundedContext.Logics;
 
 namespace Application.MainBoundedContect.Services.Report
 {
@@ -61,5 +63,7 @@ namespace Application.MainBoundedContect.Services.Report
 
             _reportRepository.AddReport(r);
         }
+
+      
     }
 }

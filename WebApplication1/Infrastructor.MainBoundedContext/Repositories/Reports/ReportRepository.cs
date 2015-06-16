@@ -34,5 +34,11 @@ namespace Infrastructor.MainBoundedContext.Repositories.Reports
         {
             throw new NotImplementedException();
         }
+
+
+        public IQueryable<Report> GetReportsByExpression(System.Linq.Expressions.Expression<Func<Report, bool>> filterExpression)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

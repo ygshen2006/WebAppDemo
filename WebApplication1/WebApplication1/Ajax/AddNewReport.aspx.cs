@@ -28,6 +28,11 @@ namespace WebApplication1.Ajax
             {
                 Response.Write(GetArticles());
             }
+            if (Request.Params["queryType"] == "getadmintilereport")
+            {
+                // get all the report
+
+            }
         }
 
 
@@ -49,10 +54,22 @@ namespace WebApplication1.Ajax
             }
             return "";
         }
+        private string GetReportFromCurrentTeamSite() {
+            string tileID = Request["TileID"];
+            string teamGuid = Request["SiteGUID"];
+
+            using (MainDBUnitWorkContext context = new MainDBUnitWorkContext())
+            {
+                ReportRepository repository = new ReportRepository(context);
+                
+            }
+            return null;
+
+        }
 
         private string GetArticles()
         {
-
+            return null;
         }
     }
 }

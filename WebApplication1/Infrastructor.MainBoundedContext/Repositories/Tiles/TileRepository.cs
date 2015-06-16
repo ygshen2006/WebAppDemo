@@ -52,5 +52,11 @@ namespace Infrastructor.MainBoundedContext.Repositories.Tiles
         {
             return this.GetFiltered(_ => _.OwnerTeamSiteId == teamId);
         }
+
+
+        public int GetAllReportsTileId(int teamId)
+        {
+            return this.GetTilesByTeamId(teamId).Where(_ => _.LogicString == "AllReports").FirstOrDefault().Id;
+        }
     }
 }

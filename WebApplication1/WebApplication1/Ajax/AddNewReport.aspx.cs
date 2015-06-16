@@ -24,10 +24,15 @@ namespace WebApplication1.Ajax
             {
                 Response.Write(UploadNewArticle());
             }
+            if (Request["requestType"] == "getteamallarticles")
+            {
+                Response.Write(GetArticles());
+            }
         }
 
 
-        private string UploadNewArticle() {
+        private string UploadNewArticle()
+        {
             JavaScriptSerializer jss = new JavaScriptSerializer();
             var paramDes = jss.Deserialize<AppReport>(Request.Params["articleData"]);
 
@@ -43,6 +48,11 @@ namespace WebApplication1.Ajax
                 service.AddReport(paramDes);
             }
             return "";
+        }
+
+        private string GetArticles()
+        {
+
         }
     }
 }

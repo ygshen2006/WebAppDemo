@@ -134,7 +134,7 @@ namespace Infrastructor.SeedWork
         /// <see cref="Microsoft.Samples.NLayerApp.Domain.Seedwork.IRepository{TValueObject}"/>
         /// </summary>
         /// <returns><see cref="Microsoft.Samples.NLayerApp.Domain.Seedwork.IRepository{TValueObject}"/></returns>
-        public virtual IEnumerable<TEntity> GetAll(bool allowTrack = false)
+        public virtual IEnumerable<TEntity> GetAll(bool allowTrack = true)
         {
             if (allowTrack)
             {

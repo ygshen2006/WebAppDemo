@@ -163,6 +163,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="AddReport\AddNewReport.aspx" />
+    <Content Include="AddReport\TempAllReports.aspx" />
     <Content Include="Ajax\AddNewReport.aspx" />
     <Content Include="Ajax\FrontAjax.aspx" />
     <Content Include="Ajax\SiteAdminAjax.aspx" />
@@ -499,6 +500,13 @@
     </Compile>
     <Compile Include="AddReport\AddNewReport.aspx.designer.cs">
       <DependentUpon>AddNewReport.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AddReport\TempAllReports.aspx.cs">
+      <DependentUpon>TempAllReports.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AddReport\TempAllReports.aspx.designer.cs">
+      <DependentUpon>TempAllReports.aspx</DependentUpon>
     </Compile>
     <Compile Include="Ajax\AddNewReport.aspx.cs">
       <DependentUpon>AddNewReport.aspx</DependentUpon>

@@ -399,7 +399,6 @@
             $('.articleTagDiv').live('click', function (e) {
                 // Load all the categories for this article
 
-              
                     if (!$(this).hasClass('expands')) {
                         $('.articleTagDiv-sub').removeClass('collapse').addClass('expands');
                         $(this).removeClass('expands').addClass('expands');
@@ -410,6 +409,7 @@
                             return;
                         }
                         if (selectedTags.length == 0) {
+
                             URP.AddReport.LoadTeamTags($(this), $('#currentSelectedTeam').val(), function (result) {
                                 var str = '';
                                 if (result != null && result.length > 0) {
@@ -737,6 +737,7 @@
         }
 
         this.validate = function (item, control) {
+           
             var nextchild = $(control).next();
             if (item == null || item.length == 0) {
                 $(nextchild).removeClass('hide');
@@ -749,7 +750,6 @@
         }
 
         this.TagSelect = function (item, itemvalue) {
-
             var status = $(item).attr('checked');
             if (status == 'checked') {
                 selectedTags.push({ "Id": $(item).attr('tag'), "Title": itemvalue });

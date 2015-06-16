@@ -428,7 +428,7 @@
                     return;
                 }
                 $('.popupWindow').bPopup({ modalClose: false });
-                $('.autolaunch input[type=checkbox]').prop('checked', tile.autoLaunch);
+                //$('.autolaunch input[type=checkbox]').prop('checked', tile.autoLaunch);
                 $('.select-tileType').val(tile.LogicType);
                 LogicTypeChange(tile.LogicType);
             });
@@ -627,11 +627,7 @@
             var tile = getCurrentTileById($('.tile-selected').attr('id').substr(5));
             $('.select-tileType').prop('disabled', false);
             switch (logicType) {
-                case 'Static':
-                    $('.autolaunch input[type=checkbox]').prop('checked', false);
-                    $('.autolaunch input[type=checkbox]').prop('disabled', true);
-                    $('.popupWindow .reportListAjaxData .Static').show().addClass('shown');
-                    break;
+              
                 case 'Selected':
                     {
                         $('.popupWindow .reportListAjaxData .Selected').show().addClass('shown');
@@ -650,12 +646,7 @@
                                     }
                                 });
                             }
-                            if ($('.popupWindow .listItemID:checked').length != 1) {
-                                $('.autolaunch input[type=checkbox]').prop('disabled', true);
-                            } else {
-                                $('.autolaunch input[type=checkbox]').prop('disabled', false);
-                            }
-                            $('.autolaunch input[type=checkbox]').prop('checked', tile.autoLaunch);
+                            
                         };
                         if ($('.reportListAjaxData .Selected').html() == '') {
                             getReportsForSelected(callBackFun);
@@ -665,8 +656,7 @@
                     }
                     break;
                 case 'Filtered':
-                    $('.autolaunch input[type=checkbox]').prop('checked', false);
-                    $('.autolaunch input[type=checkbox]').prop('disabled', true);
+                   
                     $('.popupWindow .reportListAjaxData .Filtered').show().addClass('shown');;
 
                     var callBackFun = function () {
@@ -700,8 +690,7 @@
                     }
                     break;
                 case 'Tagged':
-                    $('.autolaunch input[type=checkbox]').prop('checked', false);
-                    $('.autolaunch input[type=checkbox]').prop('disabled', true);
+                  
                     $('.popupWindow .reportListAjaxData .Tagged').show().addClass('shown');;
                     var callBackFun = function () {
                         $('.popupWindow .reportListAjaxData .Tagged .tagItemID').prop('checked', false);
@@ -838,7 +827,7 @@
         }
         function getReportsForSelected(callBack) {
             $.ajax({
-                url: getBaseUrl() + '/_layouts/15/URPAjax/AdminAjax.aspx',
+                url: getBaseUrl() + '/Ajax/TeamAdminAjax',
                 type: 'Get',
                 cache: false,
                 data: { queryType: 'getadmintilereport', TileID: 0, SiteGUID: GetQueryString('SiteGUID') },
@@ -879,7 +868,7 @@
         }
         function getReportsForFiltered(callBack) {
             $.ajax({
-                url: getBaseUrl() + '/_layouts/15/URPAjax/AdminAjax.aspx',
+                url: getBaseUrl() + '/Ajax/TeamAdminAjax',
                 type: 'Get',
                 cache: false,
                 data: { queryType: 'gettilefilterlist', TileID: 0, SiteGUID: GetQueryString('SiteGUID') },
@@ -957,7 +946,7 @@
         }
         function getReportsForTagged(callBack) {
             $.ajax({
-                url: getBaseUrl() + '/_layouts/15/URPAjax/AdminAjax.aspx',
+                url: getBaseUrl() + '/Ajax/TeamAdminAjax',
                 type: 'Get',
                 cache: false,
                 data: { queryType: 'taglist', TileID: 0, SiteGUID: GetQueryString('SiteGUID') },

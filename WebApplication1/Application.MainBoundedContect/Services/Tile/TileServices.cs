@@ -43,7 +43,7 @@ namespace Application.MainBoundedContect.Services.Tile
         public AppTile GetTeamSite_AllReportsTile() {
             AppTile appTile = new AppTeamSiteAllReportsTile() { IsCustomized = false, Top = 0, Left = 0, Width = 1, Height = 1, TileType = TileType.TeamSite, Title = "All Reports" };
 
-            appTile.BasicLogic = (new TeamSiteGUID()).Equal(new Parameter<Guid>() { Name = ContextVariable.CurrentTeamSiteId.ToString() });
+            appTile.BasicLogic = (new TeamSiteGUID()).Equal(new Parameter<Guid>() { Name = ContextVariable.CurrentTeamSiteGuid.ToString() });
 
             return appTile;
         }

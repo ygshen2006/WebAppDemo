@@ -15,6 +15,7 @@ namespace Domain.MainBoundedContext.Tiles.Aggregates
         void DeleteTile(Tile tileData);
         IEnumerable<Tile> GetTilesByTeamId(int teamId);
         int GetAllReportsTileId(int teamId);
+        Tile GetAllReportsTile(int teamId);
         Tile GetTileById(int tileId);
         IEnumerable<Tile> GetTiles();
     }

@@ -108,7 +108,7 @@ namespace Application.MainBoundedContect.Services.SiteAdmininstration
                     tile.Height = 1;
                     tile.BackgroundColor = "#6DC2E9";
                     tile.ReportCountStyle = "Centered";
-
+                    tile.LogicString = "AllReports";
                     addedTeam.Tiles.Add(tile);
 
                     _teamRepository.Add(addedTeam);

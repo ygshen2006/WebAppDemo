@@ -13,6 +13,8 @@ using Domain.MainBoundedContext.Teams.Tags;
 using Domain.MainBoundedContext.Teams.Aggregates.Tags;
 using Application.MainBoundedContect.Enums;
 using Domain.MainBoundedContext.Logics;
+using Domain.MainBoundedContext.Tiles.Aggregates;
+using Application.MainBoundedContect.Services.Tile;
 
 namespace Application.MainBoundedContect.Services.Report
 {
@@ -23,18 +25,44 @@ namespace Application.MainBoundedContect.Services.Report
         ITeamRepository _teamRepository;
         ICategoryRepository _categoryRepository;
         ITagRepository _tagRepository;
+        ITileRepository _tileRepository;
 
         public EditReportService(IReportRepository repository_report,
             IUserRepository repository_user, 
             ITeamRepository repository_team,
             ICategoryRepository category_repository,
-            ITagRepository repository_tag) {
+            ITagRepository repository_tag,
+            ITileRepository repository_tile
+            ) {
             _reportRepository = repository_report;
             _userRepository = repository_user;
             _teamRepository = repository_team;
             _categoryRepository = category_repository;
             _tagRepository = repository_tag;
+            _tileRepository = repository_tile;
         }
+
+
+
+        public IEnumerable<AppReport> GetAllReportsOfTeamSite(string userAlias, string teamSiteGuid, bool isAdmin,
+        SortField sortField, SortOrder sortOrder)
+        {
+            TileServices tService = new TileServices(_tileRepository);
+            int teamId = _teamRepository.GetFiltered(_ => _.TeamGuid == new Guid(teamSiteGuid)).FirstOrDefault().Id;
+
+
+
+            ParameterProvider pp = new ParameterProvider();
+            pp.AddParameter(ContextVariable.CurrentTeamSiteGuid.ToString(), new Guid(teamSiteGuid));
+            pp.AddParameter(ContextVariable.CurrentUser.ToString(), userAlias);
+            pp.AddParameter(ContextVariable.TeamSiteGuidUnderControl.ToString(), new List<Guid> { new Guid(teamSiteGuid) });
+
+
+            int allreportsTileId = _tileRepository.GetAllReportsTileId(teamId);
+            return _reportRepository.GetReportsByExpression(tService.GetTeamSite_AllReportsTile().GetCombinedLogic(isAdmin, allreportsTileId).GetExpression(pp))
+                .Select(_ => _.ToAppReport());
+        }
+
         public void AddReport(AppReport report) {
             Domain.MainBoundedContext.Reports.Aggregates.Report r = report.ToReport();
             

@@ -58,5 +58,12 @@ namespace Infrastructor.MainBoundedContext.Repositories.Tiles
         {
             return this.GetTilesByTeamId(teamId).Where(_ => _.LogicString == "AllReports").FirstOrDefault().Id;
         }
+
+
+
+        public Tile GetAllReportsTile(int teamId)
+        {
+            return this.GetTilesByTeamId(teamId).Where(_ => _.LogicString == "AllReports").FirstOrDefault();
+        }
     }
 }

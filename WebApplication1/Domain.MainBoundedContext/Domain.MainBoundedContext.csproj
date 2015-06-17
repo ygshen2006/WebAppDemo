@@ -70,6 +70,7 @@
   <ItemGroup>
     <Compile Include="AppFilterField.cs" />
     <Compile Include="Reports\Aggregates\IReportRepository.cs" />
+    <Compile Include="Reports\FilterField\TeamSiteGUID.cs" />
     <Compile Include="Reports\Logics\AND.cs" />
     <Compile Include="Reports\Logics\Constant.cs" />
     <Compile Include="Reports\Logics\Equal.cs" />

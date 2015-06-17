@@ -11,11 +11,13 @@ namespace Infrastructor.MainBoundedContext.Repositories.Reports
 {
     public class ReportRepository : Repository<Report>, IReportRepository
     {
+        MainDBUnitWorkContext _context = null;
+
         public ReportRepository() : base(new MainDBUnitWorkContext()) { }
         public ReportRepository(MainDBUnitWorkContext context)
             : base(context)
         {
-
+            _context = context;
         }
 
 
@@ -38,7 +40,11 @@ namespace Infrastructor.MainBoundedContext.Repositories.Reports
 
         public IQueryable<Report> GetReportsByExpression(System.Linq.Expressions.Expression<Func<Report, bool>> filterExpression)
         {
-            throw new NotImplementedException();
+            IQueryable<Report> query = null;
+
+            query = _context.Reports.Where(filterExpression);
+            
+            return query;
         }
     }
 }

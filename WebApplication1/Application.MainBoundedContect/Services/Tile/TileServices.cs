@@ -10,16 +10,18 @@ using Application.MainBoundedContect.Enums;
 using Application.MainBoundedContect.ViewModel.Report;
 using Domain.MainBoundedContext.Logics;
 using Domain.MainBoundedContext.Teams.Aggregates.TeamSites;
+using Domain.MainBoundedContext.Reports.FilterField;
+using Domain.MainBoundedContext.Teams.FilterField;
 
 namespace Application.MainBoundedContect.Services.Tile
 {
     public class TileServices
     {
         private ITileRepository _tileRepository;
-        private ITeamRepository _teamRepository;
-        public TileServices(ITileRepository repository, ITeamRepository teamRepository=null) {
+        
+        public TileServices(ITileRepository repository) {
             _tileRepository = repository;
-            _teamRepository = teamRepository;
+            
         }
 
         public void ModifyTile(List<AppTile> tiles) {
@@ -36,21 +38,16 @@ namespace Application.MainBoundedContect.Services.Tile
         /// <param name="sortField"></param>
         /// <param name="sortOrder"></param>
         /// <returns></returns>
-        public IEnumerable<AppReport> GetAllReportsOfTeamSite(String userAlias, String teamSiteGuid, Boolean isAdmin,
-          SortField sortField, SortOrder sortOrder)
-        {
+      
 
-            int teamId = _teamRepository.GetFiltered(_ => _.TeamGuid == new Guid(teamSiteGuid)).FirstOrDefault().Id;
-            int allreportsTileId = _tileRepository.GetAllReportsTileId(teamId);
+        public AppTile GetTeamSite_AllReportsTile() {
+            AppTile appTile = new AppTeamSiteAllReportsTile() { IsCustomized = false, Top = 0, Left = 0, Width = 1, Height = 1, TileType = TileType.TeamSite, Title = "All Reports" };
 
-            ParameterProvider pp = new ParameterProvider();
-            pp.AddParameter(ContextVariable.CurrentTeamSiteGuid.ToString(), new Guid(teamSiteGuid));
-            pp.AddParameter(ContextVariable.CurrentUser.ToString(), userAlias);
-            pp.AddParameter(ContextVariable.TeamSiteGuidUnderControl.ToString(), new List<Guid> { new Guid(teamSiteGuid) });
+            appTile.BasicLogic = (new TeamSiteGUID()).Equal(new Parameter<Guid>() { Name = ContextVariable.CurrentTeamSiteId.ToString() });
 
-            return null;
-
+            return appTile;
         }
+
         public List<AppTile> GetTilesByTeamId(int id) {
             List<AppTile> aTiles = new List<AppTile>();
             foreach (var t in _tileRepository.GetTilesByTeamId(id)) {

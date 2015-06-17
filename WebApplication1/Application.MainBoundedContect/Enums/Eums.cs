@@ -39,7 +39,7 @@ namespace Application.MainBoundedContect.Enums
 
     public enum ReportStatusEnum { UnAssigned = 0, Submitted = 1, Approved = 2, Rejected = 3, Retired = 4 };
 
-    public enum ContextVariable { CurrentUser, CurrentUserGroup, CurrentTeamSiteGuid, TeamSiteGuidUnderControl };
+    public enum ContextVariable { CurrentUser, CurrentUserGroup, CurrentTeamSiteGuid, TeamSiteGuidUnderControl, CurrentTeamSiteId };
 
     public class SystemDefinedTile
     {
@@ -61,9 +61,9 @@ namespace Application.MainBoundedContect.Enums
         }
 
         public static readonly Dictionary<Int32, SystemDefinedTile> SystemTilesDictionary = new Dictionary<Int32, SystemDefinedTile>();
-        public static readonly SystemDefinedTile MyReports_MySubscriptions = new SystemDefinedTile("My Report Subscriptions", 1);
-        public static readonly SystemDefinedTile MyReports_MyReports = new SystemDefinedTile("All My Reports", 2);
-        public static readonly SystemDefinedTile MyReports_Recommended = new SystemDefinedTile("Recommended Reports", 3);
+        public static readonly SystemDefinedTile MyReports_MySubscriptions = new SystemDefinedTile("我的订阅", 1);
+        public static readonly SystemDefinedTile MyReports_MyReports = new SystemDefinedTile("我的文章", 2);
+        public static readonly SystemDefinedTile MyReports_Recommended = new SystemDefinedTile("我的推荐", 3);
         //public static readonly SystemDefinedTile MyReports_AllReports = new SystemDefinedTile("All Team Reports", 4);
 
         //public static readonly SystemDefinedTile SelfService_MyUserReports = new SystemDefinedTile("My User Reports", 6);

@@ -1,0 +1,20 @@
+insert into Tiles([Title]
+      ,[Top]
+      ,[Left]
+      ,[Width]
+      ,[Height]
+      ,[BackgroundColor]
+      ,[Icon]
+      ,[BackgroundImage]
+      ,[ImageOverlayColor]
+      ,[ReportCountStyle]
+      ,[IsCustomized]
+      ,[OwnerTeamSiteId]
+      ,[TileType]
+      ,[LogicStringType]
+      ,[LogicString])
+      
+      values('我的订阅',0,0,1,1,'#6DC2E9',null,null,null,'Centered',0,null,1,2,'MySubscriptions'),
+      ('我的文章',0,1,1,1,'#6DC2E9',null,null,null,'Centered',0,null,1,2,'MyReports'),
+      ('我的推荐',0,2,1,1,'#6DC2E9',null,null,null,'Centered',0,null,1,2,'MySubscriptions')
+      

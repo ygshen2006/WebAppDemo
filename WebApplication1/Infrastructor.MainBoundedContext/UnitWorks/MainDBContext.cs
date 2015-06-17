@@ -218,7 +218,7 @@ namespace Infrastructor.MainBoundedContext.UnitWorks
             }
         }
         #endregion
-
+        
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
 

@@ -104,6 +104,7 @@
     <Compile Include="Services\SiteAdmininstration\CategoryService.cs" />
     <Compile Include="Services\SiteAdmininstration\UsefulLinksService.cs" />
     <Compile Include="Services\SiteAdmininstration\TeamAppService.cs" />
+    <Compile Include="Services\Tile\AppTeamSiteAllReportsTile.cs" />
     <Compile Include="ViewModel\Report\AppReport.cs" />
     <Compile Include="ViewModel\TeamSites\AppStatus.cs" />
     <Compile Include="ViewModel\TeamSites\AppTeamTag.cs" />

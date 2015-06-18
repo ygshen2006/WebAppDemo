@@ -10,11 +10,15 @@ insert into Tiles([Title]
       ,[ReportCountStyle]
       ,[IsCustomized]
       ,[OwnerTeamSiteId]
-      ,[TileType]
-      ,[LogicStringType]
+      ,[TileType]   --- TeamSiteList=0, MyReport = 1, TeamSite = 2, SelfService = 3
+      ,[LogicStringType] ---Static = 0, Selected = 1, Filtered = 2, Tagged = 3, AllReport = 4
       ,[LogicString])
       
       values('我的订阅',0,0,1,1,'#6DC2E9',null,null,null,'Centered',0,null,1,2,'MySubscriptions'),
       ('我的文章',0,1,1,1,'#6DC2E9',null,null,null,'Centered',0,null,1,2,'MyReports'),
       ('我的推荐',0,2,1,1,'#6DC2E9',null,null,null,'Centered',0,null,1,2,'MySubscriptions')
+
+
+
+
       

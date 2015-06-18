@@ -13,6 +13,10 @@ using Application.MainBoundedContect.Enums;
 using Application.MainBoundedContect.Services.SiteAdmininstration;
 using Infrastructor.MainBoundedContext.Repositories.SiteAdmin;
 using Application.MainBoundedContect.Extentions;
+using Domain.MainBoundedContext.Reports.FilterField;
+using Application.MainBoundedContect.ViewModel.Report;
+using Infrastructor.MainBoundedContext.Repositories.Reports;
+using Application.MainBoundedContect.Services.Report;
 namespace WebApplication1.Ajax
 {
     public partial class TeamDashBoardAjax : System.Web.UI.Page
@@ -202,53 +206,54 @@ namespace WebApplication1.Ajax
             using (MainDBUnitWorkContext context = new MainDBUnitWorkContext())
             {
                 TileRepository repository = new TileRepository(context);
+                ReportRepository _reportRepository = new ReportRepository(context);
 
                 if (!string.IsNullOrEmpty(logicString))
                 {
                     TileServices tm = new TileServices(repository);
+                    EditReportService reportService = new EditReportService(null, null, null, null, null, null);
+
                     switch (appTile.logicType)
                     {
                         case LogicType.Static:
                             appTile.BasicLogic = null;
                             break;
 
-                        //case LogicType.Selected:
-                        //    List<int> cataIDList = logicString.Split(',').Select(_ => Convert.ToInt32(_)).ToList();
-                        //    appTile.BasicLogic = (new CatalogDataId()).In(cataIDList);
-                        //    break;
+                        case LogicType.Selected:
+                            List<int> cataIDList = logicString.Split(',').Select(_ => Convert.ToInt32(_)).ToList();
+                            appTile.BasicLogic = (new ReportDataId()).In(cataIDList);
+                            break;
 
-                        //case LogicType.Filtered:
-                        //    ReportFilter filer = new ReportFilter();
-                        //    CatalogDataManager cdm = new CatalogDataManager();
-                        //    JavaScriptSerializer jss = new JavaScriptSerializer();
+                        case LogicType.Filtered:
+                            ReportFilter filer = new ReportFilter();
+                            
+                            JavaScriptSerializer jss = new JavaScriptSerializer();
 
-                        //    #region Deserialize
-                        //    TileFilterListViewModel vm = new TileFilterListViewModel();
-                        //    if (!String.IsNullOrEmpty(logicString))
-                        //        vm = jss.Deserialize<TileFilterListViewModel>(logicString);
+                            #region Deserialize
+                            TileFilterListViewModel vm = new TileFilterListViewModel();
+                            if (!String.IsNullOrEmpty(logicString))
+                                vm = jss.Deserialize<TileFilterListViewModel>(logicString);
 
-                        //    #endregion
+                            #endregion
 
-                        //    #region Get ReportFilter
-                        //    filer.FileTypeIdCollection = (from fl in vm.Type select fl.Id).ToList();
-                        //    filer.OwnerIdCollection = (from o in vm.Owner select o.Id).ToList();
-                        //    //filer.CatalogTypeIdCollection = (from c in vm.CatelogType select c.Id).ToList();
-                        //    filer.TagsIdCollection = (from t in vm.Tag select t.Id.Value).ToList();
-                        //    filer.DataSourceIdCollection = (from ds in vm.DataSource select ds.Id.Value).ToList();
-                        //    filer.SubCategoryIdCollection = (from c in vm.SubCategory select c.Id.Value).ToList();
-                        //    #endregion
+                            #region Get ReportFilter
+                            filer.OwnerIdCollection = (from o in vm.Owner select o.Id).ToList();
+                            //filer.CatalogTypeIdCollection = (from c in vm.CatelogType select c.Id).ToList();
+                            filer.TagsIdCollection = (from t in vm.Tag select t.Id.Value).ToList();
+                            filer.SubCategoryIdCollection = (from c in vm.SubCategory select c.Id.Value).ToList();
+                            #endregion
 
-                        //    appTile.BasicLogic = cdm.GenerateLogicByFilter(filer);
-                        //    break;
+                            appTile.BasicLogic = reportService.GenerateLogicByFilter(filer);
+                            break;
 
-                        //case LogicType.Tagged:
-                        //    List<int> tagIds = logicString.Split(',').Select(i => int.Parse(i.Trim())).ToList();
-                        //    appTile.BasicLogic = (new TagId()).In(tagIds);
-                        //    break;
+                        case LogicType.Tagged:
+                            List<int> tagIds = logicString.Split(',').Select(i => int.Parse(i.Trim())).ToList();
+                            appTile.BasicLogic = (new TagId()).In(tagIds);
+                            break;
 
-                        //case LogicType.AllReport:
-                        //    appTile.BasicLogic = null;
-                        //    break;
+                        case LogicType.AllReport:
+                            appTile.BasicLogic = null;
+                            break;
                     }
                 }
                 else

@@ -15,6 +15,7 @@ using Application.MainBoundedContect.Enums;
 using Domain.MainBoundedContext.Logics;
 using Domain.MainBoundedContext.Tiles.Aggregates;
 using Application.MainBoundedContect.Services.Tile;
+using Domain.MainBoundedContext.Reports.FilterField;
 
 namespace Application.MainBoundedContect.Services.Report
 {
@@ -91,7 +92,37 @@ namespace Application.MainBoundedContect.Services.Report
 
             _reportRepository.AddReport(r);
         }
+        public Logic GenerateLogicByFilter(ReportFilter filter)
+        {
+            if (filter != null)
+            {
+                var logic = new AND();
 
+
+                if (filter.TagsIdCollection != null && filter.TagsIdCollection.Count() > 0)
+                {
+                    logic.AddElement((new TagId()).In(filter.TagsIdCollection));
+                }
+
+
+                if (filter.OwnerIdCollection != null && filter.OwnerIdCollection.Count() > 0)
+                {
+                    logic.AddElement((new ReportOwnerId()).In(filter.OwnerIdCollection));
+                }
+
+                if (filter.SubCategoryIdCollection != null && filter.SubCategoryIdCollection.Count() > 0)
+                {
+                    logic.AddElement((new SubCategoryId()).In(filter.SubCategoryIdCollection));
+                }
+
+                return logic.LogicElements.Count() > 0 ? logic : null;
+            }
+            else
+            {
+                return null;
+            }
+
+        }
       
     }
 }

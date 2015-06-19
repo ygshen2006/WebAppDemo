@@ -39,7 +39,7 @@ namespace Application.MainBoundedContect.Enums
 
     public enum ReportStatusEnum { UnAssigned = 0, Submitted = 1, Approved = 2, Rejected = 3, Retired = 4 };
 
-    public enum ContextVariable { CurrentUser, CurrentUserGroup, CurrentTeamSiteGuid, TeamSiteGuidUnderControl, CurrentTeamSiteId };
+    public enum ContextVariable { CurrentUser, CurrentUserGroup, CurrentTeamSiteGuid, TeamSiteGuidUnderControl };
 
     public class SystemDefinedTile
     {

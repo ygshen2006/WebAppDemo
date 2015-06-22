@@ -93,7 +93,7 @@ namespace WebApplication1.Ajax
                     }
                 }
 
-                TileServices tService = new TileServices(repository);
+                TileServices tService = new TileServices(repository, null,null,null,null,null);
 
                 List<AppTile> tiles = new List<AppTile>();
 
@@ -194,7 +194,7 @@ namespace WebApplication1.Ajax
                 TeamAppService teamService = new TeamAppService(tRepository);
 
                 int teamId = teamService.GetAllTeamSites().First(_ => _.TeamGuid == Guid.Parse(teamGuid)).Id.Value;
-                TileServices tService = new TileServices(repository);
+                TileServices tService = new TileServices(repository, tRepository,null,null,null,null);
                 List<TileViewModel> tiles = tService.GetTilesByTeamId(teamId).Select(_=>_.ToTileViewModel()).ToList<TileViewModel>();
 
                 return jss.Serialize(tiles);
@@ -207,10 +207,9 @@ namespace WebApplication1.Ajax
             {
                 TileRepository repository = new TileRepository(context);
                 ReportRepository _reportRepository = new ReportRepository(context);
-
+               
                 if (!string.IsNullOrEmpty(logicString))
                 {
-                    TileServices tm = new TileServices(repository);
                     EditReportService reportService = new EditReportService(null, null, null, null, null, null);
 
                     switch (appTile.logicType)

@@ -14,6 +14,15 @@ using Infrastructor.MainBoundedContext.Repositories.Users;
 using Infrastructor.MainBoundedContext.Repositories.SiteAdmin;
 using Infrastructor.MainBoundedContext.Repositories.TeamAdmin;
 using Infrastructor.MainBoundedContext.Repositories.Tiles;
+using Application.MainBoundedContect.ViewModel.Tiles;
+using Application.MainBoundedContect.ViewModel.Users;
+using Domain.MainBoundedContext.Users;
+using Domain.MainBoundedContext.Teams.Aggregates.Category;
+using Domain.MainBoundedContext.Teams.Aggregates.Tags;
+using Domain.MainBoundedContext.Tiles.Aggregates;
+using Application.MainBoundedContect.Services.Tile;
+using Application.MainBoundedContect.Services.TeamAdmin;
+using Domain.MainBoundedContext.Teams.Aggregates.TeamSites;
 
 namespace WebApplication1.Ajax
 {
@@ -29,11 +38,7 @@ namespace WebApplication1.Ajax
             {
                 Response.Write(GetArticles());
             }
-            if (Request.Params["queryType"] == "getadmintilereport")
-            {
-                // get all the report
-                Response.Write(GetAdminReportFromCurrentTeamSite());
-            }
+         
         }
 
 
@@ -55,28 +60,7 @@ namespace WebApplication1.Ajax
             }
             return "";
         }
-        private string GetAdminReportFromCurrentTeamSite() {
-            string tileID = Request["TileID"];
-            string teamGuid = Request["SiteGUID"];
-
-            using (MainDBUnitWorkContext context = new MainDBUnitWorkContext())
-            {
-                ReportRepository repository = new ReportRepository(context);
-                UserRepository uRepository = new UserRepository(context);
-                TeamRepository tRepository = new TeamRepository(context);
-                CategoryRepository cRepository = new CategoryRepository(context);
-                TeamTagRepository tagRepository = new TeamTagRepository(context);
-                TileRepository tileRepository = new TileRepository(context);
-                EditReportService service = new EditReportService(repository, uRepository, tRepository, cRepository, tagRepository, tileRepository);
-               var reports =  service.GetAllReportsOfTeamSite(Session["UserName"].ToString(), teamGuid, true,global::Application.MainBoundedContect.Enums.SortField.ReportTitle,
-                    global::Application.MainBoundedContect.Enums.SortOrder.ASC);
-
-               JavaScriptSerializer jss = new JavaScriptSerializer();
-               return jss.Serialize(reports);
-            }
-
-        }
-
+       
         private string GetArticles()
         {
             return null;

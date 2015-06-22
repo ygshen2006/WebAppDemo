@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Domain.MainBoundedContext.Logics;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
@@ -13,5 +14,6 @@ namespace Domain.MainBoundedContext.Reports.Aggregates
          void UpdateReport(Report r);
          void RemoveReport(Report r);
          IQueryable<Report> GetReportsByExpression(Expression<Func<Report, Boolean>> filterExpression);
+         IQueryable<Report> GetReportByLogic(Logic logic, ParameterProvider parameterProvider);
     }
 }

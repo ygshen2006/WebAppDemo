@@ -9,6 +9,11 @@ using Domain.MainBoundedContext.Teams.Aggregates.TeamSites;
 using Application.MainBoundedContect.Extentions;
 using Domain.MainBoundedContext.Teams.Tags;
 using Domain.MainBoundedContext.Teams.Aggregates.ReportStatus;
+using Application.MainBoundedContect.ViewModel.Users;
+using Application.MainBoundedContect.ViewModel.Filters;
+using Domain.MainBoundedContext.Tiles.Aggregates;
+using Application.MainBoundedContect.Services.Report;
+using Domain.MainBoundedContext.Reports.Aggregates;
 
 namespace Application.MainBoundedContect.Services.TeamAdmin
 {
@@ -17,14 +22,22 @@ namespace Application.MainBoundedContect.Services.TeamAdmin
         private ITagRepository _tagRepository;
         private ITeamRepository _teamRepositry;
         private IStatusRepository _statusRepository;
+        private ITileRepository _tileRepository;
+        private IReportRepository _reportRepository;
 
         public TeamAdminService(ITagRepository tagRepository,
             ITeamRepository teamRepositry,
-            IStatusRepository statusRepository)
+            IStatusRepository statusRepository,
+            ITileRepository tileRepository,
+            IReportRepository reportRepo
+            )
         {
+            _tileRepository = tileRepository;
             _statusRepository = statusRepository;
             _teamRepositry = teamRepositry;
             _tagRepository = tagRepository;
+            _tileRepository = tileRepository;
+            _reportRepository = reportRepo;
         }
 
         public IEnumerable<AppTeamTag> GetTagsByTeamId(Guid teamId)
@@ -65,5 +78,8 @@ namespace Application.MainBoundedContect.Services.TeamAdmin
             _tagRepository.ModifyTags(tagsModify);
             _tagRepository.DeleteTags(tagsRemove);
         }
+
+
+       
     }
 }

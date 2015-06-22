@@ -838,7 +838,7 @@
         }
         function getReportsForSelected(callBack) {
             $.ajax({
-                url: getBaseUrl() + '/Ajax/AddNewReport',
+                url: getBaseUrl() + '/Ajax/TeamAdminAjax',
                 type: 'Get',
                 cache: false,
                 data: { queryType: 'getadmintilereport', TileID: 0, SiteGUID: GetQueryString('SiteGUID') },
@@ -863,10 +863,10 @@
                     if (result == null || !$('.popupWindow .reportListAjaxData .Selected').hasClass('shown')) {
                         return;
                     }
-                    var reportListString = '<h3 style="margin-top:20px;margin-bottom:10px;font-size:16px">Select List</h3>';
-                    $.each(result.ReportList, function (index, content) {
-                        reportListString += ' <div class="list-item"><div class="item-header"><input class="listItemID" type="checkbox" value="' + content.ID + '"/><a class="item-title"  target="_Blank" href="' + content.BrowserOpenUrl + '">' + content.Title + '</a></div>' +
-                        '<div class="item-content"><div class="item-summary">' + content.Descript + '</div><div class="summary-footer">Type: ' + content.Type + ' | Owner: ' + subOwner(content.Owners) + ' | Status: ' + content.ReportStatus + '</div></div></div>';
+                    var reportListString = '<h3 style="margin-top:20px;margin-bottom:10px;font-size:16px">可选项</h3>';
+                    $.each(result, function (index, content) {
+                        reportListString += ' <div class="list-item"><div class="item-header"><input class="listItemID" type="checkbox" value="' + content.Id + '"/><a class="item-title"  target="_Blank" href="#">' + content.Title + '</a></div>' +
+                        '<div class="item-content"><div class="summary-footer"> 拥有者: ' + subOwner(content.Owners) + ' | 状态: ' + content.Status.Name + '</div></div></div>';
                     });
 
                     $('.popupWindow .reportListAjaxData .Selected').html(reportListString);
@@ -882,7 +882,7 @@
                 url: getBaseUrl() + '/Ajax/TeamAdminAjax',
                 type: 'Get',
                 cache: false,
-                data: { queryType: 'gettilefilterlist', TileID: 0, SiteGUID: GetQueryString('SiteGUID') },
+                data: { queryType: 'gettilefilterlist', TileID: 0, SiteGUID: GetQueryString('SiteGUID'), IsAdmin:'1' },
                 dataType: 'json',
                 timeout: 60000,
                 beforeSend: function () {
@@ -912,15 +912,15 @@
                             case 'SubCategory':
                                 filterItemText = 'Category';
                                 break;
-                            case 'Type':
-                                filterItemText = 'BI Type';
-                                break;
-                            case 'CatelogType':
+                            //case 'Type':
+                            //    filterItemText = 'BI Type';
+                            //    break;
+                            case 'Owner':
                                 filterItemText = 'Catelog Type';
                                 break;
-                            case 'DataSource':
-                                filterItemText = 'Data Source';
-                                break;
+                            //case 'DataSource':
+                            //    filterItemText = 'Data Source';
+                            //    break;
                             default:
                                 filterItemText = filterType
                                 break;
@@ -1617,10 +1617,15 @@
         }
         function subOwner(name) {
             if (!(name == undefined || name == null)) {
-                if (name.indexOf(",") > 0)
-                    return name.substring(0, name.indexOf(","));
-                else
-                    return name;
+                //if (name.indexOf(",") > 0)
+                //    return name.substring(0, name.indexOf(","));
+                //else
+                //    return name;
+                var str = "";
+                $.each(name, function (index, current) {
+                    str += current.UserName+";";
+                });
+                return str;
             }
         }
         function emailStr(strs) {

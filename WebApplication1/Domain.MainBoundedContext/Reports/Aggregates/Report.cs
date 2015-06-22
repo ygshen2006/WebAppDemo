@@ -10,11 +10,10 @@ namespace Domain.MainBoundedContext.Reports.Aggregates
 {
     public class Report : Entity
     {
-        [Required]
-        [MaxLength(200)]
+       
         public string Title;
 
-        [Required]
+        
         public string Description;
 
         public string FeaturedPicture;

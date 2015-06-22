@@ -185,6 +185,7 @@ E:\Dev\Git\WebAppDemo\WebApplication1\WebApplication1\obj\Debug\WebApplication1.
 E:\Dev\Git\WebAppDemo\WebApplication1\WebApplication1\obj\Debug\WebApplication1.dll
 E:\Dev\Git\WebAppDemo\WebApplication1\WebApplication1\obj\Debug\WebApplication1.pdb
 D:\MyGit\WebAppDemo\WebApplication1\WebApplication1\bin\WebApplication1.dll.config
+E:\MyWebApp\WebAppDemo\WebApplication1\WebApplication1\obj\Debug\WebApplication1.csprojResolveAssemblyReference.cache
 E:\MyWebApp\WebAppDemo\WebApplication1\WebApplication1\bin\WebApplication1.dll.config
 E:\MyWebApp\WebAppDemo\WebApplication1\WebApplication1\bin\WebApplication1.dll
 E:\MyWebApp\WebAppDemo\WebApplication1\WebApplication1\bin\WebApplication1.pdb
@@ -244,6 +245,5 @@ E:\MyWebApp\WebAppDemo\WebApplication1\WebApplication1\bin\Microsoft.Owin.Securi
 E:\MyWebApp\WebAppDemo\WebApplication1\WebApplication1\bin\Microsoft.Owin.Security.Twitter.xml
 E:\MyWebApp\WebAppDemo\WebApplication1\WebApplication1\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
 E:\MyWebApp\WebAppDemo\WebApplication1\WebApplication1\bin\Microsoft.Owin.Security.OAuth.xml
-E:\MyWebApp\WebAppDemo\WebApplication1\WebApplication1\obj\Debug\WebApplication1.csprojResolveAssemblyReference.cache
 E:\MyWebApp\WebAppDemo\WebApplication1\WebApplication1\obj\Debug\WebApplication1.dll
 E:\MyWebApp\WebAppDemo\WebApplication1\WebApplication1\obj\Debug\WebApplication1.pdb

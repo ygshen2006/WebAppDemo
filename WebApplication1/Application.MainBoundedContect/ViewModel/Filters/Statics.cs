@@ -27,6 +27,8 @@ namespace Application.MainBoundedContect.ViewModel.Filters
         public Int32 Value
         { get; set; }
 
+        public String GUID { get; set; }
+
         public Int32 Count
         { get; set; }
 

@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using Domain.MainBoundedContext.Reports.Aggregates;
 using Infrastructor.MainBoundedContext.UnitWorks;
 using Infrastructor.SeedWork;
+using System.Linq.Expressions;
+using Domain.MainBoundedContext.Logics;
 
 namespace Infrastructor.MainBoundedContext.Repositories.Reports
 {
@@ -44,6 +46,15 @@ namespace Infrastructor.MainBoundedContext.Repositories.Reports
 
             query = _context.Reports.Where(filterExpression);
             
+            return query;
+        }
+
+        public IQueryable<Report> GetReportByLogic(Logic logic, ParameterProvider parameterProvider)
+        {
+            Expression<Func<Report, Boolean>> filterExpression = logic.GetExpression(parameterProvider);
+
+            IQueryable<Report> query = GetReportsByExpression(filterExpression);
+
             return query;
         }
     }

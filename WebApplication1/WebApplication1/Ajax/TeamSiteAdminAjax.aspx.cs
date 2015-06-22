@@ -7,6 +7,10 @@ using Infrastructor.MainBoundedContext.Repositories.SiteAdmin;
 using Infrastructor.MainBoundedContext.Repositories.TeamAdmin;
 using Infrastructor.MainBoundedContext.UnitWorks;
 using System.Linq;
+using Domain.MainBoundedContext.Tiles.Aggregates;
+using Infrastructor.MainBoundedContext.Repositories.Tiles;
+using Domain.MainBoundedContext.Reports.Aggregates;
+using Infrastructor.MainBoundedContext.Repositories.Reports;
 namespace WebApplication1.Ajax
 {
     public partial class TeamSiteAdminAjax : System.Web.UI.Page
@@ -21,7 +25,9 @@ namespace WebApplication1.Ajax
 
                 TeamRepository teamRepository = new TeamRepository(context);
                 TeamStatusRepository statusRepository = new TeamStatusRepository(context);
-                TeamAdminService tService = new TeamAdminService(tagRepository, teamRepository, statusRepository);
+                ITileRepository tileRepository = new TileRepository(context);
+                IReportRepository reportRepository = new ReportRepository();
+                TeamAdminService tService = new TeamAdminService(tagRepository, teamRepository, statusRepository, tileRepository, reportRepository);
                 var teamGuid = Request.Params["SiteGUID"].ToString();
                 Guid guid = Guid.Parse(teamGuid);
                 int teamId = teamRepository.GetFiltered(_ => _.TeamGuid == guid).FirstOrDefault().Id;

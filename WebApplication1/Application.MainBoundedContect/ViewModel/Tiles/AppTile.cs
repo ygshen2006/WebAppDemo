@@ -76,12 +76,12 @@ namespace Application.MainBoundedContect.ViewModel.Tiles
 
             Int32 tileId = Convert.ToInt32(appTileId);
 
-            if (!(tileId == SystemDefinedTile.MyReports_MyReports.SystemDefinedTileId
-                    || tileId == SystemDefinedTile.MyReports_MySubscriptions.SystemDefinedTileId
-                    || tileId == SystemDefinedTile.MyReports_Recommended.SystemDefinedTileId))
-            {
-                logic = logic.And((new ReportStatusId()).Equal(Convert.ToInt32(ReportStatusEnum.Approved)));
-            }
+            //if (!(tileId == SystemDefinedTile.MyReports_MyReports.SystemDefinedTileId
+            //        || tileId == SystemDefinedTile.MyReports_MySubscriptions.SystemDefinedTileId
+            //        || tileId == SystemDefinedTile.MyReports_Recommended.SystemDefinedTileId))
+            //{
+            //    logic = logic.And((new ReportStatusId()).Equal(Convert.ToInt32(ReportStatusEnum.Approved)));
+            //}
 
             return logic;
         }

@@ -36,6 +36,5 @@ E:\MyWebApp\WebAppDemo\WebApplication1\Domain.SeedWork\bin\Debug\EntityFramework
 E:\MyWebApp\WebAppDemo\WebApplication1\Domain.SeedWork\bin\Debug\EntityFramework.SqlServer.xml
 E:\MyWebApp\WebAppDemo\WebApplication1\Domain.SeedWork\bin\Debug\Microsoft.AspNet.Identity.Core.xml
 E:\MyWebApp\WebAppDemo\WebApplication1\Domain.SeedWork\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
-E:\MyWebApp\WebAppDemo\WebApplication1\Domain.SeedWork\obj\Debug\Domain.SeedWork.csprojResolveAssemblyReference.cache
 E:\MyWebApp\WebAppDemo\WebApplication1\Domain.SeedWork\obj\Debug\Domain.SeedWork.dll
 E:\MyWebApp\WebAppDemo\WebApplication1\Domain.SeedWork\obj\Debug\Domain.SeedWork.pdb

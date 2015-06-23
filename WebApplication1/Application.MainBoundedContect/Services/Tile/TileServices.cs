@@ -114,7 +114,6 @@ namespace Application.MainBoundedContect.Services.Tile
                 userList = OwnerStatistics.Values.Select(_ => new UserLoginApp
                 {
                     Id = _.GUID,
-
                     UserName = _.Name
                 }).OrderBy(_ => _.UserName);
             }
@@ -130,8 +129,8 @@ namespace Application.MainBoundedContect.Services.Tile
         }
         public ICollection<AppTeamTag> GetTagListByTeam(string teamGuid)
         {
-
-            int teamId = _teamRepository.GetFiltered(_ => _.TeamGuid == Guid.Parse(teamGuid)).FirstOrDefault().Id;
+            Guid currentTeamGuid = Guid.Parse(teamGuid);
+            int teamId = _teamRepository.GetFiltered(_ => _.TeamGuid == currentTeamGuid).FirstOrDefault().Id;
 
             IEnumerable<AppTeamTag> tagList = _tagRepository.GetTagsByTeamId(teamId).
                 Select(_ => new AppTeamTag

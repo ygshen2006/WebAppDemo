@@ -102,7 +102,7 @@ namespace Application.MainBoundedContect.Services.SiteAdmininstration
                     tile.IsCustomized = true;
                     tile.TileType = 2;
                     tile.LogicStringType = 4;
-                    tile.Top = 4;
+                    tile.Top = 0;
                     tile.Left = 0;
                     tile.Width = 1;
                     tile.Height = 1;

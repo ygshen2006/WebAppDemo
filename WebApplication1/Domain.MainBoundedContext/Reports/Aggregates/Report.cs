@@ -10,8 +10,8 @@ namespace Domain.MainBoundedContext.Reports.Aggregates
 {
     public class Report : Entity
     {
-       
-        public string Title;
+
+        public string Title { get; set; }
 
         
         public string Description;

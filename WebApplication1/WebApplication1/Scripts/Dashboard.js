@@ -479,7 +479,42 @@
             });
         }
       
-
+        $(document).on('click', '.popupWindow .reportListAjaxData .Filtered .filterCollopse', function (e) {
+            e.preventDefault();
+            $(this).removeClass('filterCollopse').addClass('filterExpand');
+            $(this).parent().children('ul').slideDown();
+        });
+        $(document).on('click', '.popupWindow .reportListAjaxData .Filtered .filterExpand', function (e) {
+            e.preventDefault();
+            $(this).removeClass('filterExpand').addClass('filterCollopse');
+            $(this).parent().children('ul').slideUp();
+        });
+        $(document).on('click', '.popupWindow .reportListAjaxData .Filtered .checkAll', function () {
+            //$(this).parent().parent().find('input[type=checkbox]').prop('checked', $(this).prop('checked'));
+            $(this).parentsUntil('.top-ul').parent().find('input[type=checkbox]').prop('checked', $(this).prop('checked'));
+        });
+        $(document).on('click', '.popupWindow .reportListAjaxData .Filtered .checkItem', function () {
+            if (!$(this).prop('checked')) {
+                //$(this).parent().parent().find('.checkAll').prop('checked', false);
+                $(this).parentsUntil('.top-ul').parent().find('.checkAll').prop('checked', false);
+            }
+        });
+        $(document).on('click', '.popupWindow .listItemID', function () {
+            if ($('.popupWindow .listItemID:checked').length == 1) {
+                $('.autolaunch input[type=checkbox]').prop('disabled', false);
+            } else {
+                if ($('.popupWindow .listItemID:checked').length == 2 && $('.autolaunch input[type=checkbox]').prop('checked') == true) {
+                    if (confirm('Auto launch is only supported with one associated catalog entry. Continuing with this selection will deactivate auto launch, continue?')) {
+                        $('.autolaunch input[type=checkbox]').prop('disabled', true);
+                        $('.autolaunch input[type=checkbox]').prop('checked', false);
+                    } else {
+                        $(this).prop('checked', false);
+                    }
+                } else {
+                    $('.autolaunch input[type=checkbox]').prop('disabled', true);
+                }
+            }
+        });
         this.loadTiles = function () {
             $.ajax({
                 url: getBaseUrl() + '/Ajax/TeamDashBoardAjax',
@@ -905,18 +940,21 @@
                         return;
                     }
 
-                    var filterItemListString = '<h3 style="margin-top:20px;margin-bottom:10px;font-size:16px">Filters</h3>';
+                    var filterItemListString = '<h3 style="margin-top:20px;margin-bottom:10px;font-size:16px">筛选条件</h3>';
                     for (var filterType in result) {
                         var filterItemText;
                         switch (filterType) {
                             case 'SubCategory':
-                                filterItemText = 'Category';
+                                filterItemText = '文章类型';
                                 break;
                             //case 'Type':
                             //    filterItemText = 'BI Type';
                             //    break;
                             case 'Owner':
-                                filterItemText = 'Catelog Type';
+                                filterItemText = '拥有者';
+                                break;
+                            case 'Tag':
+                                filterItemText = '团队标签';
                                 break;
                             //case 'DataSource':
                             //    filterItemText = 'Data Source';
@@ -925,22 +963,29 @@
                                 filterItemText = filterType
                                 break;
                         }
-                        filterItemListString += '<div class="filterItem"><a href="#" class="filterCollopse"></a><span class="filterItemText" filterType="' + filterType + '">' + filterItemText + '</span><ul class="top-ul"><li><input class="checkAll" type="checkbox" value="All" /><label>All</label></li>';
+                        filterItemListString += '<div class="filterItem"><a href="#" class="filterCollopse"></a><span class="filterItemText" filterType="' + filterType + '">' + filterItemText + '</span><ul class="top-ul"><li><input class="checkAll" type="checkbox" value="All" /><label>全部</label></li>';
                         if (filterType != 'SubCategory') {
-                            result[filterType].forEach(function (value) {
-                                filterItemListString += ' <li title=\'' + value.Name + '\'><input class="checkItem" type="checkbox"   value="' + value.Id + '" /><label>' + value.Name + '</label></li>';
-                            });
+                            if (filterType == 'Owner') {
+                                result[filterType].forEach(function (value) {
+                                    filterItemListString += ' <li title=\'' + value.UserName + '\'><input class="checkItem" type="checkbox"   value="' + value.Id + '" /><label>' + value.UserName + '</label></li>';
+                                });
+                            }
+                            if (filterType == 'Tag') {
+                                result[filterType].forEach(function (value) {
+                                    filterItemListString += ' <li title=\'' + value.Title + '\'><input class="checkItem" type="checkbox"   value="' + value.Id + '" /><label>' + value.Title + '</label></li>';
+                                });
+                            }
                         } else {
                             var categoryList = result[filterType].filter(function (x) {
                                 return x.ParentId == null;
                             });
                             categoryList.forEach(function (value) {
-                                filterItemListString += ' <li title=\'' + value.Name + '\'><a href="#" class="filterCollopse"></a><span class="filterItemText">' + value.Name + '</span><ul class="leveTwoUl">';
+                                filterItemListString += ' <li title=\'' + value.CategoryName + '\'><a href="#" class="filterCollopse"></a><span class="filterItemText">' + value.CategoryName + '</span><ul class="leveTwoUl">';
                                 var subCategoryList = result[filterType].filter(function (x) {
                                     return x.ParentId == value.Id;
                                 });
                                 subCategoryList.forEach(function (subValue) {
-                                    filterItemListString += ' <li title=\'' + subValue.Name + '\'><input class="checkItem" type="checkbox"  value="' + subValue.Id + '" /><label>' + subValue.Name + '</label></li>';
+                                    filterItemListString += ' <li title=\'' + subValue.CategoryName + '\'><input class="checkItem" type="checkbox"  value="' + subValue.Id + '" /><label>' + subValue.CategoryName + '</label></li>';
                                 });
                                 filterItemListString += '</ul></li>';
                             });

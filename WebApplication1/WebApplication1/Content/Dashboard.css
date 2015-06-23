@@ -647,7 +647,7 @@
     height: 24px;
     width: 24px;
     margin-left: 5px;
-    background-image: url('../images/SharePointProject/plus.png');
+    background-image: url('../Images/plus.png');
     background-repeat: no-repeat;
     cursor: pointer;
 }
@@ -657,7 +657,7 @@
         height: 24px;
         width: 24px;
         margin-left: 5px;
-        background-image: url('../images/SharePointProject/plusHover.png');
+        background-image: url('../Images/plusHover.png');
         background-repeat: no-repeat;
         cursor: pointer;
     }
@@ -667,7 +667,7 @@
     height: 24px;
     width: 24px;
     margin-left: 5px;
-    background-image: url('../images/SharePointProject/minus.png');
+    background-image: url('../Images/minus.png');
     background-repeat: no-repeat;
     cursor: pointer;
 }
@@ -677,7 +677,7 @@
         height: 24px;
         width: 24px;
         margin-left: 5px;
-        background-image: url('../images/SharePointProject/minusHover.png');
+        background-image: url('../Images/minusHover.png');
         background-repeat: no-repeat;
         cursor: pointer;
     }

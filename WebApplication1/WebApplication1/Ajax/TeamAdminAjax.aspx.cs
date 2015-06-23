@@ -48,7 +48,6 @@ namespace WebApplication1.Ajax
 
                 if (Request["requestType"] == "getdivisions")
                 {
-
                     var divisions = appService.GetAllDivisions().ToList<AppDivision>();
                     Response.Write(jss.Serialize(divisions));
                 }
@@ -77,7 +76,6 @@ namespace WebApplication1.Ajax
                     string userName = Session["UserName"].ToString();
                     string teamGuid = Request["SiteGUID"];
                     bool isAdmin = Request["IsAdmin"] == "1" ? true : false;
-
 
                     Response.Write(GetAdminTileFilterInfo(userName,teamGuid,isAdmin));
                 }

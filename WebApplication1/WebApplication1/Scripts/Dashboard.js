@@ -71,7 +71,6 @@
             }
         };
 
-
         this.Init = function () {
             $.ajaxSetup({
                 crossDomain: true,
@@ -581,8 +580,6 @@
             }
             return false;
         }
-  
-
         function checkSaveState() {
             var changed = false;
             if (originalTiles.length != gridTiles.length) {
@@ -831,7 +828,6 @@
             $('.label-tile-type').text(showTileType(LogicType));
 
             tile.LogicString = LogicString;
-        
 
             updateCount(tile);
             if (!URP.CustomizationTiles.hasChanged) {

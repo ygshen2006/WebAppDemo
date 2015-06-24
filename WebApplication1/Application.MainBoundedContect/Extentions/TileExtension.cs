@@ -7,6 +7,13 @@ using Application.MainBoundedContect.Enums;
 using Application.MainBoundedContect.Services.Tile;
 using Application.MainBoundedContect.ViewModel.Tiles;
 using Domain.MainBoundedContext.Tiles.Aggregates;
+using Domain.MainBoundedContext.Logics;
+using Application.MainBoundedContect.ViewModel.Report;
+using Domain.MainBoundedContext.Reports.FilterField;
+using Application.MainBoundedContect.ViewModel.TeamSites;
+using Application.MainBoundedContect.ViewModel.SiteAdministration;
+using Application.MainBoundedContect.ViewModel.Users;
+using System.Web.Script.Serialization;
 
 namespace Application.MainBoundedContect.Extentions
 {
@@ -115,9 +122,77 @@ namespace Application.MainBoundedContect.Extentions
             tile.IsCustomized = appTile.IsCustomized;
             tile.OwnerTeamSiteId = appTile.OwnerTeamSiteId;
             tile.LogicType = appTile.logicType.ToString();
-            //tile.LogicString = GetlogicStringFromLogic(appTile);
+            tile.LogicString = GetlogicStringFromLogic(appTile);
 
             return tile;
+        }
+
+
+        private static string GetlogicStringFromLogic(AppTile appTile)
+        {
+            string logicString = string.Empty;
+
+            switch (appTile.logicType)
+            {
+                case LogicType.Selected:
+                    logicString = string.Join(",", (appTile.BasicLogic as IN<int>).FieldValue.GetValue());
+                    break;
+                case LogicType.Filtered:
+
+                    List<Logic> elements = (appTile.BasicLogic as AND).LogicElements;
+                    if (elements != null && elements.Count > 0)
+                    {
+                        #region Get ReportFilter from Logic
+                        ReportFilter filer = new ReportFilter();
+                        foreach (var t in elements)
+                        {
+                            if ((t as IN<int>).Field is TagId)
+                            {
+                                filer.TagsIdCollection = (t as IN<int>).FieldValue.GetValue();
+                            }
+                            
+                            if ((t as IN<string>).Field is ReportOwnerId)
+                            {
+                                filer.OwnerIdCollection = (t as IN<string>).FieldValue.GetValue();
+                            }
+
+                            if ((t as IN<int>).Field is SubCategoryId)
+                            {
+                                filer.SubCategoryIdCollection = (t as IN<int>).FieldValue.GetValue();
+                            }
+                        }
+                        #endregion
+
+                        #region Get TileFilterListViewModel from ReportFilter
+                        TileFilterListViewModel vm = new TileFilterListViewModel();
+                        
+                        if (filer.TagsIdCollection != null && filer.TagsIdCollection.Count > 0)
+                        {
+                            vm.Tag = filer.TagsIdCollection.Select(id => new AppTeamTag { Id = id });
+                        }
+                        if (filer.SubCategoryIdCollection != null && filer.SubCategoryIdCollection.Count > 0)
+                        {
+                            vm.SubCategory = filer.SubCategoryIdCollection.Select(id => new AppCategory { Id = id });
+                        }
+                        
+                        if (filer.OwnerIdCollection != null && filer.OwnerIdCollection.Count > 0)
+                        {
+                            vm.Owner = filer.OwnerIdCollection.Select(id => new UserLoginApp { Id = id });
+                        }
+                        #endregion
+
+                        JavaScriptSerializer jss = new JavaScriptSerializer();
+                        logicString = jss.Serialize(vm);
+
+                    }
+                    break;
+                case LogicType.Tagged:
+                    logicString = string.Join(",", (appTile.BasicLogic as IN<int>).FieldValue.GetValue());
+                    break;
+                default:
+                    break;
+            }
+            return logicString;
         }
     }
 }

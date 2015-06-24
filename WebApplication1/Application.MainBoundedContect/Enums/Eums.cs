@@ -29,7 +29,7 @@ namespace Application.MainBoundedContect.Enums
 
     public enum TileType { TeamSiteList=0, MyReport = 1, TeamSite = 2, SelfService = 3 }
 
-    public enum LogicType { Static = 0, Selected = 1, Filtered = 2, Tagged = 3, AllReport = 4 }
+    public enum LogicType { Static = 0, Selected = 1, Filtered = 2, Tagged = 3, AllReports = 4 }
 
     public enum PageType { MyReport, TeamSiteReport, CatalogView, SelfService };
 

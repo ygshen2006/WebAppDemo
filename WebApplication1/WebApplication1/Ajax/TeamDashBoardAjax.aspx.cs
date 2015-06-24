@@ -161,7 +161,7 @@ namespace WebApplication1.Ajax
                         appTile.ReportCountStyle = para.shownCount;
                         appTile.IsCustomized = true;
 
-                        if (appTile.logicType != LogicType.AllReport)
+                        if (appTile.logicType != LogicType.AllReports)
                         {
                             appTile.Title = para.title;
                             appTile.logicType = (LogicType)Enum.Parse(typeof(LogicType), para.LogicType);
@@ -250,7 +250,7 @@ namespace WebApplication1.Ajax
                             appTile.BasicLogic = (new TagId()).In(tagIds);
                             break;
 
-                        case LogicType.AllReport:
+                        case LogicType.AllReports:
                             appTile.BasicLogic = null;
                             break;
                     }

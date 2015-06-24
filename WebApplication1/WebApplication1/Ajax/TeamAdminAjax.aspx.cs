@@ -27,6 +27,10 @@ using Application.MainBoundedContect.Services.Tile;
 using Domain.MainBoundedContext.Reports.Aggregates;
 using Domain.MainBoundedContext.Users;
 using Application.MainBoundedContect.ViewModel.TeamSites;
+using WebApplication1.Utility;
+using Application.MainBoundedContect.Enums;
+using Application.MainBoundedContect.ViewModel.Report;
+using Domain.MainBoundedContext.Reports.FilterField;
 
 namespace WebApplication1.Ajax
 {
@@ -79,6 +83,13 @@ namespace WebApplication1.Ajax
 
                     Response.Write(GetAdminTileFilterInfo(userName,teamGuid,isAdmin));
                 }
+                if (Request.Params["queryType"] == "GetTempTileReportCount")
+                {
+                    string userName = Session["UserName"].ToString();
+                    string teamGuid = Request["SiteGUID"];
+
+                    Response.Write(GetTempTileReportCount(teamGuid, userName));
+                }
             }
         }
 
@@ -124,16 +135,16 @@ namespace WebApplication1.Ajax
 
                 //Owner
                 IEnumerable<UserLoginApp> userList = tileService.GetOwnerList(userName, teamGuid, isAdmin);
-                filterViewModel.Owner = userList.OrderBy(_ => _.UserName);
+                filterViewModel.Owner = userList.OrderBy(_ => _.UserName).Distinct<UserLoginApp>(new UserComparer());
 
 
                 //Category
                 IEnumerable<AppCategory> categoryList = tileService.GetCategoryList();
-                filterViewModel.SubCategory = categoryList.OrderBy(_ => _.CategoryName);
+                filterViewModel.SubCategory = categoryList.OrderBy(_ => _.CategoryName).Distinct<AppCategory>(new CategoryComparer());
 
 
                 //Tag
-                IEnumerable<AppTeamTag> tagList = tileService.GetTagListByTeam(teamGuid);
+                IEnumerable<AppTeamTag> tagList = tileService.GetTagListByTeam(teamGuid).Distinct<AppTeamTag>(new TagComparer());
                 filterViewModel.Tag = tagList;
             }
 
@@ -141,5 +152,93 @@ namespace WebApplication1.Ajax
 
             return jss.Serialize(filterViewModel);
         }
+
+
+        private string GetTempTileReportCount(string teamGuid, string userName)
+        {
+            string tileData = Request["TileData"];
+            if (String.IsNullOrEmpty(tileData))
+            {
+                return "Querystring：TileData is empty!";
+            }
+            JavaScriptSerializer jss = new JavaScriptSerializer();
+            TileViewModel para = jss.Deserialize<TileViewModel>(tileData);
+
+            AppTile appTile = new AppTeamSiteCustomizedTile();
+            appTile.logicType = (LogicType)Enum.Parse(typeof(LogicType), para.LogicType);
+
+            SetAppTitleLogic(para.LogicString, appTile);
+            using (MainDBUnitWorkContext context = new MainDBUnitWorkContext())
+            {
+                IReportRepository reportRepository = new ReportRepository(context);
+
+                EditReportService reportService = new EditReportService(reportRepository, null,null,null,null,null);
+                int reportCount = reportService.GetTempTilesWithReportCount(teamGuid, userName, appTile);
+
+                return reportCount.ToString();
+            }
+        }
+
+        private void SetAppTitleLogic(string logicString, AppTile appTile)
+        {
+            using (MainDBUnitWorkContext context = new MainDBUnitWorkContext())
+            {
+                TileRepository repository = new TileRepository(context);
+                ReportRepository _reportRepository = new ReportRepository(context);
+
+                if (!string.IsNullOrEmpty(logicString))
+                {
+                    EditReportService reportService = new EditReportService(null, null, null, null, null, null);
+
+                    switch (appTile.logicType)
+                    {
+                        case LogicType.Static:
+                            appTile.BasicLogic = null;
+                            break;
+
+                        case LogicType.Selected:
+                            List<int> cataIDList = logicString.Split(',').Select(_ => Convert.ToInt32(_)).ToList();
+                            appTile.BasicLogic = (new ReportDataId()).In(cataIDList);
+                            break;
+
+                        case LogicType.Filtered:
+                            ReportFilter filer = new ReportFilter();
+
+                            JavaScriptSerializer jss = new JavaScriptSerializer();
+
+                            #region Deserialize
+                            TileFilterListViewModel vm = new TileFilterListViewModel();
+                            if (!String.IsNullOrEmpty(logicString))
+                                vm = jss.Deserialize<TileFilterListViewModel>(logicString);
+
+                            #endregion
+
+                            #region Get ReportFilter
+                            filer.OwnerIdCollection = (from o in vm.Owner select o.Id).ToList();
+                            //filer.CatalogTypeIdCollection = (from c in vm.CatelogType select c.Id).ToList();
+                            filer.TagsIdCollection = (from t in vm.Tag select t.Id.Value).ToList();
+                            filer.SubCategoryIdCollection = (from c in vm.SubCategory select c.Id.Value).ToList();
+                            #endregion
+
+                            appTile.BasicLogic = reportService.GenerateLogicByFilter(filer);
+                            break;
+
+                        case LogicType.Tagged:
+                            List<int> tagIds = logicString.Split(',').Select(i => int.Parse(i.Trim())).ToList();
+                            appTile.BasicLogic = (new TagId()).In(tagIds);
+                            break;
+
+                        case LogicType.AllReports:
+                            appTile.BasicLogic = null;
+                            break;
+                    }
+                }
+                else
+                {
+                    appTile.BasicLogic = null;
+                }
+            }
+        }
+
     }
 }

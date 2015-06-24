@@ -688,6 +688,7 @@
     <Compile Include="TestPage.aspx.designer.cs">
       <DependentUpon>TestPage.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Utility\TeamItemHelper.cs" />
     <Compile Include="Utility\data.ashx.cs">
       <DependentUpon>data.ashx</DependentUpon>
     </Compile>

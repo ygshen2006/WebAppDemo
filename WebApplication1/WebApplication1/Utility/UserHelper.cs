@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Xml.Linq;
+using Application.MainBoundedContect.ViewModel.Users;
 
 namespace WebApplication1.Utility
 {
@@ -169,5 +170,18 @@ namespace WebApplication1.Utility
         }
         public string CityName { get; set; }
         public List<string> Stricts { get; set; }
+    }
+
+    public class UserComparer : IEqualityComparer<UserLoginApp>
+    {
+        public bool Equals(UserLoginApp x, UserLoginApp y)
+        {
+            return string.Compare(x.Id, y.Id, true)==0;
+        }
+
+        public int GetHashCode(UserLoginApp obj)
+        {
+            return 0;
+        }
     }
 }

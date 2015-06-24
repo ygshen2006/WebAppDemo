@@ -44,7 +44,20 @@ namespace Application.MainBoundedContect.Services.Report
             _tileRepository = repository_tile;
         }
 
+        public Int32 GetTempTilesWithReportCount(String teamSiteGuid, string userAlias, AppTile appTile)
+        {
+            Guid guid = new Guid(teamSiteGuid);
 
+            ParameterProvider pp = new ParameterProvider();
+            pp.AddParameter(ContextVariable.CurrentUser.ToString(), userAlias);
+            pp.AddParameter(ContextVariable.CurrentTeamSiteGuid.ToString(), new Guid(teamSiteGuid));
+            pp.AddParameter(ContextVariable.TeamSiteGuidUnderControl.ToString(), new List<Guid>() { new Guid(teamSiteGuid) });
+
+            appTile.BasicLogic = appTile.BasicLogic.And((new TeamSiteGUID()).Equal(guid));
+            appTile.ReportCount = _reportRepository.GetReportsByExpression(appTile.GetCombinedLogic(true, appTile.Id).GetExpression(pp)).Count();
+
+            return appTile.ReportCount;
+        }
         /// <summary>
         /// Team Site All reports
         /// </summary>

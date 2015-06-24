@@ -62,13 +62,13 @@
                         <div class="tile-spaceHoder"></div>
                     </div>
                     <div class="float-clear"></div>
-                    <a href="javascript:void(0)" class="clipboard-clear">Clear all clipboard items</a>
+                    <a href="javascript:void(0)" class="clipboard-clear">清除</a>
                 </div>
                 <div class="feature-area-middle">
                     <div class="mark"></div>
                     <ul class="title-area">
                         <li>
-                            <label>Title</label>
+                            <label>标题</label>
                         </li>
                         <li>
                             <input type="text" class="tile-tile" maxlength="50" />
@@ -76,7 +76,7 @@
                     </ul>
                     <ul class="size-area">
                         <li>
-                            <label>Size</label>
+                            <label>大小</label>
                         </li>
                         <li style="position: relative;">
                             <div class="size-input collapse"></div>
@@ -154,7 +154,7 @@
                         <li>
                             <label>
                                 <input type="radio" name="background" checked="checked" class="color-radio" />
-                                Background color
+                                背景色: 
                             </label>
                         </li>
                         <li>
@@ -253,7 +253,7 @@
                         </li>
                     </ul>
                     <ul class="icon">
-                        <li>Icon</li>
+                        <li>图标</li>
                         <li style="position: relative">
                             <div class="icon-input collapse" icon="None">None</div>
                             <div class="icon-picker">
@@ -552,20 +552,20 @@
                 <div class="feature-area-right">
                     <div class="mark"></div>
                     <div class="tile-type">
-                        <label>Type: <span class="label-tile-type">Static</span></label>
-                        <label style="font-family: 'Glyphicons Halflings'">&#x270f; Change type</label>
+                        <label>类型: <span class="label-tile-type">静态的</span></label>
+                        <label style="font-family: 'Glyphicons Halflings'">&#x270f; 修改</label>
                     </div>
                     <ul class="background-image">
                         <li>
                             <label>
                                 <input type="radio" name="background" class="image-radio" />
-                                Background image
+                                背景图:
                             </label>
                         </li>
                         <li>
                     </ul>
                     <ul class="image-source">
-                        <li>Image source
+                        <li>图片源
                     <label class="image-size"></label>
                         </li>
                         <li class="image-pickup">
@@ -582,33 +582,33 @@
                         </li>
                     </ul>
                     <ul class="image-overlay">
-                        <li>Image overlay color</li>
+                        <li>图片背景色</li>
                         <li>
                             <label>
                                 <input type="radio" class="overlay-white" name="image-overlay" value="White" />
-                                White
+                                白色
                             </label>
                         </li>
                         <li>
                             <label>
                                 <input type="radio" class="overlay-black" name="image-overlay" checked="checked" value="Black" />
-                                Black
+                                黑色
                             </label>
                         </li>
                         <li>
                             <label>
                                 <input type="radio" class="overlay-none" name="image-overlay" value="None" />
-                                None
+                                无
                             </label>
                         </li>
                     </ul>
                     <ul class="show-count">
-                        <li>Show report count</li>
+                        <li>显示文章数</li>
                         <li>
                             <select>
-                                <option value="None">None</option>
-                                <option value="Centered">Centered</option>
-                                <option value="Lower-right">Lower-right</option>
+                                <option value="None">无</option>
+                                <option value="Centered">居中</option>
+                                <option value="Lower-right">右下</option>
                             </select>
                         </li>
                     </ul>
@@ -616,8 +616,8 @@
             </div>
             <hr style="clear: both;" />
             <div class="action-area">
-                <a class="action-save action-disable">Save Dashboard</a>
-                <a class="action-cancel">Cancel</a>
+                <a class="action-save action-disable">保存修改</a>
+                <a class="action-cancel">重置</a>
                 <asp:HyperLink runat="server" ID="backTeamSite" Text="Cancel" CssClass="action-back"></asp:HyperLink>
             </div>
         </div>
@@ -626,16 +626,13 @@
         <h1>选择磁贴查询条件</h1>
         <select class="select-tileType">
             <option value="Static" selected="selected">空白的</option>
-
             <option value="Selected">特定的</option>
             <option value="Filtered">按条件过滤</option>
-            <option value="Tagged">依照标选择</option>
         </select>
         <div class="reportListAjaxData" style="">
             <div class="Static"></div>
             <div class="Selected"></div>
             <div class="Filtered"></div>
-            <div class="Tagged"></div>
         </div>
         
         <div class="ajaxButtons">

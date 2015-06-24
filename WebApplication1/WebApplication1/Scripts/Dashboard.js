@@ -31,7 +31,7 @@
             $('.action-wrapper .tile-create').removeClass('active');
             var tileId = ev.currentTarget.id.substr(5);
             var currentTile = getCurrentTileById(ev.target.id.substr(5));
-            if (currentTile.LogicType == 'AllReport') {
+            if (currentTile.LogicType == 'AllReports') {
                 $('.action-wrapper .tile-delete').removeClass('active');
             } else {
                 if (!$('.action-wrapper .tile-delete').hasClass('active')) {
@@ -424,7 +424,7 @@
             $('.tile-type').click(function () {
                 var tileId = $('.tile-selected').attr('id').substr(5);
                 var tile = getCurrentTileById(tileId);
-                if (tile.LogicType == 'AllReport') {
+                if (tile.LogicType == 'AllReports') {
                     return;
                 }
                 $('.popupWindow').bPopup({ modalClose: false });
@@ -534,9 +534,7 @@
                 },
                 success: function (result) {
                     result.forEach(function (v) {
-                        if (v.LogicType != 'Filtered' && v.LogicType != 'Selected' & v.LogicType != 'Tagged') {
-                            v.LogicType = 'Static'
-                        }                    
+                                       
                         v.onGrid = true;
                         originalTiles.push({}, v);
                     });
@@ -778,7 +776,7 @@
                     break;
                 case 'Selected':
                     if ($('.popupWindow .Selected .listItemID:checked').length == 0) {
-                        alert('Must select at least one report!');
+                        alert('请至少选择一个满足条件的文章！');
                         return false;
                     }
                     $('.popupWindow .Selected .listItemID:checked').each(function () {
@@ -790,7 +788,7 @@
                     break;
                 case 'Filtered':
                     if ($('.popupWindow .Filtered .checkItem:checked').length == 0) {
-                        alert('please Select at least one Filters');
+                        alert('请至少选择一个满足条件的筛选条件!');
                         return false;
                     }
 
@@ -829,15 +827,32 @@
             }
             var tile = getCurrentTileById($('.tile-selected').attr('id').substr(5));
             tile.LogicType = LogicType;
-            $('.label-tile-type').text(LogicType);
+            
+            $('.label-tile-type').text(showTileType(LogicType));
+
             tile.LogicString = LogicString;
-       
+        
 
             updateCount(tile);
             if (!URP.CustomizationTiles.hasChanged) {
                 checkSaveState();
             }
             return true;
+        }
+        function showTileType(type) {
+            var translated;
+            switch (type) {
+                case "Static":
+                    return "静态的";
+                    break;
+                case "Selected":
+                    return "特定的";
+                    break;
+                case "Filtered":
+                    return "过滤的";
+                    break;
+                default: return "None"; break;
+            }
         }
         function updateCount(tile) {
             if (tile.LogicType == 'Static') {
@@ -849,7 +864,7 @@
             } else {
                 var tileData = JSON.stringify(tile);
                 $.ajax({
-                    url: getBaseUrl() + '/_layouts/15/URPAjax/AdminAjax.aspx',
+                    url: getBaseUrl() + '/Ajax/TeamAdminAjax',
                     type: 'Post',
                     data: { queryType: 'GetTempTileReportCount', TileData: tileData, SiteGUID: GetQueryString('SiteGUID') },
                     dataType: 'json',
@@ -1043,7 +1058,7 @@
         function createOrEditTile(tileId) {
             $('.action-wrapper .tile-create').removeClass('active');
             var tile = getCurrentTileById(tileId);
-            if (tile.LogicType == 'AllReport') {
+            if (tile.LogicType == 'AllReports') {
                 $('.action-wrapper .tile-delete').removeClass('active');
                 $('.title-area input[type=text]').prop('disabled', true);
                 $('.tile-type').css('background-color', '#ddd');
@@ -1126,7 +1141,7 @@
                 });
             }
             $('.label-tile-type').text(tile.LogicType);
-            if (tile.LogicType == 'AllReport') {
+            if (tile.LogicType == 'AllReports') {
                 $('.label-tile-type').text('All Reports');
             }
             $('.select-tileType').val(tile.LogicType);
@@ -1595,7 +1610,7 @@
                     refreshItselfOnGrid(tileId, currentDestinationX, currentDestinationY);
                 }
 
-            } else if (pageX > clipboardLeft && pageX < clipboardLeft + 560 && pageY > clipboardTop && pageY < clipboardTop + 420 && currentTile.demensionX <= 4 && currentTile.LogicType != 'AllReport') {
+            } else if (pageX > clipboardLeft && pageX < clipboardLeft + 560 && pageY > clipboardTop && pageY < clipboardTop + 420 && currentTile.demensionX <= 4 && currentTile.LogicType != 'AllReports') {
                 newTop -= (3 * unit + gap);
                 if (newTop % unit <= unit / 2) {
                     newTop = (newTop / unit) * unit;

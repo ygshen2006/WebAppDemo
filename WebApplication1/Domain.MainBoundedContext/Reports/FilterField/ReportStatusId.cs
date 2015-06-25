@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using Domain.MainBoundedContext.FilterField;
 using Domain.MainBoundedContext.Logics;
 using Domain.MainBoundedContext.Reports.Aggregates;
-using Domain.MainBoundedContext.Reports.Logics.Aggregates;
+
 
 namespace Domain.MainBoundedContext.Reports.Logics.FilterField
 {

@@ -33,9 +33,11 @@ namespace Application.MainBoundedContect.Services.Tile
         private ITeamRepository _teamRepository;
         ICategoryRepository _categoryRepository;
         ITagRepository _tagRepository;
+        ITileQueryLogicRepository _tileQueryLogicRepository;
+
         public TileServices(ITileRepository repository, ITeamRepository teamRepository,
             IReportRepository reportRepository, IUserRepository userRepository, ITagRepository tagRepository,
-            ICategoryRepository categoryRepository
+            ICategoryRepository categoryRepository, ITileQueryLogicRepository _tileQRepository
             )
         {
 
@@ -45,6 +47,7 @@ namespace Application.MainBoundedContect.Services.Tile
             _userRepository = userRepository;
             _tagRepository = tagRepository;
             _categoryRepository = categoryRepository;
+            _tileQueryLogicRepository = _tileQRepository;
         }
 
         public void ModifyTile(List<AppTile> tiles)
@@ -80,6 +83,39 @@ namespace Application.MainBoundedContect.Services.Tile
             foreach (var t in _tileRepository.GetTilesByTeamId(id))
             {
                 aTiles.Add(t.ToAppTile());
+            }
+            return aTiles;
+        }
+        public List<AppTile> GetCustomerizeTilesWithCountByTeamId(int id, string userAlias, bool isAdmin, string guid) {
+
+
+            ParameterProvider pp = new ParameterProvider();
+            pp.AddParameter(ContextVariable.CurrentUser.ToString(), userAlias);
+            pp.AddParameter(ContextVariable.CurrentTeamSiteGuid.ToString(), new Guid(guid));
+            if (isAdmin)
+            {
+                pp.AddParameter(ContextVariable.TeamSiteGuidUnderControl.ToString(), new List<Guid>() { new Guid(guid) });
+            }
+
+            List<AppTile> aTiles = new List<AppTile>();
+            foreach (var t in _tileRepository.GetTilesByTeamId(id))
+            {
+                aTiles.Add(t.ToAppTile());
+            }
+            Guid teamGuid = Guid.Parse(guid);
+            foreach (var item in aTiles)
+            {
+                item.BasicLogic = this.GetAppTileLogic(item);
+
+                if (item.IsCustomized)
+                {
+                    item.ReportCount = _reportRepository.GetReportsByExpression(item.GetCombinedLogic(isAdmin, item.Id).And((new TeamSiteGUID()).Equal(teamGuid)).GetExpression(pp)).Count();
+                }
+                else
+                {
+                    item.ReportCount = _reportRepository.GetReportsByExpression(item.GetCombinedLogic(isAdmin, item.Id).GetExpression(pp)).Count();
+                }
+
             }
             return aTiles;
         }
@@ -146,13 +182,18 @@ namespace Application.MainBoundedContect.Services.Tile
         private void ModifyTile(AppTile aTile)
         {
             var t = aTile.ToTile();
+            var queryLogicList = this.GenerateQueryLogicFromAppTile(aTile);
 
             switch (aTile.Status)
             {
                 case Enums.ChangeStatus.Add:
+                    t.TileQueryLogics = _tileQueryLogicRepository.AddBatchTileQueryLogics(queryLogicList);
                     _tileRepository.AddTile(t);
                     break;
                 case Enums.ChangeStatus.Change:
+                    var logics = _tileQueryLogicRepository.AddBatchTileQueryLogics(queryLogicList);
+                    t.TileQueryLogics = _tileQueryLogicRepository.ModifyTileQueryLogic(aTile.Id.Value, logics);
+
                     _tileRepository.ModifyTile(t);
                     break;
                 case Enums.ChangeStatus.Delete:
@@ -162,7 +203,187 @@ namespace Application.MainBoundedContect.Services.Tile
             }
         }
 
+        private Logic GetAppTileLogic(AppTile appTile)
+        {
+            if (!appTile.IsCustomized)
+            {
+                #region Generate logic for SystemDefined Tile
+                switch (appTile.Id)
+                {
+                    case 1:
+                        appTile = GetMyReport_SubscriptionTile();
+                        break;
+                    case 2:
+                        appTile = GetMyReport_MyReportTile();
+                        break;
+                    case 3:
+                        appTile = GetMyReport_RecommendedTile();
+                        break;
+                    
+                    default:
+                        break;
+                }
+                #endregion
+            }
+            else
+            {
+                appTile.BasicLogic = GenerateTileLogic(appTile);
+            }
+
+            return appTile.BasicLogic;
+        }
+        private Logic GenerateTileLogic(AppTile appTile)
+        {
+            if (appTile.logicType == LogicType.AllReports)
+            {
+                return GetTeamSite_AllReportsTile().BasicLogic;
+            }
+            else
+            {
+               
+                    List<TileQueryLogic> tileLogicList = _tileQueryLogicRepository.GetTileQueryLogicsByTileId(appTile.Id.Value);
+
+                    #region Generate the Logic
+
+                    #region Set up the dictionary of type
+
+                    var tagId = new TagId();
+                    var reportOwnerId = new ReportOwnerId();
+                    var subCategoryId = new SubCategoryId();
+                    var reportDataId = new ReportDataId();
+
+                    Dictionary<string, IIN<Int32>> dc = new Dictionary<string, IIN<int>>();
+                    dc.Add(tagId.Name, tagId);
+                    //dc.Add(reportOwnerId.Name, reportOwnerId);
+                    dc.Add(subCategoryId.Name, subCategoryId);
+                    dc.Add(reportDataId.Name, reportDataId);
 
 
+                    Dictionary<string, IIN<String>> dcString = new Dictionary<string, IIN<string>>();
+                    dcString.Add(reportOwnerId.Name, reportOwnerId);
+
+
+                    #endregion
+
+                    Logic resultLogic = null;
+
+                    if (appTile.logicType == LogicType.Selected)
+                    {
+                        resultLogic = dc[reportDataId.Name].In(tileLogicList[0].FiledValue.Split(',').Select(_ => int.Parse(_)));
+                    }
+
+                    if (appTile.logicType == LogicType.Filtered)
+                    {
+                        var logic = new AND();
+                        foreach (var item in tileLogicList)
+                        {
+                            Logic l = null;
+
+                            if (item.FiledValue.GetType() == typeof(string))
+                            {
+                                l = dcString[item.FiledName].In(item.FiledValue.Split(',').Select(_ => _.ToString()));
+                            }
+                            else
+                            {
+                                 l = dc[item.FiledName].In(item.FiledValue.Split(',').Select(_ => int.Parse(_)));
+                            }
+                            logic.AddElement(l);
+                        }
+                        resultLogic = logic;
+                    }
+
+                    if (appTile.logicType == LogicType.Tagged)
+                    {
+                        Logic logic = dc[tagId.Name].In(tileLogicList[0].FiledValue.Split(',').Select(_ => int.Parse(_)));
+                        resultLogic = logic;
+                    }
+
+                    #endregion
+
+                    return resultLogic;
+            }
+        }
+        private List<TileQueryLogic> GenerateQueryLogicFromAppTile(AppTile appTile)
+        {
+            List<TileQueryLogic> logicList = new List<TileQueryLogic>();
+            TileQueryLogic logic = null;
+
+            #region switch
+            switch (appTile.logicType)
+            {
+                case LogicType.Selected:
+                    logic = SetTileQueryLogic(appTile.BasicLogic, appTile);
+                    logicList.Add(logic);
+                    break;
+
+                case LogicType.Filtered:
+                    foreach (var item in (appTile.BasicLogic as AND).LogicElements)
+                    {
+                        logic = SetTileQueryLogic(item, appTile);
+                        logicList.Add(logic);
+                    }
+                    break;
+
+                case LogicType.Tagged:
+                    logic = SetTileQueryLogic(appTile.BasicLogic, appTile);
+                    logicList.Add(logic);
+                    break;
+
+                default:
+                    break;
+            }
+            #endregion
+
+            return logicList;
+        }
+        private TileQueryLogic SetTileQueryLogic(Logic logic, AppTile appTile)
+        {
+            TileQueryLogic qc = new TileQueryLogic();
+            if (qc.FiledValue.GetType() == typeof(String))
+            {
+                qc.FiledName = (logic as IN<String>).Field.Name;
+                qc.FiledValue = string.Join(",", (logic as IN<String>).FieldValue.GetValue());
+            }
+            else
+            {
+                qc.FiledName = (logic as IN<Int32>).Field.Name;
+                qc.FiledValue = string.Join(",", (logic as IN<Int32>).FieldValue.GetValue());
+            }
+
+            if (appTile.Id != null)
+                qc.TileId = appTile.Id.Value;
+            return qc;
+        }
+        #region myreport
+        private AppTile GetMyReport_SubscriptionTile()
+        {
+            AppTile appTile = new AppMySubscriptionsTile() { IsCustomized = false, Top = 0, Left = 0, Width = 1, Height = 1, TileType = TileType.MyReport, Title = SystemDefinedTile.MyReports_MySubscriptions.Title, SystemDefinedTile = SystemDefinedTile.MyReports_MySubscriptions };
+
+            //appTile.BasicLogic = (new SubscriberAlias()).Equal(new Parameter<String>() { Name = ContextVariable.CurrentUser.ToString() })
+            //                    .And(((new CatalogTypeId()).Equal(1)).Or(((new CatalogTypeId()).Equal(2)).And((new ReportStatusId()).Equal(2))));
+
+            return appTile;
+        }
+
+        private AppTile GetMyReport_MyReportTile()
+        {
+            var appTile = new AppMyReportsTile() { IsCustomized = false, Top = 0, Left = 0, Width = 1, Height = 1, TileType = TileType.MyReport, Title = SystemDefinedTile.MyReports_MyReports.Title, SystemDefinedTile = SystemDefinedTile.MyReports_MyReports };
+
+            //appTile.BasicLogic = (new ReportOwnerAlias()).Equal(new Parameter<String>() { Name = ContextVariable.CurrentUser.ToString() });
+
+            return appTile;
+        }
+
+        private AppTile GetMyReport_RecommendedTile()
+        {
+            AppTile appTile = new AppRecommendedTile() { IsCustomized = false, Top = 0, Left = 1, Width = 1, Height = 1, TileType = TileType.MyReport, Title = SystemDefinedTile.MyReports_Recommended.Title, SystemDefinedTile = SystemDefinedTile.MyReports_Recommended };
+
+            //appTile.BasicLogic = (new RecommendToUserAlias()).Equal(new Parameter<String>() { Name = ContextVariable.CurrentUser.ToString() })
+            //                    .And(((new CatalogTypeId()).Equal(1)).Or(((new CatalogTypeId()).Equal(2)).And((new ReportStatusId()).Equal(2))));
+
+            return appTile;
+        }
+
+        #endregion
     }
 }

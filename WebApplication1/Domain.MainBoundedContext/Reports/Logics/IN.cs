@@ -7,7 +7,6 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using Domain.SeedWork;
-using Domain.MainBoundedContext.Reports.Logics.Aggregates;
 using Domain.MainBoundedContext.Reports.Aggregates;
 
 namespace Domain.MainBoundedContext.Logics

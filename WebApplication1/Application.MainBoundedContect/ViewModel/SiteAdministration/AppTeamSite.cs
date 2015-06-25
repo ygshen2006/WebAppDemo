@@ -1,7 +1,7 @@
 ﻿using Application.MainBoundedContect.ViewModel.Users;
 using System;
 using System.Collections.Generic;
-using Domain.MainBoundedContext.Reports.Logics.Aggregates;
+
 using Domain.MainBoundedContext.Tiles.Aggregates;
 using Domain.MainBoundedContext.Teams.Tags;
 using Domain.MainBoundedContext.Reports.Aggregates;

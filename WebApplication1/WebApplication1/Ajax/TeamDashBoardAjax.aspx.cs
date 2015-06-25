@@ -93,7 +93,7 @@ namespace WebApplication1.Ajax
                     }
                 }
 
-                TileServices tService = new TileServices(repository, null,null,null,null,null);
+                TileServices tService = new TileServices(repository, null,null,null,null,null,null);
 
                 List<AppTile> tiles = new List<AppTile>();
 
@@ -110,8 +110,6 @@ namespace WebApplication1.Ajax
                         tiles.Add(appTile);
                     }
                 }
-
-               
 
                 foreach (var para in paraTileList)
                 {
@@ -181,6 +179,7 @@ namespace WebApplication1.Ajax
 
         private string LoadTeamTiles() { 
             var teamGuid = Request.Params["SiteGUID"].ToString();
+            string userAlias = Session["UserName"].ToString();
             // tile data
             JavaScriptSerializer jss = new JavaScriptSerializer();
 
@@ -192,10 +191,10 @@ namespace WebApplication1.Ajax
                 // Get the team id by its team guid value
                 TeamRepository tRepository = new TeamRepository(context);
                 TeamAppService teamService = new TeamAppService(tRepository);
-
+                TileQueryLogicRepository tileQueryRepository = new TileQueryLogicRepository(context);
                 int teamId = teamService.GetAllTeamSites().First(_ => _.TeamGuid == Guid.Parse(teamGuid)).Id.Value;
-                TileServices tService = new TileServices(repository, tRepository,null,null,null,null);
-                List<TileViewModel> tiles = tService.GetTilesByTeamId(teamId).Select(_=>_.ToTileViewModel()).ToList<TileViewModel>();
+                TileServices tService = new TileServices(repository, tRepository, null, null, null, null, tileQueryRepository);
+                List<TileViewModel> tiles = tService.GetCustomerizeTilesWithCountByTeamId(teamId, userAlias,true, teamGuid).Select(_ => _.ToTileViewModel()).ToList<TileViewModel>();
 
                 return jss.Serialize(tiles);
             }

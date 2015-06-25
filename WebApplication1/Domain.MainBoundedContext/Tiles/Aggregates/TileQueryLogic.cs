@@ -7,7 +7,7 @@ using Domain.MainBoundedContext.Teams;
 using Domain.SeedWork;
 using Domain.MainBoundedContext.Tiles.Aggregates;
 
-namespace Domain.MainBoundedContext.Reports.Logics.Aggregates.Tiles
+namespace Domain.MainBoundedContext.Tiles.Aggregates
 {
    public class TileQueryLogic: Entity
     {

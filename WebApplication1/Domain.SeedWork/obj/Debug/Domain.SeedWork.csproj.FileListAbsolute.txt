@@ -38,3 +38,4 @@ E:\MyWebApp\WebAppDemo\WebApplication1\Domain.SeedWork\bin\Debug\Microsoft.AspNe
 E:\MyWebApp\WebAppDemo\WebApplication1\Domain.SeedWork\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
 E:\MyWebApp\WebAppDemo\WebApplication1\Domain.SeedWork\obj\Debug\Domain.SeedWork.dll
 E:\MyWebApp\WebAppDemo\WebApplication1\Domain.SeedWork\obj\Debug\Domain.SeedWork.pdb
+D:\MyGit\WebAppDemo\WebApplication1\Domain.SeedWork\obj\Debug\Domain.SeedWork.csprojResolveAssemblyReference.cache

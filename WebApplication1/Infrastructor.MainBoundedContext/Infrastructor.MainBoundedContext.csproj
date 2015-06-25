@@ -83,6 +83,7 @@
     <Compile Include="Repositories\SiteAdmin\TeamRepository.cs" />
     <Compile Include="Repositories\TeamAdmin\TeamStatusRepository.cs" />
     <Compile Include="Repositories\TeamAdmin\TeamTagRepository.cs" />
+    <Compile Include="Repositories\Tiles\TileQueryLogicRepository.cs" />
     <Compile Include="Repositories\Tiles\TileRepository.cs" />
     <Compile Include="Repositories\Users\UserInformationRepository.cs" />
     <Compile Include="Repositories\Users\UserRepository.cs" />

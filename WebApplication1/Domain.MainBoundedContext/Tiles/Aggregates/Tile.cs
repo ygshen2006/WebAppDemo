@@ -6,7 +6,6 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Domain.MainBoundedContext.Reports.Logics.Aggregates.Tiles;
 
 namespace Domain.MainBoundedContext.Tiles.Aggregates
 {

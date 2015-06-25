@@ -70,7 +70,7 @@ namespace Application.MainBoundedContect.Services.Report
         public IEnumerable<AppReport> GetAllReportsOfTeamSite(string userAlias, string teamSiteGuid, bool isAdmin,
         SortField sortField, SortOrder sortOrder)
         {
-            TileServices tService = new TileServices(_tileRepository, _teamRepository,_reportRepository, null,null,null);
+            TileServices tService = new TileServices(_tileRepository, _teamRepository,_reportRepository, null,null,null,null);
             int teamId = _teamRepository.GetFiltered(_ => _.TeamGuid == new Guid(teamSiteGuid)).FirstOrDefault().Id;
 
 

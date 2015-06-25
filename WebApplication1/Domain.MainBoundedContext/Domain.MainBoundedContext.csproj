@@ -95,7 +95,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Reports\Aggregates\Report.cs" />
     <Compile Include="Reports\Aggregates\Status.cs" />
-    <Compile Include="Reports\Aggregates\Tiles\TileQueryLogic.cs" />
+    <Compile Include="Tiles\Aggregates\ITileQueryLogicRepository.cs" />
+    <Compile Include="Tiles\Aggregates\TileQueryLogic.cs" />
     <Compile Include="Reports\FilterField\ReportOwnerAlias.cs" />
     <Compile Include="Reports\FilterField\ReportStatusId.cs" />
     <Compile Include="Teams\Aggregates\Category\Category.cs" />

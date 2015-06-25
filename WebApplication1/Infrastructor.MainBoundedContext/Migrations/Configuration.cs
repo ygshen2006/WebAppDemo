@@ -5,7 +5,7 @@ namespace Infrastructor.MainBoundedContext.Migrations
     using System.Data.Entity.Migrations;
     using System.Linq;
     using Domain.MainBoundedContext.Reports.Aggregates;
-    using Domain.MainBoundedContext.Reports.Logics.Aggregates;
+    
     using Domain.MainBoundedContext.Tiles.Aggregates;
 
     internal sealed class Configuration : DbMigrationsConfiguration<Infrastructor.MainBoundedContext.UnitWorks.MainDBUnitWorkContext>

@@ -539,7 +539,7 @@
                     });
                     gridTiles = result;
                     refreshTiles(true);
-                    //URP.CustomizationTiles.Init();
+                    URP.CustomizationTiles.Init();
                 }
             });
         };

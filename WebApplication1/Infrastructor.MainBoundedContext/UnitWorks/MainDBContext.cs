@@ -13,7 +13,6 @@ using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Data.SqlClient;
 using System.Linq;
-using Domain.MainBoundedContext.Reports.Logics.Aggregates.Tiles;
 using Domain.MainBoundedContext.Tiles.Aggregates;
 using Domain.MainBoundedContext.Teams.Tags;
 using Domain.MainBoundedContext.Reports.Aggregates;
@@ -298,6 +297,7 @@ namespace Infrastructor.MainBoundedContext.UnitWorks
             //    WillCascadeOnDelete(false);
 
             modelBuilder.Entity<Tile>().ToTable("Tiles");
+
         }
     }
 }

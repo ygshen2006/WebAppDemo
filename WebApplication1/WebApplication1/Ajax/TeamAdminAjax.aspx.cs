@@ -131,7 +131,7 @@ namespace WebApplication1.Ajax
                 IReportRepository _reportRepository = new ReportRepository(context);
                 IUserRepository _userRepository=new UserRepository(context);
 
-                TileServices tileService = new TileServices(_tileRepository, _teamRepository, _reportRepository, _userRepository,_tagRepository,_categoryRepository);
+                TileServices tileService = new TileServices(_tileRepository, _teamRepository, _reportRepository, _userRepository,_tagRepository,_categoryRepository,null);
 
                 //Owner
                 IEnumerable<UserLoginApp> userList = tileService.GetOwnerList(userName, teamGuid, isAdmin);

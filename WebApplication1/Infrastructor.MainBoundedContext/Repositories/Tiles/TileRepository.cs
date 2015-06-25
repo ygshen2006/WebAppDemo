@@ -56,7 +56,7 @@ namespace Infrastructor.MainBoundedContext.Repositories.Tiles
 
         public int GetAllReportsTileId(int teamId)
         {
-            return this.GetTilesByTeamId(teamId).Where(_ => _.LogicString == "AllReports").FirstOrDefault().Id;
+            return this.GetTilesByTeamId(teamId).Where(_ => _.LogicStringType == 4).FirstOrDefault().Id;
         }
 
 

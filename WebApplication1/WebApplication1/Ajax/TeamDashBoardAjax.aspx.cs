@@ -192,8 +192,10 @@ namespace WebApplication1.Ajax
                 TeamRepository tRepository = new TeamRepository(context);
                 TeamAppService teamService = new TeamAppService(tRepository);
                 TileQueryLogicRepository tileQueryRepository = new TileQueryLogicRepository(context);
+                ReportRepository reportRepository = new ReportRepository(context);
+
                 int teamId = teamService.GetAllTeamSites().First(_ => _.TeamGuid == Guid.Parse(teamGuid)).Id.Value;
-                TileServices tService = new TileServices(repository, tRepository, null, null, null, null, tileQueryRepository);
+                TileServices tService = new TileServices(repository, tRepository, reportRepository, null, null, null, tileQueryRepository);
                 List<TileViewModel> tiles = tService.GetCustomerizeTilesWithCountByTeamId(teamId, userAlias,true, teamGuid).Select(_ => _.ToTileViewModel()).ToList<TileViewModel>();
 
                 return jss.Serialize(tiles);

@@ -268,3 +268,26 @@ a {
     float: left;
     font-family: 'Segoe UI';
 }
+
+
+
+
+#gs_feedback_gotop .side_fixed {
+    position: fixed;
+    right: 30px !important;
+    top: 250px !important;
+    height: 50px;
+    height:50px;
+    z-index: 140;
+}
+
+.si-glyph-bubble-message-hi {
+    height:50px;
+    width:50px;
+    fill:blue;
+}
+
+svg {
+width:40px;
+height:40px;
+}

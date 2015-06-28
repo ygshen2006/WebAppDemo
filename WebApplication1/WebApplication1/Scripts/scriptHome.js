@@ -872,13 +872,14 @@
             return url;
         };
         this.GetSite = function (loadingArea, callBack) {
-            var url1 = this.GetBaseUrl() + "?queryType=reporttype&siteType=" + URP.criteria.SiteType;
+            var url1 = this.GetBaseUrl();
 
             // Send the ajax call 
             $.ajax({
                 url: url1,
                 type: 'Get',
                 timeout: 9900000,
+                data: { queryType: 'reporttype', siteType: URP.criteria.SiteType, SiteGUID: GetQueryString('SiteGUID') },
                 dataType: 'json',
                 beforeSend: function () {
                     //loadingArea.showLoading();
@@ -894,6 +895,33 @@
             });
         };
 
+        this.GetTeam = function (loadingArea, callBack) {
+            var url1 = this.GetBaseUrl();
+
+            // Send the ajax call 
+            $.ajax({
+                url: url1,
+                type: 'Get',
+                timeout: 9900000,
+                data: { queryType: 'teamdetail', SiteGUID: GetQueryString('SiteGUID') },
+                dataType: 'json',
+                beforeSend: function () {
+                    //loadingArea.showLoading();
+                },
+                success: function (result) {
+                    if (callBack) callBack(result);
+                },
+                error: function (jqXHR, textStatus, errorThrown) { alert('ttt'); },
+
+                complete: function () {
+                    //loadingArea.hideLoading();
+                }
+            });
+        };
+        function GetQueryString(name) {
+            var r = window.location.search.split('=')[1];
+            return r;
+        }
         this.HTMLEncode = function (html) {
             var temp = document.createElement("div");
             (temp.textContent != null) ? (temp.textContent = html) : (temp.innerText = html);

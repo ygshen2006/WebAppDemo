@@ -67,7 +67,7 @@ namespace Application.MainBoundedContect.Services.Tile
         /// <param name="sortOrder"></param>
         /// <returns></returns>
 
- 
+
         public AppTile GetTeamSite_AllReportsTile()
         {
             AppTile appTile = new AppTeamSiteAllReportsTile() { IsCustomized = false, Top = 0, Left = 0, Width = 1, Height = 1, TileType = TileType.TeamSite, Title = "All Reports" };
@@ -86,7 +86,8 @@ namespace Application.MainBoundedContect.Services.Tile
             }
             return aTiles;
         }
-        public List<AppTile> GetCustomerizeTilesWithCountByTeamId(int id, string userAlias, bool isAdmin, string guid) {
+        public List<AppTile> GetCustomerizeTilesWithCountByTeamId(int id, string userAlias, bool isAdmin, string guid)
+        {
 
 
             ParameterProvider pp = new ParameterProvider();
@@ -121,7 +122,9 @@ namespace Application.MainBoundedContect.Services.Tile
         }
         public AppTile GetTileById(int id)
         {
-            return _tileRepository.GetTileById(id).ToAppTile();
+            var appTile = _tileRepository.GetTileById(id).ToAppTile();
+            appTile.BasicLogic = GetAppTileLogic(appTile);
+            return appTile;
         }
 
 
@@ -176,7 +179,7 @@ namespace Application.MainBoundedContect.Services.Tile
                     TeamId = _.TeamSiteId
                 });
 
-                return tagList.ToList();
+            return tagList.ToList();
         }
 
         private void ModifyTile(AppTile aTile)
@@ -219,7 +222,7 @@ namespace Application.MainBoundedContect.Services.Tile
                     case 3:
                         appTile = GetMyReport_RecommendedTile();
                         break;
-                    
+
                     default:
                         break;
                 }
@@ -240,67 +243,68 @@ namespace Application.MainBoundedContect.Services.Tile
             }
             else
             {
-               
-                    List<TileQueryLogic> tileLogicList = _tileQueryLogicRepository.GetTileQueryLogicsByTileId(appTile.Id.Value);
 
-                    #region Generate the Logic
+                List<TileQueryLogic> tileLogicList = _tileQueryLogicRepository.GetTileQueryLogicsByTileId(appTile.Id.Value);
 
-                    #region Set up the dictionary of type
+                #region Generate the Logic
 
-                    var tagId = new TagId();
-                    var reportOwnerId = new ReportOwnerId();
-                    var subCategoryId = new SubCategoryId();
-                    var reportDataId = new ReportDataId();
+                #region Set up the dictionary of type
 
-                    Dictionary<string, IIN<Int32>> dc = new Dictionary<string, IIN<int>>();
-                    dc.Add(tagId.Name, tagId);
-                    //dc.Add(reportOwnerId.Name, reportOwnerId);
-                    dc.Add(subCategoryId.Name, subCategoryId);
-                    dc.Add(reportDataId.Name, reportDataId);
+                var tagId = new TagId();
+                var reportOwnerId = new ReportOwnerId();
+                var subCategoryId = new SubCategoryId();
+                var reportDataId = new ReportDataId();
 
-
-                    Dictionary<string, IIN<String>> dcString = new Dictionary<string, IIN<string>>();
-                    dcString.Add(reportOwnerId.Name, reportOwnerId);
+                Dictionary<string, IIN<Int32>> dc = new Dictionary<string, IIN<int>>();
+                dc.Add(tagId.Name, tagId);
+                //dc.Add(reportOwnerId.Name, reportOwnerId);
+                dc.Add(subCategoryId.Name, subCategoryId);
+                dc.Add(reportDataId.Name, reportDataId);
 
 
-                    #endregion
+                Dictionary<string, IIN<String>> dcString = new Dictionary<string, IIN<string>>();
+                dcString.Add(reportOwnerId.Name, reportOwnerId);
 
-                    Logic resultLogic = null;
 
-                    if (appTile.logicType == LogicType.Selected)
+                #endregion
+
+                Logic resultLogic = null;
+
+                if (appTile.logicType == LogicType.Selected)
+                {
+                    resultLogic = dc[reportDataId.Name].In(tileLogicList[0].FiledValue.Split(',').Select(_ => int.Parse(_)));
+                }
+
+                if (appTile.logicType == LogicType.Filtered)
+                {
+                    var logic = new AND();
+                    foreach (var item in tileLogicList)
                     {
-                        resultLogic = dc[reportDataId.Name].In(tileLogicList[0].FiledValue.Split(',').Select(_ => int.Parse(_)));
-                    }
+                        Logic l = null;
 
-                    if (appTile.logicType == LogicType.Filtered)
-                    {
-                        var logic = new AND();
-                        foreach (var item in tileLogicList)
+
+                        if (item.FiledValue.GetType() == typeof(string) && dcString.Keys.Contains<string>(item.FiledName))
                         {
-                            Logic l = null;
-
-                            if (item.FiledValue.GetType() == typeof(string))
-                            {
-                                l = dcString[item.FiledName].In(item.FiledValue.Split(',').Select(_ => _.ToString()));
-                            }
-                            else
-                            {
-                                 l = dc[item.FiledName].In(item.FiledValue.Split(',').Select(_ => int.Parse(_)));
-                            }
-                            logic.AddElement(l);
+                            l = dcString[item.FiledName].In(item.FiledValue.Split(',').Select(_ => _.ToString()));
                         }
-                        resultLogic = logic;
+                        else
+                        {
+                            l = dc[item.FiledName].In(item.FiledValue.Split(',').Select(_ => int.Parse(_)));
+                        }
+                        logic.AddElement(l);
                     }
+                    resultLogic = logic;
+                }
 
-                    if (appTile.logicType == LogicType.Tagged)
-                    {
-                        Logic logic = dc[tagId.Name].In(tileLogicList[0].FiledValue.Split(',').Select(_ => int.Parse(_)));
-                        resultLogic = logic;
-                    }
+                if (appTile.logicType == LogicType.Tagged)
+                {
+                    Logic logic = dc[tagId.Name].In(tileLogicList[0].FiledValue.Split(',').Select(_ => int.Parse(_)));
+                    resultLogic = logic;
+                }
 
-                    #endregion
+                #endregion
 
-                    return resultLogic;
+                return resultLogic;
             }
         }
         private List<TileQueryLogic> GenerateQueryLogicFromAppTile(AppTile appTile)
@@ -339,10 +343,12 @@ namespace Application.MainBoundedContect.Services.Tile
         private TileQueryLogic SetTileQueryLogic(Logic logic, AppTile appTile)
         {
             TileQueryLogic qc = new TileQueryLogic();
-            if (qc.FiledValue.GetType() == typeof(String))
+
+            if ((logic as IN<string>) != null)
             {
-                qc.FiledName = (logic as IN<String>).Field.Name;
-                qc.FiledValue = string.Join(",", (logic as IN<String>).FieldValue.GetValue());
+                qc.FiledName = (logic as IN<string>).Field.Name;
+                qc.FiledValue = string.Join(",", (logic as IN<string>).FieldValue.GetValue());
+
             }
             else
             {

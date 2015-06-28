@@ -62,6 +62,7 @@ namespace WebApplication1.Ajax
                 // Get the team id by its team guid value
                 TeamRepository tRepository = new TeamRepository(context);
                 TeamAppService teamService = new TeamAppService(tRepository);
+                TileQueryLogicRepository tileQueryRepository = new TileQueryLogicRepository(context);
 
                 int teamId = teamService.GetAllTeamSites().First(_ => _.TeamGuid == Guid.Parse(teamGuid)).Id.Value;
                 //validate the data
@@ -93,7 +94,7 @@ namespace WebApplication1.Ajax
                     }
                 }
 
-                TileServices tService = new TileServices(repository, null,null,null,null,null,null);
+                TileServices tService = new TileServices(repository, null,null,null,null,null,tileQueryRepository);
 
                 List<AppTile> tiles = new List<AppTile>();
 
@@ -105,7 +106,13 @@ namespace WebApplication1.Ajax
                  
                     if (!paraTileList.Any(_ => _.id == item.Id))
                     {
+                        if (item.logicType == LogicType.AllReports)
+                        {
+                            continue;
+                        }
+
                         AppTile appTile = tService.GetTileById(item.Id.Value);
+
                         appTile.Status = ChangeStatus.Delete;
                         tiles.Add(appTile);
                     }

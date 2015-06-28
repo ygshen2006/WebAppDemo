@@ -41,6 +41,7 @@ namespace Application.MainBoundedContect.Services.Users
             //{
                 _manager = new UserManager<User>(new UserStore<User>(new MainDBUnitWorkContext()));
 
+            
 
                 result = _manager.Create(user, password);
 
@@ -49,6 +50,18 @@ namespace Application.MainBoundedContect.Services.Users
                     IdentityHelper.SignIn(_manager, user, isPersistent: false);
                 }
             //}
+            return result;
+        }
+
+        public string GetUserMain(string userId) {
+            UserManager<User> _manager = null;
+            string result = null;
+            _manager = new UserManager<User>(new UserStore<User>(new MainDBUnitWorkContext()));
+
+
+
+            result = _manager.GetEmail(userId);
+
             return result;
         }
         public User Login(string userName, string password)

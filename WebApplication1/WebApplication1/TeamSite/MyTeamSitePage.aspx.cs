@@ -44,7 +44,7 @@ namespace WebApplication1.TeamSite
                 ////}
 
                 //owner_name_id.Text = user_temp.UserName;
-                owner_name_id.NavigateUrl = "";
+                
                 // Get report links
                 IUsefulLinksRepository repository = new UsefulLinksRepository();
                 UsefulLinksService _manager = new UsefulLinksService(repository);

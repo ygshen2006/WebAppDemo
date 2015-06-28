@@ -27,9 +27,15 @@
 
         }
 
+        this.Init = function () {
+            $(".reply").live('mouseover', function (e) {
+                $(".si-glyph-bubble-message-hi").css({ "-webkit-animation": "twinkling 1s infinite ease-in-out" });
+            });
+        }
     }
     // 
 }(window.TeamSite = window.TeamSite || {}, jQuery));
 $(function () {
     TeamSite.TeamSiteLoading.writeCurrentTeamGuidToHiddenField();
+    TeamSite.TeamSiteLoading.Init();
 });

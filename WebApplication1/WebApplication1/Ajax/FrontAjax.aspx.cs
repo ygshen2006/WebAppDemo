@@ -1,4 +1,10 @@
-﻿using Infrastructor.MainBoundedContext.UnitWorks;
+﻿using Application.MainBoundedContect.Services.SiteAdmininstration;
+using Application.MainBoundedContect.Services.Tile;
+using Application.MainBoundedContect.ViewModel.Tiles;
+using Infrastructor.MainBoundedContext.Repositories.Reports;
+using Infrastructor.MainBoundedContext.Repositories.SiteAdmin;
+using Infrastructor.MainBoundedContext.Repositories.Tiles;
+using Infrastructor.MainBoundedContext.UnitWorks;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -12,6 +18,9 @@ using System.Web.Script.Serialization;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using WebApplication1.Models;
+using Application.MainBoundedContect.Extentions;
+using System.Web.Providers.Entities;
+using System.Text;
 
 namespace WebApplication1.Ajax
 {
@@ -19,6 +28,11 @@ namespace WebApplication1.Ajax
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+
+            if (Request["queryType"] == "teamdetail") {
+                string teamGuid = Request.Params["SiteGUID"].ToString();
+                Response.Write(GetTeamSite(teamGuid));
+            }
             if (Request["queryType"] == "callSp")
             {
 
@@ -26,8 +40,6 @@ namespace WebApplication1.Ajax
             }
             if (Request["queryType"] == "reporttype")
             {
-                Thread.Sleep(1000);
-
                 Response.Write(GetTiles());
             }
 
@@ -150,30 +162,91 @@ namespace WebApplication1.Ajax
 
 
 
+        private string GetTeamSite(string teamGuid) {
+            using (MainDBUnitWorkContext context = new MainDBUnitWorkContext())
+            {
+                Guid tId = Guid.Parse(teamGuid);
+                TeamRepository teamRepo = new TeamRepository(context);
+                var team = teamRepo.GetFiltered(_ => _.TeamGuid == tId).FirstOrDefault();
+                
+                var teamOwners = teamRepo.GetFiltered(_ => _.TeamGuid == tId).FirstOrDefault().TeamOwners.ToList();
+                string adminUsers = getOwnersString(teamOwners);
 
+                JavaScriptSerializer jss = new JavaScriptSerializer();
+               return  jss.Serialize(new TeamInfo() { teamName=team.TeamName, teamOwners=getOwnersString(teamOwners) });
+            }
+        }
+
+        private string getOwnersString(List<Domain.MainBoundedContext.Users.User> teamOwners)
+        {
+            StringBuilder sb = new StringBuilder();
+
+            foreach (var u in teamOwners)
+            {
+                sb.Append(u.Email+";");
+            }
+
+            return sb.ToString();
+        }
+
+     
 
         private string GetTiles()
         {
-            // Generate the tile information
-            List<Tile> tiles = new List<Tile>() { 
-                new Tile(){ Id=1, ReportCount=56, TileName="我的文章"},
-                 new Tile(){ Id=2, ReportCount=44, TileName="我的推荐"},
-                new Tile(){ Id=3, ReportCount=55, TileName="我的订阅"},
-                new Tile(){ Id=4, ReportCount=11, TileName="公司的文章"},
-                };
+            string teamGuid = Request.Params["SiteGUID"].ToString();
 
-            TeamSites team = new TeamSites()
+            if (Request.Params["siteType"] == "teamsite")
             {
-                Id = 1,
-                Name = "Team1",
-                Tiles = tiles
-            };
+                return GetTeamSiteTiles(teamGuid);
+            }
+            else
+            {
+                return null;
+            }
+            // Generate the tile information
+            //List<Tile> tiles = new List<Tile>() { 
+            //    new Tile(){ Id=1, ReportCount=56, TileName="我的文章"},
+            //     new Tile(){ Id=2, ReportCount=44, TileName="我的推荐"},
+            //    new Tile(){ Id=3, ReportCount=55, TileName="我的订阅"},
+            //    new Tile(){ Id=4, ReportCount=11, TileName="公司的文章"},
+            //    };
 
-            // Serialize the data to client
+            //TeamSites team = new TeamSites()
+            //{
+            //    Id = 1,
+            //    Name = "Team1",
+            //    Tiles = tiles
+            //};
+
+            //// Serialize the data to client
+            //JavaScriptSerializer jss = new JavaScriptSerializer();
+
+            //string outPut = jss.Serialize(team);
+            //return outPut;
+        }
+
+        private string GetTeamSiteTiles(string teamGuid) {
+            string userAlias = Session["UserName"].ToString();
+            // tile data
             JavaScriptSerializer jss = new JavaScriptSerializer();
 
-            string outPut = jss.Serialize(team);
-            return outPut;
+            // Save the tile data into our database
+            using (MainDBUnitWorkContext context = new MainDBUnitWorkContext())
+            {
+                TileRepository repository = new TileRepository(context);
+
+                // Get the team id by its team guid value
+                TeamRepository tRepository = new TeamRepository(context);
+                TeamAppService teamService = new TeamAppService(tRepository);
+                TileQueryLogicRepository tileQueryRepository = new TileQueryLogicRepository(context);
+                ReportRepository reportRepository = new ReportRepository(context);
+
+                int teamId = teamService.GetAllTeamSites().First(_ => _.TeamGuid == Guid.Parse(teamGuid)).Id.Value;
+                TileServices tService = new TileServices(repository, tRepository, reportRepository, null, null, null, tileQueryRepository);
+                List<TileViewModel> tiles = tService.GetCustomerizeTilesWithCountByTeamId(teamId, userAlias, true, teamGuid).Select(_ => _.ToTileViewModel()).ToList<TileViewModel>();
+
+                return jss.Serialize(tiles);
+            }
         }
         private string GetFilter()
         {
@@ -298,5 +371,10 @@ namespace WebApplication1.Ajax
                 myfileinf.Delete();
             }
         }
+    }
+
+    class TeamInfo {
+        public string teamName { get; set; }
+        public string teamOwners { get; set; }
     }
 }

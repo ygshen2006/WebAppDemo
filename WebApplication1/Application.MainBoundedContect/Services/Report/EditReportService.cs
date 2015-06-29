@@ -70,7 +70,7 @@ namespace Application.MainBoundedContect.Services.Report
         public IEnumerable<AppReport> GetAllReportsOfTeamSite(string userAlias, string teamSiteGuid, bool isAdmin,
         SortField sortField, SortOrder sortOrder)
         {
-            TileServices tService = new TileServices(_tileRepository, _teamRepository,_reportRepository, null,null,null,null);
+            TileServices tService = new TileServices(_tileRepository, _teamRepository, _reportRepository, null, null, null, null);
             int teamId = _teamRepository.GetFiltered(_ => _.TeamGuid == new Guid(teamSiteGuid)).FirstOrDefault().Id;
 
 
@@ -90,6 +90,23 @@ namespace Application.MainBoundedContect.Services.Report
                 .Select(_ => _.ToAppReport());
         }
 
+        public IEnumerable<AppReport> GetReportsByTileId(AppTile appTile,string userAlias, bool isAdmin,
+            string teamSiteGuid,
+            SortField sortField, SortOrder sortOrder)
+        {
+
+            Guid guid = new Guid(teamSiteGuid);
+
+            ParameterProvider pp = new ParameterProvider();
+            pp.AddParameter(ContextVariable.CurrentUser.ToString(), userAlias);
+            pp.AddParameter(ContextVariable.CurrentTeamSiteGuid.ToString(), new Guid(teamSiteGuid));
+            
+            if (isAdmin) { 
+            pp.AddParameter(ContextVariable.TeamSiteGuidUnderControl.ToString(), new List<Guid>() { new Guid(teamSiteGuid) });
+            }
+            appTile.BasicLogic = appTile.BasicLogic.And((new TeamSiteGUID()).Equal(guid));
+            return _reportRepository.GetReportsByExpression(appTile.GetCombinedLogic(true, appTile.Id).GetExpression(pp)).ToArray().Select(_=>_.ToAppReport());
+        }
 
         public ICollection<Statistics> GetTeamSiteReportsStatistics(Int32 tileId, String userAlias, String teamSiteGuid, Boolean isCurrentSiteAdmin)
         {
@@ -110,7 +127,7 @@ namespace Application.MainBoundedContect.Services.Report
 
 
             Logic logic = at.GetCombinedLogic(hasAdminSite, tileId).And((new TeamSiteGUID()).Equal(Guid.Parse(teamSiteGuid)));
-            return GetStatistics(_reportRepository.GetReportByLogic(logic, pp).ToArray().Select(_=>_.ToAppReport()).ToList());
+            return GetStatistics(_reportRepository.GetReportByLogic(logic, pp).ToArray().Select(_ => _.ToAppReport()).ToList());
         }
 
         private IList<Statistics> GetStatistics(List<AppReport> lists)
@@ -167,7 +184,7 @@ namespace Application.MainBoundedContect.Services.Report
                 #endregion
 
                 #region CategoryStatistics
-           
+
 
                 //// Get the Subcategory statisticsData
                 //IEnumerable<AppCategory> secondLevelCategories = null;
@@ -209,7 +226,7 @@ namespace Application.MainBoundedContect.Services.Report
 
                 #endregion
 
-                
+
 
                 #endregion
             }

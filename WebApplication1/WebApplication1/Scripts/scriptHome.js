@@ -176,29 +176,30 @@
 
             // Calling util method to load reports
             URP.util.GetReport(loadingArea, function (result) {
+                alert("Test");
                 $('.list-item').remove();
                 var listString = '';
-                $.each(result.ReportItemList, function (index, content) {
+                $.each(result, function (index, content) {
                     listString += "<div class='list-item' style='margin-top:10px'>"
                                     + "<div class='item-header'>"
-                                        + "<a href='#' class='reportCollapse'></a><span class='reportIcon'></span><a tag=" + content.ID + " class='reportTitle' href='" + content.ReportURL + "'>" + content.ReportName + "</a>"
+                                        + "<a href='#' class='reportCollapse'></a><span class='reportIcon'></span><a tag=" + content.Id + " class='reportTitle' href='#'>" + content.Title + "</a>"
                                     + "</div>"
 
                                     + "<div class='item-description'>"
-                                        + content.ReportDescription
+                                        + content.Content
                                     + "</div>"
-                                    + "<div class='item-footer'>"
-                                        + "Report type:" + content.ReportName + " | Report owner:" + content.ReportOwner + " | Status:" + content.ReprotStatus + "<a href='#' class='action'>Edit</a><a href='#' class='action'>Recommend</a><a href='#' class='action'>Subscribe</a>"
-                                    + "</div>"
+                                    //+ "<div class='item-footer'>"
+                                    //    + "Report type:" + content.ReportName + " | Report owner:" + content.ReportOwner + " | Status:" + content.ReprotStatus + "<a href='#' class='action'>Edit</a><a href='#' class='action'>Recommend</a><a href='#' class='action'>Subscribe</a>"
+                                    //+ "</div>"
                                     + "<div class='item-detail'></div>"
                                   + "</div>";
                 });
                 if (listString.length == 0) {
                     if (URP.criteria.currentPage == 0) {
-                        listString += "<div class='list-item'>No Reports availale</div>";
+                        listString += "<div class='list-item'>没有任何文章...</div>";
                     }
                     else {
-                        listString += "<div class='list-item'>There is no  more reports</div>";
+                        listString += "<div class='list-item'>已经到达最后一页...</div>";
                     }
                 }
                 $(listString).insertBefore($('.content .last-item'));
@@ -1004,17 +1005,19 @@
         };
 
         this.GetReport = function (loadingArea, callBack) {
-            var url3 = this.GetBaseUrl() + "?queryType=reportsList&siteType=" + URP.criteria.SiteType;
+            var url = "http://" + window.location.hostname + ':' + window.location.port + '/Ajax/TeamAdminAjax';
+
+            var url3 = url + "?queryType=reportsList&siteType=" + URP.criteria.SiteType;
 
             $.ajax({
                 url: url3,
                 type: "POST",
                 dataType: "json",
                 // TO-DO: Need to find the report with the query 
-                data: { queryParam: JSON.stringify(URP.criteria) },
+                data: { queryParam: JSON.stringify(URP.criteria), SiteGuid: GetQueryString("")},
                 timeout: 99000,
                 beforeSend: function () {
-                    loadingArea.showLoading();
+                    //loadingArea.showLoading();
                 },
                 error: function (xhr, status, error) {
                     alert('Error loading report');

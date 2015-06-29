@@ -31,6 +31,7 @@ using WebApplication1.Utility;
 using Application.MainBoundedContect.Enums;
 using Application.MainBoundedContect.ViewModel.Report;
 using Domain.MainBoundedContext.Reports.FilterField;
+using WebApplication1.Models;
 
 namespace WebApplication1.Ajax
 {
@@ -48,7 +49,7 @@ namespace WebApplication1.Ajax
                 SegmentRepository segRe = new SegmentRepository(context);
                 DivisionRepository dvRe = new DivisionRepository(context);
                 TeamRepository tRe = new TeamRepository(context);
-                    AppDivisionSegmentsService appService = new AppDivisionSegmentsService(tRe, segRe, dvRe);
+                AppDivisionSegmentsService appService = new AppDivisionSegmentsService(tRe, segRe, dvRe);
 
                 if (Request["requestType"] == "getdivisions")
                 {
@@ -64,7 +65,8 @@ namespace WebApplication1.Ajax
                     Response.Write(jss.Serialize(tem));
                 }
 
-                if (Request["requestType"] == "searchteams") {
+                if (Request["requestType"] == "searchteams")
+                {
                     string teamname = Request["teamname"].ToString();
                     var tem = jss.Serialize(appService.GetTeamsWithTitle(teamname));
                     Response.Write(tem);
@@ -81,7 +83,7 @@ namespace WebApplication1.Ajax
                     string teamGuid = Request["SiteGUID"];
                     bool isAdmin = Request["IsAdmin"] == "1" ? true : false;
 
-                    Response.Write(GetAdminTileFilterInfo(userName,teamGuid,isAdmin));
+                    Response.Write(GetAdminTileFilterInfo(userName, teamGuid, isAdmin));
                 }
                 if (Request.Params["queryType"] == "GetTempTileReportCount")
                 {
@@ -89,6 +91,11 @@ namespace WebApplication1.Ajax
                     string teamGuid = Request["SiteGUID"];
 
                     Response.Write(GetTempTileReportCount(teamGuid, userName));
+                }
+
+                if (Request["queryType"] == "reportsList")
+                {
+                    Response.Write(GetReports());
                 }
             }
         }
@@ -119,7 +126,7 @@ namespace WebApplication1.Ajax
         {
             JavaScriptSerializer jss = new JavaScriptSerializer();
             // TileManager tm = new TileManager();
-          
+
             TileFilterListViewModel filterViewModel = new TileFilterListViewModel();
             using (MainDBUnitWorkContext context = new MainDBUnitWorkContext())
             {
@@ -129,9 +136,9 @@ namespace WebApplication1.Ajax
                 ITileRepository _tileRepository = new TileRepository(context);
                 ITeamRepository _teamRepository = new TeamRepository(context);
                 IReportRepository _reportRepository = new ReportRepository(context);
-                IUserRepository _userRepository=new UserRepository(context);
+                IUserRepository _userRepository = new UserRepository(context);
 
-                TileServices tileService = new TileServices(_tileRepository, _teamRepository, _reportRepository, _userRepository,_tagRepository,_categoryRepository,null);
+                TileServices tileService = new TileServices(_tileRepository, _teamRepository, _reportRepository, _userRepository, _tagRepository, _categoryRepository, null);
 
                 //Owner
                 IEnumerable<UserLoginApp> userList = tileService.GetOwnerList(userName, teamGuid, isAdmin);
@@ -172,11 +179,58 @@ namespace WebApplication1.Ajax
             {
                 IReportRepository reportRepository = new ReportRepository(context);
 
-                EditReportService reportService = new EditReportService(reportRepository, null,null,null,null,null);
+                EditReportService reportService = new EditReportService(reportRepository, null, null, null, null, null);
                 int reportCount = reportService.GetTempTilesWithReportCount(teamGuid, userName, appTile);
 
                 return reportCount.ToString();
             }
+        }
+
+        private string GetReports()
+        {
+            string output;
+            string siteType = Request["siteType"];
+            // Get the post data
+            if (Request["queryParam"] == null)
+            {
+                output = "Querystring:queryParameter is empty!";
+            }
+            string teamGuid = Request["SiteGuid"];
+            JavaScriptSerializer jss = new JavaScriptSerializer();
+            var paramDes = jss.Deserialize<QueryParameterViewModel>(Request["queryParam"]);
+
+            int tileId = int.Parse(paramDes.TileId);
+
+
+            // Get the reports from the reports list
+            using (MainDBUnitWorkContext context = new MainDBUnitWorkContext())
+            {
+                ReportRepository rep = new ReportRepository(context);
+                TileRepository tileRep = new TileRepository(context);
+
+                TileServices tService = new TileServices(tileRep, null, null, null, null, null, null);
+
+                var tile = tService.GetTileById(tileId);
+
+                EditReportService editReport = new EditReportService(rep, null, null, null, null, null);
+
+                // TO-DO: Team admin is set to true
+                var reports = editReport.GetReportsByTileId(tile, Session["UserName"].ToString(), true, teamGuid, SortField.ReportTitle, SortOrder.ASC);
+                int a = reports.Count();
+                var d = reports.ToList<AppReport>();
+                output = jss.Serialize(d);
+                return output;
+            }
+
+            //var requiredReport = returnedReport.ReportItemList.Where(_ => _.TileId == tileId).ToList();
+            //ReportListModel returnedReportsListModel = new ReportListModel();
+            //foreach (var temp in requiredReport)
+            //{
+            //    returnedReportsListModel.ReportItemList.Add(temp);
+            //}
+            //output = jss.Serialize(returnedReportsListModel);
+
+            //return output;
         }
 
         private void SetAppTitleLogic(string logicString, AppTile appTile)

@@ -9,5 +9,9 @@ namespace WebApplication1.Models
     {
         public string FilterType { get; set; }
         public List<FilterItem> FilterItemList { get; set; }
+
+        public FilterModel() {
+            FilterItemList = new List<FilterItem>();
+        }
     }
 }

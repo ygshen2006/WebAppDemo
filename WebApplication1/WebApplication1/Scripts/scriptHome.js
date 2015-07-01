@@ -174,37 +174,22 @@
                 loadingArea = $('div .content');
             }
 
-            // Calling util method to load reports
-            URP.util.GetReport(loadingArea, function (result) {
-                alert("Test");
-                $('.list-item').remove();
-                var listString = '';
-                $.each(result, function (index, content) {
-                    listString += "<div class='list-item' style='margin-top:10px'>"
-                                    + "<div class='item-header'>"
-                                        + "<a href='#' class='reportCollapse'></a><span class='reportIcon'></span><a tag=" + content.Id + " class='reportTitle' href='#'>" + content.Title + "</a>"
-                                    + "</div>"
+            if (briefCallBack) {
+                URP.Report.briefCallBack = briefCallBack;
+            }
+            if (detailCallBack) {
+                URP.Report.detailCallBack = detailCallBack;
+            }
 
-                                    + "<div class='item-description'>"
-                                        + content.Content
-                                    + "</div>"
-                                    //+ "<div class='item-footer'>"
-                                    //    + "Report type:" + content.ReportName + " | Report owner:" + content.ReportOwner + " | Status:" + content.ReprotStatus + "<a href='#' class='action'>Edit</a><a href='#' class='action'>Recommend</a><a href='#' class='action'>Subscribe</a>"
-                                    //+ "</div>"
-                                    + "<div class='item-detail'></div>"
-                                  + "</div>";
-                });
-                if (listString.length == 0) {
-                    if (URP.criteria.currentPage == 0) {
-                        listString += "<div class='list-item'>没有任何文章...</div>";
-                    }
-                    else {
-                        listString += "<div class='list-item'>已经到达最后一页...</div>";
-                    }
-                }
-                $(listString).insertBefore($('.content .last-item'));
-            })
+            if (URP.Report.briefCallBack) {
+                URP.util.GetReport(loadingArea, briefCallBack);
+            }
+           
+            if (URP.Report.detailCallBack) {
+                URP.util.GetReport(loadingArea, detailCallBack);
+            }
         };
+        
     };
     URP.AddReport = new function () {
         this.initiate = function () {
@@ -813,7 +798,13 @@
     };
 
     URP.util = new function () {
-
+        this.getOwnersFromArray = function (owners) {
+            var ownerStr = "";
+            $.each(owners, function (index, current) {
+                ownerStr += current.UserName+";";
+            });
+            return ownerStr;
+        }
         this.UploadImage = function (pictureData, loadingArea, callBack) {
             var baseUrl = this.GetBaseUrl();
             alert('sending jquery request');
@@ -938,13 +929,14 @@
             return output;
         }
         this.GetFilter = function (loadingArea, tileId, callBack) {
-            var url2 = this.GetBaseUrl() + "?queryType=reportfilter&siteType=" + URP.criteria.SiteType;
+            var url = "http://" + window.location.hostname + ':' + window.location.port + '/Ajax/TeamAdminAjax?queryType=reportfilter';
 
             // Send the ajax call 
             $.ajax({
-                url: url2,
+                url: url,
                 type: 'Get',
                 timeout: 30000,
+                data: { queryParam: JSON.stringify(URP.criteria), SiteGuid: GetQueryString("") },
                 dataType: 'json',
                 beforeSend: function () {
                     loadingArea.showLoading();
@@ -1007,6 +999,13 @@
         this.GetReport = function (loadingArea, callBack) {
             var url = "http://" + window.location.hostname + ':' + window.location.port + '/Ajax/TeamAdminAjax';
 
+            if (URP.util.GetReport.sequenceNum == undefined) {
+                URP.util.GetReport.sequenceNum = 0;
+            } else {
+                URP.util.GetReport.sequenceNum++;
+            }
+            var requestNum = URP.util.GetReport.sequenceNum;
+
             var url3 = url + "?queryType=reportsList&siteType=" + URP.criteria.SiteType;
 
             $.ajax({
@@ -1017,19 +1016,30 @@
                 data: { queryParam: JSON.stringify(URP.criteria), SiteGuid: GetQueryString("")},
                 timeout: 99000,
                 beforeSend: function () {
-                    //loadingArea.showLoading();
+
+                    if (URP.util.GetReport.oncalling != true) {
+                        URP.util.GetReport.oncalling = true;
+                        loadingArea.showLoading();
+                    }
                 },
                 error: function (xhr, status, error) {
                     alert('Error loading report');
                     console.log(error);
                 },
                 success: function (result) {
+                    if (requestNum != URP.util.GetReport.sequenceNum) {
+                        return;
+                    }
 
                     if (callBack) {
                         callBack(result);
                     }
                 },
                 complete: function () {
+                    if (requestNum != URP.util.GetReport.sequenceNum) {
+                        return;
+                    }
+                    URP.util.GetReport.oncalling = false;
                     loadingArea.hideLoading();
                 },
             });
@@ -1059,6 +1069,43 @@
                     loadingArea.hideLoading();
                 },
             });
+        };
+
+
+        this.subDescript = function (content) {
+
+            var wordTemp = $('<div class="item-summary_short" style="width:630px;">' + content + '</div>').appendTo('body');
+            var wordheight = wordTemp.height();
+            wordTemp.remove();
+            if (wordheight < 50) {
+                return content;
+            }
+
+            var high = content.length;
+            var low = 0;
+            var current = parseInt((high + low) / 2);
+            var retContent;
+            var wordTemp1, wordTemp2, wordheight1, wordheight2;
+            var i = 0;
+            do {
+                retContent = content.substring(0, current);
+                wordTemp1 = $('<div class="item-summary_short"  style="width:630px;">' + retContent + '....</div>').appendTo('body');
+                wordheight1 = wordTemp1.height();
+                wordTemp1.remove();
+                wordTemp2 = $('<div class="item-summary_short"  style="width:630px;">' + retContent + '.....</div>').appendTo('body');
+                wordheight2 = wordTemp2.height();
+                wordTemp2.remove();
+                if (wordheight1 > 50) {
+                    high = current;
+                    current = parseInt((high + low) / 2);
+                } else if (wordheight2 < 50) {
+                    low = current;
+                    current = parseInt((high + low) / 2);
+                } else {
+                    return retContent + '...';
+                }
+            } while (i++ < 10);
+            return retContent + '...';;
         };
     };
 })(window.URP = window.URP || {}, $, undefined);

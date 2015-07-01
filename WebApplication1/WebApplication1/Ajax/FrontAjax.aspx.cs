@@ -45,19 +45,11 @@ namespace WebApplication1.Ajax
                 Response.Write(GetTiles());
             }
 
-            else if (Request["queryType"] == "reportfilter")
-            {
-                Thread.Sleep(1000);
-
-                Response.Write(GetFilter());
-
-            }
-
+     
             
 
             else if (Request["queryType"] == "reportDetail")
             {
-                Thread.Sleep(1000);
                 Response.Write(GetReportDetal());
 
             }
@@ -246,19 +238,7 @@ namespace WebApplication1.Ajax
                 return jss.Serialize(tiles);
             }
         }
-        private string GetFilter()
-        {
-            string outPut;
-            List<FilterModel> filters = new List<FilterModel>() { 
-                new FilterModel(){ FilterType="文章作者", FilterItemList= new List<FilterItem>(){new FilterItem(){ Name="v-yushen", Value="John Shen", Count=100}, new FilterItem(){ Name="v-zhcn", Value="Peter Zajact", Count=33}, new FilterItem(){ Name="v-enus", Value="Kavien Blair", Count=23}}},
-                new FilterModel(){ FilterType="类别", FilterItemList= new List<FilterItem>(){new FilterItem(){ Name="D1", Value="Datasource1", Count=100}, new FilterItem(){ Name="d2", Value="Data source2", Count=33}, new FilterItem(){ Name="d3", Value="Data source3", Count=23}}},                
-                };
 
-            JavaScriptSerializer jss = new JavaScriptSerializer();
-            outPut = jss.Serialize(filters);
-
-            return outPut;
-        }
      
         private string AddPicture()
         {

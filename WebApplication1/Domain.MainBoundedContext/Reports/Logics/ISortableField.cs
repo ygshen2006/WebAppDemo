@@ -5,11 +5,12 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
+using Domain.MainBoundedContext.Reports.Aggregates;
 
 namespace Domain.MainBoundedContext.Logics
 {
     public interface ISortableField
     {
-        //Expression<Func<CatalogData, String>> GetSortExpression();
+        Expression<Func<Report, String>> GetSortExpression();
     }
 }

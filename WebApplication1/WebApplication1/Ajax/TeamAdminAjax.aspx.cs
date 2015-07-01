@@ -32,23 +32,28 @@ using Application.MainBoundedContect.Enums;
 using Application.MainBoundedContect.ViewModel.Report;
 using Domain.MainBoundedContext.Reports.FilterField;
 using WebApplication1.Models;
+using Application.MainBoundedContect.ViewModel.Filters;
+using Application.MainBoundedContect.ViewModel.Report.EBIUnifiedReporting.Model.ViewModel;
 
 namespace WebApplication1.Ajax
 {
     public partial class TeamAdminAjax : System.Web.UI.Page
     {
         JavaScriptSerializer jss = new JavaScriptSerializer();
-
+        private UserRepository up;
+        private UserService service;
         protected void Page_Load(object sender, EventArgs e)
         {
             using (MainDBUnitWorkContext context = new MainDBUnitWorkContext())
             {
-                UserRepository up = new UserRepository(context);
-                UserService service = new UserService(up);
+                 up = new UserRepository(context);
+                
+                 service = new UserService(up);
 
                 SegmentRepository segRe = new SegmentRepository(context);
                 DivisionRepository dvRe = new DivisionRepository(context);
                 TeamRepository tRe = new TeamRepository(context);
+                
                 AppDivisionSegmentsService appService = new AppDivisionSegmentsService(tRe, segRe, dvRe);
 
                 if (Request["requestType"] == "getdivisions")
@@ -97,6 +102,13 @@ namespace WebApplication1.Ajax
                 {
                     Response.Write(GetReports());
                 }
+
+
+                else if (Request["queryType"] == "reportfilter")
+                {
+                    Response.Write(GetFilter());
+                }
+
             }
         }
 
@@ -160,7 +172,6 @@ namespace WebApplication1.Ajax
             return jss.Serialize(filterViewModel);
         }
 
-
         private string GetTempTileReportCount(string teamGuid, string userName)
         {
             string tileData = Request["TileData"];
@@ -190,12 +201,8 @@ namespace WebApplication1.Ajax
         {
             string output;
             string siteType = Request["siteType"];
-            // Get the post data
-            if (Request["queryParam"] == null)
-            {
-                output = "Querystring:queryParameter is empty!";
-            }
             string teamGuid = Request["SiteGuid"];
+
             JavaScriptSerializer jss = new JavaScriptSerializer();
             var paramDes = jss.Deserialize<QueryParameterViewModel>(Request["queryParam"]);
 
@@ -207,32 +214,153 @@ namespace WebApplication1.Ajax
             {
                 ReportRepository rep = new ReportRepository(context);
                 TileRepository tileRep = new TileRepository(context);
-
-                TileServices tService = new TileServices(tileRep, null, null, null, null, null, null);
+                TileQueryLogicRepository tileQuery = new TileQueryLogicRepository(context);
+                TileServices tService = new TileServices(tileRep, null, null, null, null, null, tileQuery);
 
                 var tile = tService.GetTileById(tileId);
 
-                EditReportService editReport = new EditReportService(rep, null, null, null, null, null);
+                EditReportService editReport = new EditReportService(rep, null, null, null, null, tileRep);
+
+
+                #region Get ReportFilter
+                ReportFilter filer = new ReportFilter();
+                foreach (FilterModel vm in paramDes.FilterEntityList)
+                {
+                    switch (vm.FilterType)
+                    {
+                        
+                        case "Tag":
+                            filer.TagsIdCollection = (from fl in vm.FilterItemList select int.Parse(fl.Value)).ToList();
+                            break;
+                        case "Owner":
+                            filer.OwnerIdCollection = (from fl in vm.FilterItemList select fl.Value).ToList();
+                            break;
+                        case "Sub Category":
+                            filer.SubCategoryIdCollection = (from fl in vm.FilterItemList select int.Parse(fl.Value)).ToList();
+                            break;
+                        default:
+                            break;
+                    }
+                }
+                #endregion
+
 
                 // TO-DO: Team admin is set to true
-                var reports = editReport.GetReportsByTileId(tile, Session["UserName"].ToString(), true, teamGuid, SortField.ReportTitle, SortOrder.ASC);
-                int a = reports.Count();
-                var d = reports.ToList<AppReport>();
-                output = jss.Serialize(d);
+                var reports = editReport.GetReportsByTeamWithReportsRequire(teamGuid,
+                    tileId,filer, true, Session["UserName"].ToString(), paramDes.CurrentPage, 
+                    paramDes.PageSize,
+                    SortField.ReportTitle, (paramDes.SortAscending ? SortOrder.ASC : SortOrder.DESC)).ToArray();
+
+
+                ReportListViewModel rptList = GetReportList(reports, Convert.ToInt32(paramDes.TileId));
+
+                output = jss.Serialize(rptList);
                 return output;
             }
-
-            //var requiredReport = returnedReport.ReportItemList.Where(_ => _.TileId == tileId).ToList();
-            //ReportListModel returnedReportsListModel = new ReportListModel();
-            //foreach (var temp in requiredReport)
-            //{
-            //    returnedReportsListModel.ReportItemList.Add(temp);
-            //}
-            //output = jss.Serialize(returnedReportsListModel);
-
-            //return output;
+       
         }
 
+
+        private ReportListViewModel GetReportList(IEnumerable<AppReport> rptDataList, int tileID = 0)
+        {
+
+            ReportListViewModel rptList = new ReportListViewModel();
+
+            foreach (AppReport data in rptDataList)
+            {
+                ReportItemViewModel item = new ReportItemViewModel();
+                item.ID = data.Id.GetValueOrDefault();
+                item.Title = data.Title;
+               // item.Image = GetReportICO(data.CatalogType.Id, data.FileType.Id);
+              //  item.SystemReportStatus = data.Status.ToString();
+                item.ReportStatus = data.Status.Name;
+                item.Descript = data.Content;
+
+                bool IsOwner = false;
+                if (data.Owners != null)
+                {
+                    IsOwner = data.Owners.Any(u => string.Compare(u.UserName, Session["UserName"].ToString(), true) == 0);
+
+                    for (var i = 0; i < data.Owners.Count; i++)
+                    {
+                        item.Owners += data.Owners.ElementAt(i).UserName + ",";
+                    }
+                }
+
+                // if current user is site admin or data owner
+                if (IsOwner || service.GetUserAdminTeams(Session["UserName"].ToString()).Count()>0)
+                {
+                    item.Editable = true;
+                }
+
+                if ((data.Team != null && data.Status.Name == "通过"))
+                {
+                    //if this tile is Recommend tile
+                    if (tileID == SystemDefinedTile.MyReports_Recommended.SystemDefinedTileId)
+                        item.Remove = true;
+
+                    //if (data.Subscribers != null && data.Subscribers.Count > 0)
+                    //{
+                    //    bool isSubscribe = data.Subscribers.Any(c => string.Compare(c.Alias, pageInfo.CurrentUser.Alias, true) == 0);
+                    //    if (isSubscribe)
+                    //    {
+                    //        if (tileID == SystemDefinedTile.MyReports_Recommended.SystemDefinedTileId
+                    //            || tileID == SystemDefinedTile.SelfService_Recommended.SystemDefinedTileId)
+                    //            item.SubscribeStatus = "Already Subscribed";
+                    //        else
+                    //            item.SubscribeStatus = "UnSubscribe";
+                    //    }
+                    //    else
+                    //        item.SubscribeStatus = "Subscribe";
+                    //}
+                    //else
+                    //{
+                    //    item.SubscribeStatus = "Subscribe";
+                    //}
+                    item.SubscribeStatus = "订阅";
+
+                    item.RecommendStatus = "推荐";
+                }
+                else
+                {
+                    item.SubscribeStatus = null;
+                    item.RecommendStatus = null;
+                }
+
+                if (tileID == SystemDefinedTile.MyReports_Recommended.SystemDefinedTileId)
+                {
+                    //foreach (var rec in data.Recommendations)
+                    //{
+                    //    ReportRecommendViewModel recViewModel = new ReportRecommendViewModel();
+                    //    recViewModel.UserName = rec.Recommender.DisplayName;
+                    //    recViewModel.Comment = rec.Comment;
+
+                    //    item.RecommendList.Add(recViewModel);
+                    //}
+                }
+
+                //GetOpenSetting(ref item, data);
+
+                rptList.ReportList.Add(item);
+            }
+
+            return rptList;
+        }
+
+        private string GetFilter()
+        {
+            return null;
+            //string outPut;
+            //List<FilterModel> filters = new List<FilterModel>() { 
+            //    new FilterModel(){ FilterType="文章作者", FilterItemList= new List<FilterItem>(){new FilterItem(){ Name="v-yushen", Value="John Shen", Count=100}, new FilterItem(){ Name="v-zhcn", Value="Peter Zajact", Count=33}, new FilterItem(){ Name="v-enus", Value="Kavien Blair", Count=23}}},
+            //    new FilterModel(){ FilterType="类别", FilterItemList= new List<FilterItem>(){new FilterItem(){ Name="D1", Value="Datasource1", Count=100}, new FilterItem(){ Name="d2", Value="Data source2", Count=33}, new FilterItem(){ Name="d3", Value="Data source3", Count=23}}},                
+            //    };
+
+            //JavaScriptSerializer jss = new JavaScriptSerializer();
+            //outPut = jss.Serialize(filters);
+
+            //return outPut;
+        }
         private void SetAppTitleLogic(string logicString, AppTile appTile)
         {
             using (MainDBUnitWorkContext context = new MainDBUnitWorkContext())

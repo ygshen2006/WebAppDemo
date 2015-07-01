@@ -35,7 +35,7 @@ namespace Application.MainBoundedContect.ViewModel.Filters
     public class FilterItem : IComparable<FilterItem>
     {
         public string Name { get; set; }
-        public int Value { get; set; }
+        public string Value { get; set; }
         public int Count { get; set; }
         public int? ParentValue { get; set; }
 

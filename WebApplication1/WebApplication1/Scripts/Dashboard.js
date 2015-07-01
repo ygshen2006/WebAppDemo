@@ -684,7 +684,7 @@
                             }
                             if (categoryIDs != undefined && categoryIDs.length > 0) {
                                 $('.popupWindow .listItemID').each(function () {
-                                    if (categoryIDs.contains($(this).val())) {
+                                    if (categoryIDs.indexOf($(this).val())>-1) {
                                         $(this).prop('checked', true);
                                     } else {
                                         $(this).prop('checked', false);

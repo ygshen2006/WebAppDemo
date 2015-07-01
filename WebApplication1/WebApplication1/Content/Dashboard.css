@@ -618,8 +618,6 @@
 .popupWindow .reportListAjaxData .donut {
     height: 320px;
     width: 750px;
-    text-align: center;
-    background: url('../images/SharePointProject/Metro_loading.gif') no-repeat center;
 }
 
 .item-title {

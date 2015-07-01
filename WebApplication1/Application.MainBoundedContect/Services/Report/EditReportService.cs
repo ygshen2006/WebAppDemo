@@ -26,6 +26,9 @@ namespace Application.MainBoundedContect.Services.Report
 {
     public class EditReportService
     {
+           private Dictionary<SortField, ISortableField> sortFields = null;
+            
+
         IReportRepository _reportRepository;
         IUserRepository _userRepository;
         ITeamRepository _teamRepository;
@@ -36,6 +39,9 @@ namespace Application.MainBoundedContect.Services.Report
         public EditReportService(IReportRepository repository_report, IUserRepository repository_user,
             ITeamRepository repository_team, ICategoryRepository category_repository, ITagRepository repository_tag, ITileRepository repository_tile)
         {
+            sortFields = new Dictionary<SortField, ISortableField>();
+            sortFields.Add(SortField.ReportTitle, new ReportTitle());
+
             _reportRepository = repository_report;
             _userRepository = repository_user;
             _teamRepository = repository_team;
@@ -89,6 +95,77 @@ namespace Application.MainBoundedContect.Services.Report
                 .GetExpression(pp)).ToArray()
                 .Select(_ => _.ToAppReport());
         }
+
+        public List<AppReport> GetReportsByTeamWithReportsRequire(
+         String teamSiteGuid,
+         Int32 tileId,
+         ReportFilter filter,
+         Boolean isCurrentUserTeamSiteAdmin,
+         String userAlias,
+         Int32 pageNum,
+         Int32 pageSize,
+         SortField sortField,
+         SortOrder sortOrder)
+        {
+           return GetReportsByTeam(Guid.Parse(teamSiteGuid), tileId, filter, isCurrentUserTeamSiteAdmin, userAlias, pageNum, pageSize, sortField, sortOrder);
+        }
+
+        private List<AppReport> GetReportsByTeam(Guid teamSiteGuid, Int32 tileId, 
+            ReportFilter filter, Boolean isCurrentUserTeamSiteAdmin, 
+            String userAlias, Int32 pageNum, Int32 pageSize, SortField sortField, SortOrder sortOrder)
+        {
+            #region Get the logic
+            TileServices tService = new TileServices(_tileRepository, _teamRepository, _reportRepository, null, null, null, null);
+
+            AppTile ap = null;
+            bool hasAdminTeamSite = isCurrentUserTeamSiteAdmin;
+            ap = tService.GetTileById(tileId);
+            #endregion
+
+            #region Combine the logic
+
+            var topLevelLogic = (new TeamSiteGUID()).Equal(teamSiteGuid).And(ap.GetCombinedLogic(hasAdminTeamSite, tileId));
+
+            var logic = GenerateLogicByFilter(filter);
+            if (logic != null)
+            {
+                topLevelLogic.AddElement(logic);
+            }
+            #endregion
+
+            #region Compose the logic parameter
+            ParameterProvider pp = new ParameterProvider();
+            pp.AddParameter(ContextVariable.CurrentUser.ToString(), userAlias);
+            pp.AddParameter(ContextVariable.CurrentTeamSiteGuid.ToString(), teamSiteGuid);
+            if (isCurrentUserTeamSiteAdmin)
+            {
+                pp.AddParameter(ContextVariable.TeamSiteGuidUnderControl.ToString(), (new List<Guid>() { teamSiteGuid }));
+            }
+            #endregion
+
+            #region generate the result
+
+            return GetReportsByLogic(topLevelLogic, sortField, sortOrder, pp, pageNum, pageSize).ToArray().Select(_=>_.ToAppReport()).ToList();
+
+            #endregion
+        }
+
+        private IQueryable<Domain.MainBoundedContext.Reports.Aggregates.Report> GetReportsByLogic(Logic logic, SortField sortField, SortOrder sortOrder, ParameterProvider parameterProvider, Int32 pageNum, Int32 pageSize)
+        {
+            IQueryable<Domain.MainBoundedContext.Reports.Aggregates.Report> query = _reportRepository.GetReportByLogic(logic, parameterProvider);
+
+            if (sortOrder == SortOrder.ASC)
+            {
+                query = query.OrderBy(sortFields[sortField].GetSortExpression());
+            }
+            else
+            {
+                query = query.OrderByDescending(sortFields[sortField].GetSortExpression());
+            }
+
+            return query.Skip(pageNum * pageSize).Take(pageSize);
+        }
+
 
         public IEnumerable<AppReport> GetReportsByTileId(AppTile appTile,string userAlias, bool isAdmin,
             string teamSiteGuid,

@@ -940,37 +940,102 @@
                 beforeSend: function () {
                     loadingArea.showLoading();
                 },
-                success: function (returnedResult) {
-                    // Load the components
+                success: function (result) {
+                    if (requestNum != URP.util.getFilter.sequenceNum) {
+                        return;
+                    }
                     $('.filter').html('');
-
-                    var filterString = "<h3 class='filterHead'>筛选条件</h3>";
-
-                    var levelOneObjects = returnedResult.filter(function (x) { return x.FilterType != "Sub Category"; });
-                    var levelTwoObjects = returnedResult.filter(function (x) { return x.FilterType == "Sub Category"; });
-
-                    // Load the Level one nodes
-                    $.each(levelOneObjects, function (innerIndx, innerContent) {
-                        filterString += "<div class='filterItem'><a href='#' class='filterCollapse'></a><span class='parentFilter'>" + innerContent.FilterType + "</span><ul class='top-ul'>";
-
-                        var secondItems = innerContent.FilterItemList;
-                        filterString += "<li><input type='checkbox' class='checkAll' checked='checked'>All</input></li>";
-                        $.each(secondItems, function (secondIndex, secondContent) {
-                            if (secondContent.Name == "Sub Category")
-                            { }
-                            else
-                            {
-                                filterString += "<li><input type='checkbox' class='childFilter' value='" + secondContent.Value + "' checked='checked'><label>" + secondContent.Value + "(" + secondContent.Count + ")" + "</label></input></li>";
-                            }
+                    var filterItemListString = '<h3 style="margin-top:20px;margin-bottom:10px;font-size:16px">过滤条件</h3>';
+                    var levelOneList = null;
+                    if (URP.criteria.SiteType != 'teamsite') {
+                        levelOneList = result.FilterList.filter(function (x) {
+                            return x.FilterType != 'Sub Category' && x.FilterType != 'Tag';
                         });
-                        filterString += "</ul></div>";
-                    });
-                    if (returnedResult.length != 0) {
-                        filterString += "<div class='filterApply'><input type='button' class='setButton' value='筛选'></input><input type='button' class='cleanButton' value='重选'></input></div>";
+                    } else {
+                        levelOneList = result.FilterList.filter(function (x) {
+                            return x.FilterType != 'Sub Category' && x.FilterType != 'Team Tags';
+                        });
                     }
 
-                    $('.filter').html(filterString);
-                    if (callBack) { callBack(returnedResult); }
+                    var subCategoryList = result.FilterList.filter(function (x) {
+                        return x.FilterType == 'Sub Category';
+                    });
+                    var subTeamSiteTagList = result.FilterList.filter(function (x) {
+                        return x.FilterType == 'Tag' && URP.criteria.SiteType != 'teamsite';
+                    });
+                    $.each(levelOneList, function (outIndex, outContent) {
+                        filterItemListString += '<div class="filterItem"><a href="#" class="filterCollopse"></a><span class="filterItemText">' + outContent.FilterType + '</span>';
+                        if (outContent.FilterType == 'Category') {
+                            filterItemListString += '<ul ' + outContent.FilterType.replace(' ', '').toLowerCase() + ' style="padding-left:5px;" class="top-ul"><li><input  style="margin-left:10px;" class="checkAll" checked="checked" type="checkbox" value="All" /><label>All</label></li>';
+                        }
+                        else {
+                            filterItemListString += '<ul ' + outContent.FilterType.replace(' ', '').toLowerCase() + ' class="top-ul"><li><input class="checkAll" checked="checked" type="checkbox" value="All" /><label>All</label></li>';
+                        }
+                        $.each(outContent.FilterItemList, function (innerIndex, innerContent) {
+                            switch (outContent.FilterType) {
+                                case 'Category':
+                                    filterItemListString += ' <li title=\'' + HTMLEncode(innerContent.Name) + '\'><a href="#" class="filterCollopse"></a><span class="filterItemText">' + subAlias(innerContent.Name) + '</span><ul class="leveTwoUl">';
+                                    var tempCategoryItemList = subCategoryList[0].FilterItemList.filter(function (x) { return x.ParentValue == innerContent.Value });
+                                    $.each(tempCategoryItemList, function (secondIndex, secondContent) {
+                                        filterItemListString += ' <li title=\'' + HTMLEncode(secondContent.Name) + '\'><input class="checkItem" type="checkbox" checked="checked"  value="' + secondContent.Value + '" /><label>' + subShortAlias(secondContent.Name) + ' (' + secondContent.Count + ')</label></li>';
+                                    });
+                                    filterItemListString += '</ul></li>';
+                                    break;
+                                case 'Team Tags':
+                                    if (URP.criteria.SiteType != 'teamsite') {
+                                        filterItemListString += ' <li title=\'' + HTMLEncode(innerContent.Name) + '\'><a href="#" class="filterCollopse"></a><span class="filterItemText">' + subAlias(innerContent.Name) + '</span><ul class="leveTwoUl">';
+                                        var tempTeamTagItemList = subTeamSiteTagList[0].FilterItemList.filter(function (x) { return x.ParentValue == innerContent.Value });
+                                        $.each(tempTeamTagItemList, function (secondIndex, secondContent) {
+                                            filterItemListString += ' <li title=\'' + HTMLEncode(secondContent.Name) + '\'><input class="checkItem" type="checkbox" checked="checked"  value="' + secondContent.Value + '" /><label>' + subShortAlias(secondContent.Name) + ' (' + secondContent.Count + ')</label></li>';
+                                        });
+                                        filterItemListString += '</ul></li>';
+                                    }
+                                    break;
+                                default:
+                                    filterItemListString += ' <li title=\'' + HTMLEncode(innerContent.Name) + '\'><input class="checkItem" type="checkbox" checked="checked"  value="' + innerContent.Value + '" /><label>' + subAlias(innerContent.Name) + ' (' + innerContent.Count + ')</label></li>';
+                                    break;
+                            }
+
+                        });
+                        filterItemListString += '</ul></div>';
+                    });
+                    if (result.FilterList.length > 0) {
+                        filterItemListString += '<div class="filterApply"><input EventType="filterclick" class="filterOK" type="button" value="OK" /> <input class="filterClear" type="button" value="Clear" /></div>';
+                    }
+                    $('aside.filter').html(filterItemListString);
+                    //set scroll style class to Owner
+                    $('.filterItem ul').each(function () {
+                        if ($(this).find('li').length > 6) {
+                            $(this).addClass('scroll');
+                        }
+                    });
+                    //if ($("ul[owner] li").length > 6)
+                    //{
+                    //    $("ul[owner]").addClass('scroll');
+                    //}
+                    if (URP.criteria.FilterEntityList.length > 0) {
+                        $('.filterItem').each(function () {
+                            var that = $(this);
+                            var filterItemText = that.find('span.filterItemText').text();
+                            if (filterItemText.indexOf('Category') > -1) {
+                                filterItemText = 'Sub Category'
+                            }
+                            if (filterItemText.indexOf('Team Tags') > -1) {
+                                filterItemText = 'Tag'
+                            }
+                            $.each(URP.criteria.FilterEntityList, function (index, outContent) {
+                                if (filterItemText == outContent.FilterType) {
+                                    that.find('input[type=checkbox]').prop('checked', false);
+                                    $.each(outContent.FilterItemList, function (index, innerContent) {
+                                        that.find('input[type=checkbox][value=' + innerContent.Value + ']').prop('checked', true);
+                                    });
+                                }
+                            });
+                        });
+                    }
+                    if (callBack) {
+                        callBack(result)
+                    }
                 },
                 error: function (jqXHR, textStatus, errorThrown) { alert(textStatus); },
 

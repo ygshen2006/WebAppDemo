@@ -31,7 +31,6 @@ using WebApplication1.Utility;
 using Application.MainBoundedContect.Enums;
 using Application.MainBoundedContect.ViewModel.Report;
 using Domain.MainBoundedContext.Reports.FilterField;
-using WebApplication1.Models;
 using Application.MainBoundedContect.ViewModel.Filters;
 using Application.MainBoundedContect.ViewModel.Report.EBIUnifiedReporting.Model.ViewModel;
 
@@ -103,10 +102,9 @@ namespace WebApplication1.Ajax
                     Response.Write(GetReports());
                 }
 
-
                 else if (Request["queryType"] == "reportfilter")
                 {
-                    Response.Write(GetFilter());
+                   Response.Write(GetFilter());
                 }
 
             }
@@ -204,7 +202,7 @@ namespace WebApplication1.Ajax
             string teamGuid = Request["SiteGuid"];
 
             JavaScriptSerializer jss = new JavaScriptSerializer();
-            var paramDes = jss.Deserialize<QueryParameterViewModel>(Request["queryParam"]);
+            var paramDes = jss.Deserialize<WebApplication1.Models.QueryParameterViewModel>(Request["queryParam"]);
 
             int tileId = int.Parse(paramDes.TileId);
 
@@ -219,12 +217,12 @@ namespace WebApplication1.Ajax
 
                 var tile = tService.GetTileById(tileId);
 
-                EditReportService editReport = new EditReportService(rep, null, null, null, null, tileRep);
+                EditReportService editReport = new EditReportService(rep, null, null, null, null, tileRep, tileQuery);
 
 
                 #region Get ReportFilter
                 ReportFilter filer = new ReportFilter();
-                foreach (FilterModel vm in paramDes.FilterEntityList)
+                foreach (WebApplication1.Models.FilterModel vm in paramDes.FilterEntityList)
                 {
                     switch (vm.FilterType)
                     {
@@ -349,17 +347,102 @@ namespace WebApplication1.Ajax
 
         private string GetFilter()
         {
-            return null;
-            //string outPut;
-            //List<FilterModel> filters = new List<FilterModel>() { 
-            //    new FilterModel(){ FilterType="文章作者", FilterItemList= new List<FilterItem>(){new FilterItem(){ Name="v-yushen", Value="John Shen", Count=100}, new FilterItem(){ Name="v-zhcn", Value="Peter Zajact", Count=33}, new FilterItem(){ Name="v-enus", Value="Kavien Blair", Count=23}}},
-            //    new FilterModel(){ FilterType="类别", FilterItemList= new List<FilterItem>(){new FilterItem(){ Name="D1", Value="Datasource1", Count=100}, new FilterItem(){ Name="d2", Value="Data source2", Count=33}, new FilterItem(){ Name="d3", Value="Data source3", Count=23}}},                
-            //    };
+            //sitetype:TeamSite|My report|Report Catalog|SelfService
+            string sitetype = Request["sitetype"];
 
-            //JavaScriptSerializer jss = new JavaScriptSerializer();
-            //outPut = jss.Serialize(filters);
+            string siteGUID = Request["SiteGuid"];
 
-            //return outPut;
+            string searchWords = Request["SearchWords"];
+
+
+            int tileId = int.Parse(Request["tileId"]);
+
+            //if (tileId == 0)
+            //{
+            //    TileManager tm = new TileManager();
+            //    if (sitetype.ToLower() == "selfservice")
+            //    {
+            //        tileId = SystemDefinedTile.SelfService_AllBIModels.SystemDefinedTileId;
+            //    }
+            //    else
+            //    {
+            //        tileId = SystemDefinedTile.MyReports_AllReports.SystemDefinedTileId;
+            //    }
+            //}
+
+
+            string logonUser =Session["UserName"].ToString();
+            bool isCurrentSiteAdmin = service.GetUserAdminTeams(Session["UserName"].ToString()).Count() > 0;
+
+            using (MainDBUnitWorkContext context = new MainDBUnitWorkContext())
+            {
+                IReportRepository report_repository = new ReportRepository(context);
+                IUserRepository user_repository = new UserRepository(context);
+                ITeamRepository team_repository = new TeamRepository(context);
+                ICategoryRepository category_repository= new CategoryRepository(context);
+                ITagRepository tag_repository = new TeamTagRepository(context);
+                ITileRepository tile_repository = new TileRepository(context);
+                ITileQueryLogicRepository tile_query_repository = new TileQueryLogicRepository(context);
+
+                EditReportService sa = new EditReportService(report_repository,user_repository,team_repository,category_repository,tag_repository,tile_repository, tile_query_repository);
+
+                FilterListViewModel filterList = new FilterListViewModel();
+
+                #region query filter data
+                int DataCount = 0;
+                ICollection<Statistics> ls = null;
+                switch (sitetype.ToLower())
+                {
+                    case "teamsite":
+                        ls = sa.GetTeamSiteReportsStatistics(tileId, logonUser, siteGUID, isCurrentSiteAdmin);
+                        break;
+                    case "reportcatalog":
+                        break;
+                    //case "myreport":
+                    //    ls = sa.GetMyReportsStatistics(tileId, logonUser, teamSiteGuidUnderControl);
+                    //    break;
+                    //case "selfservice":
+                    //    ls = sa.GetSelfServiceStatistics(tileId, logonUser, teamSiteGuidUnderControl);
+                    //    break;
+                    //case "searchreport":
+                    //    ls = sa.GetSearchReportsStatistics(logonUser, teamSiteGuidUnderControl, searchWords, out DataCount);
+                    //    break;
+                    default:
+                        break;
+                }
+                #endregion
+
+                filterList.DataCount = DataCount;
+
+                #region Get Statistics business moel
+                foreach (Statistics l in ls)
+                {
+                    FilterEntityViewModel filterEty = new FilterEntityViewModel();
+                    filterEty.FilterType = l.Name;
+
+                    foreach (AttributeValue attr in l.Values)
+                    {
+                       FilterItem item = new FilterItem();
+                        item.Name = attr.Name;
+                        item.Value = attr.Value.ToString();
+                        item.Count = attr.Count;
+                        item.ParentValue = attr.ParentValue;
+                        filterEty.FilterItemList.Add(item);
+                    }
+
+                    if (!filterEty.FilterType.Equals("Category"))
+                    {
+                        filterEty.FilterItemList.OrderByDescending(c => c.Count).ThenBy(n => n.Value);
+                    }
+
+                    filterList.FilterList.Add(filterEty);
+                }
+
+                JavaScriptSerializer jss = new JavaScriptSerializer();
+                #endregion
+
+                return jss.Serialize(filterList);
+            }
         }
         private void SetAppTitleLogic(string logicString, AppTile appTile)
         {

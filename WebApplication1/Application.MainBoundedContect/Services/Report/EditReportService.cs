@@ -35,9 +35,10 @@ namespace Application.MainBoundedContect.Services.Report
         ICategoryRepository _categoryRepository;
         ITagRepository _tagRepository;
         ITileRepository _tileRepository;
+        ITileQueryLogicRepository _tileQueryRepository;
 
         public EditReportService(IReportRepository repository_report, IUserRepository repository_user,
-            ITeamRepository repository_team, ICategoryRepository category_repository, ITagRepository repository_tag, ITileRepository repository_tile)
+            ITeamRepository repository_team, ICategoryRepository category_repository, ITagRepository repository_tag, ITileRepository repository_tile, ITileQueryLogicRepository _tileQ=null)
         {
             sortFields = new Dictionary<SortField, ISortableField>();
             sortFields.Add(SortField.ReportTitle, new ReportTitle());
@@ -48,6 +49,7 @@ namespace Application.MainBoundedContect.Services.Report
             _categoryRepository = category_repository;
             _tagRepository = repository_tag;
             _tileRepository = repository_tile;
+            _tileQueryRepository = _tileQ;
         }
 
         public Int32 GetTempTilesWithReportCount(String teamSiteGuid, string userAlias, AppTile appTile)
@@ -115,7 +117,7 @@ namespace Application.MainBoundedContect.Services.Report
             String userAlias, Int32 pageNum, Int32 pageSize, SortField sortField, SortOrder sortOrder)
         {
             #region Get the logic
-            TileServices tService = new TileServices(_tileRepository, _teamRepository, _reportRepository, null, null, null, null);
+            TileServices tService = new TileServices(_tileRepository, _teamRepository, _reportRepository, null, null, null,_tileQueryRepository);
 
             AppTile ap = null;
             bool hasAdminTeamSite = isCurrentUserTeamSiteAdmin;
@@ -263,43 +265,40 @@ namespace Application.MainBoundedContect.Services.Report
                 #region CategoryStatistics
 
 
-                //// Get the Subcategory statisticsData
-                //IEnumerable<AppCategory> secondLevelCategories = null;
-                //IEnumerable<AppCategory> topLevelCategories = null;
-                //IEnumerable<AttributeValue> SubCategoryStatistics = null;
-                //IEnumerable<AttributeValue> CategoryStatistics = null;
-                //List<AppCategoryExtension.IsDelayLoad> delayLoadFlags = new List<AppCategoryExtension.IsDelayLoad>();
-                //delayLoadFlags.Add(AppCategoryExtension.IsDelayLoad.DelayLoadParent);
-                //delayLoadFlags.Add(AppCategoryExtension.IsDelayLoad.DelayLoadCatalogDatas);
+                // Get the Subcategory statisticsData
+                IEnumerable<AppCategory> secondLevelCategories = null;
+                IEnumerable<AppCategory> topLevelCategories = null;
 
-                //secondLevelCategories = lists.SelectMany(_ => _.Categories).ToList().Select(_ => _.ToAppCategory(delayLoadFlags));
+                IEnumerable<AttributeValue> SubCategoryStatistics = null;
+                IEnumerable<AttributeValue> CategoryStatistics = null;
+                
+                secondLevelCategories = lists.SelectMany(_ => _.Categories).Where(_=>_.ParentCategory!=null).ToList();
 
-                //secondLevelCategories = secondLevelCategories.Distinct(new CategoryComparer());
+                secondLevelCategories = secondLevelCategories.Distinct(new CategoryComparer());
 
-                //SubCategoryStatistics = secondLevelCategories.Select(_ => new AttributeValue
-                //{
-                //    Name = _.Name,
-                //    Value = _.Id.Value,
-                //    ParentValue = _.ParentId,
-                //    Count = CaculateCount(lists, _.AppCatalogDatas)
-                //}).ToArray();
+                SubCategoryStatistics = secondLevelCategories.Select(_ => new AttributeValue
+                {
+                    Name = _.CategoryName,
+                    Value = _.Id.Value,
+                    ParentValue = _.ParentId
+                }).ToArray();
 
 
-                //topLevelCategories = secondLevelCategories.Select(_ => _.Parent).Distinct(new CategoryComparer());
+                topLevelCategories = secondLevelCategories.Select(_ => _.ParentCategory).Distinct(new CategoryComparer());
 
-                //CategoryStatistics = topLevelCategories.OrderBy(_ => _.Order).Select(_ => new AttributeValue
-                //{
-                //    Name = _.Name,
-                //    Value = _.Id.Value
-                //});
+                CategoryStatistics = topLevelCategories.Select(_ => new AttributeValue
+                {
+                    Name = _.CategoryName,
+                    Value = _.Id.Value
+                });
 
 
 
-                //// Add the statistics to List<statistics>
-                //FunGetStatisticsList("Sub Category", SubCategoryStatistics, statisticsList);
+                // Add the statistics to List<statistics>
+                FunGetStatisticsList("Sub Category", SubCategoryStatistics, statisticsList);
 
-                //// Add the statistics to List<statistics>
-                //FunGetStatisticsList("Category", CategoryStatistics, statisticsList);
+                // Add the statistics to List<statistics>
+                FunGetStatisticsList("Category", CategoryStatistics, statisticsList);
 
                 #endregion
 
@@ -395,6 +394,41 @@ namespace Application.MainBoundedContect.Services.Report
                 return null;
             }
 
+        }
+
+    }
+
+
+    class CategoryComparer : IEqualityComparer<AppCategory>
+    {
+        // Ts are equal if their ID are equal. 
+        public bool Equals(AppCategory x, AppCategory y)
+        {
+
+            //Check whether the compared objects reference the same data. 
+            if (Object.ReferenceEquals(x, y)) return true;
+
+            //Check whether any of the compared objects is null. 
+            if (Object.ReferenceEquals(x, null) || Object.ReferenceEquals(y, null))
+                return false;
+
+            //Check whether the Id properties are equal. 
+            return x.Id.Value == y.Id.Value;
+        }
+
+        // If Equals() returns true for a pair of objects  
+        // then GetHashCode() must return the same value for these objects. 
+
+        public int GetHashCode(AppCategory t)
+        {
+            //Check whether the object is null 
+            if (Object.ReferenceEquals(t, null)) return 0;
+
+            //Get hash code for the Id field if it is not null. 
+            int hashTId = t.Id == null ? 0 : t.Id.Value.GetHashCode();
+
+            //Calculate the hash code for the product. 
+            return hashTId;
         }
 
     }

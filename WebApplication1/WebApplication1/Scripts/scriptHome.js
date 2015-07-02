@@ -13,7 +13,6 @@
     URP.Filter = new function () {
         this.initial = function () {
             // Inite user image
-
             $('#oldUserPhoto').live('hover', function (e) {
                 $('.edit_pic').css({ 'position': 'absolute', 'left': '0px', 'top': '30px' }).show();
             }).live('mouseleave', function () {
@@ -936,7 +935,7 @@
                 url: url,
                 type: 'Get',
                 timeout: 30000,
-                data: { queryParam: JSON.stringify(URP.criteria), SiteGuid: GetQueryString("") },
+                data: { tileId: tileId, SiteGuid: GetQueryString(""), siteType: URP.criteria.SiteType },
                 dataType: 'json',
                 beforeSend: function () {
                     loadingArea.showLoading();

@@ -21,6 +21,7 @@ using WebApplication1.Models;
 using Application.MainBoundedContect.Extentions;
 using System.Web.Providers.Entities;
 using System.Text;
+using Application.MainBoundedContect.Services.Report;
 
 namespace WebApplication1.Ajax
 {
@@ -29,7 +30,8 @@ namespace WebApplication1.Ajax
         protected void Page_Load(object sender, EventArgs e)
         {
 
-            if (Request["queryType"] == "teamdetail") {
+            if (Request["queryType"] == "teamdetail")
+            {
                 string teamGuid = Request.Params["SiteGUID"].ToString();
                 Response.Write(GetTeamSite(teamGuid));
             }
@@ -43,25 +45,11 @@ namespace WebApplication1.Ajax
                 Response.Write(GetTiles());
             }
 
-            else if (Request["queryType"] == "reportfilter")
-            {
-                Thread.Sleep(1000);
-
-                Response.Write(GetFilter());
-
-            }
-
-            else if (Request["queryType"] == "reportsList")
-            {
-                Thread.Sleep(1000);
-
-                Response.Write(GetReports());
-
-            }
+     
+            
 
             else if (Request["queryType"] == "reportDetail")
             {
-                Thread.Sleep(1000);
                 Response.Write(GetReportDetal());
 
             }
@@ -162,18 +150,19 @@ namespace WebApplication1.Ajax
 
 
 
-        private string GetTeamSite(string teamGuid) {
+        private string GetTeamSite(string teamGuid)
+        {
             using (MainDBUnitWorkContext context = new MainDBUnitWorkContext())
             {
                 Guid tId = Guid.Parse(teamGuid);
                 TeamRepository teamRepo = new TeamRepository(context);
                 var team = teamRepo.GetFiltered(_ => _.TeamGuid == tId).FirstOrDefault();
-                
+
                 var teamOwners = teamRepo.GetFiltered(_ => _.TeamGuid == tId).FirstOrDefault().TeamOwners.ToList();
                 string adminUsers = getOwnersString(teamOwners);
 
                 JavaScriptSerializer jss = new JavaScriptSerializer();
-               return  jss.Serialize(new TeamInfo() { teamName=team.TeamName, teamOwners=getOwnersString(teamOwners) });
+                return jss.Serialize(new TeamInfo() { teamName = team.TeamName, teamOwners = getOwnersString(teamOwners) });
             }
         }
 
@@ -183,13 +172,13 @@ namespace WebApplication1.Ajax
 
             foreach (var u in teamOwners)
             {
-                sb.Append(u.Email+";");
+                sb.Append(u.Email + ";");
             }
 
             return sb.ToString();
         }
 
-     
+
 
         private string GetTiles()
         {
@@ -225,7 +214,8 @@ namespace WebApplication1.Ajax
             //return outPut;
         }
 
-        private string GetTeamSiteTiles(string teamGuid) {
+        private string GetTeamSiteTiles(string teamGuid)
+        {
             string userAlias = Session["UserName"].ToString();
             // tile data
             JavaScriptSerializer jss = new JavaScriptSerializer();
@@ -248,71 +238,8 @@ namespace WebApplication1.Ajax
                 return jss.Serialize(tiles);
             }
         }
-        private string GetFilter()
-        {
-            string outPut;
-            List<FilterModel> filters = new List<FilterModel>() { 
-                new FilterModel(){ FilterType="文章作者", FilterItemList= new List<FilterItem>(){new FilterItem(){ Name="v-yushen", Value="John Shen", Count=100}, new FilterItem(){ Name="v-zhcn", Value="Peter Zajact", Count=33}, new FilterItem(){ Name="v-enus", Value="Kavien Blair", Count=23}}},
-                new FilterModel(){ FilterType="类别", FilterItemList= new List<FilterItem>(){new FilterItem(){ Name="D1", Value="Datasource1", Count=100}, new FilterItem(){ Name="d2", Value="Data source2", Count=33}, new FilterItem(){ Name="d3", Value="Data source3", Count=23}}},                
-                };
 
-            JavaScriptSerializer jss = new JavaScriptSerializer();
-            outPut = jss.Serialize(filters);
-
-            return outPut;
-        }
-        private string GetReports()
-        {
-            string output;
-            List<ReportItem> reports = new List<ReportItem>() { 
-                new ReportItem(){ ID =0, TileId=1,ReportDescription="公司现招聘一名开发人员", ReportURL="http://www.baidu.com", ReportOwner="申元功", ReprotStatus="已批准", ReportName="招聘开发人员", Site="ABCD"},
-                new ReportItem(){ ID=1, TileId=1,ReportDescription="这是关于 PM2.5 的最新产品资料", ReportName="PM2.5 产品资料", ReportURL="http://www.baidu.com", ReportOwner="John 2", ReprotStatus="Submitted", Site="ABCD"},
-                new ReportItem(){ ID=2, TileId=1,ReportDescription="有客户想要100近大米，请问公司有人知道哪里可以买到差价最高的米吗？", ReportName="求助！！！！急...", ReportURL="http://www.baidu.com", ReportOwner="John 2", ReprotStatus="Approved", Site="ABCD"},
-                new ReportItem(){ ID=3, TileId=1,ReportDescription="有人5.1回山东吗？", ReportName="求同往..", ReportURL="http://www.baidu.com", ReportOwner="员工", ReprotStatus="Submitted", Site="ABCD"},
-                new ReportItem(){ ID=4, TileId=1,ReportDescription="这个茶品最近在你的客户群里卖的怎么样？", ReportName="市场调查", ReportURL="http://www.baidu.com", ReportOwner="John 2", ReprotStatus="Approved", Site="ABCD"},
-                new ReportItem(){ ID=5, TileId=1,ReportDescription="Hello ReportHello ReportHello ReportHello ReportHello ReportHello ReportHello Report", ReportName="Hello Report 6", ReportURL="http://www.baidu.com", ReportOwner="John 2", ReprotStatus="Submitted", Site="ABCD"},
-                new ReportItem(){ ID=6, TileId=2,ReportDescription="Hello ReportHello ReportHello ReportHello ReportHello ReportHello ReportHello Report", ReportName="Hello Report 7", ReportURL="http://www.baidu.com", ReportOwner="John 2", ReprotStatus="Approved", Site="ABCD"},
-                new ReportItem(){ ID=7, TileId=2,ReportDescription="Hello ReportHello ReportHello ReportHello ReportHello ReportHello ReportHello Report", ReportName="Hello Report 8", ReportURL="http://www.baidu.com", ReportOwner="John 2", ReprotStatus="Approved",Site="ABCD"},
-                new ReportItem(){ ID=8, TileId=3,ReportDescription="Hello ReportHello ReportHello ReportHello ReportHello ReportHello ReportHello Report", ReportName="Hello Report 9", ReportURL="http://www.baidu.com", ReportOwner="John 2", ReprotStatus="Approved",Site="ABCD"},
-                 new ReportItem(){ ID =9, TileId=1,ReportDescription="公司现招聘一名开发人员", ReportURL="http://www.baidu.com", ReportOwner="申元功", ReprotStatus="已批准", ReportName="招聘开发人员", Site="ABCD"},
-                new ReportItem(){ ID=10, TileId=1,ReportDescription="这是关于 PM2.5 的最新产品资料", ReportName="PM2.5 产品资料", ReportURL="http://www.baidu.com", ReportOwner="John 2", ReprotStatus="Submitted", Site="ABCD"},
-                new ReportItem(){ ID=11, TileId=1,ReportDescription="有客户想要100近大米，请问公司有人知道哪里可以买到差价最高的米吗？", ReportName="求助！！！！急...", ReportURL="http://www.baidu.com", ReportOwner="John 2", ReprotStatus="Approved", Site="ABCD"},
-                new ReportItem(){ ID=12, TileId=1,ReportDescription="有人5.1回山东吗？", ReportName="求同往..", ReportURL="http://www.baidu.com", ReportOwner="员工", ReprotStatus="Submitted", Site="ABCD"},
-                new ReportItem(){ ID=13, TileId=1,ReportDescription="这个茶品最近在你的客户群里卖的怎么样？", ReportName="市场调查", ReportURL="http://www.baidu.com", ReportOwner="John 2", ReprotStatus="Approved", Site="ABCD"},
-                new ReportItem(){ ID=14, TileId=1,ReportDescription="Hello ReportHello ReportHello ReportHello ReportHello ReportHello ReportHello Report", ReportName="Hello Report 6", ReportURL="http://www.baidu.com", ReportOwner="John 2", ReprotStatus="Submitted", Site="ABCD"},
-                new ReportItem(){ ID=15, TileId=2,ReportDescription="Hello ReportHello ReportHello ReportHello ReportHello ReportHello ReportHello Report", ReportName="Hello Report 7", ReportURL="http://www.baidu.com", ReportOwner="John 2", ReprotStatus="Approved", Site="ABCD"},
-                new ReportItem(){ ID=16, TileId=2,ReportDescription="Hello ReportHello ReportHello ReportHello ReportHello ReportHello ReportHello Report", ReportName="Hello Report 8", ReportURL="http://www.baidu.com", ReportOwner="John 2", ReprotStatus="Approved",Site="ABCD"},
-                new ReportItem(){ ID=17, TileId=3,ReportDescription="Hello ReportHello ReportHello ReportHello ReportHello ReportHello ReportHello Report", ReportName="Hello Report 9", ReportURL="http://www.baidu.com", ReportOwner="John 2", ReprotStatus="Approved",Site="ABCD"},
-                 new ReportItem(){ ID =18, TileId=1,ReportDescription="公司现招聘一名开发人员", ReportURL="http://www.baidu.com", ReportOwner="申元功", ReprotStatus="已批准", ReportName="招聘开发人员", Site="ABCD"},
-                new ReportItem(){ ID=19, TileId=1,ReportDescription="这是关于 PM2.5 的最新产品资料", ReportName="PM2.5 产品资料", ReportURL="http://www.baidu.com", ReportOwner="John 2", ReprotStatus="Submitted", Site="ABCD"},
-                new ReportItem(){ ID=20, TileId=1,ReportDescription="有客户想要100近大米，请问公司有人知道哪里可以买到差价最高的米吗？", ReportName="求助！！！！急...", ReportURL="http://www.baidu.com", ReportOwner="John 2", ReprotStatus="Approved", Site="ABCD"},
-                new ReportItem(){ ID=21, TileId=1,ReportDescription="有人5.1回山东吗？", ReportName="求同往..", ReportURL="http://www.baidu.com", ReportOwner="员工", ReprotStatus="Submitted", Site="ABCD"},
-                
-                };
-
-            ReportListModel returnedReport = new ReportListModel() { ReportItemList = reports };
-
-
-            // Get the post data
-            if (Request["queryParam"] == null)
-            {
-                output = "Querystring:queryParameter is empty!";
-            }
-            JavaScriptSerializer jss = new JavaScriptSerializer();
-            var paramDes = jss.Deserialize<QueryParameterViewModel>(Request["queryParam"]);
-
-            int tileId = int.Parse(paramDes.TileId);
-            // Get the reports from the reports list
-            var requiredReport = returnedReport.ReportItemList.Where(_ => _.TileId == tileId).ToList();
-            ReportListModel returnedReportsListModel = new ReportListModel();
-            foreach (var temp in requiredReport)
-            {
-                returnedReportsListModel.ReportItemList.Add(temp);
-            }
-            output = jss.Serialize(returnedReportsListModel);
-
-            return output;
-        }
+     
         private string AddPicture()
         {
             string output = "";
@@ -345,12 +272,12 @@ namespace WebApplication1.Ajax
             string newLogicFileName = logicalPath + subString + stringSplit[temp - 1];
 
 
-            
+
             using (FileStream fileStream = File.Create(newFileName))
             {
                 var buffer = new byte[Request.Files[0].ContentLength];
                 int readCount = Request.Files[0].InputStream.Read(buffer, 0, buffer.Length);
-                
+
                 if (readCount > 0)
                 {
                     fileStream.Write(buffer, 0, readCount);
@@ -373,7 +300,8 @@ namespace WebApplication1.Ajax
         }
     }
 
-    class TeamInfo {
+    class TeamInfo
+    {
         public string teamName { get; set; }
         public string teamOwners { get; set; }
     }

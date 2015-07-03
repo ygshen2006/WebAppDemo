@@ -107,7 +107,7 @@ a {
 }
 
 .filterItem > ul {
-    display: none;
+    display:none;
     margin-left: 5px;
     color: #1570A6 !important;
     margin-top: 0px;
@@ -186,6 +186,52 @@ a {
     height: 24px;
     width: 24px;
     margin-left: 5px;
+}
+
+
+.filterItem {
+    margin: 5px 0px;
+    width: 350px;
+}
+
+.filterCollopse {
+    display: inline-block;
+    height: 24px;
+    width: 24px;
+    margin-left: 5px;
+    background-image: url('../Images/plus.png');
+    background-repeat: no-repeat;
+    cursor: pointer;
+}
+
+.filterCollopse:hover {
+    display: inline-block;
+    height: 24px;
+    width: 24px;
+    margin-left: 5px;
+    background-image: url('../Images/plusHover.png');
+    background-repeat: no-repeat;
+    cursor: pointer;
+}
+
+.filterExpand {
+    display: inline-block;
+    height: 24px;
+    width: 24px;
+    margin-left: 5px;
+    background-image: url('../Images/minus.png');
+    background-repeat: no-repeat;
+    cursor: pointer;
+}
+
+.filterExpand:hover {
+    display: inline-block;
+    height: 24px;
+    width: 24px;
+    margin-left: 5px;
+    background-image: url('../Images/minusHover.png');
+    background-repeat: no-repeat;
+    cursor: pointer;
 }
 
 .reportIcon {

@@ -108,6 +108,7 @@
     <Compile Include="Services\Tile\AppTeamSiteAllReportsTile.cs" />
     <Compile Include="ViewModel\Report\AppReport.cs" />
     <Compile Include="ViewModel\Report\ReportFilter.cs" />
+    <Compile Include="ViewModel\Report\ReportListViewModel.cs" />
     <Compile Include="ViewModel\TeamSites\AppStatus.cs" />
     <Compile Include="ViewModel\TeamSites\AppTeamTag.cs" />
     <Compile Include="Services\TeamAdmin\TeamAdminService.cs" />

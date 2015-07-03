@@ -66,28 +66,28 @@
                         </li>
 
                     </ul>
-                    <div style="float: right; width: 20%" id="welcomeT">
-                        <ul id="welcomezone" style="list-style: none">
-                            <li style="color: white; float: left;" class="welcome">
-                                <asp:LoginView ID="LoginView1" runat="server">
-                                    <AnonymousTemplate>
-                                        <div style="float: left; margin-top: 5px;">
-                                            <a id="register-link" class="user-name-link" href="../MyAccounts/Register.aspx?ReturnUrl=~/Welcome.aspx">注册</a>
-                                            <a id="login-link" class="user-name-link" href="#">登陆</a>
-                                        </div>
-                                    </AnonymousTemplate>
-                                    <LoggedInTemplate>
-                                        <div class="welcome-text">
-                                            <span>欢迎: </span><a href="../Personal/MyCenter.aspx" class="user-name-link">
-                                                <asp:LoginName ID="LoginName1" runat="server" />
-                                            </a>
-                                        </div>
-                                    </LoggedInTemplate>
-                                </asp:LoginView>
-                            </li>
+             <div style="float: right; width: 20%" id="welcomeT">
+                            <ul id="welcomezone" style="list-style:none">
+                                <li style="color: white; float: left;" class="welcome">
+                                    <asp:LoginView ID="LoginView2" runat="server">
+                                        <AnonymousTemplate>
+                                            <div style="float: left; margin-top: 5px;">
+                                                <a id="register-link" class="user-name-link" href="../MyAccounts/Register.aspx?ReturnUrl='~/Welcome.aspx'">注册</a>
+                                                <a id="login-link" class="user-name-link" href="#">登陆</a>
+                                            </div>
+                                        </AnonymousTemplate>
+                                        <LoggedInTemplate>
+                                            <div class="welcome-text">
+                                                <span>欢迎: </span><a href="../Personal/MyCenter.aspx" class="user-name-link">
+                                                    <asp:LoginName ID="LoginName1" runat="server" />
+                                                </a>
+                                            </div>
+                                        </LoggedInTemplate>
+                                    </asp:LoginView>
+                                </li>
 
-                        </ul>
-                    </div>
+                            </ul>
+                        </div>
                 </div>
             </div>
         </header>

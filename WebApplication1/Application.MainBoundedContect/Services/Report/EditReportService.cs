@@ -21,13 +21,14 @@ using Application.MainBoundedContect.ViewModel.Filters;
 using Application.MainBoundedContect.ViewModel.Tiles;
 using Domain.MainBoundedContext.Teams.FilterField;
 using Application.MainBoundedContect.ViewModel.SiteAdministration;
+using Application.MainBoundedContect.ViewModel.TeamSites;
 
 namespace Application.MainBoundedContect.Services.Report
 {
     public class EditReportService
     {
-           private Dictionary<SortField, ISortableField> sortFields = null;
-            
+        private Dictionary<SortField, ISortableField> sortFields = null;
+
 
         IReportRepository _reportRepository;
         IUserRepository _userRepository;
@@ -38,7 +39,7 @@ namespace Application.MainBoundedContect.Services.Report
         ITileQueryLogicRepository _tileQueryRepository;
 
         public EditReportService(IReportRepository repository_report, IUserRepository repository_user,
-            ITeamRepository repository_team, ICategoryRepository category_repository, ITagRepository repository_tag, ITileRepository repository_tile, ITileQueryLogicRepository _tileQ=null)
+            ITeamRepository repository_team, ICategoryRepository category_repository, ITagRepository repository_tag, ITileRepository repository_tile, ITileQueryLogicRepository _tileQ = null)
         {
             sortFields = new Dictionary<SortField, ISortableField>();
             sortFields.Add(SortField.ReportTitle, new ReportTitle());
@@ -109,15 +110,15 @@ namespace Application.MainBoundedContect.Services.Report
          SortField sortField,
          SortOrder sortOrder)
         {
-           return GetReportsByTeam(Guid.Parse(teamSiteGuid), tileId, filter, isCurrentUserTeamSiteAdmin, userAlias, pageNum, pageSize, sortField, sortOrder);
+            return GetReportsByTeam(Guid.Parse(teamSiteGuid), tileId, filter, isCurrentUserTeamSiteAdmin, userAlias, pageNum, pageSize, sortField, sortOrder);
         }
 
-        private List<AppReport> GetReportsByTeam(Guid teamSiteGuid, Int32 tileId, 
-            ReportFilter filter, Boolean isCurrentUserTeamSiteAdmin, 
+        private List<AppReport> GetReportsByTeam(Guid teamSiteGuid, Int32 tileId,
+            ReportFilter filter, Boolean isCurrentUserTeamSiteAdmin,
             String userAlias, Int32 pageNum, Int32 pageSize, SortField sortField, SortOrder sortOrder)
         {
             #region Get the logic
-            TileServices tService = new TileServices(_tileRepository, _teamRepository, _reportRepository, null, null, null,_tileQueryRepository);
+            TileServices tService = new TileServices(_tileRepository, _teamRepository, _reportRepository, null, null, null, _tileQueryRepository);
 
             AppTile ap = null;
             bool hasAdminTeamSite = isCurrentUserTeamSiteAdmin;
@@ -147,7 +148,7 @@ namespace Application.MainBoundedContect.Services.Report
 
             #region generate the result
 
-            return GetReportsByLogic(topLevelLogic, sortField, sortOrder, pp, pageNum, pageSize).ToArray().Select(_=>_.ToAppReport()).ToList();
+            return GetReportsByLogic(topLevelLogic, sortField, sortOrder, pp, pageNum, pageSize).ToArray().Select(_ => _.ToAppReport()).ToList();
 
             #endregion
         }
@@ -169,7 +170,7 @@ namespace Application.MainBoundedContect.Services.Report
         }
 
 
-        public IEnumerable<AppReport> GetReportsByTileId(AppTile appTile,string userAlias, bool isAdmin,
+        public IEnumerable<AppReport> GetReportsByTileId(AppTile appTile, string userAlias, bool isAdmin,
             string teamSiteGuid,
             SortField sortField, SortOrder sortOrder)
         {
@@ -179,20 +180,23 @@ namespace Application.MainBoundedContect.Services.Report
             ParameterProvider pp = new ParameterProvider();
             pp.AddParameter(ContextVariable.CurrentUser.ToString(), userAlias);
             pp.AddParameter(ContextVariable.CurrentTeamSiteGuid.ToString(), new Guid(teamSiteGuid));
-            
-            if (isAdmin) { 
-            pp.AddParameter(ContextVariable.TeamSiteGuidUnderControl.ToString(), new List<Guid>() { new Guid(teamSiteGuid) });
+
+            if (isAdmin)
+            {
+                pp.AddParameter(ContextVariable.TeamSiteGuidUnderControl.ToString(), new List<Guid>() { new Guid(teamSiteGuid) });
             }
             appTile.BasicLogic = appTile.BasicLogic.And((new TeamSiteGUID()).Equal(guid));
-            return _reportRepository.GetReportsByExpression(appTile.GetCombinedLogic(true, appTile.Id).GetExpression(pp)).ToArray().Select(_=>_.ToAppReport());
+            return _reportRepository.GetReportsByExpression(appTile.GetCombinedLogic(true, appTile.Id).GetExpression(pp)).ToArray().Select(_ => _.ToAppReport());
         }
 
         public ICollection<Statistics> GetTeamSiteReportsStatistics(Int32 tileId, String userAlias, String teamSiteGuid, Boolean isCurrentSiteAdmin)
         {
+
+
             bool hasAdminSite = isCurrentSiteAdmin;
-            AppTile at = _tileRepository.GetTileById(tileId).ToAppTile();
+            TileServices tService = new TileServices(_tileRepository, _teamRepository, _reportRepository, _userRepository, _tagRepository, _categoryRepository, _tileQueryRepository);
 
-
+            AppTile at = tService.GetTileById(tileId);
 
             ParameterProvider pp = new ParameterProvider();
             pp.AddParameter(ContextVariable.CurrentUser.ToString(), userAlias);
@@ -206,7 +210,22 @@ namespace Application.MainBoundedContect.Services.Report
 
 
             Logic logic = at.GetCombinedLogic(hasAdminSite, tileId).And((new TeamSiteGUID()).Equal(Guid.Parse(teamSiteGuid)));
-            return GetStatistics(_reportRepository.GetReportByLogic(logic, pp).ToArray().Select(_ => _.ToAppReport()).ToList());
+
+
+            var reports = _reportRepository.GetReportByLogic(logic, pp).ToArray().Select(_ => _.ToAppReport()).ToList();
+            foreach (var report in reports)
+            {
+                foreach (var cat in report.Categories)
+                {
+                    if (cat.ParentId != null)
+                    {
+                        cat.ParentCategory = _categoryRepository.Get(cat.ParentId.GetValueOrDefault()).ToAppCategory();
+                    }
+                }
+            }
+
+
+            return GetStatistics(reports);
         }
 
         private IList<Statistics> GetStatistics(List<AppReport> lists)
@@ -228,7 +247,7 @@ namespace Application.MainBoundedContect.Services.Report
                         Name = k.Title,
                         Value = k.Id.GetValueOrDefault(),
                         Count = g.Count()
-                    }).ToArray();
+                    }, new TagComparer()).ToArray();
 
                 // Add the statistics to List<Tags>
                 FunGetStatisticsList("Tag", tagStatistics, statisticsList);
@@ -256,7 +275,7 @@ namespace Application.MainBoundedContect.Services.Report
                         Name = k.UserName,
                         GUID = k.Id,
                         Count = g.Count()
-                    }).ToArray();
+                    }, new OwnerComparer()).ToArray();
 
                 // Add the statistics to List<statistics>
                 FunGetStatisticsList("Owner", ownerStatistics, statisticsList);
@@ -271,21 +290,22 @@ namespace Application.MainBoundedContect.Services.Report
 
                 IEnumerable<AttributeValue> SubCategoryStatistics = null;
                 IEnumerable<AttributeValue> CategoryStatistics = null;
-                
-                secondLevelCategories = lists.SelectMany(_ => _.Categories).Where(_=>_.ParentCategory!=null).ToList();
 
+
+                // Second level
+                secondLevelCategories = lists.SelectMany(_ => _.Categories).Where(_ => _.ParentCategory != null).ToList();
                 secondLevelCategories = secondLevelCategories.Distinct(new CategoryComparer());
-
                 SubCategoryStatistics = secondLevelCategories.Select(_ => new AttributeValue
                 {
                     Name = _.CategoryName,
                     Value = _.Id.Value,
-                    ParentValue = _.ParentId
+                    ParentValue = _.ParentId,
+                    Count = CaculateCount(lists, _.Reports)
                 }).ToArray();
 
 
+                // Top level
                 topLevelCategories = secondLevelCategories.Select(_ => _.ParentCategory).Distinct(new CategoryComparer());
-
                 CategoryStatistics = topLevelCategories.Select(_ => new AttributeValue
                 {
                     Name = _.CategoryName,
@@ -310,8 +330,15 @@ namespace Application.MainBoundedContect.Services.Report
             return statisticsList;
         }
 
+        private int CaculateCount(List<AppReport> lists, IEnumerable<AppReport> appCatalogData)
+        {
+            IEnumerable<int> values = appCatalogData.Select(_ => _.Id.GetValueOrDefault());
+            return lists.Where(_ => values.Contains(_.Id.GetValueOrDefault())).Count();
+        }
+
         private void FunGetStatisticsList(String name, IEnumerable<AttributeValue> StatisticsData, List<Statistics> statisticsList)
         {
+
             Statistics statistics = new Statistics { Name = name };
 
             if (StatisticsData != null)
@@ -398,7 +425,47 @@ namespace Application.MainBoundedContect.Services.Report
 
     }
 
+    class OwnerComparer : IEqualityComparer<UserLoginApp>
+    {
 
+        public bool Equals(UserLoginApp x, UserLoginApp y)
+        {
+            return string.Compare(x.UserName, y.UserName, true) == 0 && string.Compare(x.Id, y.Id, true) == 0;
+        }
+
+        public int GetHashCode(UserLoginApp t)
+        {
+            //Check whether the object is null 
+            if (Object.ReferenceEquals(t, null)) return 0;
+
+            //Get hash code for the Id field if it is not null. 
+            int hashTId = t.Id == null ? 0 : t.Id.GetHashCode();
+
+            //Calculate the hash code for the product. 
+            return hashTId;
+        }
+    }
+
+    class TagComparer : IEqualityComparer<AppTeamTag>
+    {
+
+        public bool Equals(AppTeamTag x, AppTeamTag y)
+        {
+            return x.Id == y.Id;
+        }
+
+        public int GetHashCode(AppTeamTag t)
+        {
+            //Check whether the object is null 
+            if (Object.ReferenceEquals(t, null)) return 0;
+
+            //Get hash code for the Id field if it is not null. 
+            int hashTId = t.Id == null ? 0 : t.Id.Value.GetHashCode();
+
+            //Calculate the hash code for the product. 
+            return hashTId;
+        }
+    }
     class CategoryComparer : IEqualityComparer<AppCategory>
     {
         // Ts are equal if their ID are equal. 

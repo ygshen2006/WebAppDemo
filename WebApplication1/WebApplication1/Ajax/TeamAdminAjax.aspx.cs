@@ -347,7 +347,6 @@ namespace WebApplication1.Ajax
 
         private string GetFilter()
         {
-            //sitetype:TeamSite|My report|Report Catalog|SelfService
             string sitetype = Request["sitetype"];
 
             string siteGUID = Request["SiteGuid"];

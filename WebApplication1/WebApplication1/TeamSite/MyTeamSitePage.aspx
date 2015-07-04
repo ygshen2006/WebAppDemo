@@ -11,6 +11,10 @@
     <link href="../Content/scrollPic.css" rel="stylesheet" />
     <link href="../Content/reports.css" rel="stylesheet" />
     <style type="text/css">
+        .wrapper {
+            width: 1400px;
+            margin: 0 auto;
+        }
         .container {
             width: 1040px;
         }
@@ -151,7 +155,16 @@
                 opacity: 0.7;
             }
 
+              .loading-indicator {
+            background: url('../Images/loading40.gif') no-repeat center;
+            width: 70px;
+            height: 70px;
+        }
 
+        .loading-indicator-overlay {
+            opacity: 0.6;
+            background-color: rgb(255, 255, 255);
+        }
        
     </style>
 </head>
@@ -208,7 +221,7 @@
                             </li>
 
                         </ul>
-                        <div style="float: right; width: 20%" id="welcomeT">
+                        <div style="float: right; margin-top: 15px; width: 20%" id="welcomeT">
                             <ul id="welcomezone" style="list-style: none">
                                 <li style="color: white; float: left;" class="welcome">
                                     <asp:LoginView ID="LoginView1" runat="server">
@@ -289,6 +302,8 @@
                     <%--<div class="to_top" title="Team" id="gotop2" style="visibility: visible; display: block;"></div>--%>
                 </div>
             </div>
+
+            <div id="hiddentext" style="display:none"></div>
         </form>
     </div>
     <script src="../Scripts/jquery-1.8.2.min.js"></script>
@@ -351,10 +366,10 @@
                             if (URP.criteria.TileId == v.id) {
                                 tile.addClass('tile-selected');
                             }
-                        } else if (v.LogicType == 'AllReport') {
+                        } else if (v.LogicType == 'AllReports') {
                             tile.addClass('tile-selected');
                         }
-
+                        OnTileSelected();
                         if (v.backgroundImage == null || /^\s*$/.test(v.backgroundImage)) {
                             tile.css('background-color', v.backgroundColor);
                             if (whiteColorMap.indexOf(v.backgroundColor) > -1) {
@@ -469,15 +484,66 @@
                 }
                 function OnTileSelected() {
                     // update the report category text
-                    $(".reportCategory").html($(".tile-selected").find("dd").html() + "( " + $(".tile-selected").find("dt").html() + " )");
-                    var tileId = 2;
+                    $(".reportCategory").html($(".tile-selected").find(".tile-title").text() + "( " + $(".tile-selected").find(".tile-count").text() + " )");
+                    var tileId = $(".tile-selected").attr('tileid');
                     URP.criteria.TileId = tileId;
                     //load the filter controls 
-                    URP.Report.getReport(false);
+                    URP.Report.getReport(false, briefCallBack);
+
                     URP.Filter.getFilter(tileId);
                 }
 
+                function briefCallBack(result){
+                        $('.list-item').remove();
+                        var listString = '';
+                        $.each(result.ReportList, function (index, content) {
+                            $('#hiddentext').html(URP.util.HTMLDecode(content.Descript));
+                            listString += "<div class='list-item' style='margin-top:10px'>"
+                                            + "<div class='item-header'>"
+                                                + "<a href='#' class='reportCollapse'></a><svg xmlns='http://www.w3.org/2000/svg' class='si-glyph-circle-info' style='height:20px; width:20px; margin-right: 5px;'><use xlink:href='../css/sprite.svg#si-glyph-circle-info' /></svg><a tag=" + content.Id + " class='reportTitle' href='#'>" + content.Title + "</a>"
+                                            + "</div>"
+                                            + "<div class='item-content'>"+
+                                                 "<div class='item-summary_short'>" + URP.util.subDescript($('#hiddentext').html()) + "</div>"
+                                            
+                                            //+ "<div class='item-description'>"
+                                            //    + URP.util.HTMLDecode(content.Content)
+                                            //+ "</div>"
+                                            + "<div class='item-footer'>"
+                                                + " 所有者:" + content.Owners + " | 状态:" + content.ReportStatus
+                                                
+                                                //+(content.SubscribeStatus == null ? '' : (content.SubscribeStatus != 'subscribed' ? ' | <a href="javascript:return false"  class="subscription" CatalogId="' + content.ID + '">' + content.SubscribeStatus.toUpperCase() + '</a>' : ' | ALREADY SUBSCRIBED')) 
+                                                
+                                                //+ (content.RecommendStatus != null ? ' | <a href="javascript:return false"  class="recommendation" CatalogId="' + content.ID + '">RECOMMEND</a> ' + (content.Remove == true ? ' | <a href="javascript:return false"  class="recommendRemove" CatalogId="' + content.ID "'>REMOVE</a> ' : ' ') : '') + (content.Editable == false ? '' : ' | <a class="editReport" href="' + decodeURIComponent(content.EditURL) + '&Source=' + window.location.href + '">EDIT</a><a href='#' class='action'>编辑</a><a href='#' class='action'>推荐</a><a href='#' class='action'>订阅</a>"
+                                            + "</div>";
+                                        +"</div>"
+                                          //  + "<div class='item-detail'></div>"
+                                          //+ "</div>";
 
+                            
+                            if (content.RecommendList != null) {
+                                listString += '<div class="recommenders">'
+                                $.each(content.RecommendList, function (indexRec, contentRec) {
+                                    listString += '<p style="color:#666;margin-bottom: 1px">Recommended by: ' + contentRec.UserName + '</p><p>Message: ' + contentRec.Comment + '</p>';
+                                });
+                                listString += '</div>';
+                            }
+                            listString += '<div class="item-detail"></div></div>';
+                        });
+                      
+                        if (URP.criteria.CurrentPage == 0) {
+                            $('.content .list-item').remove();
+                        }
+                       
+                        if (listString.length == 0) {
+                            if (URP.criteria.currentPage == 0) {
+                                listString += "<div class='list-item'>没有任何文章...</div>";
+                            }
+                            else {
+                                listString += "<div class='list-item'>已经到达最后一页...</div>";
+                            }
+                        }
+                        $(listString).insertBefore($('.content .last-item'));
+                }
 
                 this.getTeamSite = function () {
                     URP.util.GetTeam($(this), function (result) {
@@ -490,13 +556,11 @@
         })(window.URP = window.URP || {}, window.Nav = window.Nav || {}, window.PS = window.PS || {}, $, undefined);
         $(function () {
 
-
             // Load the team list in the detail panel below
             Nav.Initiate(sessionUser);
             URP.ReportsGet.getTeamSite();
             URP.ReportsGet.SiteGet();
-
-        
+            URP.initiate();
         });
     </script>
 </body>

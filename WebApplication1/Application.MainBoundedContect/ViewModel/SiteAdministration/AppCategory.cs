@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 using Domain.MainBoundedContext.Reports.Aggregates;
+using Application.MainBoundedContect.ViewModel.Report;
 
 namespace Application.MainBoundedContect.ViewModel.SiteAdministration
 {
@@ -23,11 +24,11 @@ namespace Application.MainBoundedContect.ViewModel.SiteAdministration
 
         public IEnumerable<AppCategory> ChildCategories { get; set; }
         public IEnumerable<TeamSite> TeamSites;
-       // public IEnumerable<Report> Reports;
+        public IEnumerable<AppReport> Reports;
         public AppCategory()
         {
             TeamSites = new List<TeamSite>();
-         //   Reports = new List<Report>();
+            Reports = new List<AppReport>();
             ChildCategories = new List<AppCategory>();
         }
     }

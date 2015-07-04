@@ -70,6 +70,7 @@
   <ItemGroup>
     <Compile Include="AppFilterField.cs" />
     <Compile Include="Reports\Aggregates\IReportRepository.cs" />
+    <Compile Include="Reports\Aggregates\ReportTitle.cs" />
     <Compile Include="Reports\FilterField\ReportDataId.cs" />
     <Compile Include="Reports\FilterField\ReportOwnerId.cs" />
     <Compile Include="Reports\FilterField\SubCategoryId.cs" />

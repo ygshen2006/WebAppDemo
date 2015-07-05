@@ -48,11 +48,7 @@ namespace WebApplication1.Ajax
      
             
 
-            else if (Request["queryType"] == "reportDetail")
-            {
-                Response.Write(GetReportDetal());
-
-            }
+         
             else if (Request["queryType"] == "addPicture")
             {
                 Response.Write(AddPicture());
@@ -64,25 +60,7 @@ namespace WebApplication1.Ajax
             }
         }
 
-        private string GetReportDetal()
-        {
-            int id = Int32.Parse(Request["reportid"]);
-            List<ReportItem> reports = new List<ReportItem>() { 
-                new ReportItem(){ ID =0, TileId=1,ReportDescription="公司现招聘一名开发人员", ReportURL="http://www.baidu.com", ReportOwner="申元功", ReprotStatus="已批准", ReportName="招聘开发人员", Site="ABCD"},
-                new ReportItem(){ ID=1, TileId=1,ReportDescription="这是关于 PM2.5 的最新产品资料", ReportName="PM2.5 产品资料", ReportURL="http://www.baidu.com", ReportOwner="John 2", ReprotStatus="Submitted", Site="ABCD"},
-                new ReportItem(){ ID=2, TileId=1,ReportDescription="有客户想要100近大米，请问公司有人知道哪里可以买到差价最高的米吗？", ReportName="求助！！！！急...", ReportURL="http://www.baidu.com", ReportOwner="John 2", ReprotStatus="Approved", Site="ABCD"},
-                new ReportItem(){ ID=3, TileId=1,ReportDescription="有人5.1回山东吗？", ReportName="求同往..", ReportURL="http://www.baidu.com", ReportOwner="员工", ReprotStatus="Submitted", Site="ABCD"},
-                new ReportItem(){ ID=4, TileId=1,ReportDescription="这个茶品最近在你的客户群里卖的怎么样？", ReportName="市场调查", ReportURL="http://www.baidu.com", ReportOwner="John 2", ReprotStatus="Approved", Site="ABCD"},
-                new ReportItem(){ ID=5, TileId=1,ReportDescription="Hello ReportHello ReportHello ReportHello ReportHello ReportHello ReportHello Report", ReportName="Hello Report 6", ReportURL="http://www.baidu.com", ReportOwner="John 2", ReprotStatus="Submitted", Site="ABCD"},
-                new ReportItem(){ ID=6, TileId=2,ReportDescription="Hello ReportHello ReportHello ReportHello ReportHello ReportHello ReportHello Report", ReportName="Hello Report 7", ReportURL="http://www.baidu.com", ReportOwner="John 2", ReprotStatus="Approved", Site="ABCD"},
-                new ReportItem(){ ID=7, TileId=2,ReportDescription="Hello ReportHello ReportHello ReportHello ReportHello ReportHello ReportHello Report", ReportName="Hello Report 8", ReportURL="http://www.baidu.com", ReportOwner="John 2", ReprotStatus="Approved",Site="ABCD"},
-                new ReportItem(){ ID=8, TileId=3,ReportDescription="Hello ReportHello ReportHello ReportHello ReportHello ReportHello ReportHello Report", ReportName="Hello Report 9", ReportURL="http://www.baidu.com", ReportOwner="John 2", ReprotStatus="Approved",Site="ABCD"},
-                };
-            ReportItem returnedItem = reports.Where(_ => _.ID == id).First();
-            JavaScriptSerializer jss = new JavaScriptSerializer();
-            var outPut = jss.Serialize(returnedItem);
-            return outPut;
-        }
+
 
         private string CallSP()
         {
@@ -216,7 +194,7 @@ namespace WebApplication1.Ajax
 
         private string GetTeamSiteTiles(string teamGuid)
         {
-            string userAlias = Session["UserName"].ToString();
+            string userAlias = Session["UserName"]==null?"": Session["UserName"].ToString();
             // tile data
             JavaScriptSerializer jss = new JavaScriptSerializer();
 

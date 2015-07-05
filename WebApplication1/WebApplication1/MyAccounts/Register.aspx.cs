@@ -45,7 +45,7 @@ namespace WebApplication1.MyAccounts
                         Session["IsAuthorized"] = true;
                         Session["UserName"] = UserName.Text;
 
-                        IdentityHelper.RedirectToReturnUrl(Request.QueryString["ReturnUrl"], Response);
+                        IdentityHelper.RedirectToReturnUrl("../Welcome.aspx", Response);
                     }
                     else
                     {

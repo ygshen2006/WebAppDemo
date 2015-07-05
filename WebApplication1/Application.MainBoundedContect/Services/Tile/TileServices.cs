@@ -91,7 +91,12 @@ namespace Application.MainBoundedContect.Services.Tile
 
 
             ParameterProvider pp = new ParameterProvider();
-            pp.AddParameter(ContextVariable.CurrentUser.ToString(), userAlias);
+            
+            //if (userAlias != "")
+            //{
+                //pp.AddParameter(ContextVariable.CurrentUser.ToString(), userAlias);
+            //}
+
             pp.AddParameter(ContextVariable.CurrentTeamSiteGuid.ToString(), new Guid(guid));
             if (isAdmin)
             {

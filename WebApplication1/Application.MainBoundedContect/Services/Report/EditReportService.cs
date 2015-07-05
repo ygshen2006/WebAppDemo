@@ -53,12 +53,20 @@ namespace Application.MainBoundedContect.Services.Report
             _tileQueryRepository = _tileQ;
         }
 
+
+        public AppReport GetReportById(int reportId) {
+           var report = _reportRepository.GetReportById(reportId);
+           return new AppReport() { Title = report.Title, Content = report.ReportContent };
+        }
         public Int32 GetTempTilesWithReportCount(String teamSiteGuid, string userAlias, AppTile appTile)
         {
             Guid guid = new Guid(teamSiteGuid);
 
             ParameterProvider pp = new ParameterProvider();
-            pp.AddParameter(ContextVariable.CurrentUser.ToString(), userAlias);
+            //if (userAlias != "")
+            //{
+               // pp.AddParameter(ContextVariable.CurrentUser.ToString(), userAlias);
+            //}
             pp.AddParameter(ContextVariable.CurrentTeamSiteGuid.ToString(), new Guid(teamSiteGuid));
             pp.AddParameter(ContextVariable.TeamSiteGuidUnderControl.ToString(), new List<Guid>() { new Guid(teamSiteGuid) });
 
@@ -86,7 +94,12 @@ namespace Application.MainBoundedContect.Services.Report
 
             ParameterProvider pp = new ParameterProvider();
             pp.AddParameter(ContextVariable.CurrentTeamSiteGuid.ToString(), new Guid(teamSiteGuid));
-            pp.AddParameter(ContextVariable.CurrentUser.ToString(), userAlias);
+            
+            //if (userAlias != "")
+            //{
+                //pp.AddParameter(ContextVariable.CurrentUser.ToString(), userAlias);
+            //}
+
             pp.AddParameter(ContextVariable.TeamSiteGuidUnderControl.ToString(), new List<Guid> { new Guid(teamSiteGuid) });
 
 
@@ -138,12 +151,15 @@ namespace Application.MainBoundedContect.Services.Report
 
             #region Compose the logic parameter
             ParameterProvider pp = new ParameterProvider();
-            pp.AddParameter(ContextVariable.CurrentUser.ToString(), userAlias);
+            //if (userAlias != "")
+            //{
+                //pp.AddParameter(ContextVariable.CurrentUser.ToString(), userAlias);
+            //}
             pp.AddParameter(ContextVariable.CurrentTeamSiteGuid.ToString(), teamSiteGuid);
-            if (isCurrentUserTeamSiteAdmin)
-            {
+            //if (isCurrentUserTeamSiteAdmin)
+            //{
                 pp.AddParameter(ContextVariable.TeamSiteGuidUnderControl.ToString(), (new List<Guid>() { teamSiteGuid }));
-            }
+            //}
             #endregion
 
             #region generate the result
@@ -178,35 +194,39 @@ namespace Application.MainBoundedContect.Services.Report
             Guid guid = new Guid(teamSiteGuid);
 
             ParameterProvider pp = new ParameterProvider();
-            pp.AddParameter(ContextVariable.CurrentUser.ToString(), userAlias);
+            //if (userAlias != "")
+            //{
+                //pp.AddParameter(ContextVariable.CurrentUser.ToString(), userAlias);
+            //}
             pp.AddParameter(ContextVariable.CurrentTeamSiteGuid.ToString(), new Guid(teamSiteGuid));
 
-            if (isAdmin)
-            {
+            //if (isAdmin)
+            //{
                 pp.AddParameter(ContextVariable.TeamSiteGuidUnderControl.ToString(), new List<Guid>() { new Guid(teamSiteGuid) });
-            }
+            //}
             appTile.BasicLogic = appTile.BasicLogic.And((new TeamSiteGUID()).Equal(guid));
             return _reportRepository.GetReportsByExpression(appTile.GetCombinedLogic(true, appTile.Id).GetExpression(pp)).ToArray().Select(_ => _.ToAppReport());
         }
 
         public ICollection<Statistics> GetTeamSiteReportsStatistics(Int32 tileId, String userAlias, String teamSiteGuid, Boolean isCurrentSiteAdmin)
         {
-
-
             bool hasAdminSite = isCurrentSiteAdmin;
             TileServices tService = new TileServices(_tileRepository, _teamRepository, _reportRepository, _userRepository, _tagRepository, _categoryRepository, _tileQueryRepository);
 
             AppTile at = tService.GetTileById(tileId);
 
             ParameterProvider pp = new ParameterProvider();
-            pp.AddParameter(ContextVariable.CurrentUser.ToString(), userAlias);
+            //if (userAlias != "")
+            //{
+                //pp.AddParameter(ContextVariable.CurrentUser.ToString(), userAlias);
+            //}
             pp.AddParameter(ContextVariable.CurrentTeamSiteGuid.ToString(), new Guid(teamSiteGuid));
             //pp.AddParameter(ContextVariable.CurrentUserGroup.ToString(), appUserGroupList);
 
-            if (hasAdminSite)
-            {
+            //if (hasAdminSite)
+            //{
                 pp.AddParameter(ContextVariable.TeamSiteGuidUnderControl.ToString(), new List<Guid>() { new Guid(teamSiteGuid) });
-            }
+            //}
 
 
             Logic logic = at.GetCombinedLogic(hasAdminSite, tileId).And((new TeamSiteGUID()).Equal(Guid.Parse(teamSiteGuid)));
@@ -220,7 +240,9 @@ namespace Application.MainBoundedContect.Services.Report
                     if (cat.ParentId != null)
                     {
                         cat.ParentCategory = _categoryRepository.Get(cat.ParentId.GetValueOrDefault()).ToAppCategory();
+                        //cat.Reports.Add(report);      
                     }
+
                 }
             }
 

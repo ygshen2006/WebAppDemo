@@ -38,31 +38,43 @@
                     $(this).parentsUntil('.top-ul').parent().find('.checkAll').prop('checked', $(this).prop('checked'));
                 }
             });
-            $('.setButton').live("click", function (e) {
-                var prompt = false;
-                var promtString;
-                $('.filter .filterItem').each(function (e) {
+            
+            $('.filterOK').live('click', function () {
+                var exsitEmpty = false;
+                var emptyText = '';
+                $('.filter .filterItem').each(function () {
                     if ($(this).find('input[type=checkbox]:checked').length == 0) {
-                        prompt = true;
-                        promtString = 'Please enter' + $(this).children('.parentFilter').html();
+                        exsitEmpty = true;
+                        emptyText = $(this).children('.filterItemText').text();
                         return false;
                     }
                 });
-                if (prompt) {
-                    alert(promtString);
+                if (exsitEmpty) {
+                    alert('请在: ' + emptyText + '中至少选择一个筛选条件!');
                     return;
                 }
-                OnOkCleanButtonClicked();
+                //$(this).attr('disabled', 'disabled')
+                onOKorClearclick();
             });
-            $('.cleanButton').live("click", function (e) {
-                $('.filter input[type=checkbox]').prop("checked", true);
-                OnOkCleanButtonClicked();
+            $('.filterClear').live('click', function () {
+                $('.filter input[type=checkbox]').prop('checked', true);
+                onOKorClearclick();
             });
-
-            function OnOkCleanButtonClicked() {
+            function onOKorClearclick() {
                 FetchSearchCretia();
+                URP.Report.getReport();
+                if ($(document).scrollTop() > $('.reportCategory').offset().top) {
+                    $(document).scrollTop($('.reportCategory').offset().top);
+                }
             }
 
+
+            $('.checkItem').live('click', function () {
+                if (!$(this).prop('checked')) {
+                    //$(this).parent().parent().find('.checkAll').prop('checked', false);
+                    $(this).parentsUntil('.top-ul').parent().find('.checkAll').prop('checked', false);
+                }
+            });
         };
         this.getFilter = function (tileId) {
             URP.util.GetFilter($('.leftbar'), tileId, GetFilterEntityList);
@@ -71,25 +83,34 @@
             }
         };
         function FetchSearchCretia() {
-            var filterList = [];
+            var filterEntityList = [];
             $('.filterItem').each(function () {
                 var filterEntity = {};
-                filterEntity.FilterType = $(this).find('.parentFilter').text();
-                filterEntity.FilterList = [];
-                if ($(this).find('.checkAll').prop("checked")) {
+                filterEntity.FilterType = $(this).children('.filterItemText').attr('tag');
+                filterEntity.FilterItemList = [];
+                if ($(this).find('.checkAll').prop('checked')) {
                     return true;
                 }
 
-                $('.filterItem .childFilter').each(function () {
-                    if ($(this).prop("checked")) {
+                if (filterEntity.FilterType == 'Category') {
+                    filterEntity.FilterType = 'Sub Category';
+                }
+                if (filterEntity.FilterType == 'Team Tags') {
+
+                    filterEntity.FilterType = 'Tag';
+                }
+                $(this).find('.checkItem').each(function () {
+                    if ($(this).prop('checked')) {
                         var filterItem = {};
                         filterItem.Value = $(this).val();
-                        filterEntity.FilterList.push(filterItem);
+                        filterEntity.FilterItemList.push(filterItem);
                     }
                 });
-                filterList.push(filterEntity);
+
+
+                filterEntityList.push(filterEntity);
             });
-            URP.criteria.FilterEntityList = filterList;
+            URP.criteria.FilterEntityList = filterEntityList;
         }
     };
     URP.initiate = function () {
@@ -132,7 +153,7 @@
                 x.preventDefault();
                 $(this).removeClass("reportCollapse");
                 $(this).addClass("reportExpanded");
-                $(this).parent().parent().find('.item-description').hide();
+                //$(this).parent().parent().find('.item-description').hide();
                 $(this).parent().parent().find('.item-footer').hide();
                 var loadingArea = $(this).parent().parent().find('.item-detail');
                 var reportId = $(this).parent().parent().find('.reportTitle').attr('tag');
@@ -145,18 +166,30 @@
                         loadingArea.children().remove();
                         // Load the report detail
                         var detailString = '';
-                        detailString = "<div class='detail-desc'>" + result.ReportDescription + "</div>"
-                                        + "<table style='width:100%' class='detail-table'><tbody>"
-                                           + "<tr class='even'><td>Report Name</td><td>" + result.ReportName + "</td></tr>"
-                                           + "<tr><td>Report Owner</td><td>" + result.ReportOwner + "</td></tr>"
-                                           + "<tr class='even'><td>Report Status</td><td>" + result.ReprotStatus + "</td></tr>"
-                                           + "<tr><td>Report URL</td><td>" + result.ReportURL + "</td></tr>"
-                                        + "</tbody></table>"
-                                        + "<div class=''><a href='#' class='action'>Edit</a><a href='#' class='action'>Recommend</a><a href='#' class='action'>Subscribe</a></div>";
+                        //detailString = "<div class='detail-desc'>" + result.ReportDescription + "</div>"
+                        //                + "<table style='width:100%' class='detail-table'><tbody>"
+                        //                   + "<tr class='even'><td>Report Name</td><td>" + result.ReportName + "</td></tr>"
+                        //                   + "<tr><td>Report Owner</td><td>" + result.ReportOwner + "</td></tr>"
+                        //                   + "<tr class='even'><td>Report Status</td><td>" + result.ReprotStatus + "</td></tr>"
+                        //                   + "<tr><td>Report URL</td><td>" + result.ReportURL + "</td></tr>"
+                        //                + "</tbody></table>"
+                        //                + "<div class=''><a href='#' class='action'>Edit</a><a href='#' class='action'>Recommend</a><a href='#' class='action'>Subscribe</a></div>";
+                        detailString = "<ul>" +
+                            "<li><ul>  <li><img url='" + URP.util.subContent(result.Content) + " />'</li>   <li></li></ul></li>" +
+                            "<li></li>" +
 
+                            +"</ul>"
                         loadingArea.html(detailString);
                     });
                 });
+            });
+
+            $('.ordersel').change(function () {
+                if ($('.content .list-item').length == 0) {
+                    return;
+                }
+                URP.criteria.SortAscending = $(this).val();
+                URP.Report.getReport();
             });
         };
         this.getReport = function (scrolling, briefCallBack, detailCallBack) {
@@ -181,6 +214,7 @@
             }
 
             if (URP.Report.briefCallBack) {
+                briefCallBack = URP.Report.briefCallBack;
                 URP.util.GetReport(loadingArea, briefCallBack);
             }
 
@@ -929,15 +963,6 @@
         }
         this.GetFilter = function (loadingArea, tileId, callBack) {
             var url = "http://" + window.location.hostname + ':' + window.location.port + '/Ajax/TeamAdminAjax?queryType=reportfilter';
-            var sequenceNum = 0;
-
-            var requestNum = URP.util.GetFilter.sequenceNum;
-
-            if (URP.util.GetFilter.sequenceNum == undefined) {
-                URP.util.GetFilter.sequenceNum = 0;
-            } else {
-                URP.util.GetFilter.sequenceNum++;
-            }
 
             // Send the ajax call 
             $.ajax({
@@ -950,9 +975,6 @@
                     loadingArea.showLoading();
                 },
                 success: function (result) {
-                    //if (requestNum != URP.util.GetFilter.sequenceNum) {
-                    //    return;
-                    //}
                     $('.filter').html('');
                     var filterItemListString = '<h3 style="margin-top:20px;margin-bottom:10px;font-size:16px">筛选</h3>';
                     var levelOneList = null;
@@ -986,7 +1008,7 @@
                         }
 
 
-                        filterItemListString += '<div class="filterItem"><a href="#" class="filterCollopse"></a><span class="filterItemText">' + tagTrans + '</span>';
+                        filterItemListString += '<div class="filterItem"><a href="#" class="filterCollopse"></a><span class="filterItemText" tag="'+tag+'">' + tagTrans + '</span>';
                         if (outContent.FilterType == 'Category') {
                             filterItemListString += '<ul ' + outContent.FilterType.replace(' ', '').toLowerCase() + ' style="padding-left:5px;" class="top-ul"><li><input  style="margin-left:10px;" class="checkAll" checked="checked" type="checkbox" value="All" /><label>全部</label></li>';
                         }
@@ -1013,6 +1035,7 @@
                                         filterItemListString += '</ul></li>';
                                     }
                                     break;
+
                                 default:
                                     filterItemListString += ' <li title=\'' + URP.util.HTMLEncode(innerContent.Name) + '\'><input class="checkItem" type="checkbox" checked="checked"  value="' + innerContent.Value + '" /><label>' + innerContent.Name + ' (' + innerContent.Count + ')</label></li>';
                                     break;
@@ -1022,19 +1045,14 @@
                         filterItemListString += '</ul></div>';
                     });
                     if (result.FilterList.length > 0) {
-                        filterItemListString += '<div class="filterApply"><input EventType="filterclick" class="filterOK" type="button" value="OK" /> <input class="filterClear" type="button" value="Clear" /></div>';
+                        filterItemListString += '<div class="filterApply"><input EventType="filterclick" class="filterOK" type="button" value="查找" /> <input class="filterClear" type="button" value="重置" /></div>';
                     }
                     $('.filter').html(filterItemListString);
-                    //set scroll style class to Owner
                     $('.filterItem ul').each(function () {
                         if ($(this).find('li').length > 6) {
                             $(this).addClass('scroll');
                         }
                     });
-                    //if ($("ul[owner] li").length > 6)
-                    //{
-                    //    $("ul[owner]").addClass('scroll');
-                    //}
                     if (URP.criteria.FilterEntityList.length > 0) {
                         $('.filterItem').each(function () {
                             var that = $(this);
@@ -1133,7 +1151,7 @@
 
         this.GetReportDetail = function (loadingArea, reportId, callBack) {
             // Send the ajax call to the function
-            var url = this.GetBaseUrl() + "?queryType=reportDetail&reportId=" + reportId + "&siteType=" + URP.criteria.SiteType;
+            var url = "http://" + window.location.hostname + ':' + window.location.port + '/Ajax/TeamAdminAjax' + "?queryType=reportDetail&reportId=" + reportId;
             $.ajax({
                 url: url,
                 type: "Get",
@@ -1192,6 +1210,17 @@
                 }
             } while (i++ < 10);
             return retContent + '...';;
+        };
+
+        this.subContent=function(content){
+            content=URP.util.HTMLDecode(content);
+            alert(content);
+            var pattern = '<img .+?src="(.*?)".+?>'; 
+            var matched = content.match(pattern);
+            console.log(matched[1]);
+            var contentDesc={};
+            contentDesc.pictureSrc="";
+            contentDesc.descriptionText="";
         };
     };
 })(window.URP = window.URP || {}, $, undefined);

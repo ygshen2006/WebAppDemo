@@ -15,5 +15,7 @@ namespace Domain.MainBoundedContext.Reports.Aggregates
          void RemoveReport(Report r);
          IQueryable<Report> GetReportsByExpression(Expression<Func<Report, Boolean>> filterExpression);
          IQueryable<Report> GetReportByLogic(Logic logic, ParameterProvider parameterProvider);
+
+         Report GetReportById(int reportId);
     }
 }

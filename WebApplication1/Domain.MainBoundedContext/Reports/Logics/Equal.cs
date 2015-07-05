@@ -24,12 +24,11 @@ namespace Domain.MainBoundedContext.Logics
 
         public override Expression<Func<Report, Boolean>> GetExpression(ParameterProvider parameterProvider = null)
         {
-            if (FieldValue.GetValue(parameterProvider) == null)
-            {
-                throw new Exception("The Value for Equal should not be null");
-            }
 
             T value = FieldValue.GetValue(parameterProvider);
+            if (value == null) {
+                return null;
+            }
             return (this.Field as IEQUAL<T>).GetEqualExpression(value).Expand();
         }
     }

@@ -57,5 +57,11 @@ namespace Infrastructor.MainBoundedContext.Repositories.Reports
 
             return query;
         }
+
+
+        public Report GetReportById(int reportId)
+        {
+            return _context.Reports.Where(_ => _.Id == reportId).FirstOrDefault();
+        }
     }
 }

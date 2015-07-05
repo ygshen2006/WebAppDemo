@@ -105,8 +105,12 @@ namespace Application.MainBoundedContect.Services.Users
 
         public IEnumerable<TeamSite> GetUserAdminTeams(string userName)
         {
-            var user = userRepository.GetUserByName(userName);
-            return user.TeamsOwn;
+            if (userName != "")
+            {
+                var user = userRepository.GetUserByName(userName);
+                return user.TeamsOwn;
+            }
+            else return null ;
         }
         public bool SetUserHeadPhoto(User newUser)
         {

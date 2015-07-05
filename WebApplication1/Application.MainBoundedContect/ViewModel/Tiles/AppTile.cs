@@ -94,8 +94,8 @@ namespace Application.MainBoundedContect.ViewModel.Tiles
         protected Logic GetCommonVisibleLogic(Boolean hasAdminTeamSite)
         {
             var topLogicNode = new OR();
-
-            topLogicNode.AddElement((new ReportOwnerAlias()).Equal(new Parameter<String>() { Name = ContextVariable.CurrentUser.ToString() }));
+            
+           // topLogicNode.AddElement((new ReportOwnerAlias()).Equal(new Parameter<String>() { Name = ContextVariable.CurrentUser.ToString() }));
 
             //topLogicNode.AddElement(
             //        (new RestrictAccess()).Equal(false)
@@ -103,12 +103,12 @@ namespace Application.MainBoundedContect.ViewModel.Tiles
             //                          .Or((new PermissionGroups()).In(new Parameter<IEnumerable<string>>() { Name = ContextVariable.CurrentUserGroup.ToString() }))
             //        );
 
-            if (hasAdminTeamSite)
-            {
+            //if (hasAdminTeamSite)
+            //{
                 topLogicNode.AddElement((new TeamSiteGUID()).In(
                     new Parameter<IEnumerable<Guid>>() { Name = ContextVariable.TeamSiteGuidUnderControl.ToString() }
                     ));
-            }
+            //}
 
             return topLogicNode;
         }

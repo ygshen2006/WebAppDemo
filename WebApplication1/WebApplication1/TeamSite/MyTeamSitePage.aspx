@@ -12,9 +12,10 @@
     <link href="../Content/reports.css" rel="stylesheet" />
     <style type="text/css">
         .wrapper {
-            width: 1400px;
+            width: 1200px;
             margin: 0 auto;
         }
+
         .container {
             width: 1040px;
         }
@@ -155,7 +156,7 @@
                 opacity: 0.7;
             }
 
-              .loading-indicator {
+        .loading-indicator {
             background: url('../Images/loading40.gif') no-repeat center;
             width: 70px;
             height: 70px;
@@ -165,7 +166,6 @@
             opacity: 0.6;
             background-color: rgb(255, 255, 255);
         }
-       
     </style>
 </head>
 <body class="metro">
@@ -251,7 +251,10 @@
             </div>
             <div class="leftbar">
                 <h2 class="reportCategory" style="color: #000">All Report</h2>
+                <% if (Session["UserName"] != null)
+                   { %>
                 <a class="addReport" href="../AddReport/AddNewReport.aspx">提交新文章</a>
+                <%}%>
                 <aside class="filter">
                 </aside>
                 <aside class="links">
@@ -303,7 +306,7 @@
                 </div>
             </div>
 
-            <div id="hiddentext" style="display:none"></div>
+            <div id="hiddentext" style="display: none"></div>
         </form>
     </div>
     <script src="../Scripts/jquery-1.8.2.min.js"></script>
@@ -346,7 +349,7 @@
                     URP.util.GetSite($('.teamsite-header'), getSiteCallBack);
                 };
                 function getSiteCallBack(result) {
-                    
+
                     URP.ReportsGet.Site = result;
 
 
@@ -484,7 +487,14 @@
                 }
                 function OnTileSelected() {
                     // update the report category text
-                    $(".reportCategory").html($(".tile-selected").find(".tile-title").text() + "( " + $(".tile-selected").find(".tile-count").text() + " )");
+
+                    var tileTitle = $(".tile-selected").find(".tile-title").text();
+
+                    if (tileTitle == "All Reports") {
+                        tileTitle = "所有文章";
+                    }
+
+                    $(".reportCategory").html(tileTitle + "( " + $(".tile-selected").find(".tile-count").text() + " )");
                     var tileId = $(".tile-selected").attr('tileid');
                     URP.criteria.TileId = tileId;
                     //load the filter controls 
@@ -493,62 +503,64 @@
                     URP.Filter.getFilter(tileId);
                 }
 
-                function briefCallBack(result){
-                        $('.list-item').remove();
-                        var listString = '';
-                        $.each(result.ReportList, function (index, content) {
-                            $('#hiddentext').html(URP.util.HTMLDecode(content.Descript));
-                            listString += "<div class='list-item' style='margin-top:10px'>"
-                                            + "<div class='item-header'>"
-                                                + "<a href='#' class='reportCollapse'></a><svg xmlns='http://www.w3.org/2000/svg' class='si-glyph-circle-info' style='height:20px; width:20px; margin-right: 5px;'><use xlink:href='../css/sprite.svg#si-glyph-circle-info' /></svg><a tag=" + content.Id + " class='reportTitle' href='#'>" + content.Title + "</a>"
-                                            + "</div>"
-                                            + "<div class='item-content'>"+
-                                                 "<div class='item-summary_short'>" + URP.util.subDescript($('#hiddentext').html()) + "</div>"
-                                            
-                                            //+ "<div class='item-description'>"
-                                            //    + URP.util.HTMLDecode(content.Content)
-                                            //+ "</div>"
-                                            + "<div class='item-footer'>"
-                                                + " 所有者:" + content.Owners + " | 状态:" + content.ReportStatus
-                                                
-                                                //+(content.SubscribeStatus == null ? '' : (content.SubscribeStatus != 'subscribed' ? ' | <a href="javascript:return false"  class="subscription" CatalogId="' + content.ID + '">' + content.SubscribeStatus.toUpperCase() + '</a>' : ' | ALREADY SUBSCRIBED')) 
-                                                
-                                                //+ (content.RecommendStatus != null ? ' | <a href="javascript:return false"  class="recommendation" CatalogId="' + content.ID + '">RECOMMEND</a> ' + (content.Remove == true ? ' | <a href="javascript:return false"  class="recommendRemove" CatalogId="' + content.ID "'>REMOVE</a> ' : ' ') : '') + (content.Editable == false ? '' : ' | <a class="editReport" href="' + decodeURIComponent(content.EditURL) + '&Source=' + window.location.href + '">EDIT</a><a href='#' class='action'>编辑</a><a href='#' class='action'>推荐</a><a href='#' class='action'>订阅</a>"
-                                            + "</div>";
-                                        +"</div>"
-                                          //  + "<div class='item-detail'></div>"
-                                          //+ "</div>";
+                function briefCallBack(result) {
+                    $('.list-item').remove();
+                    var listString = '';
 
-                            
-                            if (content.RecommendList != null) {
-                                listString += '<div class="recommenders">'
-                                $.each(content.RecommendList, function (indexRec, contentRec) {
-                                    listString += '<p style="color:#666;margin-bottom: 1px">Recommended by: ' + contentRec.UserName + '</p><p>Message: ' + contentRec.Comment + '</p>';
-                                });
-                                listString += '</div>';
-                            }
-                            listString += '<div class="item-detail"></div></div>';
-                        });
-                      
-                        if (URP.criteria.CurrentPage == 0) {
-                            $('.content .list-item').remove();
+                    $.each(result.ReportList, function (index, content) {
+                        listString += "<div class='list-item' style='margin-top:10px'>"
+
+                                        + "<div class='item-header'>"
+                                            + "<a href='#' class='reportCollapse'></a><svg xmlns='http://www.w3.org/2000/svg' class='si-glyph-circle-info' style='height:20px; width:20px; margin-right: 5px;'><use xlink:href='../css/sprite.svg#si-glyph-circle-info' /></svg><a tag=" + content.ID + " class='reportTitle' href='#'>" + content.Title + "</a>"
+                                        + "</div>"
+
+                                        + "<div class='item-content'>" 
+                                                 + "<div class='item-detail'></div>"
+                                        //+ "<div class='item-description'>"
+                                        //    + URP.util.HTMLDecode(content.Content)
+                                        //+ "</div>"
+                                                 + "<div class='item-footer'>"
+                                                    + " 所有者:" + content.Owners + " | 状态:" + content.ReportStatus
+
+                                            //+(content.SubscribeStatus == null ? '' : (content.SubscribeStatus != 'subscribed' ? ' | <a href="javascript:return false"  class="subscription" CatalogId="' + content.ID + '">' + content.SubscribeStatus.toUpperCase() + '</a>' : ' | ALREADY SUBSCRIBED')) 
+
+                                            //+ (content.RecommendStatus != null ? ' | <a href="javascript:return false"  class="recommendation" CatalogId="' + content.ID + '">RECOMMEND</a> ' + (content.Remove == true ? ' | <a href="javascript:return false"  class="recommendRemove" CatalogId="' + content.ID "'>REMOVE</a> ' : ' ') : '') + (content.Editable == false ? '' : ' | <a class="editReport" href="' + decodeURIComponent(content.EditURL) + '&Source=' + window.location.href + '">EDIT</a><a href='#' class='action'>编辑</a><a href='#' class='action'>推荐</a><a href='#' class='action'>订阅</a>"
+                                                 + "</div>";
+                        //  + "<div class='item-detail'></div>"
+                        //+ "</div>";
+
+
+                        if (content.RecommendList != null) {
+                            listString += '<div class="recommenders">'
+                            $.each(content.RecommendList, function (indexRec, contentRec) {
+                                listString += '<p style="color:#666;margin-bottom: 1px">Recommended by: ' + contentRec.UserName + '</p><p>Message: ' + contentRec.Comment + '</p>';
+                            });
+                            listString += '</div>';
                         }
-                       
-                        if (listString.length == 0) {
-                            if (URP.criteria.currentPage == 0) {
-                                listString += "<div class='list-item'>没有任何文章...</div>";
-                            }
-                            else {
-                                listString += "<div class='list-item'>已经到达最后一页...</div>";
-                            }
+
+                        listString +="</div></div>";
+                    });
+
+                    if (URP.criteria.CurrentPage == 0) {
+                        $('.content .list-item').remove();
+                    }
+
+                    if (listString.length == 0) {
+                        if (URP.criteria.currentPage == 0) {
+                            listString += "<div class='list-item'>没有任何文章...</div>";
                         }
-                        $(listString).insertBefore($('.content .last-item'));
+                        else {
+                            listString += "<div class='list-item'>已经到达最后一页...</div>";
+                        }
+                    }
+
+                    $(listString).insertBefore($('.content .last-item'));
                 }
 
                 this.getTeamSite = function () {
                     URP.util.GetTeam($(this), function (result) {
                         var t = "<svg xmlns='http://www.w3.org/2000/svg' class='si-glyph-bubble-message-hi'><use xmlns:xlink='http://www.w3.org/1999/xlink' xlink:href='../css/sprite.svg#si-glyph-bubble-message-hi'></use></svg>";
-                        
+
                         $('.side_fixed').html("<a class='reply' href='mailto:" + result.teamOwners + "'>" + t + "</a>");
                     });
                 }

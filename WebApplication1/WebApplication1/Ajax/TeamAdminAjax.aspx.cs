@@ -91,7 +91,7 @@ namespace WebApplication1.Ajax
                 }
                 if (Request.Params["queryType"] == "GetTempTileReportCount")
                 {
-                    string userName = Session["UserName"].ToString();
+                    string userName = Session["UserName"] == null ? "" : Session["UserName"].ToString();
                     string teamGuid = Request["SiteGUID"];
 
                     Response.Write(GetTempTileReportCount(teamGuid, userName));
@@ -102,6 +102,11 @@ namespace WebApplication1.Ajax
                     Response.Write(GetReports());
                 }
 
+                 if (Request["queryType"] == "reportDetail")
+                {
+                    Response.Write(GetReportDetal());
+
+                }
                 else if (Request["queryType"] == "reportfilter")
                 {
                    Response.Write(GetFilter());
@@ -114,6 +119,7 @@ namespace WebApplication1.Ajax
         {
             string tileID = Request["TileID"];
             string teamGuid = Request["SiteGUID"];
+            string userName = Session["UserName"]==null?"":Session["UserName"].ToString();
 
             using (MainDBUnitWorkContext context = new MainDBUnitWorkContext())
             {
@@ -124,7 +130,7 @@ namespace WebApplication1.Ajax
                 TeamTagRepository tagRepository = new TeamTagRepository(context);
                 TileRepository tileRepository = new TileRepository(context);
                 EditReportService service = new EditReportService(repository, uRepository, tRepository, cRepository, tagRepository, tileRepository);
-                var reports = service.GetAllReportsOfTeamSite(Session["UserName"].ToString(), teamGuid, true, global::Application.MainBoundedContect.Enums.SortField.ReportTitle,
+                var reports = service.GetAllReportsOfTeamSite(userName, teamGuid, true, global::Application.MainBoundedContect.Enums.SortField.ReportTitle,
                      global::Application.MainBoundedContect.Enums.SortOrder.ASC);
 
                 JavaScriptSerializer jss = new JavaScriptSerializer();
@@ -197,6 +203,7 @@ namespace WebApplication1.Ajax
 
         private string GetReports()
         {
+            string userName = Session["UserName"] == null ? "" : Session["UserName"].ToString();
             string output;
             string siteType = Request["siteType"];
             string teamGuid = Request["SiteGuid"];
@@ -245,7 +252,7 @@ namespace WebApplication1.Ajax
 
                 // TO-DO: Team admin is set to true
                 var reports = editReport.GetReportsByTeamWithReportsRequire(teamGuid,
-                    tileId,filer, true, Session["UserName"].ToString(), paramDes.CurrentPage, 
+                    tileId,filer, true, userName, paramDes.CurrentPage, 
                     paramDes.PageSize,
                     SortField.ReportTitle, (paramDes.SortAscending ? SortOrder.ASC : SortOrder.DESC)).ToArray();
 
@@ -258,9 +265,25 @@ namespace WebApplication1.Ajax
        
         }
 
+        private string GetReportDetal() {
+            int reportId = int.Parse(Request.QueryString["reportId"]);
+            JavaScriptSerializer jss = new JavaScriptSerializer();
+
+
+            using (MainDBUnitWorkContext context = new MainDBUnitWorkContext())
+            { 
+                ReportRepository _reportRepository = new ReportRepository(context);
+
+                EditReportService reportService = new EditReportService(_reportRepository,null,null,null,null,null,null);
+               return jss.Serialize(reportService.GetReportById(reportId));
+            }
+
+        }
 
         private ReportListViewModel GetReportList(IEnumerable<AppReport> rptDataList, int tileID = 0)
         {
+
+            string userAlias =Session["UserName"]==null?"":Session["UserName"].ToString();
 
             ReportListViewModel rptList = new ReportListViewModel();
 
@@ -277,7 +300,7 @@ namespace WebApplication1.Ajax
                 bool IsOwner = false;
                 if (data.Owners != null)
                 {
-                    IsOwner = data.Owners.Any(u => string.Compare(u.UserName, Session["UserName"].ToString(), true) == 0);
+                    IsOwner = data.Owners.Any(u => string.Compare(u.UserName, userAlias, true) == 0);
 
                     for (var i = 0; i < data.Owners.Count; i++)
                     {
@@ -286,9 +309,16 @@ namespace WebApplication1.Ajax
                 }
 
                 // if current user is site admin or data owner
-                if (IsOwner || service.GetUserAdminTeams(Session["UserName"].ToString()).Count()>0)
+                if (userAlias != "")
                 {
-                    item.Editable = true;
+                    if (IsOwner || service.GetUserAdminTeams(userAlias).Count() > 0)
+                    {
+                        item.Editable = true;
+                    }
+                }
+                else
+                {
+                    item.Editable = false;
                 }
 
                 if ((data.Team != null && data.Status.Name == "通过"))
@@ -370,8 +400,9 @@ namespace WebApplication1.Ajax
             //}
 
 
-            string logonUser =Session["UserName"].ToString();
-            bool isCurrentSiteAdmin = service.GetUserAdminTeams(Session["UserName"].ToString()).Count() > 0;
+            string logonUser =Session["UserName"]==null?"": Session["UserName"].ToString();
+
+            bool isCurrentSiteAdmin =logonUser==""?false:service.GetUserAdminTeams(logonUser).Count() > 0;
 
             using (MainDBUnitWorkContext context = new MainDBUnitWorkContext())
             {
@@ -423,7 +454,14 @@ namespace WebApplication1.Ajax
                     {
                        FilterItem item = new FilterItem();
                         item.Name = attr.Name;
-                        item.Value = attr.Value.ToString();
+                        if (l.Name == "Owner")
+                        {
+                            item.Value = attr.GUID.ToString();
+                        }
+                        else
+                        {
+                            item.Value = attr.Value.ToString();
+                        }
                         item.Count = attr.Count;
                         item.ParentValue = attr.ParentValue;
                         filterEty.FilterItemList.Add(item);

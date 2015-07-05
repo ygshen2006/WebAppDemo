@@ -26,13 +26,34 @@ namespace Application.MainBoundedContect.Services.SiteAdmininstration
             switch (type)
             {
                 case CategoryTypeEnum.All:
-                    categories = _categoryRepose.GetAllCategories().Select(_ => _.ToAppCategory());
+                    categories = _categoryRepose.GetAllCategories().Select(_ => new AppCategory() {
+                        Id = _.Id,
+                        CategoryName = _.Name,
+                        ParentId = _.CategoryParentId,
+                        ParentCategory = _.ParentCategory == null ? null : _.ParentCategory.ToAppCategory(),
+                        ChildCount = (_.ChildCategory != null) ? _.ChildCategory.Count() : 0,
+                        ChildCategories = _.ChildCategory == null ? null : _.ChildCategory.Select(cat => new AppCategory() { Id = cat.Id, CategoryName = cat.Name, ParentId = cat.CategoryParentId }),
+                    });
                     break;
                 case CategoryTypeEnum.ParentOnly:
-                    categories = _categoryRepose.GetParentCategories().Select(_ => _.ToAppCategory());
+                    categories = _categoryRepose.GetParentCategories().Select(_ => new AppCategory() {
+                        Id = _.Id,
+                        CategoryName = _.Name,
+                        ParentId = _.CategoryParentId,
+                        ParentCategory = _.ParentCategory == null ? null : _.ParentCategory.ToAppCategory(),
+                        ChildCount = (_.ChildCategory != null) ? _.ChildCategory.Count() : 0,
+                        ChildCategories = _.ChildCategory == null ? null : _.ChildCategory.Select(cat => new AppCategory() { Id = cat.Id, CategoryName = cat.Name, ParentId = cat.CategoryParentId }),
+                    });
                     break;
                 case CategoryTypeEnum.ChildOnly:
-                    categories = _categoryRepose.GetChildCategories().Select(_ => _.ToAppCategory());
+                    categories = _categoryRepose.GetChildCategories().Select(_ => new AppCategory() {
+                        Id = _.Id,
+                        CategoryName = _.Name,
+                        ParentId = _.CategoryParentId,
+                        ParentCategory = _.ParentCategory == null ? null : _.ParentCategory.ToAppCategory(),
+                        ChildCount = (_.ChildCategory != null) ? _.ChildCategory.Count() : 0,
+                        ChildCategories = _.ChildCategory == null ? null : _.ChildCategory.Select(cat => new AppCategory() { Id = cat.Id, CategoryName = cat.Name, ParentId = cat.CategoryParentId }),
+                    });
                     break;
 
                 default:

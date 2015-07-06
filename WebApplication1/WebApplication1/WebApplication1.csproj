@@ -186,6 +186,7 @@
     <Content Include="Images\approve.png" />
     <Content Include="Images\bg_img.png" />
     <Content Include="Images\bg_repeat.png" />
+    <Content Include="Images\blank.jpg" />
     <Content Include="Images\Blank_Folder.png" />
     <Content Include="Images\checkmark.png" />
     <Content Include="Images\close.png" />

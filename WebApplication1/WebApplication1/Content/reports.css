@@ -373,3 +373,27 @@ height:40px;
     font-size: 12px;
     color: #1570A6 !important;
 }
+
+.contentlist {
+    list-style:none;
+    padding-top:9px;
+    padding-left:15px;
+   
+}
+    .contentlist li {
+display:inline;
+    }
+.contenttext {
+    padding-top:10px;
+}
+.contentlist li:first-child {
+ margin: 0 auto; height:auto; border: 1px; background-color: #EEE;
+}
+
+.contentimage {
+    height:50px;
+    width:50px;
+}
+.contentimage:hover {
+    outline: 3px solid #999;
+}

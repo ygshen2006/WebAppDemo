@@ -174,9 +174,12 @@
                         //                   + "<tr><td>Report URL</td><td>" + result.ReportURL + "</td></tr>"
                         //                + "</tbody></table>"
                         //                + "<div class=''><a href='#' class='action'>Edit</a><a href='#' class='action'>Recommend</a><a href='#' class='action'>Subscribe</a></div>";
-                        detailString = "<ul>" +
-                            "<li><ul>  <li><img url='" + URP.util.subContent(result.Content) + " />'</li>   <li></li></ul></li>" +
-                            "<li></li>" +
+
+                        var textMatches = URP.util.subContent(result.Content);
+
+                        detailString = "<ul class='contentlist'>" +
+                            "<li><ul class='contentdesc'>  <li><img class='contentimage' src='" + textMatches.pictureSrc + "' /></li>   <li><div class='contenttext'>" + textMatches.descriptionText + "</div></li></ul></li>" +
+                            "<li><ul class='contentcomments'></ul></li>" +
 
                             +"</ul>"
                         loadingArea.html(detailString);
@@ -1213,14 +1216,28 @@
         };
 
         this.subContent=function(content){
-            content=URP.util.HTMLDecode(content);
-            alert(content);
-            var pattern = '<img .+?src="(.*?)".+?>'; 
+            var contentDesc = {};
+
+            content = URP.util.HTMLDecode(content);
+            var pattern = '<img src="(.*?)".+?>'; 
             var matched = content.match(pattern);
-            console.log(matched[1]);
-            var contentDesc={};
-            contentDesc.pictureSrc="";
-            contentDesc.descriptionText="";
+
+            if (matched != null) {
+                contentDesc.pictureSrc = matched[1];
+            }
+            else {
+                contentDesc.pictureSrc = "../Images/blank.jpg";
+            }
+
+            var patternLongestText = "<p>[a-z,A-Z,0-9,\u4E00-\u9FA5].+</p>";
+            var matched2 = content.match(patternLongestText);
+            if (matched2 != null) {
+                contentDesc.descriptionText = matched2[0];
+            }
+            else {
+                contentDesc.descriptionText = "";
+            }
+            return contentDesc;
         };
     };
 })(window.URP = window.URP || {}, $, undefined);

@@ -172,11 +172,14 @@
     <Content Include="Ajax\TeamSiteAdminAjax.aspx" />
     <Content Include="Ajax\UserAjax.aspx" />
     <Content Include="Content\Dashboard.css" />
+    <Content Include="Content\fonts\metro.svg" />
     <Content Include="Content\home.css" />
     <Content Include="Content\icons-rtl.gif" />
     <Content Include="Content\icons.gif" />
     <Content Include="Content\ISAnimate1.css" />
     <Content Include="Content\loading.gif" />
+    <Content Include="Content\metro-icons.css" />
+    <Content Include="Content\metro.css" />
     <Content Include="Content\teammanagement.css" />
     <Content Include="Content\teamsites.css" />
     <Content Include="Content\wangEditor-1.3.css" />
@@ -192,6 +195,7 @@
     <Content Include="Images\close.png" />
     <Content Include="Images\default-team.png" />
     <Content Include="Images\downArrow.PNG" />
+    <Content Include="Images\favicon.ico" />
     <Content Include="Images\Homepage\repeat-y-sf0c33273bd.png" />
     <Content Include="Images\Homepage\right_share.png" />
     <Content Include="Images\index.gif" />
@@ -230,6 +234,7 @@
     <Content Include="Scripts\Dashboard.js" />
     <Content Include="Scripts\HomePage.js" />
     <Content Include="Scripts\JavaScript1.js" />
+    <Content Include="Scripts\metro.js" />
     <Content Include="Scripts\myteampagejs.js" />
     <Content Include="Scripts\skin\pollyfill.js" />
     <Content Include="Scripts\skin\segment-icon.png" />
@@ -439,6 +444,9 @@
     <Content Include="Content\fonts\icomoon.eot" />
     <Content Include="Content\fonts\icomoon.ttf" />
     <Content Include="Content\fonts\icomoon.woff" />
+    <Content Include="Content\fonts\metro.eot" />
+    <Content Include="Content\fonts\metro.ttf" />
+    <Content Include="Content\fonts\metro.woff" />
     <None Include="Properties\PublishProfiles\firstwebsitetest - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\firstwebsitetest - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\johnshensite - FTP.pubxml" />

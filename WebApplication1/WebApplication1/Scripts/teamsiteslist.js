@@ -1,18 +1,6 @@
 ﻿(function (TeamSites, $, undefined) {
     TeamSites.teamsitesLoading = new function () {
-        var currentSelectedTile = undefined;
-        var div_li = $('nav ul li');
         var baseUrl = "http://" + window.location.hostname + ':' + window.location.port + '/Ajax/TeamAdminAjax';
-        var teamSitesText = '   <div class="panel" data-role="panel">' +
-
-                                    '' +
-                                        '{Segment}' +
-                                    '</div>';
-        //    '<div class="panel-content" style="display: block; border: none">'+
-
-        //    '</div>'+
-        //'</div>';
-
 
         this.Init = function () {
             $.ajaxSetup({

@@ -8,7 +8,7 @@
     <link href="css/metro-bootstrap.css" rel="stylesheet" />
     <link href="css/iconFont.css" rel="stylesheet" />
     <link href="Content/home.css" rel="stylesheet" />
-
+    
 
     <title>首页</title>
 
@@ -39,7 +39,15 @@
                             <a class="dropdown-toggle" href="#">随便看看</a>
                             <ul class="dropdown-menu place-center dark" data-role="dropdown" data-show="hover">
                                 <li><a href="#">功能描述</a></li>
-                                <li><a href="TeamSite/MyTeamSitesAdminPage.aspx">企业查找</a></li>
+                                <li><a href="#" class="dropdown-toggle">企业查找</a>
+
+                                    <ul class="d-menu" data-role="dropdown">
+                            <li><a href="validator.html">Form Validator</a></li>
+                            <li class="divider"></li>
+                            <li><a href="easing.html">Easing functions</a></li>
+                            <li class="disabled"><a href="precode.html">PreCode</a></li>
+                        </ul>
+                                </li>
                             </ul>
 
 

@@ -207,16 +207,6 @@
             $(".tile-group").animate({
                 left: 0
             });
-
-
-            $('.tile').live('click', function (e) {
-                var teamguid = $(this).attr('tag');
-                if (teamguid != '00000000-0000-0000-0000-000000000000') {
-                    // navigate to team site page
-                    var win = window.open("../TeamSite/MyTeamSitePage.aspx?teamguid=" + teamguid, '_self');
-                    win.focus();
-                }
-            });
         });
         function showSearch() {
             var charm = $("#charmSearch");

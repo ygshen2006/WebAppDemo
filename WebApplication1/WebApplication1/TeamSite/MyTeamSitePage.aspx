@@ -572,6 +572,22 @@
             Nav.Initiate(sessionUser);
             URP.ReportsGet.getTeamSite();
             URP.ReportsGet.SiteGet();
+
+            $.each($('.tile, .tile-selected'), function () {
+                var tile = $(this);
+                setTimeout(function () {
+                    tile.css({
+                        opacity: 1,
+                        "-webkit-transform": "scale(1)",
+                        "transform": "scale(1)",
+                        "-webkit-transition": ".3s",
+                        "transition": ".3s"
+                    });
+                }, Math.floor(Math.random() * 500));
+            });
+            $(".grid").animate({
+                left: 0
+            });
             URP.initiate();
         });
     </script>

@@ -133,5 +133,15 @@ namespace Application.MainBoundedContect.Services.SiteAdmininstration
            }
            return segments;
        }
+
+       public List<Segment> GetSegmentAndTeamsInDivsion(int divisionId)
+       {
+           List<Segment> seg = segRepository.GetSegmentsByDivisionID(divisionId).ToList();
+
+           if (seg == null || seg.Count() == 0) return null;
+
+           return seg.ToList();
+       }
+
     }
 }

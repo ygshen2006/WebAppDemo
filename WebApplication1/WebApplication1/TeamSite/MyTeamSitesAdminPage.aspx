@@ -10,6 +10,7 @@
 
     <script src="../Scripts/jquery-1.8.2.min.js"></script>
     <script src="../Scripts/metro.js"></script>
+    <script src="../Scripts/jquery.showLoading.js"></script>
     <script src="../Scripts/jquery.cookie.js"></script>
      <script src="../Scripts/teamsiteslist.js"></script>
     <title>我的团队</title>
@@ -58,6 +59,18 @@
                 display: none;
             }
         }
+
+        .loading-indicator {
+    background: url('../Images/loading40.gif') no-repeat center;
+    width: 70px;
+    height: 70px;
+}
+
+.loading-indicator-overlay {
+    opacity: 0.6;
+    background-color: rgb(255, 255, 255);
+}
+
     </style>
     <%--<link href="../Content/teamsites.css" rel="stylesheet" />--%>
     <script>
@@ -124,6 +137,58 @@
         $(function () {
             $.StartScreen();
 
+            // Load the segment tiles
+            // get the division id and guid from the request url
+            var divsionId = "";
+            var divisionguid = "";
+            var divisionName = "";
+
+            divsionId = window.location.href.split('?')[1].split('&')[0].split('=')[1];
+            divisionguid = window.location.href.split('?')[1].split('&')[1].split('=')[1];
+            divisionName = window.location.href.split('?')[1].split('&')[2].split('=')[1];
+
+            $('.tile-area-title').html(divisionName);
+
+            loadTheSegments(divsionId, divisionguid, $('.tile-area'), function (result) {
+
+                // list of segment and teamsites
+                var str = "";
+                $.each(result, function (index, current) {
+                    str += '<div class="tile-group double">';
+                    str += '<span class="tile-group-title">' + current.SegmentName + '</span>';
+                    str += '  <div class="tile-container">';
+                    $.each(current.TeamSites, function (i, c) {
+                        var teamshow = '';
+                        if (c.TeamLogo == "") {
+                            teamshow = '<div class="tile-content iconic">';
+                        }
+                        else {
+                            teamshow = '<div class="tile-content iconic" style="background-size: cover; background-image:url(' + c.TeamLogo + ')">';
+                        }
+
+                        str += '<div class="tile bg-indigo fg-white" data-role="tile">'+
+                                    teamshow +
+                                     '</div>'+
+                                    '<span class="tile-label">' + c.TeamName + '</span>' +
+                                '</div>';
+                    });
+
+
+                    $.each(current.ChildSegments, function (ia, ca) {
+                        str += ' <div class="tile-wide bg-orange fg-white" data-role="tile">' +
+                                  '<div class="tile-content iconic">' +
+                                  '<span class="icon .mif-plus"></span>' +
+                                   '</div>' +
+                                  '<span class="tile-label">' + ca.SegmentName + '</span>' +
+                              '</div>';
+                    });
+
+
+                    str += '</div></div>';
+                });
+                $('.tile-area').append(str);
+            });
+
             var tiles = $(".tile, .tile-small, .tile-sqaure, .tile-wide, .tile-large, .tile-big, .tile-super");
 
             $.each(tiles, function () {
@@ -142,10 +207,6 @@
             $(".tile-group").animate({
                 left: 0
             });
-
-
-
-
         });
         function showSearch() {
             var charm = $("#charmSearch");
@@ -186,7 +247,10 @@
                 charm.data('hidden', false);
             }
         }
-
+        function showBack() {
+            history.back();
+            return false;
+        }
         function setSearchPlace(el) {
             var a = $(el);
             var text = a.text();
@@ -194,7 +258,32 @@
 
             toggle.text(text);
         }
+        function loadTheSegments(divisonId, divisionGuid, loadingArea, callBack) {
+            var url = "http://" + window.location.hostname + ':' + window.location.port + '/Ajax/TeamAdminAjax';
 
+            url += "?requestType=getsegmentandteams&divisionid=" + divisonId;
+            $.ajax({
+                url: url,
+                type: "POST",
+                dataType: "json",
+                async: false,
+                timeout: 99000,
+                beforeSend: function () {
+                    loadingArea.showLoading();
+                },
+                error: function (xhr, status, error) {
+                    console.log(error);
+                },
+                success: function (result) {
+                    if (result != null > 0) {
+                        callBack(result);
+                    }
+                },
+                complete: function () {
+                    loadingArea.hideLoading();
+                },
+            });
+        }
         $(function () {
 
             var current_tile_area_scheme = localStorage.getItem('tile-area-scheme') || "tile-area-scheme-dark";
@@ -290,8 +379,8 @@
         </div>
 
         <div class="tile-area tile-area-scheme-dark fg-white">
-            <h1 class="tile-area-title">企业中心</h1>
-            <div class="tile-area-controls">
+            <h1 class="tile-area-title"></h1>
+     <div class="tile-area-controls">
                 <button class="image-button icon-right bg-transparent fg-white bg-hover-dark no-border">
                     <span class="sub-header no-margin text-light">
 
@@ -314,9 +403,9 @@
                 </button>
                 <button class="square-button bg-transparent fg-white bg-hover-dark no-border" onclick="showSearch()"><span class="mif-search"></span></button>
                 <button class="square-button bg-transparent fg-white bg-hover-dark no-border" onclick="showSettings()"><span class="mif-cog"></span></button>
-                <a href="../tiles.html" class="square-button bg-transparent fg-white bg-hover-dark no-border"><span class="mif-switch"></span></a>
+                <a class="square-button bg-transparent fg-white bg-hover-dark no-border" onclick="showBack()"><span class="mif-switch"></span></a>
             </div>
-
+                 <%--  
             <div class="tile-group double">
                 <span class="tile-group-title">General</span>
 
@@ -554,7 +643,7 @@
                         <span class="tile-label">OneDrive</span>
                     </div>
                 </div>
-            </div>
+            </div>--%>
         </div>
 
         <!-- hit.ua -->

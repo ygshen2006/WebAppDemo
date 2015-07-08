@@ -50,6 +50,10 @@
             }
             str += "</ul></li>";
             $(str).insertAfter($('.welcome'));
+
+
+            this.addDivisionsList();
+
         };
         this.VerifyUserHasTeam = function (parameter, callBack) {
             var url = Nav.util.GetUrl();
@@ -98,7 +102,35 @@
                 },
             });
         };
+        this.addDivisionsList = function () {
+            var url = "http://" + window.location.hostname + ':' + window.location.port + '/Ajax/TeamAdminAjax';
 
+            url += "?requestType=getdivisions";
+            $.ajax({
+                url: url,
+                type: "POST",
+                dataType: "json",
+                async: false,
+                timeout: 99000,
+                beforeSend: function () {
+                },
+                error: function (xhr, status, error) {
+                    console.log(error);
+                },
+                success: function (result) {
+                    if (result != null && result.length > 0) {
+                        $('.teamsearch .d-menu li').remove();
+                        var str = "";
+                        $.each(result, function (index, current) {
+                            str += "<li><a href='../TeamSite/MyTeamSitesAdminPage.aspx?divsionId=" + current.Id + "&divisionguid=" + current.DivisionGuid + "&divisionName=" + current.title + "'>" + current.title + "</a></li>";
+                        });
+                        $('.teamsearch .d-menu').append(str);
+                    }
+                },
+                complete: function () {
+                },
+            });
+        }
         this.deleteAllCookies = function () {
             var cookies = document.cookie.split(";");
 

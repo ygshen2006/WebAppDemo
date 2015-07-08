@@ -45,14 +45,14 @@ namespace WebApplication1.Ajax
         {
             using (MainDBUnitWorkContext context = new MainDBUnitWorkContext())
             {
-                 up = new UserRepository(context);
-                
-                 service = new UserService(up);
+                up = new UserRepository(context);
+
+                service = new UserService(up);
 
                 SegmentRepository segRe = new SegmentRepository(context);
                 DivisionRepository dvRe = new DivisionRepository(context);
                 TeamRepository tRe = new TeamRepository(context);
-                
+
                 AppDivisionSegmentsService appService = new AppDivisionSegmentsService(tRe, segRe, dvRe);
 
                 if (Request["requestType"] == "getdivisions")
@@ -64,9 +64,45 @@ namespace WebApplication1.Ajax
                 if (Request["requestType"] == "getsegmentandteams")
                 {
                     int divisionId = Int16.Parse(Request["divisionid"]);
-                    var tem = appService.GetAllSegmentsByDivisionId(divisionId);
-                    string test = jss.Serialize(tem);
-                    Response.Write(jss.Serialize(tem));
+                    var segments = appService.GetSegmentAndTeamsInDivsion(divisionId);
+                    List<SegmentTeamModel> segmentTeamSites = new List<SegmentTeamModel>();
+                    List<SegmentTeamModel> subSegmentTeamSites = new List<SegmentTeamModel>();
+
+                    foreach (var segment in segments)
+                    {
+                        var teamSites = new List<TeamSiteModel>();
+                        foreach (var t in segment.Teamsites)
+                        {
+                            teamSites.Add(new TeamSiteModel() { TeamId = t.Id, TeamGuid = t.TeamGuid.ToString(), TeamName = t.TeamName, TeamLogo = t.TeamLogo });
+                        }
+
+                        foreach (var t in segment.ChildSegements)
+                        {
+                            var teamSites2 = new List<TeamSiteModel>();
+                            foreach (var t2 in t.Teamsites)
+                            {
+                                teamSites2.Add(new TeamSiteModel() { TeamId = t2.Id, TeamGuid = t2.TeamGuid.ToString(), TeamName = t2.TeamName, TeamLogo = t2.TeamLogo });
+                            }
+
+
+                            subSegmentTeamSites.Add(new SegmentTeamModel()
+                            {
+                                SegmentName = t.Name,
+                                SegmentId = t.Id,
+                                TeamSites = teamSites2
+                            });
+                        }
+                        segmentTeamSites.Add(new SegmentTeamModel()
+                        {
+                            SegmentId = segment.Id,
+                            SegmentName = segment.Name,
+                            TeamSites = teamSites,
+                            ChildSegments = subSegmentTeamSites
+                        });
+                    }
+
+                    string test = jss.Serialize(segmentTeamSites);
+                    Response.Write(jss.Serialize(segmentTeamSites));
                 }
 
                 if (Request["requestType"] == "searchteams")
@@ -102,14 +138,14 @@ namespace WebApplication1.Ajax
                     Response.Write(GetReports());
                 }
 
-                 if (Request["queryType"] == "reportDetail")
+                if (Request["queryType"] == "reportDetail")
                 {
                     Response.Write(GetReportDetal());
 
                 }
                 else if (Request["queryType"] == "reportfilter")
                 {
-                   Response.Write(GetFilter());
+                    Response.Write(GetFilter());
                 }
 
             }
@@ -119,7 +155,7 @@ namespace WebApplication1.Ajax
         {
             string tileID = Request["TileID"];
             string teamGuid = Request["SiteGUID"];
-            string userName = Session["UserName"]==null?"":Session["UserName"].ToString();
+            string userName = Session["UserName"] == null ? "" : Session["UserName"].ToString();
 
             using (MainDBUnitWorkContext context = new MainDBUnitWorkContext())
             {
@@ -233,7 +269,7 @@ namespace WebApplication1.Ajax
                 {
                     switch (vm.FilterType)
                     {
-                        
+
                         case "Tag":
                             filer.TagsIdCollection = (from fl in vm.FilterItemList select int.Parse(fl.Value)).ToList();
                             break;
@@ -252,7 +288,7 @@ namespace WebApplication1.Ajax
 
                 // TO-DO: Team admin is set to true
                 var reports = editReport.GetReportsByTeamWithReportsRequire(teamGuid,
-                    tileId,filer, true, userName, paramDes.CurrentPage, 
+                    tileId, filer, true, userName, paramDes.CurrentPage,
                     paramDes.PageSize,
                     SortField.ReportTitle, (paramDes.SortAscending ? SortOrder.ASC : SortOrder.DESC)).ToArray();
 
@@ -262,20 +298,21 @@ namespace WebApplication1.Ajax
                 output = jss.Serialize(rptList);
                 return output;
             }
-       
+
         }
 
-        private string GetReportDetal() {
+        private string GetReportDetal()
+        {
             int reportId = int.Parse(Request.QueryString["reportId"]);
             JavaScriptSerializer jss = new JavaScriptSerializer();
 
 
             using (MainDBUnitWorkContext context = new MainDBUnitWorkContext())
-            { 
+            {
                 ReportRepository _reportRepository = new ReportRepository(context);
 
-                EditReportService reportService = new EditReportService(_reportRepository,null,null,null,null,null,null);
-               return jss.Serialize(reportService.GetReportById(reportId));
+                EditReportService reportService = new EditReportService(_reportRepository, null, null, null, null, null, null);
+                return jss.Serialize(reportService.GetReportById(reportId));
             }
 
         }
@@ -283,7 +320,7 @@ namespace WebApplication1.Ajax
         private ReportListViewModel GetReportList(IEnumerable<AppReport> rptDataList, int tileID = 0)
         {
 
-            string userAlias =Session["UserName"]==null?"":Session["UserName"].ToString();
+            string userAlias = Session["UserName"] == null ? "" : Session["UserName"].ToString();
 
             ReportListViewModel rptList = new ReportListViewModel();
 
@@ -292,8 +329,8 @@ namespace WebApplication1.Ajax
                 ReportItemViewModel item = new ReportItemViewModel();
                 item.ID = data.Id.GetValueOrDefault();
                 item.Title = data.Title;
-               // item.Image = GetReportICO(data.CatalogType.Id, data.FileType.Id);
-              //  item.SystemReportStatus = data.Status.ToString();
+                // item.Image = GetReportICO(data.CatalogType.Id, data.FileType.Id);
+                //  item.SystemReportStatus = data.Status.ToString();
                 item.ReportStatus = data.Status.Name;
                 item.Descript = data.Content;
 
@@ -400,21 +437,21 @@ namespace WebApplication1.Ajax
             //}
 
 
-            string logonUser =Session["UserName"]==null?"": Session["UserName"].ToString();
+            string logonUser = Session["UserName"] == null ? "" : Session["UserName"].ToString();
 
-            bool isCurrentSiteAdmin =logonUser==""?false:service.GetUserAdminTeams(logonUser).Count() > 0;
+            bool isCurrentSiteAdmin = logonUser == "" ? false : service.GetUserAdminTeams(logonUser).Count() > 0;
 
             using (MainDBUnitWorkContext context = new MainDBUnitWorkContext())
             {
                 IReportRepository report_repository = new ReportRepository(context);
                 IUserRepository user_repository = new UserRepository(context);
                 ITeamRepository team_repository = new TeamRepository(context);
-                ICategoryRepository category_repository= new CategoryRepository(context);
+                ICategoryRepository category_repository = new CategoryRepository(context);
                 ITagRepository tag_repository = new TeamTagRepository(context);
                 ITileRepository tile_repository = new TileRepository(context);
                 ITileQueryLogicRepository tile_query_repository = new TileQueryLogicRepository(context);
 
-                EditReportService sa = new EditReportService(report_repository,user_repository,team_repository,category_repository,tag_repository,tile_repository, tile_query_repository);
+                EditReportService sa = new EditReportService(report_repository, user_repository, team_repository, category_repository, tag_repository, tile_repository, tile_query_repository);
 
                 FilterListViewModel filterList = new FilterListViewModel();
 
@@ -452,7 +489,7 @@ namespace WebApplication1.Ajax
 
                     foreach (AttributeValue attr in l.Values)
                     {
-                       FilterItem item = new FilterItem();
+                        FilterItem item = new FilterItem();
                         item.Name = attr.Name;
                         if (l.Name == "Owner")
                         {

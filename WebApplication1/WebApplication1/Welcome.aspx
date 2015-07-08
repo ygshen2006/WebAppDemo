@@ -8,7 +8,7 @@
     <link href="css/metro-bootstrap.css" rel="stylesheet" />
     <link href="css/iconFont.css" rel="stylesheet" />
     <link href="Content/home.css" rel="stylesheet" />
-    
+
 
     <title>首页</title>
 
@@ -39,14 +39,11 @@
                             <a class="dropdown-toggle" href="#">随便看看</a>
                             <ul class="dropdown-menu place-center dark" data-role="dropdown" data-show="hover">
                                 <li><a href="#">功能描述</a></li>
-                                <li><a href="#" class="dropdown-toggle">企业查找</a>
+                                <li class="teamsearch"><a href="#" class="dropdown-toggle">企业查找</a>
 
                                     <ul class="d-menu" data-role="dropdown">
-                            <li><a href="validator.html">Form Validator</a></li>
-                            <li class="divider"></li>
-                            <li><a href="easing.html">Easing functions</a></li>
-                            <li class="disabled"><a href="precode.html">PreCode</a></li>
-                        </ul>
+                                        
+                                    </ul>
                                 </li>
                             </ul>
 
@@ -74,28 +71,28 @@
                         </li>
 
                     </ul>
-             <div style="float: right; width: 20%" id="welcomeT">
-                            <ul id="welcomezone" style="list-style:none">
-                                <li style="color: white; float: left;" class="welcome">
-                                    <asp:LoginView ID="LoginView2" runat="server">
-                                        <AnonymousTemplate>
-                                            <div style="float: left; margin-top: 5px;">
-                                                <a id="register-link" class="user-name-link" href="../MyAccounts/Register.aspx?ReturnUrl='~/Welcome.aspx'">注册</a>
-                                                <a id="login-link" class="user-name-link" href="#">登陆</a>
-                                            </div>
-                                        </AnonymousTemplate>
-                                        <LoggedInTemplate>
-                                            <div class="welcome-text">
-                                                <span>欢迎: </span><a href="../Personal/MyCenter.aspx" class="user-name-link">
-                                                    <asp:LoginName ID="LoginName1" runat="server" />
-                                                </a>
-                                            </div>
-                                        </LoggedInTemplate>
-                                    </asp:LoginView>
-                                </li>
+                    <div style="float: right; width: 20%" id="welcomeT">
+                        <ul id="welcomezone" style="list-style: none">
+                            <li style="color: white; float: left;" class="welcome">
+                                <asp:LoginView ID="LoginView2" runat="server">
+                                    <AnonymousTemplate>
+                                        <div style="float: left; margin-top: 5px;">
+                                            <a id="register-link" class="user-name-link" href="../MyAccounts/Register.aspx?ReturnUrl='~/Welcome.aspx'">注册</a>
+                                            <a id="login-link" class="user-name-link" href="#">登陆</a>
+                                        </div>
+                                    </AnonymousTemplate>
+                                    <LoggedInTemplate>
+                                        <div class="welcome-text">
+                                            <span>欢迎: </span><a href="../Personal/MyCenter.aspx" class="user-name-link">
+                                                <asp:LoginName ID="LoginName1" runat="server" />
+                                            </a>
+                                        </div>
+                                    </LoggedInTemplate>
+                                </asp:LoginView>
+                            </li>
 
-                            </ul>
-                        </div>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </header>
@@ -432,30 +429,42 @@
                                 </div>
                                 <div class="product-bd">
                                     <div class="inner-tab-panel active">
-                                        <div class="product-item" title="DFS旗下T广场（香港广东道店）DFS T Galleria Hong Kong, Canton Road"><a href="http://g.ctrip.com/merchant/detail/140?gsourcetype=3#ctm_ref=ssc_hp_gw_sp_pro_1" target="_blank">
-                                            <p class="item-thumbnail">
-                                                <img src="http://youimg1.c-ctrip.com/target/tg/055/599/064/3f75ab8fcbab4629bb92db8ea6a43fa4.jpg" alt="DFS旗下T广场（香港广东道店）DFS T Galleria Hong Kong, Canton Road"></p>
-                                            <p class="item-name">DFS旗下T广场（香港广东道店）DFS T Galleria Hong Kong, Canton Road</p>
-                                            <p class="item-info"><span class="item-label"><span class="tag_orange_empty">返现</span></span><span class="item-type">中国 • 香港</span></p>
-                                        </a></div>
-                                        <div class="product-item" title="老佛爷百货公司（奥斯曼旗舰店）Galeries Lafayette Haussmann"><a href="http://g.ctrip.com/merchant/detail/21?gsourcetype=3#ctm_ref=ssc_hp_gw_sp_pro_1" target="_blank">
-                                            <p class="item-thumbnail">
-                                                <img src="http://youimg1.c-ctrip.com/target/tg/602/105/289/228a16d1c4844dbebcae5d1b3c88db34.jpg" alt="老佛爷百货公司（奥斯曼旗舰店）Galeries Lafayette Haussmann"></p>
-                                            <p class="item-name">老佛爷百货公司（奥斯曼旗舰店）Galeries Lafayette Haussmann</p>
-                                            <p class="item-info"><span class="item-label"><span class="tag_red_empty">赠礼</span></span><span class="item-type">法国 • 巴黎</span></p>
-                                        </a></div>
-                                        <div class="product-item" title="周大福（尖沙咀河内道店）Chow Tai Fook"><a href="http://g.ctrip.com/merchant/detail/607?gsourcetype=3#ctm_ref=ssc_hp_gw_sp_pro_1" target="_blank">
-                                            <p class="item-thumbnail">
-                                                <img src="http://youimg1.c-ctrip.com/target/fd/tg/g2/M09/01/D3/Cghzf1SrqjSAB15AAAEY4YiJ6Ss880.jpg" alt="周大福（尖沙咀河内道店）Chow Tai Fook"></p>
-                                            <p class="item-name">周大福（尖沙咀河内道店）Chow Tai Fook</p>
-                                            <p class="item-info"><span class="item-label"><span class="tag_orange_empty">返现</span></span><span class="item-type">中国 • 香港</span></p>
-                                        </a></div>
-                                        <div class="product-item" title="Laox（银座总店）Laox"><a href="http://g.ctrip.com/merchant/detail/499?gsourcetype=3#ctm_ref=ssc_hp_gw_sp_pro_1" target="_blank">
-                                            <p class="item-thumbnail">
-                                                <img src="http://youimg1.c-ctrip.com/target/tg/440/050/744/582b8dbec24b4b7fbcc67db60d4a3ebe.jpg" alt="Laox（银座总店）Laox"></p>
-                                            <p class="item-name">Laox（银座总店）Laox</p>
-                                            <p class="item-info"><span class="item-label"><span class="tag_blue_empty">优惠</span></span><span class="item-type">日本 • 东京</span></p>
-                                        </a></div>
+                                        <div class="product-item" title="DFS旗下T广场（香港广东道店）DFS T Galleria Hong Kong, Canton Road">
+                                            <a href="http://g.ctrip.com/merchant/detail/140?gsourcetype=3#ctm_ref=ssc_hp_gw_sp_pro_1" target="_blank">
+                                                <p class="item-thumbnail">
+                                                    <img src="http://youimg1.c-ctrip.com/target/tg/055/599/064/3f75ab8fcbab4629bb92db8ea6a43fa4.jpg" alt="DFS旗下T广场（香港广东道店）DFS T Galleria Hong Kong, Canton Road">
+                                                </p>
+                                                <p class="item-name">DFS旗下T广场（香港广东道店）DFS T Galleria Hong Kong, Canton Road</p>
+                                                <p class="item-info"><span class="item-label"><span class="tag_orange_empty">返现</span></span><span class="item-type">中国 • 香港</span></p>
+                                            </a>
+                                        </div>
+                                        <div class="product-item" title="老佛爷百货公司（奥斯曼旗舰店）Galeries Lafayette Haussmann">
+                                            <a href="http://g.ctrip.com/merchant/detail/21?gsourcetype=3#ctm_ref=ssc_hp_gw_sp_pro_1" target="_blank">
+                                                <p class="item-thumbnail">
+                                                    <img src="http://youimg1.c-ctrip.com/target/tg/602/105/289/228a16d1c4844dbebcae5d1b3c88db34.jpg" alt="老佛爷百货公司（奥斯曼旗舰店）Galeries Lafayette Haussmann">
+                                                </p>
+                                                <p class="item-name">老佛爷百货公司（奥斯曼旗舰店）Galeries Lafayette Haussmann</p>
+                                                <p class="item-info"><span class="item-label"><span class="tag_red_empty">赠礼</span></span><span class="item-type">法国 • 巴黎</span></p>
+                                            </a>
+                                        </div>
+                                        <div class="product-item" title="周大福（尖沙咀河内道店）Chow Tai Fook">
+                                            <a href="http://g.ctrip.com/merchant/detail/607?gsourcetype=3#ctm_ref=ssc_hp_gw_sp_pro_1" target="_blank">
+                                                <p class="item-thumbnail">
+                                                    <img src="http://youimg1.c-ctrip.com/target/fd/tg/g2/M09/01/D3/Cghzf1SrqjSAB15AAAEY4YiJ6Ss880.jpg" alt="周大福（尖沙咀河内道店）Chow Tai Fook">
+                                                </p>
+                                                <p class="item-name">周大福（尖沙咀河内道店）Chow Tai Fook</p>
+                                                <p class="item-info"><span class="item-label"><span class="tag_orange_empty">返现</span></span><span class="item-type">中国 • 香港</span></p>
+                                            </a>
+                                        </div>
+                                        <div class="product-item" title="Laox（银座总店）Laox">
+                                            <a href="http://g.ctrip.com/merchant/detail/499?gsourcetype=3#ctm_ref=ssc_hp_gw_sp_pro_1" target="_blank">
+                                                <p class="item-thumbnail">
+                                                    <img src="http://youimg1.c-ctrip.com/target/tg/440/050/744/582b8dbec24b4b7fbcc67db60d4a3ebe.jpg" alt="Laox（银座总店）Laox">
+                                                </p>
+                                                <p class="item-name">Laox（银座总店）Laox</p>
+                                                <p class="item-info"><span class="item-label"><span class="tag_blue_empty">优惠</span></span><span class="item-type">日本 • 东京</span></p>
+                                            </a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -572,6 +581,8 @@
         <script src="js/hitua.js"></script>
         <script src="Scripts/HomePage.js"></script>
         <script type="text/javascript">
+            var sessionUser = '<%= Session["UserName"]%>';
+
             (function (frontia, Reg, Home, Nav, $, undefined) {
                 // Nav.util.test_login();
                 var sessionUser = '<%= Session["UserName"]%>';

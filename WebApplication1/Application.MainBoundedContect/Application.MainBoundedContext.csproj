@@ -133,6 +133,7 @@
     <Compile Include="ViewModel\SiteAdministration\TeamParameter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModel\TeamSites\AppTeamTile.cs" />
+    <Compile Include="ViewModel\TeamSites\SegmentTeamModel.cs" />
     <Compile Include="ViewModel\Tiles\AppTile.cs" />
     <Compile Include="ViewModel\Tiles\TileFilterListViewModel.cs" />
     <Compile Include="ViewModel\Tiles\TileViewModel.cs" />

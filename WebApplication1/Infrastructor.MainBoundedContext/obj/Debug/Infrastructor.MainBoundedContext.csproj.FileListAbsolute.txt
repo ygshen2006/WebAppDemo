@@ -76,3 +76,5 @@ E:\MyWebApp\WebAppDemo\WebApplication1\Infrastructor.MainBoundedContext\bin\Debu
 E:\MyWebApp\WebAppDemo\WebApplication1\Infrastructor.MainBoundedContext\obj\Debug\Infrastructor.MainBoundedContext.csprojResolveAssemblyReference.cache
 E:\MyWebApp\WebAppDemo\WebApplication1\Infrastructor.MainBoundedContext\obj\Debug\Infrastructor.MainBoundedContext.dll
 E:\MyWebApp\WebAppDemo\WebApplication1\Infrastructor.MainBoundedContext\obj\Debug\Infrastructor.MainBoundedContext.pdb
+E:\MyWebApp\WebAppDemo\WebApplication1\Infrastructor.MainBoundedContext\obj\Debug\Infrastructor.MainBoundedContext.Migrations.test.resources
+E:\MyWebApp\WebAppDemo\WebApplication1\Infrastructor.MainBoundedContext\obj\Debug\Infrastructor.MainBoundedContext.csproj.GenerateResource.Cache

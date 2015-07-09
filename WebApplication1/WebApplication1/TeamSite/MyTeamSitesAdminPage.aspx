@@ -154,19 +154,52 @@
                 // list of segment and teamsites
                 var str = "";
                 $.each(result, function (index, current) {
-                    str += '<div class="tile-group double">';
+                    var random = Math.random() * 3 + 1;
+                    if (current.TeamSites.length < 5) {
+                        str += '<div class="tile-group one">';
+                    }
+                    if (current.TeamSites.length > 4 && current.TeamSites.length < 9) {
+                        str += '<div class="tile-group double">';
+                    }
+
+                    if (current.TeamSites.length > 8 && current.TeamSites.length < 13) {
+                        str += '<div class="tile-group three">';
+                    }
+
+                    if (current.TeamSites.length > 12 && current.TeamSites.length < 17) {
+                        str += '<div class="tile-group four">';
+                    }
+
+                    if (current.TeamSites.length > 16 && current.TeamSites.length < 21) {
+                        str += '<div class="tile-group five">';
+                    }
+
+                    if (current.TeamSites.length > 20 && current.TeamSites.length < 25) {
+                        str += '<div class="tile-group six">';
+                    }
+
+                    else {
+                        str += '<div class="tile-group seven">';
+                    }
+
                     str += '<span class="tile-group-title">' + current.SegmentName + '</span>';
                     str += '  <div class="tile-container">';
                     $.each(current.TeamSites, function (i, c) {
                         var teamshow = '';
                         if (c.TeamLogo == "") {
-                            teamshow = '<div class="tile-content iconic">';
+                            
+                            teamshow = '<div class="tile-content iconic"><span class="icon mif-rocket"></span>';
                         }
                         else {
                             teamshow = '<div class="tile-content iconic" style="background-size: cover; background-image:url(' + c.TeamLogo + ')">';
                         }
+                        var bgcolors = ["bg-teal",
+"bg-pink",
+                        "bg-magenta",
+                        "bg-amber",
+                        "bg-steel"];
 
-                        str += '<div tag=' + c.TeamGuid + ' class="tile bg-indigo fg-white" data-role="tile">' +
+                        str += '<div tag=' + c.TeamGuid + ' class="tile ' + bgcolors[random] + ' fg-white" data-role="tile">' +
                                     teamshow +
                                      '</div>'+
                                     '<span class="tile-label">' + c.TeamName + '</span>' +

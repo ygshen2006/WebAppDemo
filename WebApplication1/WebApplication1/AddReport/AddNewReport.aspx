@@ -132,6 +132,12 @@
                                 <label style="color: red; margin-left: 10px;" class="hide">* 标题不能为空</label>
                             </li>
 
+                                 <li class="a"><b>简介:</b></li>
+                            <li class="a">
+                                <textarea class="article-description-text" placeholder="文章简介..."></textarea>
+                                <label style="color: red; margin-left: 10px;" class="hide">* 简介不能为空</label>
+                            </li>
+
                             <li class="a"><b>类型</b></li>
                             <li class="a" style="position: relative">
                                 <div class="articleTypeDiv" tabindex="1"></div>

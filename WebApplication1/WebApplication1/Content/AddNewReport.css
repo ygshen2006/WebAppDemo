@@ -386,6 +386,9 @@
 .article-title-text {
     width:400px;
 }
+.article-description-text {
+    width:400px;
+}
 .select-tool-tips {
     font-size:small;
     font-style:italic;

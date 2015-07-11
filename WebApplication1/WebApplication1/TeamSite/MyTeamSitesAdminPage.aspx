@@ -12,7 +12,7 @@
     <script src="../Scripts/metro.js"></script>
     <script src="../Scripts/jquery.showLoading.js"></script>
     <script src="../Scripts/jquery.cookie.js"></script>
-     <script src="../Scripts/teamsiteslist.js"></script>
+    <script src="../Scripts/teamsiteslist.js"></script>
     <title>我的团队</title>
     <style>
         .tile-area-controls {
@@ -61,16 +61,15 @@
         }
 
         .loading-indicator {
-    background: url('../Images/loading40.gif') no-repeat center;
-    width: 70px;
-    height: 70px;
-}
+            background: url('../Images/loading40.gif') no-repeat center;
+            width: 70px;
+            height: 70px;
+        }
 
-.loading-indicator-overlay {
-    opacity: 0.6;
-    background-color: rgb(255, 255, 255);
-}
-
+        .loading-indicator-overlay {
+            opacity: 0.6;
+            background-color: rgb(255, 255, 255);
+        }
     </style>
     <%--<link href="../Content/teamsites.css" rel="stylesheet" />--%>
     <script>
@@ -145,9 +144,11 @@
 
             divsionId = window.location.href.split('?')[1].split('&')[0].split('=')[1];
             divisionguid = window.location.href.split('?')[1].split('&')[1].split('=')[1];
-            divisionName = window.location.href.split('?')[1].split('&')[2].split('=')[1];
+           // divisionName = window.location.href.split('?')[1].split('&')[2].split('=')[1];
 
-            $('.tile-area-title').html(divisionName);
+
+            
+            loadTheDivisionName(divsionId);
 
             loadTheSegments(divsionId, divisionguid, $('.tile-area'), function (result) {
 
@@ -155,29 +156,35 @@
                 var str = "";
                 $.each(result, function (index, current) {
                     var random = Math.random() * 3 + 1;
-                    if (current.TeamSites.length < 5) {
-                        str += '<div class="tile-group one">';
-                    }
-                    if (current.TeamSites.length > 4 && current.TeamSites.length < 9) {
-                        str += '<div class="tile-group double">';
-                    }
+                    random = parseInt(random);
+                    if (result.length > 1) {
+                        if (current.TeamSites.length < 3) {
+                            str += '<div class="tile-group one">';
+                        }
+                        if (current.TeamSites.length > 2 && current.TeamSites.length < 9) {
+                            str += '<div class="tile-group double">';
+                        }
 
-                    if (current.TeamSites.length > 8 && current.TeamSites.length < 13) {
-                        str += '<div class="tile-group three">';
-                    }
+                        if (current.TeamSites.length > 8 && current.TeamSites.length < 13) {
+                            str += '<div class="tile-group three">';
+                        }
 
-                    if (current.TeamSites.length > 12 && current.TeamSites.length < 17) {
-                        str += '<div class="tile-group four">';
-                    }
+                        if (current.TeamSites.length > 12 && current.TeamSites.length < 17) {
+                            str += '<div class="tile-group four">';
+                        }
 
-                    if (current.TeamSites.length > 16 && current.TeamSites.length < 21) {
-                        str += '<div class="tile-group five">';
-                    }
+                        if (current.TeamSites.length > 16 && current.TeamSites.length < 21) {
+                            str += '<div class="tile-group five">';
+                        }
 
-                    if (current.TeamSites.length > 20 && current.TeamSites.length < 25) {
-                        str += '<div class="tile-group six">';
-                    }
+                        if (current.TeamSites.length > 20 && current.TeamSites.length < 25) {
+                            str += '<div class="tile-group six">';
+                        }
 
+                        if (current.TeamSites.length > 24) {
+                            str += '<div class="tile-group seven">';
+                        }
+                    }
                     else {
                         str += '<div class="tile-group seven">';
                     }
@@ -185,23 +192,30 @@
                     str += '<span class="tile-group-title">' + current.SegmentName + '</span>';
                     str += '  <div class="tile-container">';
                     $.each(current.TeamSites, function (i, c) {
+
+                        var bgcolors = ["bg-teal",
+"bg-pink",
+                 "bg-magenta",
+                 "bg-amber",
+                 "bg-steel"];
+
+                        var bgicons = ["mif-hammer",
+"mif-rocket",
+                 "mif-target",
+                 "mif-cloud",
+                 "mif-flag"];
+
                         var teamshow = '';
-                        if (c.TeamLogo == "") {
-                            
-                            teamshow = '<div class="tile-content iconic"><span class="icon mif-rocket"></span>';
+                        if (c.TeamLogo == null) {
+                            teamshow = '<div class="tile-content iconic"><span class="icon ' + bgicons[random] + '"></span>';
                         }
                         else {
                             teamshow = '<div class="tile-content iconic" style="background-size: cover; background-image:url(' + c.TeamLogo + ')">';
                         }
-                        var bgcolors = ["bg-teal",
-"bg-pink",
-                        "bg-magenta",
-                        "bg-amber",
-                        "bg-steel"];
 
                         str += '<div tag=' + c.TeamGuid + ' class="tile ' + bgcolors[random] + ' fg-white" data-role="tile">' +
                                     teamshow +
-                                     '</div>'+
+                                     '</div>' +
                                     '<span class="tile-label">' + c.TeamName + '</span>' +
                                 '</div>';
                     });
@@ -318,7 +332,7 @@
                     console.log(error);
                 },
                 success: function (result) {
-                    if (result != null > 0) {
+                    if (result != null) {
                         callBack(result);
                     }
                 },
@@ -326,6 +340,32 @@
                     loadingArea.hideLoading();
                 },
             });
+        }
+
+        function loadTheDivisionName(divisonId) {
+            var url = "http://" + window.location.hostname + ':' + window.location.port + '/Ajax/TeamAdminAjax';
+
+            url += "?requestType=getdivisionbyid&divisionid=" + divisonId;
+            $.ajax({
+                url: url,
+                type: "POST",
+                dataType: "json",
+                async: false,
+                timeout: 99000,
+                beforeSend: function () {
+                },
+                error: function (xhr, status, error) {
+                    console.log(error);
+                },
+                success: function (result) {
+                    if (result != null) {
+                        $('.tile-area-title').html(result.title);
+                    }
+                },
+                complete: function () {
+                },
+            });
+
         }
         $(function () {
 
@@ -368,87 +408,87 @@
 </head>
 <body class="metro">
     <%--  <div class="wrapper">--%>
-   <%-- <form id="form1" runat="server">--%>
+    <%-- <form id="form1" runat="server">--%>
 
 
-        <div class="charm right-side padding20 bg-grayDark" id="charmSearch">
-            <button class="square-button bg-transparent fg-white no-border place-right small-button" onclick="showSearch()"><span class="mif-cross"></span></button>
-            <h1 class="text-light">Search</h1>
-            <hr class="thin" />
-            <br />
-            <div class="input-control text full-size">
-                <label>
-                    <span class="dropdown-toggle drop-marker-light">Anywhere</span>
-                    <ul class="d-menu" data-role="dropdown">
-                        <li><a onclick="setSearchPlace(this)">Anywhere</a></li>
-                        <li><a onclick="setSearchPlace(this)">Options</a></li>
-                        <li><a onclick="setSearchPlace(this)">Files</a></li>
-                        <li><a onclick="setSearchPlace(this)">Internet</a></li>
-                    </ul>
-                </label>
-                <input type="text">
-                <button class="button"><span class="mif-search"></span></button>
-            </div>
+    <div class="charm right-side padding20 bg-grayDark" id="charmSearch">
+        <button class="square-button bg-transparent fg-white no-border place-right small-button" onclick="showSearch()"><span class="mif-cross"></span></button>
+        <h1 class="text-light">Search</h1>
+        <hr class="thin" />
+        <br />
+        <div class="input-control text full-size">
+            <label>
+                <span class="dropdown-toggle drop-marker-light">Anywhere</span>
+                <ul class="d-menu" data-role="dropdown">
+                    <li><a onclick="setSearchPlace(this)">Anywhere</a></li>
+                    <li><a onclick="setSearchPlace(this)">Options</a></li>
+                    <li><a onclick="setSearchPlace(this)">Files</a></li>
+                    <li><a onclick="setSearchPlace(this)">Internet</a></li>
+                </ul>
+            </label>
+            <input type="text">
+            <button class="button"><span class="mif-search"></span></button>
         </div>
+    </div>
 
-        <div class="charm right-side padding20 bg-grayDark" id="charmSettings">
-            <button class="square-button bg-transparent fg-white no-border place-right small-button" onclick="showSettings()"><span class="mif-cross"></span></button>
-            <h1 class="text-light">Settings</h1>
-            <hr class="thin" />
-            <br />
-            <div class="schemeButtons">
-                <div class="button square-button tile-area-scheme-dark" data-scheme="dark"></div>
-                <div class="button square-button tile-area-scheme-darkBrown" data-scheme="darkBrown"></div>
-                <div class="button square-button tile-area-scheme-darkCrimson" data-scheme="darkCrimson"></div>
-                <div class="button square-button tile-area-scheme-darkViolet" data-scheme="darkViolet"></div>
-                <div class="button square-button tile-area-scheme-darkMagenta" data-scheme="darkMagenta"></div>
-                <div class="button square-button tile-area-scheme-darkCyan" data-scheme="darkCyan"></div>
-                <div class="button square-button tile-area-scheme-darkCobalt" data-scheme="darkCobalt"></div>
-                <div class="button square-button tile-area-scheme-darkTeal" data-scheme="darkTeal"></div>
-                <div class="button square-button tile-area-scheme-darkEmerald" data-scheme="darkEmerald"></div>
-                <div class="button square-button tile-area-scheme-darkGreen" data-scheme="darkGreen"></div>
-                <div class="button square-button tile-area-scheme-darkOrange" data-scheme="darkOrange"></div>
-                <div class="button square-button tile-area-scheme-darkRed" data-scheme="darkRed"></div>
-                <div class="button square-button tile-area-scheme-darkPink" data-scheme="darkPink"></div>
-                <div class="button square-button tile-area-scheme-darkIndigo" data-scheme="darkIndigo"></div>
-                <div class="button square-button tile-area-scheme-darkBlue" data-scheme="darkBlue"></div>
-                <div class="button square-button tile-area-scheme-lightBlue" data-scheme="lightBlue"></div>
-                <div class="button square-button tile-area-scheme-lightTeal" data-scheme="lightTeal"></div>
-                <div class="button square-button tile-area-scheme-lightOlive" data-scheme="lightOlive"></div>
-                <div class="button square-button tile-area-scheme-lightOrange" data-scheme="lightOrange"></div>
-                <div class="button square-button tile-area-scheme-lightPink" data-scheme="lightPink"></div>
-                <div class="button square-button tile-area-scheme-grayed" data-scheme="grayed"></div>
-            </div>
+    <div class="charm right-side padding20 bg-grayDark" id="charmSettings">
+        <button class="square-button bg-transparent fg-white no-border place-right small-button" onclick="showSettings()"><span class="mif-cross"></span></button>
+        <h1 class="text-light">Settings</h1>
+        <hr class="thin" />
+        <br />
+        <div class="schemeButtons">
+            <div class="button square-button tile-area-scheme-dark" data-scheme="dark"></div>
+            <div class="button square-button tile-area-scheme-darkBrown" data-scheme="darkBrown"></div>
+            <div class="button square-button tile-area-scheme-darkCrimson" data-scheme="darkCrimson"></div>
+            <div class="button square-button tile-area-scheme-darkViolet" data-scheme="darkViolet"></div>
+            <div class="button square-button tile-area-scheme-darkMagenta" data-scheme="darkMagenta"></div>
+            <div class="button square-button tile-area-scheme-darkCyan" data-scheme="darkCyan"></div>
+            <div class="button square-button tile-area-scheme-darkCobalt" data-scheme="darkCobalt"></div>
+            <div class="button square-button tile-area-scheme-darkTeal" data-scheme="darkTeal"></div>
+            <div class="button square-button tile-area-scheme-darkEmerald" data-scheme="darkEmerald"></div>
+            <div class="button square-button tile-area-scheme-darkGreen" data-scheme="darkGreen"></div>
+            <div class="button square-button tile-area-scheme-darkOrange" data-scheme="darkOrange"></div>
+            <div class="button square-button tile-area-scheme-darkRed" data-scheme="darkRed"></div>
+            <div class="button square-button tile-area-scheme-darkPink" data-scheme="darkPink"></div>
+            <div class="button square-button tile-area-scheme-darkIndigo" data-scheme="darkIndigo"></div>
+            <div class="button square-button tile-area-scheme-darkBlue" data-scheme="darkBlue"></div>
+            <div class="button square-button tile-area-scheme-lightBlue" data-scheme="lightBlue"></div>
+            <div class="button square-button tile-area-scheme-lightTeal" data-scheme="lightTeal"></div>
+            <div class="button square-button tile-area-scheme-lightOlive" data-scheme="lightOlive"></div>
+            <div class="button square-button tile-area-scheme-lightOrange" data-scheme="lightOrange"></div>
+            <div class="button square-button tile-area-scheme-lightPink" data-scheme="lightPink"></div>
+            <div class="button square-button tile-area-scheme-grayed" data-scheme="grayed"></div>
         </div>
+    </div>
 
-        <div class="tile-area tile-area-scheme-dark fg-white">
-            <h1 class="tile-area-title"></h1>
-     <div class="tile-area-controls">
-                <button class="image-button icon-right bg-transparent fg-white bg-hover-dark no-border">
-                    <span class="sub-header no-margin text-light">
+    <div class="tile-area tile-area-scheme-dark fg-white">
+        <h1 class="tile-area-title"></h1>
+        <div class="tile-area-controls">
+            <button class="image-button icon-right bg-transparent fg-white bg-hover-dark no-border">
+                <span class="sub-header no-margin text-light">
 
-                        <asp:LoginView ID="LoginView1" runat="server">
-                            <AnonymousTemplate>
-                                <div style="float: left; margin-top: 5px;">
-                                    <a id="register-link" class="user-name-link" href="../MyAccounts/Register.aspx?ReturnUrl='~/Welcome.aspx'">注册</a>
-                                    <a id="login-link" class="user-name-link" href="#">登陆</a>
-                                </div>
-                            </AnonymousTemplate>
-                            <LoggedInTemplate>
-                                <div style="color:white" class="welcome-text">
-                                    <span></span><a href="../Personal/MyCenter.aspx" class="user-name-link">
-                                        <asp:LoginName ID="LoginName1" runat="server" />
-                                    </a>
-                                </div>
-                            </LoggedInTemplate>
-                        </asp:LoginView>
-                    </span><span class="icon mif-user"></span>
-                </button>
-                <button class="square-button bg-transparent fg-white bg-hover-dark no-border" onclick="showSearch()"><span class="mif-search"></span></button>
-                <button class="square-button bg-transparent fg-white bg-hover-dark no-border" onclick="showSettings()"><span class="mif-cog"></span></button>
-                <a class="square-button bg-transparent fg-white bg-hover-dark no-border" onclick="showBack()"><span class="mif-switch"></span></a>
-            </div>
-                 <%--  
+                    <asp:LoginView ID="LoginView1" runat="server">
+                        <AnonymousTemplate>
+                            <div style="float: left; margin-top: 5px;">
+                                <a id="register-link" class="user-name-link" href="../MyAccounts/Register.aspx?ReturnUrl='~/Welcome.aspx'">注册</a>
+                                <a id="login-link" class="user-name-link" href="#">登陆</a>
+                            </div>
+                        </AnonymousTemplate>
+                        <LoggedInTemplate>
+                            <div style="color: white" class="welcome-text">
+                                <span></span><a href="../Personal/MyCenter.aspx" class="user-name-link">
+                                    <asp:LoginName ID="LoginName1" runat="server" />
+                                </a>
+                            </div>
+                        </LoggedInTemplate>
+                    </asp:LoginView>
+                </span><span class="icon mif-user"></span>
+            </button>
+            <button class="square-button bg-transparent fg-white bg-hover-dark no-border" onclick="showSearch()"><span class="mif-search"></span></button>
+            <button class="square-button bg-transparent fg-white bg-hover-dark no-border" onclick="showSettings()"><span class="mif-cog"></span></button>
+            <a class="square-button bg-transparent fg-white bg-hover-dark no-border" onclick="showBack()"><span class="mif-switch"></span></a>
+        </div>
+        <%--  
             <div class="tile-group double">
                 <span class="tile-group-title">General</span>
 
@@ -687,34 +727,34 @@
                     </div>
                 </div>
             </div>--%>
-        </div>
+    </div>
 
-        <!-- hit.ua -->
-        <a href='http://hit.ua/?x=136046' target='_blank'>
-            <script language="javascript" type="text/javascript"><!--
+    <!-- hit.ua -->
+    <a href='http://hit.ua/?x=136046' target='_blank'>
+        <script language="javascript" type="text/javascript"><!--
     Cd = document; Cr = "&" + Math.random(); Cp = "&s=1";
     Cd.cookie = "b=b"; if (Cd.cookie) Cp += "&c=1";
     Cp += "&t=" + (new Date()).getTimezoneOffset();
     if (self != top) Cp += "&f=1";
     //--></script>
-            <script language="javascript1.1" type="text/javascript"><!--
+        <script language="javascript1.1" type="text/javascript"><!--
     if (navigator.javaEnabled()) Cp += "&j=1";
     //--></script>
-            <script language="javascript1.2" type="text/javascript"><!--
+        <script language="javascript1.2" type="text/javascript"><!--
     if (typeof (screen) != 'undefined') Cp += "&w=" + screen.width + "&h=" +
     screen.height + "&d=" + (screen.colorDepth ? screen.colorDepth : screen.pixelDepth);
     //--></script>
-            <script language="javascript" type="text/javascript"><!--
+        <script language="javascript" type="text/javascript"><!--
     Cd.write("<img src='http://c.hit.ua/hit?i=136046&g=0&x=2" + Cp + Cr +
     "&r=" + escape(Cd.referrer) + "&u=" + escape(window.location.href) +
     "' border='0' wi" + "dth='1' he" + "ight='1'/>");
     //--></script>
-        </a>
-        <!-- / hit.ua -->
+    </a>
+    <!-- / hit.ua -->
 
 
 
-<%--    </form>--%>
+    <%--    </form>--%>
     <%--       <footer class="container" style="float: right">
             <div class="bottom-menu-wrapper">
                 <ul class="horizontal-menu compact">

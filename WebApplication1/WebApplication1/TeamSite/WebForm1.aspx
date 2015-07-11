@@ -4,19 +4,38 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
+    <link href="../Content/metro-icons.css" rel="stylesheet" />
+    <link href="../Content/metro.css" rel="stylesheet" />
     <title></title>
-    <style type="text/css">
-        @font-face {
-            font-family: 'Glyphicons Halflings';
-            src: url('../fonts/glyphicons-halflings-regular.eot');
-            src: url('../fonts/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'), url('../fonts/glyphicons-halflings-regular.woff') format('woff'), url('../fonts/glyphicons-halflings-regular.ttf') format('truetype'), url('../fonts/glyphicons-halflings-regular.svg#glyphicons-halflingsregular') format('svg');
-        }
-    </style>
+    <script src="../Scripts/jquery-1.10.2.js"></script>
+    <script src="../Scripts/metro.js"></script>
 </head>
 <body>
-
-    <span style="font-family:'Glyphicons Halflings'">&#xE074;&#xE157;</span>
-
-
+    <form id="form1" runat="server">
+        <div>
+            <div class="tile-container">
+                <div class="tile-wide" data-role="tile" data-effect="slideLeft">
+                    <div class="tile-content">
+                        <div class="live-slide">
+                            <img src="../images/1.jpg" data-role="fitImage" data-format="fill">
+                        </div>
+                        <div class="live-slide">
+                            <img src="../images/2.jpg" data-role="fitImage" data-format="fill">
+                        </div>
+                        <div class="live-slide">
+                            <img src="../images/3.jpg" data-role="fitImage" data-format="fill">
+                        </div>
+                        <div class="live-slide">
+                            <img src="../images/4.jpg" data-role="fitImage" data-format="fill">
+                        </div>
+                        <div class="live-slide">
+                            <img src="../images/5.jpg" data-role="fitImage" data-format="fill">
+                        </div>
+                    </div>
+                    <div class="tile-label">Gallery</div>
+                </div>
+            </div>
+        </div>
+    </form>
 </body>
 </html>

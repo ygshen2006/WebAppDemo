@@ -436,7 +436,7 @@
                             var str = '';
                             if (result != null && result.length > 0) {
                                 $.each(result, function (index, current) {
-                                    str += "<li><input onchange='URP.AddReport.TagSelect(this," + current.Title + ")' type='checkbox' tag='" + current.Id + "'/><lable>" + current.Title + "</lable></li>";
+                                    str += "<li><input onchange='URP.AddReport.TagSelect(this)' tag1='" + current.Title + "' type='checkbox' tag='" + current.Id + "'/><lable>" + current.Title + "</lable></li>";
                                 });
                                 $('.articleTagDiv-sub').append(str);
                             }
@@ -450,10 +450,10 @@
                             if (result != null && result.length > 0) {
                                 $.each(result, function (index, current) {
                                     if (selectedTags.some(function (v) { return v.tagid == current.Id; })) {
-                                        str += "<li><input checked='checked' onchange='URP.AddReport.TagSelect(this," + current.Title + ")' type='checkbox' tag='" + current.Id + "'/><lable>" + current.Title + "</lable></li>";
+                                        str += "<li><input checked='checked' tag1='" + current.Title + "' onchange='URP.AddReport.TagSelect(this)' type='checkbox' tag='" + current.Id + "'/><lable>" + current.Title + "</lable></li>";
                                     }
                                     else {
-                                        str += "<li><input onchange='URP.AddReport.TagSelect(this," + current.Title + ")' type='checkbox' tag='" + current.Id + "'/><lable>" + current.Title + "</lable></li>";
+                                        str += "<li><input tag1='" + current.Title + "' onchange='URP.AddReport.TagSelect(this)' type='checkbox' tag='" + current.Id + "'/><lable>" + current.Title + "</lable></li>";
                                     }
                                 });
                                 $('.articleTagDiv-sub').append(str);
@@ -520,6 +520,8 @@
                 e.preventDefault();
 
                 articleTitle = URP.util.HTMLEncode($('.article-title-text').val().trim());
+                articleDescription = URP.util.HTMLEncode($('.article-description-text').val().trim());
+
                 articleContent = URP.util.HTMLEncode($('#editor1').val().trim());
 
                 // validate the must input fields
@@ -530,11 +532,10 @@
                 var e = URP.AddReport.validate(currentStatus, $('.articleStatusDiv'));
                 var f = URP.AddReport.validate(selectedOwners, $('.owners-list'));
                 var g = URP.AddReport.validate(articleContent, $('#editor1'));
-
-                if (a && b && c && d && e && f && g) {
+                var h = URP.AddReport.validate(articleDescription, $('.article-description-text'));
+                if (a && b && c && d && e && f && g && h) {
                     // do submit
                     URP.AddReport.UploadArticle($('.wrapper'), function (result) {
-
                     });
                 }
             });
@@ -546,6 +547,7 @@
         var selectedTags = [];
         var currentStatus = {};
         var articleTitle = "";
+        var articleDescription = "";
         var articleContent = "";
         this.LoadCategories = function (loadingArea, callBack) {
 
@@ -681,7 +683,9 @@
         this.UploadArticle = function (loadingArea, callBack) {
             var url = "http://" + window.location.hostname + ':' + window.location.port + '/Ajax/AddNewReport';
             var articleData = {
-                Title: articleTitle, Categories: selectedcategories,
+                Title: articleTitle,
+                Description: articleDescription,
+                Categories: selectedcategories,
                 Team: selectedteams, Owners: selectedOwners, Tags: selectedTags, Status: currentStatus, Content: articleContent
             };
 
@@ -771,7 +775,10 @@
             }
         }
 
-        this.TagSelect = function (item, itemvalue) {
+        this.TagSelect = function (item) {
+
+            var itemvalue = $(item).attr('tag1');
+
             var status = $(item).attr('checked');
             if (status == 'checked') {
                 selectedTags.push({ "Id": $(item).attr('tag'), "Title": itemvalue });
@@ -787,7 +794,6 @@
                 removeByIndex(selectedTags, j);
             }
             updateTagsInSelectZone();
-
         }
 
         function updateTagsInSelectZone() {
@@ -1179,41 +1185,6 @@
         };
 
 
-        this.subDescript = function (content) {
-
-            var wordTemp = $('<div class="item-summary_short" style="width:630px;">' + content + '</div>').appendTo('body');
-            var wordheight = wordTemp.height();
-            wordTemp.remove();
-            if (wordheight < 50) {
-                return content;
-            }
-
-            var high = content.length;
-            var low = 0;
-            var current = parseInt((high + low) / 2);
-            var retContent;
-            var wordTemp1, wordTemp2, wordheight1, wordheight2;
-            var i = 0;
-            do {
-                retContent = content.substring(0, current);
-                wordTemp1 = $('<div class="item-summary_short"  style="width:630px;">' + retContent + '....</div>').appendTo('body');
-                wordheight1 = wordTemp1.height();
-                wordTemp1.remove();
-                wordTemp2 = $('<div class="item-summary_short"  style="width:630px;">' + retContent + '.....</div>').appendTo('body');
-                wordheight2 = wordTemp2.height();
-                wordTemp2.remove();
-                if (wordheight1 > 50) {
-                    high = current;
-                    current = parseInt((high + low) / 2);
-                } else if (wordheight2 < 50) {
-                    low = current;
-                    current = parseInt((high + low) / 2);
-                } else {
-                    return retContent + '...';
-                }
-            } while (i++ < 10);
-            return retContent + '...';;
-        };
 
         this.subContent=function(content){
             var contentDesc = {};

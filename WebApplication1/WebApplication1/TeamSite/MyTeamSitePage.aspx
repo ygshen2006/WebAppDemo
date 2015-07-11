@@ -166,6 +166,14 @@
             opacity: 0.6;
             background-color: rgb(255, 255, 255);
         }
+
+        #dialog {
+              width: auto;
+  height: auto;
+  display: none;
+  left: 417px;
+  top: 137px;
+        }
     </style>
 </head>
 <body class="metro">
@@ -308,6 +316,15 @@
 
             <div id="hiddentext" style="display: none"></div>
         </form>
+
+        <button onclick="showDialog('#dialog')">Show dialog</button>
+        <div data-role="dialog" id="dialog">
+            <h1>Simple dialog</h1>
+            <p>
+                Dialog :: Metro UI CSS - The front-end framework
+        for developing projects on the web in Windows Metro Style.
+            </p>
+        </div>
     </div>
     <script src="../Scripts/jquery-1.8.2.min.js"></script>
     <script src="../js/jqueryui/jquery-ui.custom.js"></script>
@@ -514,11 +531,11 @@
                                             + "<a href='#' class='reportCollapse'></a><svg xmlns='http://www.w3.org/2000/svg' class='si-glyph-circle-info' style='height:20px; width:20px; margin-right: 5px;'><use xlink:href='../css/sprite.svg#si-glyph-circle-info' /></svg><a tag=" + content.ID + " class='reportTitle' href='#'>" + content.Title + "</a>"
                                         + "</div>"
 
-                                        + "<div class='item-content'>" 
+                                        + "<div class='item-content'>"
                                                  + "<div class='item-detail'></div>"
-                                        //+ "<div class='item-description'>"
-                                        //    + URP.util.HTMLDecode(content.Content)
-                                        //+ "</div>"
+                                        + "<div class='item-description'>"
+                                            + URP.util.HTMLDecode(subDescript(content.Descript))
+                                        + "</div>"
                                                  + "<div class='item-footer'>"
                                                     + " 所有者:" + content.Owners + " | 状态:" + content.ReportStatus
 
@@ -538,7 +555,7 @@
                             listString += '</div>';
                         }
 
-                        listString +="</div></div>";
+                        listString += "</div></div>";
                     });
 
                     if (URP.criteria.CurrentPage == 0) {
@@ -564,6 +581,17 @@
                         $('.side_fixed').html("<a class='reply' href='mailto:" + result.teamOwners + "'>" + t + "</a>");
                     });
                 }
+
+
+
+                function subDescript(content) {
+                    if (content == null) return "";
+                    if (content.length > 200) {
+                        var retContent = content.substring(0, 199);
+                        return retContent + '...';;
+                    }
+                    else return content;
+                };
             };
         })(window.URP = window.URP || {}, window.Nav = window.Nav || {}, window.PS = window.PS || {}, $, undefined);
         $(function () {
@@ -589,7 +617,17 @@
                 left: 0
             });
             URP.initiate();
+
+
+
+
         });
+
+
+        function showDialog(id) {
+            var dialog = $(id).data('dialog');
+            dialog.open();
+        }
     </script>
 </body>
 </html>

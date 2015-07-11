@@ -13,8 +13,8 @@ namespace Domain.MainBoundedContext.Reports.Aggregates
 
         public string Title { get; set; }
 
-        
-        public string Description;
+
+        public string Description { get; set; }
 
         public string FeaturedPicture;
 

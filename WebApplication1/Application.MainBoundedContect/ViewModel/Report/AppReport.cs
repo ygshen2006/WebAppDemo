@@ -13,6 +13,7 @@ namespace Application.MainBoundedContect.ViewModel.Report
     {
         public int? Id { get; set; }
         public string Title { get; set; }
+        public string Description { get; set; }
         public AppStatus Status { get; set; }
         public List<AppTeamTag> Tags { get; set; }
         public List<UserLoginApp> Owners { get; set; }

@@ -22,6 +22,7 @@ namespace Application.MainBoundedContect.Extentions
             {
                 Categories = report.Catagories.Select(_ => _.ToAppCategory()).ToList<AppCategory>(),
                 Content = report.ReportContent,
+                Description=report.Description,
                 Title = report.Title,
                 Id = report.Id,
                 Team = report.TeamSite.ToAppTeamSite(),
@@ -37,6 +38,7 @@ namespace Application.MainBoundedContect.Extentions
                 Title = report.Title,
                 ReportContent = report.Content,
                 TeamSiteId=report.Team.Id.GetValueOrDefault(),
+                Description=report.Description,
                 //Owners = report.Owners.Select(_ => _.ToUser()).ToList(),
                 //TeamSite=report.Team.ToTeamSite(),
                 Id = report.Id.GetValueOrDefault(),

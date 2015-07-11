@@ -60,7 +60,14 @@ namespace WebApplication1.Ajax
                     var divisions = appService.GetAllDivisions().ToList<AppDivision>();
                     Response.Write(jss.Serialize(divisions));
                 }
+                if (Request["requestType"] == "getdivisionbyid")
+                {
+                    int divisionId = int.Parse(Request["divisionid"]);
 
+                    var division = appService.GetAllDivisions().FirstOrDefault(_=>_.Id==divisionId);
+                    Response.Write(jss.Serialize(division));
+                }
+                
                 if (Request["requestType"] == "getsegmentandteams")
                 {
                     int divisionId = Int16.Parse(Request["divisionid"]);
@@ -332,7 +339,7 @@ namespace WebApplication1.Ajax
                 // item.Image = GetReportICO(data.CatalogType.Id, data.FileType.Id);
                 //  item.SystemReportStatus = data.Status.ToString();
                 item.ReportStatus = data.Status.Name;
-                item.Descript = data.Content;
+                item.Descript = data.Description;
 
                 bool IsOwner = false;
                 if (data.Owners != null)

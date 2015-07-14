@@ -174,6 +174,12 @@
   left: 417px;
   top: 137px;
         }
+
+        .si-glyph-person-2, .si-glyph-tag, .si-glyph-calendar-empty {
+            height:20px;
+            width:20px;
+            fill: blue;
+        }
     </style>
 </head>
 <body class="metro">
@@ -316,15 +322,6 @@
 
             <div id="hiddentext" style="display: none"></div>
         </form>
-
-        <button onclick="showDialog('#dialog')">Show dialog</button>
-        <div data-role="dialog" id="dialog">
-            <h1>Simple dialog</h1>
-            <p>
-                Dialog :: Metro UI CSS - The front-end framework
-        for developing projects on the web in Windows Metro Style.
-            </p>
-        </div>
     </div>
     <script src="../Scripts/jquery-1.8.2.min.js"></script>
     <script src="../js/jqueryui/jquery-ui.custom.js"></script>
@@ -528,7 +525,7 @@
                         listString += "<div class='list-item' style='margin-top:10px'>"
 
                                         + "<div class='item-header'>"
-                                            + "<a href='#' class='reportCollapse'></a><svg xmlns='http://www.w3.org/2000/svg' class='si-glyph-circle-info' style='height:20px; width:20px; margin-right: 5px;'><use xlink:href='../css/sprite.svg#si-glyph-circle-info' /></svg><a tag=" + content.ID + " class='reportTitle' href='#'>" + content.Title + "</a>"
+                                            + "<a href='#' class='reportCollapse'></a><a tag=" + content.ID + " class='reportTitle' href='www.baidu.com'>" + content.Title + "</a>"
                                         + "</div>"
 
                                         + "<div class='item-content'>"
@@ -537,7 +534,7 @@
                                             + URP.util.HTMLDecode(subDescript(content.Descript))
                                         + "</div>"
                                                  + "<div class='item-footer'>"
-                                                    + " 所有者:" + content.Owners + " | 状态:" + content.ReportStatus
+                                                    + " <svg xmlns='http://www.w3.org/2000/svg' class='si-glyph-person-2'><use xlink:href='../css/sprite.svg#si-glyph-person-2' /></svg>" + content.Owners 
 
                                             //+(content.SubscribeStatus == null ? '' : (content.SubscribeStatus != 'subscribed' ? ' | <a href="javascript:return false"  class="subscription" CatalogId="' + content.ID + '">' + content.SubscribeStatus.toUpperCase() + '</a>' : ' | ALREADY SUBSCRIBED')) 
 
@@ -624,10 +621,7 @@
         });
 
 
-        function showDialog(id) {
-            var dialog = $(id).data('dialog');
-            dialog.open();
-        }
+      
     </script>
 </body>
 </html>

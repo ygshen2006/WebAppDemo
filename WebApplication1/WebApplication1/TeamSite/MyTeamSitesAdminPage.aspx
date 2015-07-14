@@ -70,6 +70,7 @@
             opacity: 0.6;
             background-color: rgb(255, 255, 255);
         }
+        
     </style>
     <%--<link href="../Content/teamsites.css" rel="stylesheet" />--%>
     <script>

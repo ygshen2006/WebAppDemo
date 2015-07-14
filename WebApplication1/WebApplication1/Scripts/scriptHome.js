@@ -178,7 +178,7 @@
                         var textMatches = URP.util.subContent(result.Content);
 
                         detailString = "<ul class='contentlist'>" +
-                            "<li><ul class='contentdesc'>  <li><img class='contentimage' src='" + textMatches.pictureSrc + "' /></li>   <li><div class='contenttext'>" + textMatches.descriptionText + "</div></li></ul></li>" +
+                            "<li><img class='contentimage' src='" + textMatches.pictureSrc + "' /></li>" +
                             "<li><ul class='contentcomments'></ul></li>" +
 
                             +"</ul>"
@@ -1007,13 +1007,19 @@
                         var tag = outContent.FilterType
                         var tagTrans = "";
                         if (tag == "Tag") {
-                            tagTrans = "标签";
+                            tagTrans = '<svg xmlns="http://www.w3.org/2000/svg" class="si-glyph-tag">' +
+                            '<use xlink:href="../css/sprite.svg#si-glyph-tag" />' +
+                        '</svg>';
                         }
                         if (tag == "Owner") {
-                            tagTrans = "所有者";
+                            tagTrans = '<svg xmlns="http://www.w3.org/2000/svg" class="si-glyph-person-2">' +
+                            '<use xlink:href="../css/sprite.svg#si-glyph-person-2" />' +
+                        '</svg>';
                         }
                         if (tag == "Category") {
-                            tagTrans = "分类";
+                            tagTrans = '<svg xmlns="http://www.w3.org/2000/svg" class="si-glyph-calendar-empty">' +
+                           '<use xlink:href="../css/sprite.svg#si-glyph-calendar-empty" />' +
+                       '</svg>';
                         }
 
 

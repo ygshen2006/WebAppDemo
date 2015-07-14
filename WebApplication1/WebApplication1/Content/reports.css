@@ -41,7 +41,6 @@ a {
 
 
 .leftbar {
-    padding-left: 30px;
     width: 250px;
     height: auto;
     float: left;
@@ -153,10 +152,13 @@ a {
 
 .content {
     float: left;
-    width: 860px;
+    width: 700px;
     padding: 10px;
-    margin-left: 10px;
     min-height: 700px;
+
+  border-bottom: solid 1px #e4e6eb;
+  border-left: solid 1px #e9ebf0;
+  border-right: solid 1px #e9ebf0;
 }
 
     .content .sorter {
@@ -167,6 +169,9 @@ a {
     }
 
 .list-item {
+      border-top: 1px dotted #DBDBDB;
+  padding: 10px 0;
+  margin-right: 19px;
     width: 100%;
 }
 
@@ -255,6 +260,8 @@ a {
     width: 100%;
     font-style: normal;
     font-family: 'Segoe UI';
+      color: #666;
+  line-height: 18px;
 }
 
 .detail-desc {
@@ -316,7 +323,7 @@ a {
 
 .col3 {
     margin-left: 10px;
-    width: 210px;
+    width: 250px;
     float: left;
     font-family: 'Segoe UI';
 }
@@ -337,6 +344,11 @@ a {
     height:50px;
     width:50px;
     fill:blue;
+}
+
+.reportTitle {
+      color: #2d64b3;
+  font-size: 14px;
 }
 
 svg {

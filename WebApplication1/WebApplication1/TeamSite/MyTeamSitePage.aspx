@@ -176,9 +176,10 @@
         }
 
         .si-glyph-person-2, .si-glyph-tag, .si-glyph-calendar-empty {
-            height:20px;
-            width:20px;
+            height:18px;
+            width:18px;
             fill: blue;
+            padding-right:5px;
         }
     </style>
 </head>
@@ -525,7 +526,7 @@
                         listString += "<div class='list-item' style='margin-top:10px'>"
 
                                         + "<div class='item-header'>"
-                                            + "<a href='#' class='reportCollapse'></a><a tag=" + content.ID + " class='reportTitle' href='www.baidu.com'>" + content.Title + "</a>"
+                                            + "<a href='#' class='reportCollapse'></a><a tag=" + content.ID + " class='reportTitle' href='#'>" + content.Title + "</a>"
                                         + "</div>"
 
                                         + "<div class='item-content'>"

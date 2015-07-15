@@ -180,7 +180,7 @@
                         detailString = "<ul class='contentlist'>" +
                             "<li><img class='contentimage' src='" + textMatches.pictureSrc + "' /></li>" +
                             "<li><ul class='contentcomments'></ul></li>" +
-
+                            "<li></li>"
                             +"</ul>"
                         loadingArea.html(detailString);
                     });
@@ -193,6 +193,11 @@
                 }
                 URP.criteria.SortAscending = $(this).val();
                 URP.Report.getReport();
+            });
+
+            $('.reportTitle').live('click', function (e) {
+                e.preventDefault();
+                alert('test');
             });
         };
         this.getReport = function (scrolling, briefCallBack, detailCallBack) {
@@ -1009,17 +1014,17 @@
                         if (tag == "Tag") {
                             tagTrans = '<svg xmlns="http://www.w3.org/2000/svg" class="si-glyph-tag">' +
                             '<use xlink:href="../css/sprite.svg#si-glyph-tag" />' +
-                        '</svg>';
+                        '</svg><span>标签</span>';
                         }
                         if (tag == "Owner") {
                             tagTrans = '<svg xmlns="http://www.w3.org/2000/svg" class="si-glyph-person-2">' +
                             '<use xlink:href="../css/sprite.svg#si-glyph-person-2" />' +
-                        '</svg>';
+                        '</svg><span>作者</span>';
                         }
                         if (tag == "Category") {
                             tagTrans = '<svg xmlns="http://www.w3.org/2000/svg" class="si-glyph-calendar-empty">' +
                            '<use xlink:href="../css/sprite.svg#si-glyph-calendar-empty" />' +
-                       '</svg>';
+                       '</svg><span>分类</span>';
                         }
 
 

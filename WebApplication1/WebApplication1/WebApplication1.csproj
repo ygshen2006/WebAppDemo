@@ -171,6 +171,7 @@
     <Content Include="Ajax\TeamDashBoardAjax.aspx" />
     <Content Include="Ajax\TeamSiteAdminAjax.aspx" />
     <Content Include="Ajax\UserAjax.aspx" />
+    <Content Include="Content\article.css" />
     <Content Include="Content\Dashboard.css" />
     <Content Include="Content\fonts\metro.svg" />
     <Content Include="Content\home.css" />
@@ -234,6 +235,7 @@
     <Content Include="Scripts\Dashboard.js" />
     <Content Include="Scripts\HomePage.js" />
     <Content Include="Scripts\JavaScript1.js" />
+    <Content Include="Scripts\jquery.pin.js" />
     <Content Include="Scripts\metro.js" />
     <Content Include="Scripts\myteampagejs.js" />
     <Content Include="Scripts\skin\pollyfill.js" />
@@ -429,9 +431,9 @@
     <Content Include="fonts\iconFont.woff" />
     <Content Include="fonts\metroSysIcons.ttf" />
     <Content Include="fonts\metroSysIcons.woff" />
+    <Content Include="TeamSite\ArticlePreview.aspx" />
     <Content Include="TeamSite\MyTeamSitesAdminPage.aspx" />
     <Content Include="TeamSite\TeamDashboard.aspx" />
-    <Content Include="TeamSite\WebForm1.aspx" />
     <Content Include="Test.html" />
     <Content Include="Testa.aspx" />
     <Content Include="TestPage.aspx" />
@@ -642,6 +644,13 @@
     <Compile Include="Study.aspx.designer.cs">
       <DependentUpon>Study.aspx</DependentUpon>
     </Compile>
+    <Compile Include="TeamSite\ArticlePreview.aspx.cs">
+      <DependentUpon>ArticlePreview.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TeamSite\ArticlePreview.aspx.designer.cs">
+      <DependentUpon>ArticlePreview.aspx</DependentUpon>
+    </Compile>
     <Compile Include="TeamSite\TeamDashboard.aspx.cs">
       <DependentUpon>TeamDashboard.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -676,13 +685,6 @@
     </Compile>
     <Compile Include="TeamSite\MyTeamSitesAdminPage.aspx.designer.cs">
       <DependentUpon>MyTeamSitesAdminPage.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="TeamSite\WebForm1.aspx.cs">
-      <DependentUpon>WebForm1.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="TeamSite\WebForm1.aspx.designer.cs">
-      <DependentUpon>WebForm1.aspx</DependentUpon>
     </Compile>
     <Compile Include="Testa.aspx.cs">
       <DependentUpon>Testa.aspx</DependentUpon>

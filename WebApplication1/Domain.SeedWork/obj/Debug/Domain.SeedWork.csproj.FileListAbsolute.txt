@@ -12,19 +12,6 @@ D:\MyProjects\Web\WebApplication1\Domain.SeedWork\bin\Debug\Microsoft.AspNet.Ide
 D:\MyProjects\Web\WebApplication1\Domain.SeedWork\obj\Debug\Domain.SeedWork.csprojResolveAssemblyReference.cache
 D:\MyProjects\Web\WebApplication1\Domain.SeedWork\obj\Debug\Domain.SeedWork.dll
 D:\MyProjects\Web\WebApplication1\Domain.SeedWork\obj\Debug\Domain.SeedWork.pdb
-D:\MyGit\WebAppDemo\WebApplication1\Domain.SeedWork\bin\Debug\Domain.SeedWork.dll.config
-D:\MyGit\WebAppDemo\WebApplication1\Domain.SeedWork\bin\Debug\Domain.SeedWork.dll
-D:\MyGit\WebAppDemo\WebApplication1\Domain.SeedWork\bin\Debug\Domain.SeedWork.pdb
-D:\MyGit\WebAppDemo\WebApplication1\Domain.SeedWork\bin\Debug\EntityFramework.dll
-D:\MyGit\WebAppDemo\WebApplication1\Domain.SeedWork\bin\Debug\EntityFramework.SqlServer.dll
-D:\MyGit\WebAppDemo\WebApplication1\Domain.SeedWork\bin\Debug\Microsoft.AspNet.Identity.Core.dll
-D:\MyGit\WebAppDemo\WebApplication1\Domain.SeedWork\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.dll
-D:\MyGit\WebAppDemo\WebApplication1\Domain.SeedWork\bin\Debug\EntityFramework.xml
-D:\MyGit\WebAppDemo\WebApplication1\Domain.SeedWork\bin\Debug\EntityFramework.SqlServer.xml
-D:\MyGit\WebAppDemo\WebApplication1\Domain.SeedWork\bin\Debug\Microsoft.AspNet.Identity.Core.xml
-D:\MyGit\WebAppDemo\WebApplication1\Domain.SeedWork\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
-D:\MyGit\WebAppDemo\WebApplication1\Domain.SeedWork\obj\Debug\Domain.SeedWork.dll
-D:\MyGit\WebAppDemo\WebApplication1\Domain.SeedWork\obj\Debug\Domain.SeedWork.pdb
 E:\MyWebApp\WebAppDemo\WebApplication1\Domain.SeedWork\bin\Debug\Domain.SeedWork.dll.config
 E:\MyWebApp\WebAppDemo\WebApplication1\Domain.SeedWork\bin\Debug\Domain.SeedWork.dll
 E:\MyWebApp\WebAppDemo\WebApplication1\Domain.SeedWork\bin\Debug\Domain.SeedWork.pdb
@@ -38,4 +25,3 @@ E:\MyWebApp\WebAppDemo\WebApplication1\Domain.SeedWork\bin\Debug\Microsoft.AspNe
 E:\MyWebApp\WebAppDemo\WebApplication1\Domain.SeedWork\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
 E:\MyWebApp\WebAppDemo\WebApplication1\Domain.SeedWork\obj\Debug\Domain.SeedWork.dll
 E:\MyWebApp\WebAppDemo\WebApplication1\Domain.SeedWork\obj\Debug\Domain.SeedWork.pdb
-D:\MyGit\WebAppDemo\WebApplication1\Domain.SeedWork\obj\Debug\Domain.SeedWork.csprojResolveAssemblyReference.cache

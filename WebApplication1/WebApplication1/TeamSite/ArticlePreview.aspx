@@ -5,8 +5,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title></title>
-     <link href="Content/register.css" rel="stylesheet" />
-    <link href="css/metro-bootstrap.css" rel="stylesheet" />
+     <link href="../Content/register.css" rel="stylesheet" />
+    <link href="../css/metro-bootstrap.css" rel="stylesheet" />
     <link href="../Content/article.css" rel="stylesheet" />
 </head>
 <body class="metro">
@@ -321,35 +321,34 @@
             <img style="display: none;" class="wxshareimg" src="http://s.jiathis.com/qrcode.php?url=http://www.pingwest.com/teambition-mobile/?via=wechat_qr">
         </article>
     </form>
-         <script src="Scripts/jquery-1.8.2.min.js"></script>
+         <script src="../Scripts/jquery-1.8.2.min.js"></script>
 
     <script src="../Scripts/jquery.pin.js"></script>
-
-
-        <script src="Scripts/jquery.bpopup.min.js"></script>
-        <script src="Scripts/jquery.showLoading.js"></script>
-        <script src="js/jquery/jquery.widget.min.js"></script>
-        <script src="js/jquery/jquery.mousewheel.js"></script>
-        <script src="js/prettify/prettify.js"></script>
-        <script src="js/load-metro.js"></script>
-        <script src="js/docs.js"></script>
-        <script src="Scripts/navigation.js"></script>
-        <script src="Scripts/register.js"></script>
-        <script src="js/hitua.js"></script>
+        <script src="../Scripts/jquery.bpopup.min.js"></script>
+        <script src="../Scripts/jquery.showLoading.js"></script>
+        <script src="../js/jquery/jquery.widget.min.js"></script>
+        <script src="../js/jquery/jquery.mousewheel.js"></script>
+        <script src="../js/prettify/prettify.js"></script>
+        <script src="../js/load-metro.js"></script>
+        <script src="../js/docs.js"></script>
+    <script src="../Scripts/navigation.js"></script>
+        <script src="../Scripts/register.js"></script>
+        <script src="../js/hitua.js"></script>
+         <script src="../Scripts/HomePage.js"></script>
         <script type="text/javascript">
             var sessionUser = '<%= Session["UserName"]%>';
 
             (function (frontia, Reg, Home, Nav, $, undefined) {
                 // Nav.util.test_login();
                 var sessionUser = '<%= Session["UserName"]%>';
-                $('#loginqq').live('click', function (e) {
-                    Nav.util.loginWithThirdParty(frontia);
-                });
+                //$('#loginqq').live('click', function (e) {
+                //    Nav.util.loginWithThirdParty(frontia);
+                //});
 
             })(window.Reg = window.Reg || {}, window.Nav = window.Nav || {}, $, undefined);
 
             $(document).ready(function () {
-                Home.Top.Init();
+                //Home.Top.Init();
 
                 $(function (frontia) {
                     Reg.Init();
@@ -361,7 +360,6 @@
 
     <script type="text/javascript">
         $(function () {
-
             $(".single-right").pin({
                 containerSelector: ".single-pin-wrap"
             })

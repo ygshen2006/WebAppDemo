@@ -10,7 +10,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, nav, 
 }
 
 ul, li, span, button, form, a, div, i {
-    margin: 0px;
+    /*margin: 0px;*/
     padding: 0px;
 }
 
@@ -74,14 +74,19 @@ body {
     left: 15px;
     right: 15px;
 }
-
+#LoginView2_LoginName1 {
+    color:white;
+}
 .post-head h1 {
     font-size: 36px;
     margin-bottom: 30px;
     line-height: 1.4;
     padding-right: 15px;
+    color:white;
 }
-
+.container {
+  width: 1040px;
+}
 .post-meta {
     position: absolute;
     bottom: 50px;

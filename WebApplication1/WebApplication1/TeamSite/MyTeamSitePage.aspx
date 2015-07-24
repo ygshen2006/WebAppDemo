@@ -615,10 +615,6 @@
                 left: 0
             });
             URP.initiate();
-
-
-
-
         });
 
 

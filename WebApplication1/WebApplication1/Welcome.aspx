@@ -20,7 +20,7 @@
         <header class="bg-dark" style="position: relative">
             <div class="navigation-bar dark" style="width: 100%">
                 <div class="navigation-bar-content container">
-                    <a href="../Welcome.aspx" class="element"><span class="icon-grid-view" style="margin-right: 5px;"></span>站点名称 <sup>2.0</sup></a>
+                    <a href="../Welcome.aspx" class="element"><span class="icon-grid-view" style="margin-right: 5px;"></span>长宁人才</a>
                     <span class="element-divider"></span>
                     <a class="element1 pull-menu" href="#"></a>
                     <ul class="element-menu">
@@ -36,9 +36,14 @@
                         </li>
                         <li>
 
-                            <a class="dropdown-toggle" href="#">随便看看</a>
+                            <a class="dropdown-toggle" href="#">企业中心</a>
                             <ul class="dropdown-menu place-center dark" data-role="dropdown" data-show="hover">
-                                <li><a href="#">功能描述</a></li>
+                                <li>
+                                    <a href="#">活跃企业</a>
+                                </li>
+                                <li>
+                                    <a href="#">最新企业</a>
+                                </li>
                                 <li class="teamsearch"><a href="#" class="dropdown-toggle">企业查找</a>
 
                                     <ul class="d-menu" data-role="dropdown">
@@ -50,22 +55,16 @@
 
                         </li>
                         <li>
-                            <a href="#" class="dropdown-toggle">我的看看</a>
+                            <a href="#" class="dropdown-toggle">个人中心</a>
                             <ul class="dropdown-menu place-center dark" data-role="dropdown" data-show="hover">
-                                <li><a href="#">功能描述</a></li>
                                 <li><a href="../Personal/MyCenter.aspx">我的收藏</a></li>
-                                <li><a href="../Personal/ProfileEdit.aspx">个人中心</a></li>
+                                <li><a href="../Personal/MyCenter.aspx">我的关注</a></li>
+                                <li><a href="../Personal/ProfileEdit.aspx">个人信息</a></li>
                             </ul>
                         </li>
-                        <li><a href="#" class="dropdown-toggle">提前看看</a>
-                            <ul class="dropdown-menu place-center dark" data-role="dropdown" data-show="hover">
-                                <li><a href="#">功能描述</a></li>
-                                <li><a href="#">我们的推送</a></li>
-                            </ul>
-                        </li>
+                        
                         <li><a href="#" class="dropdown-toggle">管理中心</a>
                             <ul class="dropdown-menu place-center dark" data-role="dropdown" data-show="hover">
-                                <li><a href="#">功能描述</a></li>
                                 <li><a href="#">网站-新闻</a></li>
                             </ul>
                         </li>
@@ -76,7 +75,7 @@
                             <li style="color: white; float: left;" class="welcome">
                                 <asp:LoginView ID="LoginView2" runat="server">
                                     <AnonymousTemplate>
-                                        <div style="float: left; margin-top: 5px;">
+                                        <div style="float: left;">
                                             <a id="register-link" class="user-name-link" href="../MyAccounts/Register.aspx?ReturnUrl='~/Welcome.aspx'">注册</a>
                                             <a id="login-link" class="user-name-link" href="#">登陆</a>
                                         </div>
@@ -123,7 +122,7 @@
                             <ul class="slides">
                                 <li style="width: 100%; float: left; margin-right: -100%; display: list-item;" masthead-position="0">
                                     <div class="plus-promo-v2">
-                                        <img style="opacity: 1;" class="keyart" src="http://ib.huluim.com/assets/new-mastheads/spring-tv-mh-2048x768-v7-b-1.jpg?size=1600x600" alt="Hulu Plus">
+                                        <img style="opacity: 1;" class="keyart" src="Images/Homepage/Images/4.jpg?size=1600x600" alt="Hulu Plus">
                                         <div style="left: 87px; opacity: 1; display: block;" class="metadata left top">
                                             <img class="data smart-hover hidden" hover-action="hide" src="http://assets.huluim.com/new-mastheads/blank_transparency.png">
                                             <img style="" class="data smart-hover" hover-action="show" src="http://assets.huluim.com/new-mastheads/blank_transparency.png">
@@ -133,7 +132,7 @@
                                 </li>
                                 <li style="width: 100%; float: left; margin-right: -100%; display: none;" masthead-position="1">
                                     <div class="plus-promo-v2">
-                                        <img class="keyart" src="http://ib.huluim.com/assets/new-mastheads/spring-tv-mh-2048x768-v7-b-2.jpg?size=1600x600" alt="Hulu Plus">
+                                        <img class="keyart" src="Images/Homepage/Images/2.jpg?size=1600x600" alt="Hulu Plus">
                                         <div style="left: 87px; display: none;" class="metadata left top">
                                             <img class="data smart-hover hidden" hover-action="hide" src="http://assets.huluim.com/new-mastheads/blank_transparency.png">
                                             <img style="" class="data smart-hover" hover-action="show" src="http://assets.huluim.com/new-mastheads/blank_transparency.png">

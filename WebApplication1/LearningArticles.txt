@@ -16,7 +16,7 @@ http://www.cnblogs.com/liuning8023/p/ckeditor_upload_insert_image.html
 
 
 CKEditor Plugin Develop: http://blog.csdn.net/ishowing/article/details/5358824
-
+http://glyph.smarticons.co/
 
 https://github.com/rustd/AspnetIdentitySample: Role
 

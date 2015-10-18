@@ -1,6 +1,10 @@
 ﻿  .container {
             width: 1040px;
         }
+    .container .element {
+    font-size:18px !important;
+    font-family:'Segoe UI' !important;
+    }
 
         .user-name-link {
             color: white;

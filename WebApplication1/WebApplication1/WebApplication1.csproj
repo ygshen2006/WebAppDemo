@@ -56,6 +56,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\EntityFramework.6.1.1-beta1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="Framework.Logging.V2.API">
+      <HintPath>..\..\..\..\Git-New\csessionclient-temp\Lib\Framework.Logging.V2.API\Framework.Logging.V2.API.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.1.0-alpha1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
@@ -196,6 +199,8 @@
     <Content Include="Images\default-team.png" />
     <Content Include="Images\downArrow.PNG" />
     <Content Include="Images\favicon.ico" />
+    <Content Include="Images\Homepage\Images\2.jpg" />
+    <Content Include="Images\Homepage\Images\4.jpg" />
     <Content Include="Images\Homepage\repeat-y-sf0c33273bd.png" />
     <Content Include="Images\Homepage\right_share.png" />
     <Content Include="Images\index.gif" />
@@ -585,6 +590,7 @@
     <Compile Include="Models\ReportItem.cs" />
     <Compile Include="Models\ReportListModel.cs" />
     <Compile Include="Models\TeamSites.cs" />
+    <Compile Include="Models\TestClass.cs" />
     <Compile Include="Models\Tile.cs" />
     <Compile Include="Models\UsefulLinks.cs" />
     <Compile Include="MyAccounts\IdentityHelper.cs" />

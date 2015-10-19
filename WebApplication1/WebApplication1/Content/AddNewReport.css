@@ -41,12 +41,11 @@
     margin: 0 auto;
     height:450px;
     padding:10px;
+    width:500px;
+    float:left;
 }
     #report-list div {
-        cursor:pointer;
     }
- 
-
 .collapse {
     display:none;
 }
@@ -54,11 +53,9 @@
     display:normal;
 }
 .pictureShowDiv {
-    width: auto;
+    width: 500px;
     height: auto;
-    margin-top:-40px;
-    margin-left:-30px;
-    display: none;
+    float:left;
 }
 
 .head-titles {
@@ -106,7 +103,7 @@
 
 .selectPictureWin {
     max-height: 570px;
-    width: 1000px;
+    width: 800px;
     padding: 50px 50px;
     background-color: #FFF;
 }
@@ -289,10 +286,10 @@
 }
 
 .innerPic {
-    width: 180px;
-    height: 130px;
-    border: thick;
-    border-color: rgba(50, 69, 58, 0.61);
+    width: 120px;
+    height: 120px;
+    border: 1px solid #D8D8D8;
+    box-sizing: border-box;
 }
 
 .pict-actions {
@@ -306,7 +303,7 @@
 }
 
 .item {
-    margin: 30px;
+    margin: 7px;
     float: left;
 }
 

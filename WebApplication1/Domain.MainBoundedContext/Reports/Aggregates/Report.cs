@@ -13,20 +13,9 @@ namespace Domain.MainBoundedContext.Reports.Aggregates
 
         public string Title { get; set; }
 
-
         public string Description { get; set; }
 
-        public string FeaturedPicture;
-
-        public string OtherPicture1;
-        public string OtherPicture2;
-        public string OtherPicture3;
-        public string OtherPicture4;
-        public string OtherPicture5;
-        public string OtherPicture6;
-        public string OtherPicture7;
-        public string OtherPicture9;
-        public string OtherPicture8;
+        public string FeaturedPicture { get; set; }
 
         public int TeamSiteId { get; set; }
         public virtual TeamSite TeamSite { get; set; }

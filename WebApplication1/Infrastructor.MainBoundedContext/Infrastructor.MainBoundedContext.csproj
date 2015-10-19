@@ -102,9 +102,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Migrations\201507091333214_test.cs" />
-    <Compile Include="Migrations\201507091333214_test.Designer.cs">
-      <DependentUpon>201507091333214_test.cs</DependentUpon>
+    <Compile Include="Migrations\201510190523511_migration1.cs" />
+    <Compile Include="Migrations\201510190523511_migration1.Designer.cs">
+      <DependentUpon>201510190523511_migration1.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -153,8 +153,8 @@
     <Content Include="Scripts\Data_Change_001.sql" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201507091333214_test.resx">
-      <DependentUpon>201507091333214_test.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201510190523511_migration1.resx">
+      <DependentUpon>201510190523511_migration1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

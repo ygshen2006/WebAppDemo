@@ -7,19 +7,28 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WebApplication1.TeamSite {
+namespace WebApplication1.AddReport {
     
     
-    public partial class MyTeamSite {
+    public partial class PostDetail {
         
         /// <summary>
-        /// form1 control.
+        /// Head1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
+        protected global::System.Web.UI.HtmlControls.HtmlHead Head1;
+        
+        /// <summary>
+        /// Form1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlForm Form1;
         
         /// <summary>
         /// LoginView2 control.
@@ -29,14 +38,5 @@ namespace WebApplication1.TeamSite {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LoginView LoginView2;
-        
-        /// <summary>
-        /// linksRept control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater linksRept;
     }
 }

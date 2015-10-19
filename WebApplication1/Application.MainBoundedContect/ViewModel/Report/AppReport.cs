@@ -20,5 +20,7 @@ namespace Application.MainBoundedContect.ViewModel.Report
         public AppTeamSite Team { get; set; }
         public List<AppCategory> Categories { get; set; }
         public string Content { get; set; }
+
+        public string[] Images { get; set; }
     }
 }

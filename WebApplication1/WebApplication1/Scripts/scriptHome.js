@@ -554,6 +554,9 @@
         var articleTitle = "";
         var articleDescription = "";
         var articleContent = "";
+
+        var articleImages = [];
+
         this.LoadCategories = function (loadingArea, callBack) {
 
             var url = "http://" + window.location.hostname + ':' + window.location.port + '/Ajax/SiteAdminAjax';
@@ -687,8 +690,14 @@
 
         this.UploadArticle = function (loadingArea, callBack) {
             var url = "http://" + window.location.hostname + ':' + window.location.port + '/Ajax/AddNewReport';
+            $.each($('.pict-show-in-body .innerPic'), function (index, current2) {
+                if ($(current2).attr('src') != '') {
+                    articleImages.push($(current2).attr('src'));
+                }
+            });
             var articleData = {
                 Title: articleTitle,
+                Images: articleImages,
                 Description: articleDescription,
                 Categories: selectedcategories,
                 Team: selectedteams, Owners: selectedOwners, Tags: selectedTags, Status: currentStatus, Content: articleContent

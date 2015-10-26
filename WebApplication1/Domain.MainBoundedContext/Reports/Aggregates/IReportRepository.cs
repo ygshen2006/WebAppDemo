@@ -10,7 +10,7 @@ namespace Domain.MainBoundedContext.Reports.Aggregates
 {
     public interface IReportRepository
     {
-         void AddReport(Report r);
+         int AddReport(Report r);
          void UpdateReport(Report r);
          void RemoveReport(Report r);
          IQueryable<Report> GetReportsByExpression(Expression<Func<Report, Boolean>> filterExpression);

@@ -53,6 +53,10 @@ namespace Application.MainBoundedContect.Services.Report
             _tileQueryRepository = _tileQ;
         }
 
+        public EditReportService(IReportRepository repository_report) {
+            _reportRepository = repository_report;
+        }
+
 
         public AppReport GetReportById(int reportId) {
            var report = _reportRepository.GetReportById(reportId);
@@ -112,6 +116,30 @@ namespace Application.MainBoundedContect.Services.Report
                 .Select(_ => _.ToAppReport());
         }
 
+
+        public IEnumerable<AppReport> GetReportsOfTeamSiteByCategory(string userAlias, string teamSiteGuid, bool isAdmin, List<int> categoryIds,
+      SortField sortField, SortOrder sortOrder)
+        {
+            TileServices tService = new TileServices(_tileRepository, _teamRepository, _reportRepository, null, null, null, null);
+            int teamId = _teamRepository.GetFiltered(_ => _.TeamGuid == new Guid(teamSiteGuid)).FirstOrDefault().Id;
+
+            ParameterProvider pp = new ParameterProvider();
+            pp.AddParameter(ContextVariable.CurrentTeamSiteGuid.ToString(), new Guid(teamSiteGuid));
+
+
+            pp.AddParameter(ContextVariable.TeamSiteGuidUnderControl.ToString(), new List<Guid> { new Guid(teamSiteGuid) });
+
+
+            int allreportsTileId = _tileRepository.GetAllReportsTileId(teamId);
+            return _reportRepository.
+                GetReportsByExpression(
+                tService.GetTeamSite_AllReportsTile()
+                .GetCombinedLogic(isAdmin, allreportsTileId).And(new SubCategoryId().In(categoryIds))
+                .GetExpression(pp)).ToArray()
+                .Select(_ => _.ToAppReport());
+        }
+
+
         public List<AppReport> GetReportsByTeamWithReportsRequire(
          String teamSiteGuid,
          Int32 tileId,
@@ -168,6 +196,9 @@ namespace Application.MainBoundedContect.Services.Report
 
             #endregion
         }
+
+
+
 
         private IQueryable<Domain.MainBoundedContext.Reports.Aggregates.Report> GetReportsByLogic(Logic logic, SortField sortField, SortOrder sortOrder, ParameterProvider parameterProvider, Int32 pageNum, Int32 pageSize)
         {
@@ -381,7 +412,7 @@ namespace Application.MainBoundedContect.Services.Report
             }
         }
 
-        public void AddReport(AppReport report)
+        public int AddReport(AppReport report)
         {
             Domain.MainBoundedContext.Reports.Aggregates.Report r = report.ToReport();
 
@@ -410,7 +441,7 @@ namespace Application.MainBoundedContect.Services.Report
             }
 
 
-            _reportRepository.AddReport(r);
+           return _reportRepository.AddReport(r);
         }
 
         public Logic GenerateLogicByFilter(ReportFilter filter)

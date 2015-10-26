@@ -33,8 +33,6 @@
     <script src="../Scripts/jquery.bpopup.min.js"></script>
     <script src="../Scripts/masonry.pkgd.min.js"></script>
     <script src="../Scripts/jquery.showLoading.js"></script>
-    <%--    <script src="../ckeditor/ckeditor.js"></script>
-    <script src="../ckfinder/ckfinder.js"></script>--%>
     <script src="../js/jquery/jquery.widget.min.js"></script>
     <script src="../js/jquery/jquery.mousewheel.js"></script>
     <script src="../js/prettify/prettify.js"></script>

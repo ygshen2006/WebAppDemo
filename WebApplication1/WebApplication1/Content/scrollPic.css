@@ -112,3 +112,21 @@
         .pic4 {
             display: none;
         }
+
+
+
+        .login_middle {
+    height: 485px;
+    margin-bottom: 20px;
+    overflow: hidden;
+    padding: 0;
+    display: block;
+}
+
+        .box_banner {
+    position: relative;
+    width: 100%;
+    height: 485px;
+    min-width: 980px;
+    overflow: hidden;
+}

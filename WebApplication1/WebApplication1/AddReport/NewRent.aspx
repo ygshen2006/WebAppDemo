@@ -7,50 +7,93 @@
     <title></title>
     <link href="../Content/newTab.css" rel="stylesheet" />
 </head>
-<body>
-    
-    <form id="form1" runat="server">
-        <div xmlns="http://www.w3.org/1999/xhtml" id="newtab-horizontal-margin">
-            <div class="newtab-side-margin" />
-
-            <div id="newtab-grid" style="height: 802px; max-height: 272px; max-width: 1551px;">
-              
-                </div>
-                <div class="newtab-cell">
-                    <div class="newtab-site" draggable="true" type="history">
-                        <span class="newtab-sponsored">赞助</span><a class="newtab-link" title="百度一下，你就知道
-http://www.baidu.com/"
-                            href="http://www.baidu.com/">  <span class="newtab-thumbnail" style="background-image: url(&quot;../Images/index.png&quot;);" /><span class="newtab-thumbnail enhanced-content" /><span class="newtab-title">baidu.com</span></a><input type="button" title="将此网站固定在它当前的位置" class="newtab-control newtab-control-pin" /><input type="button" title="移除这个网站" class="newtab-control newtab-control-block" /><span class="newtab-suggested" />
-                    </div>
-                </div>
-                <div class="newtab-cell">
-                    <div class="newtab-site" draggable="true" type="history">
-                        <span class="newtab-sponsored">赞助</span><a class="newtab-link" title="携程 Ctrip
-http://server.sh.ctriptravel.com/portal/"
-                            href="http://server.sh.ctriptravel.com/portal/">  <span class="newtab-thumbnail" style="background-image: url(&quot;../Images/index.png&quot;);" /><span class="newtab-thumbnail enhanced-content" /><span class="newtab-title">server.sh.ctriptravel.com</span></a><input type="button" title="将此网站固定在它当前的位置" class="newtab-control newtab-control-pin" /><input type="button" title="移除这个网站" class="newtab-control newtab-control-block" /><span class="newtab-suggested" />
-                    </div>
-                </div>
-                <div class="newtab-cell">
-                    <div class="newtab-site" draggable="true" type="history" pinned="true">
-                        <span class="newtab-sponsored">赞助</span><a class="newtab-link" title="错误消息
-http://server/"
-                            href="http://server/">  <span class="newtab-thumbnail" style="background-image: url(&quot;../Images/index.png&quot;);" /><span class="newtab-thumbnail enhanced-content" /><span class="newtab-title">server</span></a><input type="button" title="不再固定这个网站" class="newtab-control newtab-control-pin" /><input type="button" title="移除这个网站" class="newtab-control newtab-control-block" /><span class="newtab-suggested" />
-                    </div>
-                </div>
-              
-                
-                <div class="newtab-cell">
-                    <div class="newtab-site" draggable="true" type="history">
-                        <span class="newtab-sponsored">赞助</span><a class="newtab-link" title="Eureka
-http://10.2.6.240:8080/eureka/"
-                            href="http://10.2.6.240:8080/eureka/">  <span class="newtab-thumbnail" style="background-image: url(&quot;../Images/index.png&quot;);" /><span class="newtab-thumbnail enhanced-content" /><span class="newtab-title">10.2.6.240</span></a><input type="button" title="将此网站固定在它当前的位置" class="newtab-control newtab-control-pin" /><input type="button" title="移除这个网站" class="newtab-control newtab-control-block" /><span class="newtab-suggested" />
-                    </div>
-                </div>
-              
+<body dir="&locale.dir;">
+27   <div id="newtab-customize-overlay"></div>
+28 
+    <form id="test" runat="server">
+   <div class="newtab-customize-panel-container">
+      <div id="newtab-customize-panel" orient="vertical">
+          <div id="newtab-customize-panel-anchor"></div>
+          <div id="newtab-customize-panel-inner-wrapper">
+            <div id="newtab-customize-title" class="newtab-customize-panel-item">
+              <label>&newtab.customize.cog.title2;</label>
             </div>
-
-            <div class="newtab-side-margin" />
-        </div>
-    </form>
-</body>
+  
+            <div class="newtab-customize-complex-option">
+              <div id="newtab-customize-classic" class="newtab-customize-panel-superitem newtab-customize-panel-item selectable">
+                  <label>&newtab.customize.classic;</label>
+              </div>
+              <div id="newtab-customize-enhanced" class="newtab-customize-panel-subitem">
+                  <label class="checkbox"></label>
+                  <label>&newtab.customize.cog.enhanced;</label>
+              </div>
+            </div>
+            <div id="newtab-customize-blank" class="newtab-customize-panel-item selectable">
+              <label>&newtab.customize.blank2;</label>
+            </div>
+            <div id="newtab-customize-learn" class="newtab-customize-panel-item">
+              <label>&newtab.customize.cog.learn;</label>
+            </div>
+          </div>
+      </div>
+    </div>
+  
+    <div id="newtab-intro-mask">
+      <div id="newtab-intro-modal">
+        <div id="newtab-intro-header"/>
+        <div id="newtab-intro-body">
+          <div id="newtab-intro-content">
+            <div id="newtab-intro-text">
+              <p/><p/>
+            </div>
+          </div>
+          <div id="newtab-intro-buttons">
+            <input id="newtab-intro-button" type="button" default="true" onclick="gIntro._exitIntro()"/>
+67         </div>
+68       </div>
+69       <div id="newtab-intro-footer">
+70         <ul>
+71           <li id="newtab-intro-link"/>
+72         </ul>
+73       </div>
+74     </div>
+75   </div>
+76 
+77     <div id="newtab-vertical-margin">
+78       <div id="newtab-margin-top"/>
+79         <div id="newtab-margin-undo-container">
+80           <div id="newtab-undo-container" undo-disabled="true">
+81             <label id="newtab-undo-label">&newtab.undo.removedLabel;</label>
+82             <button id="newtab-undo-button" tabindex="-1"
+83                     class="newtab-undo-button">&newtab.undo.undoButton;</button>
+84             <button id="newtab-undo-restore-button" tabindex="-1"
+85                     class="newtab-undo-button">&newtab.undo.restoreButton;</button>
+86             <button id="newtab-undo-close-button" tabindex="-1" title="&newtab.undo.closeTooltip;"/>
+87           </div>
+88         </div>
+89 
+90       <div id="newtab-search-container">
+91         <div id="newtab-search-form">
+92           <div id="newtab-search-icon"/>
+93           <input type="text" name="q" value="" id="newtab-search-text"
+94                  aria-label="&contentSearchInput.label;" maxlength="256" dir="auto"/>
+95           <input id="newtab-search-submit" type="button" value=""
+96                  aria-label="&contentSearchSubmit.label;"/>
+97         </div>
+98       </div>
+99 
+100       <div id="newtab-horizontal-margin">
+101         <div class="newtab-side-margin"/>
+102 
+103         <div id="newtab-grid">
+104         </div>
+105 
+106         <div class="newtab-side-margin"/>
+107       </div>
+108 
+109       <div id="newtab-margin-bottom"/>
+110   </div>
+111       <input id="newtab-customize-button" type="button" dir="&locale.dir;" title="&newtab.customize.title;"/>
+        </form>
+112 </body>
 </html>

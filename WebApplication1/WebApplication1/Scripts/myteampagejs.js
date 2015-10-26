@@ -32,7 +32,9 @@
                 $(".si-glyph-bubble-message-hi").css({ "-webkit-animation": "twinkling 1s infinite ease-in-out" });
             });
 
-
+            $('.addReport').live('click', function (e) {
+                window.open("../AddReport/AddNewReport.aspx?teamid=" + $('#teamguidhidden').val(),"_blank");
+            });
         }
     }
     // 

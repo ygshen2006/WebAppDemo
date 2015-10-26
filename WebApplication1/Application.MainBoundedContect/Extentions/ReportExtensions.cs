@@ -29,7 +29,7 @@ namespace Application.MainBoundedContect.Extentions
                 Status = report.ReportStatus.ToAppStatus(),
                 Tags = report.Tags.Select(_ => _.ToAppTeamTag()).ToList<AppTeamTag>(),
                 Owners = report.Owners.Select(_ => _.ToAppUser()).ToList<UserLoginApp>(),
-                Images=report.FeaturedPicture.Split(';')
+                Images=report.FeaturedPicture==null?null:report.FeaturedPicture.Split(';')
             };
         }
         public static Report ToReport(this AppReport report)

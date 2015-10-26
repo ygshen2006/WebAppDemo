@@ -23,10 +23,11 @@ namespace Infrastructor.MainBoundedContext.Repositories.Reports
         }
 
 
-        public void AddReport(Domain.MainBoundedContext.Reports.Aggregates.Report r)
+        public int AddReport(Domain.MainBoundedContext.Reports.Aggregates.Report r)
         {
             this.Add(r);
             this.UnitOfWork.Commit();
+            return this.GetFiltered(_ => _.Title == r.Title && _.Description == r.Description && _.TeamSiteId == r.TeamSiteId).FirstOrDefault().Id;
         }
 
         public void UpdateReport(Domain.MainBoundedContext.Reports.Aggregates.Report r)

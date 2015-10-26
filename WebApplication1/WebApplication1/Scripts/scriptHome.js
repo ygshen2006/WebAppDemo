@@ -541,6 +541,9 @@
                 if (a && b && c && d && e && f && g && h) {
                     // do submit
                     URP.AddReport.UploadArticle($('.wrapper'), function (result) {
+                        if (result != null) {
+                            window.open("../AddReport/PostDetail.aspx?teamsiteid=" + $('#currentSelectedTeam').val()+ "&postid=" + result.id, "_self");
+                        }
                     });
                 }
             });

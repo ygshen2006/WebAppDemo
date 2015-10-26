@@ -271,7 +271,7 @@
                 <h2 class="reportCategory" style="color: #000">All Report</h2>
                 <% if (Session["UserName"] != null)
                    { %>
-                <a class="addReport" href="../AddReport/AddNewReport.aspx">提交新文章</a>
+                <a class="addReport" href="#">提交新文章</a>
                 <%}%>
                 <aside class="filter">
                 </aside>

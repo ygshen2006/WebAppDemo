@@ -23,6 +23,7 @@ using Domain.MainBoundedContext.Tiles.Aggregates;
 using Application.MainBoundedContect.Services.Tile;
 using Application.MainBoundedContect.Services.TeamAdmin;
 using Domain.MainBoundedContext.Teams.Aggregates.TeamSites;
+using WebApplication1.Models;
 
 namespace WebApplication1.Ajax
 {
@@ -38,12 +39,18 @@ namespace WebApplication1.Ajax
             {
                 Response.Write(GetArticles());
             }
-         
+
+
+            if (Request["requestType"] == "getarticlebyid")
+            {
+                Response.Write(GetArticlesByID());
+            }
         }
 
 
         private string UploadNewArticle()
         {
+            int newAddedReportId=-1;
             JavaScriptSerializer jss = new JavaScriptSerializer();
             var paramDes = jss.Deserialize<AppReport>(Request.Params["articleData"]);
 
@@ -56,9 +63,40 @@ namespace WebApplication1.Ajax
                 TeamTagRepository tagRepository = new TeamTagRepository(context);
                 TileRepository tileRepository = new TileRepository(context);
                 EditReportService service = new EditReportService(repository, uRepository, tRepository, cRepository, tagRepository, tileRepository);
-                service.AddReport(paramDes);
+               newAddedReportId = service.AddReport(paramDes);
             }
-            return "";
+            return "{\"id\":\""+newAddedReportId+"\"}";
+        }
+
+        private string GetArticlesByID()
+        {
+            JavaScriptSerializer jss = new JavaScriptSerializer();
+            var paramDes = jss.Deserialize<QueryParameterReport>(Request.Params["queryParam"]);
+            int id = paramDes.articleid;
+            string teamGuid = paramDes.teamguid;
+
+            string userAlias =Session["UserName"].ToString();
+            using (MainDBUnitWorkContext context = new MainDBUnitWorkContext())
+            {
+                ReportRepository repository = new ReportRepository(context);
+                UserRepository uRepository = new UserRepository(context);
+                TeamRepository tRepository = new TeamRepository(context);
+                CategoryRepository cRepository = new CategoryRepository(context);
+                TeamTagRepository tagRepository = new TeamTagRepository(context);
+                TileRepository tileRepository = new TileRepository(context);
+                EditReportService service = new EditReportService(repository, uRepository, tRepository, cRepository, tagRepository, tileRepository);
+
+                var report = service.GetReportById(id);
+
+                var category = report.Categories.Select(_=>_.Id.GetValueOrDefault()).ToList<int>();
+                
+                var otherReports = service.
+                    GetReportsOfTeamSiteByCategory(userAlias, teamGuid, true, category, global::Application.MainBoundedContect.Enums.SortField.ReportTitle, global::Application.MainBoundedContect.Enums.SortOrder.ASC);
+
+
+                return jss.Serialize(service.GetReportById(id));
+            }
+
         }
        
         private string GetArticles()

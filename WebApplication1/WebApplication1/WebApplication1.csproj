@@ -193,6 +193,9 @@
     <Content Include="css\controls.svg" />
     <Content Include="css\sprite.svg" />
     <Content Include="Images\approve.png" />
+    <Content Include="Images\banner-app.png" />
+    <Content Include="Images\banner1.png" />
+    <Content Include="Images\banner2.jpg" />
     <Content Include="Images\bg_img.png" />
     <Content Include="Images\bg_repeat.png" />
     <Content Include="Images\blank.jpg" />
@@ -237,16 +240,25 @@
     <Content Include="Images\submit.png" />
     <Content Include="Images\team-default.jpg" />
     <Content Include="js\Baidu-Frontia-JS-1.0.0.js" />
-    <Content Include="js\slider.js" />
     <Content Include="js\uploader\jquery.browse.js" />
     <Content Include="js\uploader\jquery.upload.js" />
     <Content Include="js\wangEditor-1.3.js" />
     <Content Include="Scripts\Dashboard.js" />
     <Content Include="Scripts\HomePage.js" />
-    <Content Include="Scripts\JavaScript1.js" />
+    <Content Include="Scripts\ArticleReview.js" />
     <Content Include="Scripts\jquery.pin.js" />
     <Content Include="Scripts\metro.js" />
     <Content Include="Scripts\myteampagejs.js" />
+    <Content Include="Scripts\tile\custom.js" />
+    <Content Include="Scripts\tile\Load-Tiles.js" />
+    <Content Include="Scripts\tile\tile-cell.js" />
+    <Content Include="Scripts\tile\tile-drag.js" />
+    <Content Include="Scripts\tile\tile-dragdatahelper.js" />
+    <Content Include="Scripts\tile\tile-drop.js" />
+    <Content Include="Scripts\tile\tile-grid.js" />
+    <Content Include="Scripts\tile\tile-preview.js" />
+    <Content Include="Scripts\tile\tile-site.js" />
+    <Content Include="Scripts\tile\tile-transform.js" />
     <Content Include="Scripts\uploadimage.js" />
     <Content Include="Scripts\skin\pollyfill.js" />
     <Content Include="Scripts\skin\segment-icon.png" />
@@ -445,6 +457,7 @@
     <Content Include="TeamSite\TeamDashboard.aspx" />
     <Content Include="TestPage.aspx" />
     <Content Include="Utility\wangEditor_uploadImg_assist.html" />
+    <Content Include="TileTest.aspx" />
     <Content Include="Welcome.aspx" />
     <Content Include="fonts\auticons.eot" />
     <Content Include="fonts\auticons.ttf" />
@@ -596,6 +609,7 @@
       <DependentUpon>SiteManagement.aspx</DependentUpon>
     </Compile>
     <Compile Include="Models\QueryParameterPicture.cs" />
+    <Compile Include="Models\QueryParameterReport.cs" />
     <Compile Include="Models\QueryParameterViewModel.cs" />
     <Compile Include="Models\FilterItem.cs" />
     <Compile Include="Models\FilterModel.cs" />
@@ -712,6 +726,13 @@
     <Compile Include="ViewSwitcher.ascx.designer.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
     </Compile>
+    <Compile Include="TileTest.aspx.cs">
+      <DependentUpon>TileTest.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TileTest.aspx.designer.cs">
+      <DependentUpon>TileTest.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Welcome.aspx.cs">
       <DependentUpon>Welcome.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -722,6 +743,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\tile\" />
     <Folder Include="CustomerPicture\Images\" />
     <Folder Include="CustomerPicture\Temp\" />
     <Folder Include="uploadedFiles\" />

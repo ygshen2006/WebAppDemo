@@ -125,6 +125,7 @@ namespace Application.MainBoundedContect.Services.Tile
             }
             return aTiles;
         }
+
         public AppTile GetTileById(int id)
         {
             var appTile = _tileRepository.GetTileById(id).ToAppTile();

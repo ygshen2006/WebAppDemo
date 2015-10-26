@@ -1,179 +1,44 @@
-﻿    .post-article {
-    clear: both;
-    overflow: hidden;
-}
-article, aside, details, figcaption, figure, footer, header, hgroup, main, nav, section, summary {
-    display: block;
-}
-* {
-    box-sizing: border-box;
-}
-
-ul, li, span, button, form, a, div, i {
-    /*margin: 0px;*/
-    padding: 0px;
-}
-
-h1, h2, h3, h4, h5, h6 {
-    font-weight: normal;
-    margin: 0px;
-    padding: 0px;
-}
-
-img {
-    vertical-align: middle;
-    border: 0px none;
-}
-body {
-    font-family: "Open Sans",Arial,"Hiragino Sans GB","Microsoft YaHei","微软雅黑","STHeiti","WenQuanYi Micro Hei",SimSun,sans-serif;
-    color: rgba(0, 0, 0, 0.8);
-    font-size: 100%;
-    text-rendering: optimizelegibility;
-    line-height: 1.5;
-    word-wrap: break-word;
-}
-
-.post-img {
-    height: 500px;
-    overflow: hidden;
-    background-size: cover;
-    background-position: center center;
-    margin-bottom: 50px;
-    position: relative;
-    background-image: url("http://cdn.pingwest.com/wp-content/uploads/2014/11/shutterstock_203490109.jpg");
-}
-
-
-.post-img .overlay {
-    opacity: 0.7;
-}
-.overlay {
-    position: absolute;
-    top: 0px;
-    bottom: 0px;
-    width: 100%;
-    transition: all 0.2s ease 0s;
-    background-image: linear-gradient(180deg, rgba(0, 0, 0, 0.01) 5%, rgba(0, 0, 0, 0.95) 100%);
-}
-
-.post-img .single-inner {
-    position: relative;
-    height: 100%;
-}
-.single-inner {
-    max-width: 1200px;
-    margin: 0px auto;
-    padding: 0px 20px;
-    position: relative;
-}
-
-.post-head {
-    position: absolute;
-    bottom: 40%;
-    color: #FFF;
-    left: 15px;
-    right: 15px;
-}
-#LoginView2_LoginName1 {
-    color:white;
-}
-.post-head h1 {
-    font-size: 36px;
-    margin-bottom: 30px;
-    line-height: 1.4;
-    padding-right: 15px;
-    color:white;
-}
-.container {
-  width: 1040px;
-}
-.post-meta {
-    position: absolute;
-    bottom: 50px;
-    left: 15px;
-    right: 15px;
-    border: medium none;
-}
-
-.post-meta .autor-meta {
-    color: rgba(255, 255, 255, 0.5);
-}
-.autor-meta {
-    height: 32px;
-    font-size: 14px;
-    color: rgba(0, 0, 0, 0.5);
-    vertical-align: top;
-    margin-top: 15px;
-}
-
-.post-meta .autor-meta a {
-    color: rgba(255, 255, 255, 0.5);
-}
-.autor-meta .autor {
-    float: left;
-    color: rgba(0, 0, 0, 0.5);
-    height: 30px;
-    display: inline-block;
-    line-height: 30px;
-}
-
-.post-article .single-inner img {
-    max-width: 100%;
-}
-.autor-meta .autor img {
-    float: left;
-    width: 30px;
-    height: 30px !important;
-    border-radius: 30px;
-    margin-right: 10px;
-}
-
-.post-meta .autor-meta .post-category, .post-meta .autor-meta .post-time {
-    float: left;
-    height: 30px;
-    line-height: 30px;
-}
-
-.post-category {
-    margin-left: 10px;
-    white-space: nowrap;
-}
-
-.share-meta {
-    position: absolute;
-    bottom: -1px;
-    right: 0px;
-    color: rgba(255, 255, 255, 0.5);
-}
-
-.share-meta ul li {
-    float: left;
-    font-size: 18px;
-}
-
-.single-inner {
-    max-width: 1200px;
-    margin: 0px auto;
-    padding: 0px 20px;
+﻿.article {
+    padding: 50px 15px 0px;
     position: relative;
 }
 
 .single-left {
-    margin-right: 400px;
+    margin-right: 375px;
+    height:100px;
+}
+
+.single-box {
+    max-width: 750px;
+    margin: 0px auto;
+}
+
+.post-con {
+    line-height: 1.7;
+    font-size: 16px !important;
+    position: relative;
+    color: rgba(0, 0, 0, 0.8) !important;
+    font-style: normal !important;
+}
+
+.post-bottom {
+    position: relative;
+    margin: 20px 0px;
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+    padding-top: 20px;
+    min-height: 60px;
 }
 
 .single-right {
     position: absolute;
-    width: 350px;
-    right: 20px;
+    width: 375px;
+    right: 0px;
     top: 0px;
-}
+    bottom: 0px;
+    padding: 30px 25px 25px;
+    background-color: #F7F7F7;
+    font-size: 14px;
 
-[class^="icon-"], [class*=" icon-"] {
-    font-family: "icomoon";
-    font-style: normal;
-    font-weight: normal;
-    font-variant: normal;
-    text-transform: none;
-    line-height: 1;
+    height:100px;
+
 }

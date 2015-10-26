@@ -148,15 +148,16 @@
     <script type="text/javascript">
         var sessionUser = '<%= Session["UserName"]%>';
 
-        (function (PS, Reg, URP, Nav, $, undefined) {
+        (function (PS, Reg, URP, Nav, Article, $, undefined) {
+          
+        })(window.PS = window.PS || {}, window.Reg = window.Reg || {}, window.URP = window.URP || {}, window.Nav = window.Nav || {}, window.Article = window.Article || {}, $, undefined);
+
+        $(document).ready(function () {
+            Article.LoadArticle.getarticle();
             PS.Inite();
             Nav.Initiate(sessionUser);
-
             $('.single-right').pin();
-
-        })(window.PS = window.PS || {}, window.Reg = window.Reg || {}, window.URP = window.URP || {}, window.Nav = window.Nav || {}, $, undefined);
-
-
+        });
 
     </script>
 </body>

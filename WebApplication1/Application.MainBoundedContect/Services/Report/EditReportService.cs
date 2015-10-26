@@ -60,7 +60,8 @@ namespace Application.MainBoundedContect.Services.Report
 
         public AppReport GetReportById(int reportId) {
            var report = _reportRepository.GetReportById(reportId);
-           return new AppReport() { Title = report.Title, Content = report.ReportContent };
+
+           return report.ToAppReport();
         }
         public Int32 GetTempTilesWithReportCount(String teamSiteGuid, string userAlias, AppTile appTile)
         {

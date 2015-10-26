@@ -1,6 +1,6 @@
 ﻿(function (Article, $, undefined) {
 
-    Article.Init =new function () { 
+    Article.LoadArticle =new function () { 
         var articleFeatureImages = [];
         var articlecontent = {};
         var otherArticles = [];
@@ -23,7 +23,7 @@
 
         this.getarticle = function () {
             var articleid=$()
-            var loadingArea = $(this);
+            var loadingArea = $('.wrapper');
             var requestType = "getarticlebyid";
             var postdata = { 'articleid': this.getCurrentTeamGuid(2), 'teamguid': this.getCurrentTeamGuid(1) };
             var callback = this.getArticleCallBack();
@@ -72,4 +72,4 @@
     }
 
 
-  })(window.Article = window.Article || {}, $, undefined);
+})(window.Article = window.Article || {}, $, undefined);

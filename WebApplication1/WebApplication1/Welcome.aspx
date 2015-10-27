@@ -12,7 +12,7 @@
            #logo {
         position: absolute;
     top: 0;
-    left: 100px;
+    left: 40px;
     width: 146px;
     height: 40px;
     text-indent: -9999px;

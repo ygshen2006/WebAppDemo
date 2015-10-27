@@ -5,32 +5,23 @@
         var articlecontent = {};
         var otherArticles = [];
         var articleComments = [];
-
-        this.getCurrentTeamGuid = function (index1) {
-            var currentUrl = window.document.URL;
-
-            var teamGuid = "";
-            if (currentUrl != null) {
-                teamGuid = currentUrl.split('?')[index1].split('=')[1];
-            }
-            else {
-                console.error("current url is blank");
-            }
-
-            return teamGuid;
-
-        }
+        $('.other').live('click', function (e) {
+            $('#teamguidhidden').val(Article.util.getCurrentTeamGuid(1));
+                window.open("../AddReport/PostDetail.aspx?teamsiteid=" + $('#teamguidhidden').val() + "?postid=" + $(this).attr('tag'), "_self");
+        });
+      
 
         this.getarticle = function () {
-            var articleid=$()
             var loadingArea = $('.wrapper');
             var requestType = "getarticlebyid";
-            var postdata = { 'articleid': this.getCurrentTeamGuid(2), 'teamguid': this.getCurrentTeamGuid(1) };
+            var postdata = { 'articleid': Article.util.getCurrentTeamGuid(2), 'teamguid': Article.util.getCurrentTeamGuid(1) };
             Article.util.sendrequest(loadingArea, function (result) {
                 if (result != null) {
                     getThisArticleCallBack(result.ThisReport);
 
                     getOtherArticlesCallBack(result.OtherReports);
+
+                    showFeatureImages(result.ReportFeaturePics);
                 }
             }, requestType, postdata);
         };
@@ -45,12 +36,23 @@
 
         getOtherArticlesCallBack: function getOtherArticlesCallBack(others) {
             if (others != null) {
+                var str = "<ul class='otherarticles'>";
+                $.each(others, function (index, current) {
+                    str += "<li><a class='other' tag=" + current.ID + " href='#'>" + current.ReportName + "</a></li>";
+                });
+                str += "</ul>";
+
+                $('.single-right').append(str);
             }
         }
 
-        this.showFeatureImages = function (images) { };
-        this.showArticleContent = function (content) { };
-        this.showOtherArticles = function (others) { };
+        showFeatureImages: function showFeatureImages(images) {
+            if (images != null) {
+                $.each(images, function (index, current) {
+
+                });
+            }
+        };
         this.showComments = function (comments) { };
     }
 
@@ -83,7 +85,20 @@
                 },
             });
         };
+        this.getCurrentTeamGuid = function (index1) {
+            var currentUrl = window.document.URL;
 
+            var teamGuid = "";
+            if (currentUrl != null) {
+                teamGuid = currentUrl.split('?')[index1].split('=')[1];
+            }
+            else {
+                console.error("current url is blank");
+            }
+
+            return teamGuid;
+
+        }
         this.HTMLEncode = function (html) {
             var temp = document.createElement("div");
             (temp.textContent != null) ? (temp.textContent = html) : (temp.innerText = html);

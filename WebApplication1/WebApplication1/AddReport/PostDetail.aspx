@@ -8,18 +8,51 @@
         .user-name-link {
             color: white;
         }
+
+        #logo {
+            position: absolute;
+            top: 0;
+            left: 40px;
+            width: 146px;
+            height: 40px;
+            text-indent: -9999px;
+            overflow: hidden;
+            background: url(../Images/c_logo.png) no-repeat 50% 50% #02A3D8;
+        }
+
+        .nav-test li {
+            padding: 8px 25px;
+            border-left: 1px solid #3E444F;
+            border-right: 1px solid #292E37;
+        }
+
+            .nav-test li:first-child {
+                border-left: 0 none;
+            }
+
+            .nav-test li a {
+                display: block !important;
+                font-size: 16px !important;
+                font-family: "Microsoft Yahei" !important;
+                color: #FFF;
+            }
     </style>
 
     <link href="../css/metro-bootstrap.css" rel="stylesheet" />
     <link href="../Content/scrollPic.css" rel="stylesheet" />
     <link href="../Content/navgation.css" rel="stylesheet" />
-    <link href="../Content/article.css" rel="stylesheet" />
-    <title>提交新的文章</title>
+    <link href="../Content/article.css" rel="stylesheet" />   
+    <link href="../css/metro-bootstrap.css" rel="stylesheet" />
+
+    <title>内容 - 详情</title>
     <script src="../Scripts/jquery-1.8.2.min.js"></script>
     <script src="../Scripts/jquery.bpopup.min.js"></script>
     <script src="../Scripts/jquery.showLoading.js"></script>
     <script src="../Scripts/jquery.pin.js"></script>
     <script src="../Scripts/picture-scrolling.js"></script>
+
+    <script src="../Scripts/navigation.js"></script>
+    <script src="../Scripts/register.js"></script>
 
     <script src="../Scripts/ArticleReview.js"></script>
 </head>
@@ -27,12 +60,12 @@
     <form id="Form1" runat="server">
         <div class="wrapper">
             <header class="bg-dark" style="position: relative">
-                <div class="navigation-bar dark" style="width: 100%">
+                <div class="navigation-bar dark" style="width: 100%; height: 74px; margin: 0 auto">
                     <div class="navigation-bar-content container">
-                        <a href="../Welcome.aspx" class="element"><span class="icon-grid-view" style="margin-right: 5px;"></span>长宁人才</a>
+                        <a href="../Welcome.aspx" class="element" id="logo"></a>
                         <span class="element-divider"></span>
                         <a class="element1 pull-menu" href="#"></a>
-                        <ul class="element-menu">
+                        <ul class="element-menu nav-test">
 
                             <li>
 
@@ -78,7 +111,7 @@
                             </li>
 
                         </ul>
-                        <div style="float: right; width: 20%" id="welcomeT">
+                        <div style="float: right;" id="welcomeT">
                             <ul id="welcomezone" style="list-style: none">
                                 <li style="color: white; float: left;" class="welcome">
                                     <asp:LoginView ID="LoginView2" runat="server">
@@ -103,7 +136,7 @@
                     </div>
                 </div>
             </header>
-
+            <input type="hidden" id="teamguidhidden" />
             <div class="login_middle">
                 <div class="box_banner">
                     <ul class="raiders_in" id="linkPics" style="list-style: none outside none; margin-left: -100px;">
@@ -130,33 +163,35 @@
 
             <div class="article">
                 <div class="single-left">
-                    <div class="single-box">
-                        <div class="box-con">
-                            <div class="post-con sc-container"></div>
-                            <div class="post-bottom"></div>
-                            <div class="post-comments-wrap"></div>
-                        </div>
+                    <div class="box-con">
+                        <div class="post-con sc-container"></div>
+                        <div class="post-bottom"></div>
+                        <div class="post-comments-wrap"></div>
                     </div>
                 </div>
                 <div class="single-right"></div>
             </div>
+
         </div>
+
+
     </form>
+
     <script src="../js/wangEditor-1.3.js"></script>
-    <script src="../Scripts/navigation.js"></script>
 
     <script type="text/javascript">
         var sessionUser = '<%= Session["UserName"]%>';
 
         (function (PS, Reg, URP, Nav, Article, $, undefined) {
-          
+
         })(window.PS = window.PS || {}, window.Reg = window.Reg || {}, window.URP = window.URP || {}, window.Nav = window.Nav || {}, window.Article = window.Article || {}, $, undefined);
 
         $(document).ready(function () {
             Article.LoadArticle.getarticle();
             PS.Inite();
             Nav.Initiate(sessionUser);
-           // $('.single-right').pin();
+            Reg.Init();
+            //$('.single-right').pin();
         });
 
     </script>

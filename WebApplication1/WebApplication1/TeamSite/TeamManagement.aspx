@@ -199,7 +199,7 @@
 
 
         </form>
-        <footer class="container" style="float: right">
+        <footer class="container" >
             <div class="bottom-menu-wrapper">
                 <ul class="horizontal-menu compact">
                     <li>&copy; 2014 看看网</li>

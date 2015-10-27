@@ -197,7 +197,9 @@
 
             $('.reportTitle').live('click', function (e) {
                 e.preventDefault();
-                alert('test');
+
+                window.open("../AddReport/PostDetail.aspx?teamsiteid=" + $('#teamguidhidden').val() + "?postid=" + $(this).attr('tag'), "_self");
+
             });
         };
         this.getReport = function (scrolling, briefCallBack, detailCallBack) {

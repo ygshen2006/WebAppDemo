@@ -202,6 +202,7 @@
     <Content Include="Images\Blank_Folder.png" />
     <Content Include="Images\checkmark.png" />
     <Content Include="Images\close.png" />
+    <Content Include="Images\c_logo.png" />
     <Content Include="Images\default-team.png" />
     <Content Include="Images\downArrow.PNG" />
     <Content Include="Images\favicon.ico" />

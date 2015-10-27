@@ -86,15 +86,38 @@ namespace WebApplication1.Ajax
                 TileRepository tileRepository = new TileRepository(context);
                 EditReportService service = new EditReportService(repository, uRepository, tRepository, cRepository, tagRepository, tileRepository);
 
+                // This report
                 var report = service.GetReportById(id);
 
                 var category = report.Categories.Select(_=>_.Id.GetValueOrDefault()).ToList<int>();
                 
-                var otherReports = service.
-                    GetReportsOfTeamSiteByCategory(userAlias, teamGuid, true, category, global::Application.MainBoundedContect.Enums.SortField.ReportTitle, global::Application.MainBoundedContect.Enums.SortOrder.ASC);
+                // Other reports
+                var otherReportsTemp = service.
+                    GetReportsOfTeamSiteByCategory(userAlias, teamGuid, true, category, global::Application.MainBoundedContect.Enums.SortField.ReportTitle, global::Application.MainBoundedContect.Enums.SortOrder.ASC).Where(_=>_.Id.Value!=id).ToList<AppReport>();
 
+                // Assemble the reports information
+                var thisReport = new ReportItem()
+                {
+                    ID = report.Id.Value,
+                    ReportDescription = report.Description,
+                    ReportName = report.Title,
+                    ReprotStatus = report.Status.Name,
+                    ReportOwners = report.Owners.Select(_ => new OwnerClass{ Id=_.Id, Email=_.UserEmail, UserName=_.UserName }).ToList<OwnerClass>()
+                };
 
-                return jss.Serialize(service.GetReportById(id));
+                var otherReports=otherReportsTemp.Select(report1=>new ReportItem()
+                {
+                    ID = report1.Id.Value,
+                    ReportDescription = report1.Description,
+                    ReportName = report1.Title,
+                    ReprotStatus = report1.Status.Name,
+                    ReportOwners = report1.Owners.Select(_ => new OwnerClass{ Id=_.Id, Email=_.UserEmail, UserName=_.UserName }).ToList<OwnerClass>()
+                });
+
+                QueryParameterReportSearch reports = new QueryParameterReportSearch() { ThisReport = thisReport, OtherReports = otherReports == null ? null : otherReports.ToList<ReportItem>() };
+
+                // Return the search result
+                return jss.Serialize(reports);
             }
 
         }

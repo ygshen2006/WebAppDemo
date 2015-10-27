@@ -8,7 +8,37 @@
     <link href="css/metro-bootstrap.css" rel="stylesheet" />
     <link href="css/iconFont.css" rel="stylesheet" />
     <link href="Content/home.css" rel="stylesheet" />
+    <style type="text/css">
+           #logo {
+        position: absolute;
+    top: 0;
+    left: 100px;
+    width: 146px;
+    height: 40px;
+    text-indent: -9999px;
+    overflow: hidden;
+    background: url(../Images/c_logo.png) no-repeat 50% 50% #02A3D8;
+}
+        .nav-test li {
+    padding: 8px 25px;
+        border-left: 1px solid #3E444F;
+    border-right: 1px solid #292E37;
+        }
 
+           .nav-test li:first-child {
+        border-left: 0 none;
+        }
+         .nav-test li a {
+ display: block !important;
+    
+    font-size: 16px !important;
+    font-family: "Microsoft Yahei" !important;
+    color: #FFF;      
+        }
+
+      
+ 
+    </style>
 
     <title>首页</title>
 
@@ -18,12 +48,12 @@
     <form id="form1" runat="server">
 
         <header class="bg-dark" style="position: relative">
-            <div class="navigation-bar dark" style="width: 100%">
+            <div class="navigation-bar dark" style="width: 100%; height: 74px; margin: 0 auto">
                 <div class="navigation-bar-content container">
-                    <a href="../Welcome.aspx" class="element"><span class="icon-grid-view" style="margin-right: 5px;"></span>长宁人才</a>
+                    <a href="../Welcome.aspx" class="element" id="logo"></a>
                     <span class="element-divider"></span>
                     <a class="element1 pull-menu" href="#"></a>
-                    <ul class="element-menu">
+                    <ul class="element-menu nav-test">
 
                         <li>
 
@@ -70,7 +100,7 @@
                         </li>
 
                     </ul>
-                    <div style="float: right; width: 20%" id="welcomeT">
+                    <div style="float: right;" id="welcomeT">
                         <ul id="welcomezone" style="list-style: none">
                             <li style="color: white; float: left;" class="welcome">
                                 <asp:LoginView ID="LoginView2" runat="server">

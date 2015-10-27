@@ -31,7 +31,7 @@
         };
 
         this.getArticleCallBack = function (result) {
-
+            alert('test');
         };
 
         this.showFeatureImages = function (images) { };

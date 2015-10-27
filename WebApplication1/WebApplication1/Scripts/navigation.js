@@ -39,7 +39,7 @@
             }
 
 
-            if (userName == "shenyuangong") {
+            if (userName == "shenyuangong1") {
 
                 str += "<li><a href='../ManageSite/SiteManagement.aspx' class='manage-site'>超级管理员</a></li>";
             }

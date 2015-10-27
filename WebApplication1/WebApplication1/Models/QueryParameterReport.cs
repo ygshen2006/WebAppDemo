@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using Application.MainBoundedContect.ViewModel.Report;
 
 namespace WebApplication1.Models
 {
@@ -13,10 +14,8 @@ namespace WebApplication1.Models
     }
 
     public class QueryParameterReportSearch {
-        public int Id { get; set; }
-        public List<string> FeaturedPictcures { get; set; }
 
-        public string PictureContent { get; set; }
+        public ReportItem ThisReport { get; set; }
 
         public List<ReportItem> OtherReports { get; set; }
 

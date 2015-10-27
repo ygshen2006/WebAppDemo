@@ -16,7 +16,9 @@ namespace WebApplication1.Models
         public List<OwnerClass> ReportOwners { get; set; }
         public string Site { get; set; }
         public string ReprotStatus { get; set; }
-        
+        public string ReprotContent { get; set; }
+
+        public string[] ReportFeaturePics { get; set; }
     }
 
     public class OwnerClass{

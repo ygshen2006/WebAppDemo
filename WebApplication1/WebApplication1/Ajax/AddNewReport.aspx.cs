@@ -99,7 +99,9 @@ namespace WebApplication1.Ajax
                 var thisReport = new ReportItem()
                 {
                     ID = report.Id.Value,
+                    ReportFeaturePics=report.Images,
                     ReportDescription = report.Description,
+                    ReprotContent=report.Content,
                     ReportName = report.Title,
                     ReprotStatus = report.Status.Name,
                     ReportOwners = report.Owners.Select(_ => new OwnerClass{ Id=_.Id, Email=_.UserEmail, UserName=_.UserName }).ToList<OwnerClass>()

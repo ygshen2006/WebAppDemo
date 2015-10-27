@@ -156,7 +156,7 @@
             Article.LoadArticle.getarticle();
             PS.Inite();
             Nav.Initiate(sessionUser);
-            $('.single-right').pin();
+           // $('.single-right').pin();
         });
 
     </script>

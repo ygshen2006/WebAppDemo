@@ -26,13 +26,27 @@
             var loadingArea = $('.wrapper');
             var requestType = "getarticlebyid";
             var postdata = { 'articleid': this.getCurrentTeamGuid(2), 'teamguid': this.getCurrentTeamGuid(1) };
-            var callback = this.getArticleCallBack();
-            Article.util.sendrequest(loadingArea, callback, requestType, postdata);
+            Article.util.sendrequest(loadingArea, function (result) {
+                if (result != null) {
+                    getThisArticleCallBack(result.ThisReport);
+
+                    getOtherArticlesCallBack(result.OtherReports);
+                }
+            }, requestType, postdata);
         };
 
-        this.getArticleCallBack = function (result) {
-            alert('test');
-        };
+        
+
+        getThisArticleCallBack: function getThisArticleCallBack(thisArticle) {
+            if (thisArticle != null) {
+                $('.post-con').html(Article.util.HTMLDecode(thisArticle.ReprotContent));
+            }
+        }
+
+        getOtherArticlesCallBack: function getOtherArticlesCallBack(others) {
+            if (others != null) {
+            }
+        }
 
         this.showFeatureImages = function (images) { };
         this.showArticleContent = function (content) { };
@@ -65,10 +79,25 @@
                     }
                 },
                 complete: function () {
-                    loadingArea.hideLoading();
+                    loadingarea.hideLoading();
                 },
             });
         };
+
+        this.HTMLEncode = function (html) {
+            var temp = document.createElement("div");
+            (temp.textContent != null) ? (temp.textContent = html) : (temp.innerText = html);
+            var output = temp.innerHTML;
+            temp = null;
+            return output;
+        }
+        this.HTMLDecode = function (text) {
+            var temp = document.createElement("div");
+            temp.innerHTML = text;
+            var output = temp.innerText || temp.textContent;
+            temp = null;
+            return output;
+        }
     }
 
 

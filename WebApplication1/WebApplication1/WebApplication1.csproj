@@ -168,6 +168,7 @@
     <Content Include="AddReport\AddNewReport.aspx" />
     <Content Include="AddReport\NewRent.aspx" />
     <Content Include="AddReport\PostDetail.aspx" />
+    <Content Include="AddReport\TagRelatedArticals.aspx" />
     <Content Include="Ajax\AddNewReport.aspx" />
     <Content Include="Ajax\FrontAjax.aspx" />
     <Content Include="Ajax\SiteAdminAjax.aspx" />
@@ -186,6 +187,7 @@
     <Content Include="Content\metro-icons.css" />
     <Content Include="Content\metro.css" />
     <Content Include="Content\newTab.css" />
+    <Content Include="Content\tagsarticle.css" />
     <Content Include="Content\teammanagement.css" />
     <Content Include="Content\teamsites.css" />
     <Content Include="Content\wangEditor-1.3.css" />
@@ -250,6 +252,7 @@
     <Content Include="Scripts\jquery.pin.js" />
     <Content Include="Scripts\metro.js" />
     <Content Include="Scripts\myteampagejs.js" />
+    <Content Include="Scripts\tagsrelated.js" />
     <Content Include="Scripts\tile\custom.js" />
     <Content Include="Scripts\tile\Load-Tiles.js" />
     <Content Include="Scripts\tile\tile-cell.js" />
@@ -539,6 +542,13 @@
     </Compile>
     <Compile Include="AddReport\PostDetail.aspx.designer.cs">
       <DependentUpon>PostDetail.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AddReport\TagRelatedArticals.aspx.cs">
+      <DependentUpon>TagRelatedArticals.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AddReport\TagRelatedArticals.aspx.designer.cs">
+      <DependentUpon>TagRelatedArticals.aspx</DependentUpon>
     </Compile>
     <Compile Include="Ajax\AddNewReport.aspx.cs">
       <DependentUpon>AddNewReport.aspx</DependentUpon>

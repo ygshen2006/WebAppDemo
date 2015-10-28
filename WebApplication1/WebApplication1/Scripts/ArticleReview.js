@@ -10,7 +10,10 @@
                 window.open("../AddReport/PostDetail.aspx?teamsiteid=" + $('#teamguidhidden').val() + "?postid=" + $(this).attr('tag'), "_self");
         });
       
+        $('.taglink').live('click', function (e) {
+            // Get all the articals related to the current tag
 
+        });
         this.getarticle = function () {
             var loadingArea = $('.wrapper');
             var requestType = "getarticlebyid";
@@ -31,6 +34,12 @@
         getThisArticleCallBack: function getThisArticleCallBack(thisArticle) {
             if (thisArticle != null) {
                 $('.post-con').html(Article.util.HTMLDecode(thisArticle.ReprotContent));
+                var str = "";
+                $.each(thisArticle.ReportTags, function (index, current) {
+                    str += "<a class='taglink' href='../AddReport/TagRelatedArticals.aspx?tagid="+current.Id+"?teamid="+Article.util.getCurrentTeamGuid(1)+"'>" + current.Title + "</a>";
+                });
+                // load the tags:
+                $('.post-tags').append(str);
             }
         }
 

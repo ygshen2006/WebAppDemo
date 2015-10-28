@@ -1,0 +1,106 @@
+﻿body {
+}
+
+
+.inner-wrap {
+    width: 940px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+.category-title {
+    padding: 45px 0 30px 0;
+    text-align: center;
+}
+
+.news-list .item:first-child {
+    border-top: rgba(0,0,0,0.1) 1px dotted;
+}
+.news-list .item {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    background: #fff;
+    position: relative;
+    border-bottom: rgba(0,0,0,0.1) 1px dotted;
+}
+.news-list .item .thumb-img {
+    /* position: absolute; */
+    float: left;
+    max-height: 200px;
+    overflow: hidden;
+}
+.news-list .item .item-con {
+    margin-left: 225px;
+}
+.news-list .item .item-con h2 {
+    margin-top: -3px;
+    margin-bottom: 10px;
+    font-size: 20px;
+    padding-right: 100px;
+}
+.news-list .item .item-con .category {
+    position: absolute;
+    top: 18px;
+    right: 0px;
+    font-size: 0px;
+    display: block;
+    color: rgba(0,0,0,0.2);
+}
+
+.news-list .item .item-con .des {
+    color: rgba(0,0,0,0.5);
+    padding-right: 100px;
+}
+.autor-meta {
+    height: 32px;
+    font-size: 14px;
+    color: rgba(0,0,0,0.5);
+    vertical-align: top;
+    margin-top: 15px;
+}
+.autor-meta .autor {
+    float: left;
+    color: rgba(0,0,0,0.5);
+    height: 30px;
+    display: inline-block;
+    line-height: 30px;
+}
+.autor-meta .autor img {
+    float: left;
+    width: 30px;
+    height: 30px !important;
+    border-radius: 30px;
+    margin-right: 10px;
+}
+.author img {
+    height:30px;
+    width:30px;
+}
+.loading-indicator {
+    background: url('../Images/loading40.gif') no-repeat center;
+    width: 70px;
+    height: 70px;
+}
+
+.loading-indicator-overlay {
+    opacity: 0.6;
+    background-color: rgb(255, 255, 255);
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+    background: transparent;
+    border: 0;
+    font-size: 100%;
+    margin: 0;
+    padding: 0;
+    vertical-align: baseline;
+    -webkit-transition: all 0.2s ease;
+    -moz-transition: all 0.2s ease;
+    transition: all 0.2s ease;
+}
+
+.news-list .item .item-con {
+    margin-left: 325px;
+    
+}

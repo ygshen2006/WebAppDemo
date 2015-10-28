@@ -45,6 +45,13 @@ namespace WebApplication1.Ajax
             {
                 Response.Write(GetArticlesByID());
             }
+
+
+            if (Request["requestType"] == "gettagrelatedarticles")
+            {
+                Response.Write(GetArticlesByTagId());
+            }
+            
         }
 
 
@@ -98,6 +105,7 @@ namespace WebApplication1.Ajax
                 // Assemble the reports information
                 var thisReport = new ReportItem()
                 {
+                    ReportTags=report.Tags,
                     ID = report.Id.Value,
                     ReportFeaturePics=report.Images,
                     ReportDescription = report.Description,
@@ -123,7 +131,39 @@ namespace WebApplication1.Ajax
             }
 
         }
-       
+
+        private string GetArticlesByTagId() {
+            int tagId =int.Parse(Request.QueryString["tagid"]);
+            string teamId = Request.QueryString["teamid"];
+            JavaScriptSerializer jss = new JavaScriptSerializer();
+
+            string userAlias =Session["UserName"].ToString();
+
+            using (MainDBUnitWorkContext context = new MainDBUnitWorkContext())
+            {
+                ReportRepository repository = new ReportRepository(context);
+                UserRepository uRepository = new UserRepository(context);
+                TeamRepository tRepository = new TeamRepository(context);
+                CategoryRepository cRepository = new CategoryRepository(context);
+                TeamTagRepository tagRepository = new TeamTagRepository(context);
+                TileRepository tileRepository = new TileRepository(context);
+                EditReportService service = new EditReportService(repository, uRepository, tRepository, cRepository, tagRepository, tileRepository);
+
+                var services = service.GetReportsOfTeamSiteByTagId(userAlias, teamId, true, tagId, global::Application.MainBoundedContect.Enums.SortField.ReportTitle, global::Application.MainBoundedContect.Enums.SortOrder.ASC);
+
+                var otherReports = services.Select(report1 => new ReportItem()
+                {
+                    ID = report1.Id.Value,
+                    ReportDescription = report1.Description,
+                    ReportName = report1.Title,
+                    ReprotStatus = report1.Status.Name,
+                    ReportFeaturePics=report1.Images,
+                    ReportOwners = report1.Owners.Select(_ => new OwnerClass { Sex=_.Sex, Id = _.Id, Email = _.UserEmail, UserName = _.UserName, UserPhoto=_.UserPhoto }).ToList<OwnerClass>()
+                });
+
+                return jss.Serialize(otherReports);
+            }
+        }
         private string GetArticles()
         {
             return null;

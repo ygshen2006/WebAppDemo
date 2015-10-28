@@ -10,7 +10,7 @@ using Domain.MainBoundedContext.Reports.Aggregates;
 
 namespace Domain.MainBoundedContext.Reports.FilterField
 {
-    public class TagId : AppFilterField<int>, IIN<int>
+    public class TagId : AppFilterField<int>, IIN<int>, IEQUAL<int>
     {
         public TagId()
         {
@@ -35,6 +35,20 @@ namespace Domain.MainBoundedContext.Reports.FilterField
         }
         #endregion
 
+        public Equal<int> Equal(int value)
+        {
+            return this.CreateEqual(new Constant<int>() { Value = value });
+        }
+
+        public Equal<int> Equal(Constant<int> value)
+        {
+            return this.CreateEqual(value);
+        }
+
+        public Equal<int> Equal(Parameter<int> value)
+        {
+            return this.CreateEqual(value);
+        }
 
 
         #region Expression Part

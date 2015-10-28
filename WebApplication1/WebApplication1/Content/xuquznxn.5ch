@@ -1,0 +1,115 @@
+﻿.article {
+    padding: 50px 15px 0px;
+    position: relative;
+    width:1200px;
+    margin: 0 auto;
+}
+
+.single-left {
+    height: auto;
+    width:900px;
+    margin: 0 auto;
+    position: absolute;
+    top:0px;
+    left: 0px;
+    bottom: 0px;
+    display:flexbox;
+    padding-top:40px;
+}
+
+a {
+        color: #333;
+    line-height: 19px;
+    font-size: 16px;
+    display: inline-block;
+}
+.post-con {
+    height: auto;
+    width:900px;
+    line-height: 1.7;
+    font-size: 16px !important;
+    position: relative;
+    color: rgba(0, 0, 0, 0.8) !important;
+    font-style: normal !important;
+    min-height:400px
+
+}
+
+.post-bottom {
+    position: relative;
+    margin: 20px 0px;
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+    padding-top: 20px;
+    min-height: 60px;
+}
+
+.post-tags {
+    text-align: left;
+    padding-bottom: 30px;
+    padding-right: 334px
+}
+
+.single-right {
+    position: absolute;
+    width: 240px;
+    right: 0px;
+    top: 0px;
+    bottom: 0px;
+    padding: 30px 25px 25px;
+    font-size: 14px;
+}
+
+.loading-indicator {
+    background: url('../Images/loading40.gif') no-repeat center;
+    width: 70px;
+    height: 70px;
+}
+
+.loading-indicator-overlay {
+    opacity: 0.6;
+    background-color: rgb(255, 255, 255);
+}
+
+.otherarticles {
+    list-style:none;
+    float:left;
+}
+    .otherarticles li {
+        padding: 10px;
+    }
+
+
+    .single-right .hd {
+    border-bottom: 2px solid #ccc;
+    padding: 12px 0 4px;
+    line-height: 29px;
+    height: 40px;
+    margin-bottom: 5px;
+}
+    .title_container {
+    position: relative;
+    top: 10px;
+    margin: 0 auto;
+    text-align: center;
+}
+    .title_container .title {
+    position: absolute;
+    display: block;
+    font-size: 20px;
+    top: -16px;
+    width: 100%;
+    text-align: center;
+    color: #333;
+    left: 0;
+}
+    .title_container .sub_title {
+    position: absolute;
+    display: block;
+    font-size: 12px;
+    font-family: arial;
+    color: #999;
+    width: 100%;
+    text-align: center;
+    top: 6px;
+    left: 0;
+}

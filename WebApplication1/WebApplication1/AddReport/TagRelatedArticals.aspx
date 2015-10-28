@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="PostDetail.aspx.cs" Inherits="WebApplication1.AddReport.PostDetail" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="TagRelatedArticals.aspx.cs" Inherits="WebApplication1.AddReport.TagRelatedArticals" %>
 
 <!DOCTYPE html>
 
@@ -41,22 +41,22 @@
     <link href="../css/metro-bootstrap.css" rel="stylesheet" />
     <link href="../Content/scrollPic.css" rel="stylesheet" />
     <link href="../Content/navgation.css" rel="stylesheet" />
-    <link href="../Content/article.css" rel="stylesheet" />
     <link href="../css/metro-bootstrap.css" rel="stylesheet" />
     <link href="../Content/home.css" rel="stylesheet" />
-    <title>内容 - 详情</title>
+    <link href="../Content/tagsarticle.css" rel="stylesheet" />
+    <title>相同标签的文章</title>
     <script src="../Scripts/jquery-1.8.2.min.js"></script>
     <script src="../Scripts/jquery.bpopup.min.js"></script>
     <script src="../Scripts/jquery.showLoading.js"></script>
     <script src="../Scripts/jquery.pin.js"></script>
-        <script src="../js/jquery/jquery.widget.min.js"></script>
+    <script src="../js/jquery/jquery.widget.min.js"></script>
 
     <script src="../Scripts/picture-scrolling.js"></script>
     <script src="../js/load-metro.js"></script>
     <script src="../Scripts/navigation.js"></script>
     <script src="../Scripts/register.js"></script>
 
-    <script src="../Scripts/ArticleReview.js"></script>
+    <script src="../Scripts/tagsrelated.js"></script>
 </head>
 <body class="metro">
     <form id="Form1" runat="server">
@@ -138,99 +138,53 @@
                     </div>
                 </div>
             </header>
-            <input type="hidden" id="teamguidhidden" />
-            <div class="login_middle">
-                <div class="box_banner">
-                    <ul class="raiders_in" id="linkPics" style="list-style: none outside none; margin-left: -100px;">
-                        <li data-index="0" style="opacity: 1;">
-                            <img class="image-content" src="../Images/banner-app.png" /></li>
-                        <li data-index="1" style="opacity: 0;">
-                            <img src="../Images/banner2.jpg" class="image-content" /></li>
-                        <li data-index="2" style="opacity: 0;">
-                            <img src="../Images/banner1.png" class="image-content" /></li>
-                        <li data-index="2" style="opacity: 0;">
-                            <img src="../Images/banner1.png" class="image-content" /></li>
-                    </ul>
-                    <div id="linkBtns" class="scroll_num">
-                        <a class="raiders_current" href="javascript:;">●</a>
-                        <a href="javascript:;" class="">●</a>
-                        <a href="javascript:;" class="">●</a>
-                        <a href="javascript:;" class="">●</a>
-                    </div>
 
-
+            <div class="inner-wrap">
+                <div class="category-title">
+                    <h2>
+                        <svg xmlns="http://www.w3.org/2000/svg" style="height: 50px; width: 50px;" class="si-glyph-tag">
+                            <use xlink:href="../css/sprite.svg#si-glyph-tag" />
+                        </svg>
+                        相同标签
+                    </h2>
                 </div>
-
+                <div class="post-list">
+                    <div class="news-list">
+                        
+                    </div>
+                </div>
             </div>
-            
-
-            <div class="article">
-                <div class="single-left">
-                    <div class="box-con">
-                        <div class="post-con sc-container"></div>
-                        <div class="post-bottom">
-                            <div class="post-tags">
-                               <%-- <a href="http://www.pingwest.com/tag/teambition/">Teambition</a><a href="http://www.pingwest.com/tag/%e4%bb%8a%e5%a4%a9/">今天</a><a href="http://www.pingwest.com/tag/%e7%ae%80%e8%81%8a/">简聊</a>--%>
-                            </div>
-
-                            <div class="post-share">
-                                <button class="button btn-weibo" title="推荐">
-                                    <a target="_blank" href="http://service.weibo.com/share/share.php?appkey=761238391&amp;url=http://www.pingwest.com/teambition-mobile/&amp;ralateUid=2833534593&amp;title=【移动办公这事靠谱吗？至少Teambition觉得它会成为重点】&amp;pic=http://pingwest.com/wp-content/uploads/2014/11/Teambition1.jpg">
-                                        <i class="icon-weibo"></i>推荐
-                                    </a>
-                                </button>
-                                <button class="button btn-weixin hidden-xs" title="订阅">
-                                    <i class="icon-weixin"></i>订阅
-                                </button>
-                            </div>
-                        </div>
-                        <div class="post-comments-wrap"></div>
-                        <footer class="container">
-                            <div class="bottom-menu-wrapper">
-                                <ul class="horizontal-menu compact">
-                                    <li>&copy; 2014 看看网</li>
-                                    <li><a href="#">所有权</a></li>
-                                    <li><a href="#">法律</a></li>
-                                    <li><a href="#">广告</a></li>
-                                    <li><a href="#">帮助</a></li>
-                                    <li><a href="#">反馈</a></li>
-                                </ul>
-                            </div>
-                        </footer>
-                    </div>
-                </div>
-                <div class="single-right">
-                    <div class="hd">
-                        <div class="title_container"><span class="title">推荐文章</span><span class="sub_title">RECOMMEND</span></div>
-                    </div>
-                </div>
-
-
-
-            </div>
-
-            
         </div>
-
     </form>
 
-    <script src="../js/wangEditor-1.3.js"></script>
+    <footer class="container">
+        <div class="bottom-menu-wrapper">
+            <ul class="horizontal-menu compact">
+                <li>&copy; 2014 看看网</li>
+                <li><a href="#">所有权</a></li>
+                <li><a href="#">法律</a></li>
+                <li><a href="#">广告</a></li>
+                <li><a href="#">帮助</a></li>
+                <li><a href="#">反馈</a></li>
+            </ul>
+        </div>
+    </footer>
 
-    <script type="text/javascript">
-        var sessionUser = '<%= Session["UserName"]%>';
+       <script type="text/javascript">
+           var sessionUser = '<%= Session["UserName"]%>';
 
-        (function (PS, Reg, URP, Nav, Article, $, undefined) {
+           (function (PS, Reg, URP, Nav, tagrelate, $, undefined) {
 
-        })(window.PS = window.PS || {}, window.Reg = window.Reg || {}, window.URP = window.URP || {}, window.Nav = window.Nav || {}, window.Article = window.Article || {}, $, undefined);
+           })(window.PS = window.PS || {}, window.Reg = window.Reg || {}, window.URP = window.URP || {}, window.Nav = window.Nav || {}, window.tagrelate = window.tagrelate || {}, $, undefined);
 
-        $(document).ready(function () {
-            Article.LoadArticle.getarticle();
-            PS.Inite();
-            Reg.Init();
-            Nav.Initiate(sessionUser);
-            //$('.single-right').pin();
-        });
+           $(document).ready(function () {
+               PS.Inite();
+               Reg.Init();
+               Nav.Initiate(sessionUser);
+               tagrelate.Init.getTagRelatedArticles();
+           });
 
     </script>
+
 </body>
 </html>

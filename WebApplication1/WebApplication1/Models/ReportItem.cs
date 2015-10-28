@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using Application.MainBoundedContect.ViewModel.TeamSites;
 
 namespace WebApplication1.Models
 {
@@ -17,7 +18,7 @@ namespace WebApplication1.Models
         public string Site { get; set; }
         public string ReprotStatus { get; set; }
         public string ReprotContent { get; set; }
-
+        public List<AppTeamTag> ReportTags{ get; set; }
         public string[] ReportFeaturePics { get; set; }
     }
 
@@ -25,5 +26,9 @@ namespace WebApplication1.Models
         public string Id { get; set; }
         public string UserName { get; set; }
         public string Email { get; set; }
+        public string UserPhoto { get; set; }
+
+        public bool Sex { get; set; }
+        
     }
 }

@@ -140,6 +140,28 @@ namespace Application.MainBoundedContect.Services.Report
                 .Select(_ => _.ToAppReport());
         }
 
+        public IEnumerable<AppReport> GetReportsOfTeamSiteByTagId(string userAlias, string teamSiteGuid, bool isAdmin, int tagId,
+      SortField sortField, SortOrder sortOrder)
+        {
+            TileServices tService = new TileServices(_tileRepository, _teamRepository, _reportRepository, null, null, null, null);
+            int teamId = _teamRepository.GetFiltered(_ => _.TeamGuid == new Guid(teamSiteGuid)).FirstOrDefault().Id;
+
+            ParameterProvider pp = new ParameterProvider();
+            pp.AddParameter(ContextVariable.CurrentTeamSiteGuid.ToString(), new Guid(teamSiteGuid));
+
+
+            pp.AddParameter(ContextVariable.TeamSiteGuidUnderControl.ToString(), new List<Guid> { new Guid(teamSiteGuid) });
+
+
+            int allreportsTileId = _tileRepository.GetAllReportsTileId(teamId);
+            return _reportRepository.
+                GetReportsByExpression(
+                tService.GetTeamSite_AllReportsTile()
+                .GetCombinedLogic(isAdmin, allreportsTileId).And(new TagId().Equal(tagId))
+                .GetExpression(pp)).ToArray()
+                .Select(_ => _.ToAppReport());
+        }
+
 
         public List<AppReport> GetReportsByTeamWithReportsRequire(
          String teamSiteGuid,

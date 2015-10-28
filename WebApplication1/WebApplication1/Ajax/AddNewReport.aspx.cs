@@ -82,7 +82,8 @@ namespace WebApplication1.Ajax
             int id = paramDes.articleid;
             string teamGuid = paramDes.teamguid;
 
-            string userAlias =Session["UserName"].ToString();
+            string userAlias = Session["UserName"] == null ? "Test" : Session["UserName"].ToString();
+            
             using (MainDBUnitWorkContext context = new MainDBUnitWorkContext())
             {
                 ReportRepository repository = new ReportRepository(context);
@@ -112,7 +113,7 @@ namespace WebApplication1.Ajax
                     ReprotContent=report.Content,
                     ReportName = report.Title,
                     ReprotStatus = report.Status.Name,
-                    ReportOwners = report.Owners.Select(_ => new OwnerClass{ Id=_.Id, Email=_.UserEmail, UserName=_.UserName }).ToList<OwnerClass>()
+                    ReportOwners = report.Owners.Select(_ => new UserLoginApp { Id = _.Id, UserEmail = _.UserEmail, UserName = _.UserName }).ToList<UserLoginApp>()
                 };
 
                 var otherReports=otherReportsTemp.Select(report1=>new ReportItem()
@@ -121,7 +122,7 @@ namespace WebApplication1.Ajax
                     ReportDescription = report1.Description,
                     ReportName = report1.Title,
                     ReprotStatus = report1.Status.Name,
-                    ReportOwners = report1.Owners.Select(_ => new OwnerClass{ Id=_.Id, Email=_.UserEmail, UserName=_.UserName }).ToList<OwnerClass>()
+                    ReportOwners = report1.Owners.Select(_ => new UserLoginApp { Id = _.Id, UserEmail = _.UserEmail, UserName = _.UserName }).ToList<UserLoginApp>()
                 });
 
                 QueryParameterReportSearch reports = new QueryParameterReportSearch() { ThisReport = thisReport, OtherReports = otherReports == null ? null : otherReports.ToList<ReportItem>() };
@@ -137,7 +138,7 @@ namespace WebApplication1.Ajax
             string teamId = Request.QueryString["teamid"];
             JavaScriptSerializer jss = new JavaScriptSerializer();
 
-            string userAlias =Session["UserName"].ToString();
+            string userAlias =Session["UserName"]==null?"Test":Session["UserName"].ToString();
 
             using (MainDBUnitWorkContext context = new MainDBUnitWorkContext())
             {
@@ -154,11 +155,12 @@ namespace WebApplication1.Ajax
                 var otherReports = services.Select(report1 => new ReportItem()
                 {
                     ID = report1.Id.Value,
+                    TagName=report1.Tags.FirstOrDefault(_=>_.Id.Value==tagId).Title,
                     ReportDescription = report1.Description,
                     ReportName = report1.Title,
                     ReprotStatus = report1.Status.Name,
                     ReportFeaturePics=report1.Images,
-                    ReportOwners = report1.Owners.Select(_ => new OwnerClass { Sex=_.Sex, Id = _.Id, Email = _.UserEmail, UserName = _.UserName, UserPhoto=_.UserPhoto }).ToList<OwnerClass>()
+                    ReportOwners = report1.Owners.Select(_ => new UserLoginApp { Sex = _.Sex, Id = _.Id, UserEmail = _.UserEmail, UserName = _.UserName, UserPhoto = _.UserPhoto }).ToList<UserLoginApp>()
                 });
 
                 return jss.Serialize(otherReports);

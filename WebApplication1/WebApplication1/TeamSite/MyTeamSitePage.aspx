@@ -10,6 +10,7 @@
     <title>团队</title>
     <link href="../Content/scrollPic.css" rel="stylesheet" />
     <link href="../Content/reports.css" rel="stylesheet" />
+    <link href="../Content/tagsarticle.css" rel="stylesheet" />
     <style type="text/css">
         .wrapper {
             width: 1200px;
@@ -312,15 +313,24 @@
                         <option value="false">文章名字 (Z-A)</option>
                     </select>
                 </div>
+
+                <div class="tags-wrap">
+                    <div class="inner-wrap">
+                        <div class="post-list">
+                            <div class="news-list">
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <div class="last-item"></div>
             </div>
-            <div class="col3">notification</div>
+            <%--<div class="col3">notification</div>--%>
             <input type="hidden" id="teamguidhidden" />
 
 
             <div id="gs_feedback_gotop">
                 <div class="side_fixed">
-                    <%--<div class="to_top" title="Team" id="gotop2" style="visibility: visible; display: block;"></div>--%>
                 </div>
             </div>
 
@@ -522,57 +532,66 @@
                 }
 
                 function briefCallBack(result) {
-                    $('.list-item').remove();
-                    var listString = '';
+                    $('.news-list item').remove();
+                    var str = '';
 
-                    $.each(result.ReportList, function (index, content) {
-                        listString += "<div class='list-item' style='margin-top:10px'>"
-
-                                        + "<div class='item-header'>"
-                                            + "<a href='#' class='reportCollapse'></a><a tag=" + content.ID + " class='reportTitle' href='#'>" + content.Title + "</a>"
-                                        + "</div>"
-
-                                        + "<div class='item-content'>"
-                                                 + "<div class='item-detail'></div>"
-                                        + "<div class='item-description'>"
-                                            + URP.util.HTMLDecode(subDescript(content.Descript))
-                                        + "</div>"
-                                                 + "<div class='item-footer'>"
-                                                    + " <svg xmlns='http://www.w3.org/2000/svg' class='si-glyph-person-2'><use xlink:href='../css/sprite.svg#si-glyph-person-2' /></svg>" + content.Owners 
-
-                                            //+(content.SubscribeStatus == null ? '' : (content.SubscribeStatus != 'subscribed' ? ' | <a href="javascript:return false"  class="subscription" CatalogId="' + content.ID + '">' + content.SubscribeStatus.toUpperCase() + '</a>' : ' | ALREADY SUBSCRIBED')) 
-
-                                            //+ (content.RecommendStatus != null ? ' | <a href="javascript:return false"  class="recommendation" CatalogId="' + content.ID + '">RECOMMEND</a> ' + (content.Remove == true ? ' | <a href="javascript:return false"  class="recommendRemove" CatalogId="' + content.ID "'>REMOVE</a> ' : ' ') : '') + (content.Editable == false ? '' : ' | <a class="editReport" href="' + decodeURIComponent(content.EditURL) + '&Source=' + window.location.href + '">EDIT</a><a href='#' class='action'>编辑</a><a href='#' class='action'>推荐</a><a href='#' class='action'>订阅</a>"
-                                                 + "</div>";
-                        //  + "<div class='item-detail'></div>"
-                        //+ "</div>";
-
-
-                        if (content.RecommendList != null) {
-                            listString += '<div class="recommenders">'
-                            $.each(content.RecommendList, function (indexRec, contentRec) {
-                                listString += '<p style="color:#666;margin-bottom: 1px">Recommended by: ' + contentRec.UserName + '</p><p>Message: ' + contentRec.Comment + '</p>';
-                            });
-                            listString += '</div>';
+                    $.each(result.ReportItemList, function (index, current) {
+                     
+                        str += " <div class='item clearfix'>";
+                        str += "<div class='thumb-img'>";
+                        str += " <a>";
+                        if (current.ReportFeaturePics != null && current.ReportFeaturePics.length > 1) {
+                            str += "<img style='height:60px; width:100px; border-radius:10px;' src='" + current.ReportFeaturePics[0] + "' />";
+                        }
+                        else {
+                            str += "<img style='height:60px; width:100px; border-radius:10px;' src='../Images/5.jpg' />";
+                        }
+                        str += "</a> </div>";
+                        str += "<div class='item-con' style='margin-left:150px !important'>";
+                        str += "<h2><a href='../AddReport/PostDetail.aspx?teamsiteid=" + $('#teamguidhidden').val() + "?postid=" + current.ID + "'>" + current.ReportName + "</a></h2>";
+                        str += " <p class='des'>" + current.Descript + "</p>";
+                        str += " <div class='autor-meta'>";
+                        str += " <a class='author'>";
+                        if (current.ReportOwners[0].UserPhoto == null) {
+                            if (current.ReportOwners[0].Sex == true) {
+                                str += "<img src='../Images/men.png' />";
+                            }
+                            else {
+                                str += "<img src='../Images/women.png' />";
+                            }
                         }
 
-                        listString += "</div></div>";
+                        else { str += tagrelate.Util.HTMLDecode(current.ReportOwners[0].UserPhoto); }
+                        str += "<span class='name'>" + current.ReportOwners[0].UserName + "</span>";
+                        str += "</a></div></div></div>";
+
+                        if (content.RecommendList != null) {
+                            str += '<div class="recommenders">'
+                            $.each(content.RecommendList, function (indexRec, contentRec) {
+                                str += '<p style="color:#666;margin-bottom: 1px">Recommended by: ' + contentRec.UserName + '</p><p>Message: ' + contentRec.Comment + '</p>';
+                            });
+                            str += '</div>';
+                        }
+
+                        str += "</div></div>";
                     });
 
+                    $('.news-list').append(str);
+                    var li = "";
                     if (URP.criteria.CurrentPage == 0) {
                         $('.content .list-item').remove();
                     }
 
-                    if (listString.length == 0) {
+                    if (str.length == 0) {
                         if (URP.criteria.currentPage == 0) {
-                            listString += "<div class='list-item'>没有任何文章...</div>";
+                            li += "<div class='item'>没有任何文章...</div>";
                         }
                         else {
-                            listString += "<div class='list-item'>已经到达最后一页...</div>";
+                            li += "<div class='item'>已经到达最后一页...</div>";
                         }
                     }
 
-                    $(listString).insertBefore($('.content .last-item'));
+                    $(li).insertBefore($('.content .last-item'));
                 }
 
                 this.getTeamSite = function () {

@@ -33,7 +33,10 @@
 
         showTags: function showTags(reports) {
             var str = "";
+            var tagName = "";
             $.each(reports, function (index, current) {
+                if (tagName == "")
+                    tagName = current.TagName;
                 str += " <div class='item clearfix'>";
                 str += "<div class='thumb-img'>";
                 str += " <a>";
@@ -65,6 +68,7 @@
             });
 
             $('.news-list').append(str);
+            $('.tagname').append(tagName);
         }
     }
 

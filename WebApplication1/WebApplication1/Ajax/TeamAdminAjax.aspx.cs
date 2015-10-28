@@ -32,7 +32,7 @@ using Application.MainBoundedContect.Enums;
 using Application.MainBoundedContect.ViewModel.Report;
 using Domain.MainBoundedContext.Reports.FilterField;
 using Application.MainBoundedContect.ViewModel.Filters;
-using Application.MainBoundedContect.ViewModel.Report.EBIUnifiedReporting.Model.ViewModel;
+using WebApplication1.Models;
 
 namespace WebApplication1.Ajax
 {
@@ -300,7 +300,7 @@ namespace WebApplication1.Ajax
                     SortField.ReportTitle, (paramDes.SortAscending ? SortOrder.ASC : SortOrder.DESC)).ToArray();
 
 
-                ReportListViewModel rptList = GetReportList(reports, Convert.ToInt32(paramDes.TileId));
+                ReportListModel rptList = GetReportList(reports, Convert.ToInt32(paramDes.TileId));
 
                 output = jss.Serialize(rptList);
                 return output;
@@ -324,33 +324,26 @@ namespace WebApplication1.Ajax
 
         }
 
-        private ReportListViewModel GetReportList(IEnumerable<AppReport> rptDataList, int tileID = 0)
+        private ReportListModel GetReportList(IEnumerable<AppReport> rptDataList, int tileID = 0)
         {
-
             string userAlias = Session["UserName"] == null ? "" : Session["UserName"].ToString();
-
-            ReportListViewModel rptList = new ReportListViewModel();
+            ReportListModel rptList = new ReportListModel();
 
             foreach (AppReport data in rptDataList)
             {
-                ReportItemViewModel item = new ReportItemViewModel();
+                ReportItem item = new ReportItem();
                 item.ID = data.Id.GetValueOrDefault();
-                item.Title = data.Title;
-                // item.Image = GetReportICO(data.CatalogType.Id, data.FileType.Id);
-                //  item.SystemReportStatus = data.Status.ToString();
-                item.ReportStatus = data.Status.Name;
-                item.Descript = data.Description;
+                item.ReportName = data.Title;
 
-                bool IsOwner = false;
-                if (data.Owners != null)
-                {
-                    IsOwner = data.Owners.Any(u => string.Compare(u.UserName, userAlias, true) == 0);
+                item.ReprotStatus = data.Status.Name;
+                item.ReportDescription = data.Description;
+                item.ReportFeaturePics = data.Images;
+                item.ReportOwners = data.Owners;
+                item.ReportTags = data.Tags;
+                item.ReprotContent = data.Content;
+                //item.ReportCategory = data.Categories;
 
-                    for (var i = 0; i < data.Owners.Count; i++)
-                    {
-                        item.Owners += data.Owners.ElementAt(i).UserName + ",";
-                    }
-                }
+                bool IsOwner = data.Owners.Any(u => string.Compare(u.UserName, userAlias, true) == 0);
 
                 // if current user is site admin or data owner
                 if (userAlias != "")
@@ -365,39 +358,6 @@ namespace WebApplication1.Ajax
                     item.Editable = false;
                 }
 
-                if ((data.Team != null && data.Status.Name == "通过"))
-                {
-                    //if this tile is Recommend tile
-                    if (tileID == SystemDefinedTile.MyReports_Recommended.SystemDefinedTileId)
-                        item.Remove = true;
-
-                    //if (data.Subscribers != null && data.Subscribers.Count > 0)
-                    //{
-                    //    bool isSubscribe = data.Subscribers.Any(c => string.Compare(c.Alias, pageInfo.CurrentUser.Alias, true) == 0);
-                    //    if (isSubscribe)
-                    //    {
-                    //        if (tileID == SystemDefinedTile.MyReports_Recommended.SystemDefinedTileId
-                    //            || tileID == SystemDefinedTile.SelfService_Recommended.SystemDefinedTileId)
-                    //            item.SubscribeStatus = "Already Subscribed";
-                    //        else
-                    //            item.SubscribeStatus = "UnSubscribe";
-                    //    }
-                    //    else
-                    //        item.SubscribeStatus = "Subscribe";
-                    //}
-                    //else
-                    //{
-                    //    item.SubscribeStatus = "Subscribe";
-                    //}
-                    item.SubscribeStatus = "订阅";
-
-                    item.RecommendStatus = "推荐";
-                }
-                else
-                {
-                    item.SubscribeStatus = null;
-                    item.RecommendStatus = null;
-                }
 
                 if (tileID == SystemDefinedTile.MyReports_Recommended.SystemDefinedTileId)
                 {
@@ -413,7 +373,7 @@ namespace WebApplication1.Ajax
 
                 //GetOpenSetting(ref item, data);
 
-                rptList.ReportList.Add(item);
+                rptList.ReportItemList.Add(item);
             }
 
             return rptList;
@@ -496,7 +456,7 @@ namespace WebApplication1.Ajax
 
                     foreach (AttributeValue attr in l.Values)
                     {
-                        FilterItem item = new FilterItem();
+                        Application.MainBoundedContect.ViewModel.Filters.FilterItem item = new Application.MainBoundedContect.ViewModel.Filters.FilterItem();
                         item.Name = attr.Name;
                         if (l.Name == "Owner")
                         {

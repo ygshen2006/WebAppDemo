@@ -626,7 +626,9 @@
     <Compile Include="Models\FilterModel.cs" />
     <Compile Include="Models\Links.cs" />
     <Compile Include="Models\ReportItem.cs" />
-    <Compile Include="Models\ReportListModel.cs" />
+    <Compile Include="Models\ReportListModel.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Models\TeamSites.cs" />
     <Compile Include="Models\TestClass.cs" />
     <Compile Include="Models\Tile.cs" />

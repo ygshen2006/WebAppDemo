@@ -141,11 +141,10 @@
 
             <div class="inner-wrap">
                 <div class="category-title">
-                    <h2>
+                    <h2 class="tagname">
                         <svg xmlns="http://www.w3.org/2000/svg" style="height: 50px; width: 50px;" class="si-glyph-tag">
                             <use xlink:href="../css/sprite.svg#si-glyph-tag" />
                         </svg>
-                        相同标签
                     </h2>
                 </div>
                 <div class="post-list">

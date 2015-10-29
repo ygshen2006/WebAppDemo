@@ -169,102 +169,101 @@
         }
 
         #dialog {
-              width: auto;
-  height: auto;
-  display: none;
-  left: 417px;
-  top: 137px;
+            width: auto;
+            height: auto;
+            display: none;
+            left: 417px;
+            top: 137px;
         }
 
         .si-glyph-person-2, .si-glyph-tag, .si-glyph-calendar-empty {
-            height:18px;
-            width:18px;
+            height: 18px;
+            width: 18px;
             fill: blue;
-            padding-right:5px;
+            padding-right: 5px;
         }
     </style>
 </head>
 <body class="metro">
-    <div class="wrapper">
+    <div style="width:1400px;" class="wrapper">
         <form id="form1" runat="server">
             <header class="bg-dark" style="position: relative">
-            <div class="navigation-bar dark" style="width: 100%">
-                <div class="navigation-bar-content container">
-                    <a href="../Welcome.aspx" class="element"><span class="icon-grid-view" style="margin-right: 5px;"></span>长宁人才</a>
-                    <span class="element-divider"></span>
-                    <a class="element1 pull-menu" href="#"></a>
-                    <ul class="element-menu">
+                <div class="navigation-bar dark" style="width: 100%">
+                    <div class="navigation-bar-content container">
+                        <a href="../Welcome.aspx" class="element"><span class="icon-grid-view" style="margin-right: 5px;"></span>长宁人才</a>
+                        <span class="element-divider"></span>
+                        <a class="element1 pull-menu" href="#"></a>
+                        <ul class="element-menu">
 
-                        <li>
+                            <li>
 
-                            <a href="#" class="dropdown-toggle">主页</a>
-                            <ul class="dropdown-menu place-left dark" data-role="dropdown" data-show="hover">
-                                <li><a href="#">网站概述</a></li>
-                                <li><a href="#">联系我们</a></li>
-                            </ul>
+                                <a href="#" class="dropdown-toggle">主页</a>
+                                <ul class="dropdown-menu place-left dark" data-role="dropdown" data-show="hover">
+                                    <li><a href="#">网站概述</a></li>
+                                    <li><a href="#">联系我们</a></li>
+                                </ul>
 
-                        </li>
-                        <li>
+                            </li>
+                            <li>
 
-                            <a class="dropdown-toggle" href="#">企业中心</a>
-                            <ul class="dropdown-menu place-center dark" data-role="dropdown" data-show="hover">
-                                <li>
-                                    <a href="#">活跃企业</a>
-                                </li>
-                                <li>
-                                    <a href="#">最新企业</a>
-                                </li>
-                                <li class="teamsearch"><a href="#" class="dropdown-toggle">企业查找</a>
+                                <a class="dropdown-toggle" href="#">企业中心</a>
+                                <ul class="dropdown-menu place-center dark" data-role="dropdown" data-show="hover">
+                                    <li>
+                                        <a href="#">活跃企业</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">最新企业</a>
+                                    </li>
+                                    <li class="teamsearch"><a href="#" class="dropdown-toggle">企业查找</a>
 
-                                    <ul class="d-menu" data-role="dropdown">
-                                        
-                                    </ul>
-                                </li>
-                            </ul>
+                                        <ul class="d-menu" data-role="dropdown">
+                                        </ul>
+                                    </li>
+                                </ul>
 
 
-                        </li>
-                        <li>
-                            <a href="#" class="dropdown-toggle">个人中心</a>
-                            <ul class="dropdown-menu place-center dark" data-role="dropdown" data-show="hover">
-                                <li><a href="../Personal/MyCenter.aspx">我的收藏</a></li>
-                                <li><a href="../Personal/MyCenter.aspx">我的关注</a></li>
-                                <li><a href="../Personal/ProfileEdit.aspx">个人信息</a></li>
-                            </ul>
-                        </li>
-                        
-                        <li><a href="#" class="dropdown-toggle">管理中心</a>
-                            <ul class="dropdown-menu place-center dark" data-role="dropdown" data-show="hover">
-                                <li><a href="#">网站-新闻</a></li>
-                            </ul>
-                        </li>
+                            </li>
+                            <li>
+                                <a href="#" class="dropdown-toggle">个人中心</a>
+                                <ul class="dropdown-menu place-center dark" data-role="dropdown" data-show="hover">
+                                    <li><a href="../Personal/MyCenter.aspx">我的收藏</a></li>
+                                    <li><a href="../Personal/MyCenter.aspx">我的关注</a></li>
+                                    <li><a href="../Personal/ProfileEdit.aspx">个人信息</a></li>
+                                </ul>
+                            </li>
 
-                    </ul>
-                    <div style="float: right; width: 20%" id="welcomeT">
-                        <ul id="welcomezone" style="list-style: none">
-                            <li style="color: white; float: left;" class="welcome">
-                                <asp:LoginView ID="LoginView2" runat="server">
-                                    <AnonymousTemplate>
-                                        <div style="float: left;">
-                                            <a id="register-link" class="user-name-link" href="../MyAccounts/Register.aspx?ReturnUrl='~/Welcome.aspx'">注册</a>
-                                            <a id="login-link" class="user-name-link" href="#">登陆</a>
-                                        </div>
-                                    </AnonymousTemplate>
-                                    <LoggedInTemplate>
-                                        <div class="welcome-text">
-                                            <span>欢迎: </span><a href="../Personal/MyCenter.aspx" class="user-name-link">
-                                                <asp:LoginName ID="LoginName1" runat="server" />
-                                            </a>
-                                        </div>
-                                    </LoggedInTemplate>
-                                </asp:LoginView>
+                            <li><a href="#" class="dropdown-toggle">管理中心</a>
+                                <ul class="dropdown-menu place-center dark" data-role="dropdown" data-show="hover">
+                                    <li><a href="#">网站-新闻</a></li>
+                                </ul>
                             </li>
 
                         </ul>
+                        <div style="float: right; width: 20%" id="welcomeT">
+                            <ul id="welcomezone" style="list-style: none">
+                                <li style="color: white; float: left;" class="welcome">
+                                    <asp:LoginView ID="LoginView2" runat="server">
+                                        <AnonymousTemplate>
+                                            <div style="float: left;">
+                                                <a id="register-link" class="user-name-link" href="../MyAccounts/Register.aspx?ReturnUrl='~/Welcome.aspx'">注册</a>
+                                                <a id="login-link" class="user-name-link" href="#">登陆</a>
+                                            </div>
+                                        </AnonymousTemplate>
+                                        <LoggedInTemplate>
+                                            <div class="welcome-text">
+                                                <span>欢迎: </span><a href="../Personal/MyCenter.aspx" class="user-name-link">
+                                                    <asp:LoginName ID="LoginName1" runat="server" />
+                                                </a>
+                                            </div>
+                                        </LoggedInTemplate>
+                                    </asp:LoginView>
+                                </li>
+
+                            </ul>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </header>
+            </header>
             <div class="teamsite-header">
                 <div class="grid"></div>
             </div>
@@ -301,6 +300,7 @@
                         </ItemTemplate>
                         <FooterTemplate>
                             </div>
+                       
                         </FooterTemplate>
                     </asp:Repeater>
                 </aside>
@@ -318,7 +318,6 @@
                     <div class="inner-wrap">
                         <div class="post-list">
                             <div class="news-list">
-                                
                             </div>
                         </div>
                     </div>
@@ -536,15 +535,15 @@
                     var str = '';
 
                     $.each(result.ReportItemList, function (index, current) {
-                     
+
                         str += " <div class='item clearfix'>";
                         str += "<div class='thumb-img'>";
                         str += " <a>";
                         if (current.ReportFeaturePics != null && current.ReportFeaturePics.length > 1) {
-                            str += "<img style='height:60px; width:100px; border-radius:10px;' src='" + current.ReportFeaturePics[0] + "' />";
+                            str += "<img style='height:120px; width:130px; border-radius:10px;' src='" + current.ReportFeaturePics[0] + "' />";
                         }
                         else {
-                            str += "<img style='height:60px; width:100px; border-radius:10px;' src='../Images/5.jpg' />";
+                            str += "<img style='height:120px; width:130px; border-radius:10px;' src='../Images/5.jpg' />";
                         }
                         str += "</a> </div>";
                         str += "<div class='item-con' style='margin-left:150px !important'>";
@@ -561,17 +560,17 @@
                             }
                         }
 
-                        else { str += tagrelate.Util.HTMLDecode(current.ReportOwners[0].UserPhoto); }
+                        else { str += URP.util.HTMLDecode(current.ReportOwners[0].UserPhoto); }
                         str += "<span class='name'>" + current.ReportOwners[0].UserName + "</span>";
                         str += "</a></div></div></div>";
 
-                        if (content.RecommendList != null) {
-                            str += '<div class="recommenders">'
-                            $.each(content.RecommendList, function (indexRec, contentRec) {
-                                str += '<p style="color:#666;margin-bottom: 1px">Recommended by: ' + contentRec.UserName + '</p><p>Message: ' + contentRec.Comment + '</p>';
-                            });
-                            str += '</div>';
-                        }
+                        //if (content.RecommendList != null) {
+                        //    str += '<div class="recommenders">'
+                        //    $.each(content.RecommendList, function (indexRec, contentRec) {
+                        //        str += '<p style="color:#666;margin-bottom: 1px">Recommended by: ' + contentRec.UserName + '</p><p>Message: ' + contentRec.Comment + '</p>';
+                        //    });
+                        //    str += '</div>';
+                        //}
 
                         str += "</div></div>";
                     });
@@ -601,9 +600,6 @@
                         $('.side_fixed').html("<a class='reply' href='mailto:" + result.teamOwners + "'>" + t + "</a>");
                     });
                 }
-
-
-
                 function subDescript(content) {
                     if (content == null) return "";
                     if (content.length > 200) {
@@ -640,7 +636,7 @@
         });
 
 
-      
+
     </script>
 </body>
 </html>

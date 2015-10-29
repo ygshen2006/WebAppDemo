@@ -162,9 +162,10 @@ a {
 
     .content .sorter {
         height: 55px;
+        width:900px;
+        margin:0 auto;
         line-height: 80px;
         text-align: right;
-        padding-right: 30px;
     }
 
 .list-item {

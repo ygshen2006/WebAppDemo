@@ -341,8 +341,7 @@ namespace WebApplication1.Ajax
                 item.ReportOwners = data.Owners;
                 item.ReportTags = data.Tags;
                 item.ReprotContent = data.Content;
-                //item.ReportCategory = data.Categories;
-
+                item.ReportCategory = data.Categories.Where(_=>_.ParentId!=null).Select(_=>new AppCategory(){ CategoryName=_.CategoryName, Id=_.Id}).ToList<AppCategory>();
                 bool IsOwner = data.Owners.Any(u => string.Compare(u.UserName, userAlias, true) == 0);
 
                 // if current user is site admin or data owner

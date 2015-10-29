@@ -53,6 +53,7 @@
                     alert('请在: ' + emptyText + '中至少选择一个筛选条件!');
                     return;
                 }
+                $('.news-list').children().remove();
                 //$(this).attr('disabled', 'disabled')
                 onOKorClearclick();
             });
@@ -201,8 +202,14 @@
                 window.open("../AddReport/PostDetail.aspx?teamsiteid=" + $('#teamguidhidden').val() + "?postid=" + $(this).attr('tag'), "_self");
 
             });
+
+            $('.editReport').live('click', function (e) {
+                e.preventDefault();
+                // Edit this report in a new page
+            });
         };
         this.getReport = function (scrolling, briefCallBack, detailCallBack) {
+            $('.news-list').children().remove();
             // Set the sort order
             $('.ordersel').val(URP.criteria.SortAscending);
             // Set the loading area
@@ -232,7 +239,6 @@
                 URP.util.GetReport(loadingArea, detailCallBack);
             }
         };
-
     };
     URP.AddReport = new function () {
         this.initiate = function () {
@@ -857,7 +863,6 @@
             arr.splice(index, 1);
         }
     };
-
     URP.util = new function () {
         this.getOwnersFromArray = function (owners) {
             var ownerStr = "";

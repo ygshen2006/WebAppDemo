@@ -13,7 +13,7 @@
             position: absolute;
             top: 0;
             left: 40px;
-            width: 146px;
+            width: 110px;
             height: 40px;
             text-indent: -9999px;
             overflow: hidden;

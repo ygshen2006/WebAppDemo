@@ -28,6 +28,8 @@
     max-height: 200px;
     overflow: hidden;
 }
+
+
 .news-list .item .item-con {
     margin-left: 225px;
 }
@@ -41,9 +43,22 @@
     position: absolute;
     top: 18px;
     right: 0px;
-    font-size: 0px;
     display: block;
-    color: rgba(0,0,0,0.2);
+    color: rgb(25, 25, 23);
+}
+
+.news-list .item .item-con .actions {
+    position: absolute;
+    bottom: 8px;
+    right: 0px;
+    display: block;
+    color: rgb(25, 25, 23);
+
+}
+
+
+.news-list .item .item-con .category a,.news-list .item .item-con .category span{
+	font-size: 15px;
 }
 
 .news-list .item .item-con .des {

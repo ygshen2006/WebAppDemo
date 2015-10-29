@@ -13,7 +13,7 @@
         position: absolute;
     top: 0;
     left: 40px;
-    width: 146px;
+    width: 110px;
     height: 40px;
     text-indent: -9999px;
     overflow: hidden;
@@ -272,11 +272,10 @@
                 </div>
             </div>
             <div style="margin-top: 20px; width: 1200px; margin: 0px auto">
-                <div id="destination" class="type_content  destination_type cf">
+                <div id="" class="type_content  destination_type cf">
                     <div class="type_nav">
-                        <a href="/2014/list-place.html" target="_blank" title=""><i></i>
-                            <h1>企业展示</h1>
-
+                        <a href="#" target="_blank" title=""><i></i>
+                            <h1>热门行业</h1>
                         </a>
                     </div>
                     <div class="type_scroll">
@@ -344,8 +343,8 @@
 
                         </div>
                         <div>
-                            <span class="bxx-prev" id="destination_prev"><a class="bx-prev disabled" href=""></a></span><span class="bxx-next" id="destination_next">
-                                <a class="bx-next" href=""></a></span>
+                            <span class="bxx-prev" id=""><a class="bx-prev disabled" href="#"></a></span><span class="bxx-next" id="">
+                                <a class="bx-next" href="#"></a></span>
                         </div>
                     </div>
                 </div>
@@ -354,8 +353,7 @@
                 <div id="destination" class="type_content  destination_type cf">
                     <div class="type_nav">
                         <a href="/2014/list-place.html" target="_blank" title=""><i></i>
-                            <h1>今日最新</h1>
-
+                            <h1>群星荟萃</h1>
                         </a>
                     </div>
                     <div class="type_scroll">
@@ -433,7 +431,7 @@
                 <div class="mod buy">
                     <div class="mod-hd">
                         <h2 class="title">
-                            <span class="current" idx="1">热门分类<i></i></span>
+                            <span class="current" idx="1">优选文章<i></i></span>
                         </h2>
                     </div>
                     <div class="mod-bd">

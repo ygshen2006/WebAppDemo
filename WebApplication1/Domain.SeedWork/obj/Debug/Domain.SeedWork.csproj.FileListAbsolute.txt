@@ -66,3 +66,4 @@ D:\NET\MyGit\WebAppDemo\WebApplication1\Domain.SeedWork\bin\Debug\Microsoft.AspN
 D:\NET\MyGit\WebAppDemo\WebApplication1\Domain.SeedWork\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
 D:\NET\MyGit\WebAppDemo\WebApplication1\Domain.SeedWork\obj\Debug\Domain.SeedWork.dll
 D:\NET\MyGit\WebAppDemo\WebApplication1\Domain.SeedWork\obj\Debug\Domain.SeedWork.pdb
+D:\NET\MyGit\WebAppDemo\WebApplication1\Domain.SeedWork\obj\Debug\Domain.SeedWork.csprojResolveAssemblyReference.cache

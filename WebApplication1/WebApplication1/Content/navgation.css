@@ -17,7 +17,9 @@
     background-color: #1570a6 !important;
 }
  .user-name-link {
+     margin-top:10px;
             color:white;
+            font-size:16px !important;
         }
 .welcome {
     margin-right:50px;

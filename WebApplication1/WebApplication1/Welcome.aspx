@@ -141,6 +141,7 @@
             </div>
         </div>--%>
         <div id="wrap">
+            <div class="loader" data-role="preloader" data-type="square" data-style="color"></div>
             <div id="page-left-shadow" class="z-index-layer-1"></div>
 
             <div id="page-right-shadow" class="z-index-layer-1"></div>
@@ -285,21 +286,17 @@
                                     <ul style="width: 915%; position: relative; transition-duration: 0s; transform: translate3d(0px, 0px, 0px);" class="type_list destination_list">
                                         <li style="float: left; list-style: none; position: relative; width: 280px; margin-right: 20px;">
                                             <a href="/2014/place/guoneilvyouchengshi.html" target="_blank">
-                                                <img style="width: 280; height: 210;" src="http://youimg1.c-ctrip.com/target/fd/tg/g1/M09/6B/C7/CghzflSqQluAaK3_AAB2yroAjKA293.jpg" alt="">
+                                                <img style="width: 280px; height: 210px;" src="http://youimg1.c-ctrip.com/target/fd/tg/g1/M09/6B/C7/CghzflSqQluAaK3_AAB2yroAjKA293.jpg" alt="">
                                                 <span>国内最佳旅游城市</span></a>
                                             <a href="/2014/place/haiwailvyou.html" target="_blank">
-                                                <img style="width: 280; height: 210;" src="http://youimg1.c-ctrip.com/target/fd/tg/g2/M03/6F/12/CghzgVSqQqaAdOWYAABPXZFQAYo045.jpg" alt="">
+                                                <img style="width: 280px; height: 210px;" src="http://youimg1.c-ctrip.com/target/fd/tg/g2/M03/6F/12/CghzgVSqQqaAdOWYAABPXZFQAYo045.jpg" alt="">
                                                 <span>海外最佳旅游城市</span></a>
-                                        </li>
-                                        <li style="float: left; list-style: none; position: relative; width: 280px; margin-right: 20px;">
                                             <a href="/2014/place/guoneilvyoujingqu.html" target="_blank">
                                                 <img style="width: 280; height: 210;" src="http://youimg1.c-ctrip.com/target/fd/tg/g2/M09/6F/35/CghzgFSqQnqAeoXvAABaxI9K5pA847.jpg" alt="">
                                                 <span>国内最佳旅游景区</span></a>
                                             <a href="/2014/place/shehuayou.html" target="_blank">
                                                 <img style="width: 280; height: 210;" src="http://youimg1.c-ctrip.com/target/fd/tg/g2/M00/6F/6B/CghzgFSqQsqAK6ctAABXXf1KCPQ100.jpg" alt="">
                                                 <span>最佳奢华游目的地</span></a>
-                                        </li>
-                                        <li style="float: left; list-style: none; position: relative; width: 280px; margin-right: 20px;">
                                             <a href="/2014/place/haidaoyou.html" target="_blank">
                                                 <img style="width: 280; height: 210;" src="http://youimg1.c-ctrip.com/target/fd/tg/g1/M05/6C/15/CghzfVSqQoyASrnuAABJF-ZUID0493.jpg" alt="">
                                                 <span>最佳海岛游目的地</span></a>
@@ -314,16 +311,12 @@
                                             <a href="/2014/place/zizhuyou.html" target="_blank">
                                                 <img style="width: 280; height: 210;" src="http://youimg1.c-ctrip.com/target/fd/tg/g2/M05/6F/2C/Cghzf1SqQveAUymzAAB2UInP-Tk504.jpg" alt="">
                                                 <span>最佳自助游目的地</span></a>
-                                        </li>
-                                        <li style="float: left; list-style: none; position: relative; width: 280px; margin-right: 20px;">
                                             <a href="/2014/place/daxuesheng.html" target="_blank">
                                                 <img style="width: 280; height: 210;" src="http://youimg1.c-ctrip.com/target/fd/tg/g2/M0A/6E/BA/Cghzf1SqQkCAbLJGAABzKWd-Xvs500.jpg" alt="">
                                                 <span>大学生最爱目的地</span></a>
                                             <a href="/2014/place/changjialvxing.html" target="_blank">
                                                 <img style="width: 280; height: 210;" src="http://youimg1.c-ctrip.com/target/fd/tg/g2/M03/6F/71/CghzgFSqQtWAJ88vAACDemChKsQ561.jpg" alt="">
                                                 <span>最佳长假旅行目的地</span></a>
-                                        </li>
-                                        <li style="float: left; list-style: none; position: relative; width: 280px; margin-right: 20px;">
                                             <a href="/2014/place/zijiayou.html" target="_blank">
                                                 <img style="width: 280; height: 210;" src="http://youimg1.c-ctrip.com/target/fd/tg/g1/M0B/6C/4C/CghzfVSqQuaAUFieAABzzi-H72k188.jpg" alt="">
                                                 <span>最佳自驾游目的地</span></a>
@@ -340,7 +333,6 @@
                                 </div>
                                 <div class="bx-controls"></div>
                             </div>
-
                         </div>
                         <div>
                             <span class="bxx-prev" id=""><a class="bx-prev disabled" href="#"></a></span><span class="bxx-next" id="">

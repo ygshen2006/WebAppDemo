@@ -185,7 +185,7 @@
     <Content Include="Content\ISAnimate1.css" />
     <Content Include="Content\loading.gif" />
     <Content Include="Content\metro-icons.css" />
-    <Content Include="Content\metro.css" />
+    <Content Include="Content\metro-rename.css" />
     <Content Include="Content\newTab.css" />
     <Content Include="Content\tagsarticle.css" />
     <Content Include="Content\teammanagement.css" />
@@ -193,6 +193,8 @@
     <Content Include="Content\wangEditor-1.3.css" />
     <Content Include="Content\fonts\icomoon.svg" />
     <Content Include="css\controls.svg" />
+    <Content Include="Content\metro.css" />
+    <Content Include="css\metro-bootstrap-new.css" />
     <Content Include="css\sprite.svg" />
     <Content Include="Images\approve.png" />
     <Content Include="Images\banner-app.png" />
@@ -243,6 +245,7 @@
     <Content Include="Images\submit.png" />
     <Content Include="Images\team-default.jpg" />
     <Content Include="js\Baidu-Frontia-JS-1.0.0.js" />
+    <Content Include="js\metro.min.js" />
     <Content Include="js\uploader\jquery.browse.js" />
     <Content Include="js\uploader\jquery.upload.js" />
     <Content Include="js\wangEditor-1.3.js" />
@@ -252,6 +255,7 @@
     <Content Include="Scripts\jquery.pin.js" />
     <Content Include="Scripts\metro.js" />
     <Content Include="Scripts\myteampagejs.js" />
+    <Content Include="Scripts\home-picture-scrolling.js" />
     <Content Include="Scripts\tagsrelated.js" />
     <Content Include="Scripts\tile\custom.js" />
     <Content Include="Scripts\tile\Load-Tiles.js" />
@@ -352,7 +356,7 @@
     <Content Include="js\jquery\jquery.mousewheel.js" />
     <Content Include="js\jquery\jquery.widget.min.js" />
     <Content Include="js\load-metro.js" />
-    <Content Include="js\metro.min.js" />
+    <Content Include="js\metro.min-old.js" />
     <Content Include="js\metro\metro-accordion.js" />
     <Content Include="js\metro\metro-button-set.js" />
     <Content Include="js\metro\metro-calendar.js" />
@@ -462,6 +466,7 @@
     <Content Include="TestPage.aspx" />
     <Content Include="Utility\wangEditor_uploadImg_assist.html" />
     <Content Include="TileTest.aspx" />
+    <Content Include="WebForm2.aspx" />
     <Content Include="Welcome.aspx" />
     <Content Include="fonts\auticons.eot" />
     <Content Include="fonts\auticons.ttf" />
@@ -745,6 +750,13 @@
     </Compile>
     <Compile Include="TileTest.aspx.designer.cs">
       <DependentUpon>TileTest.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebForm2.aspx.cs">
+      <DependentUpon>WebForm2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForm2.aspx.designer.cs">
+      <DependentUpon>WebForm2.aspx</DependentUpon>
     </Compile>
     <Compile Include="Welcome.aspx.cs">
       <DependentUpon>Welcome.aspx</DependentUpon>

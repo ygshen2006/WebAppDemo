@@ -143,5 +143,8 @@ namespace Application.MainBoundedContect.Services.SiteAdmininstration
            return seg.ToList();
        }
 
+       public List<AppSegment> GetAllSegments() {
+          return segRepository.GetAll(false).Select(_=>_.ToAppSegement()).ToList<AppSegment>();
+       }
     }
 }

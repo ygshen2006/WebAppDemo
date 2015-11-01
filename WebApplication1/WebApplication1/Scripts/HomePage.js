@@ -10,7 +10,6 @@
             }).live('mouseout', function (e) {
                 $('.arrow-icon').css('opacity', '0').css('transition','opacity 250ms ease-out 0s');
             });
-
        
             //the number links click
             $('.flex-control-nav a').live('click', function () {
@@ -21,7 +20,6 @@
                     });
                 }
             });
-
 
             // the previous
             $('.left-arrow').live('click', function (e) {
@@ -34,89 +32,45 @@
 
             });
             
-            // the auto scroll
-            var currentsilde=0;
-            
-            var a = $(".flex-control-nav a"), b = $(".slides li"), f = 2, d, g = [], c = {
-                init: function () {
-                    for (var e = 0, k = a.length; e < k; e++)
-                        (function () {
-                            var b = e;
-                            $(a[b]).bind("click", function () {
-                                clearTimeout(d);
-                                for (var a = 0, e = g.length; a < e; a++)
-                                    clearInterval(g[a]), g[a] = null;
-                                c.btnFocus(b);
-                                c.picFocus(b);
-                            })
-                           
+            var navlist = $(".flex-control-nav a");
+            var slides = $(".slides li");
+            var left = $('.left-arrow');
+            var right = $('.right-arrow');
+            var navlen = $(".flex-control-nav").length;
+            var slidelen = $(".slides").length;
+            ScrollPic(navlist, slides, left, right, navlen, slidelen);
 
-                        })(e); e = 0;
+            getAllSegements(function (result) {
+                if (result != null) {
 
-                },
-                prveBtClick: function () {
-                    $('.left-arrow').bind("click", function () {
-                        clearTimeout(d);
-                        for (var t = 0, e = g.length; t < e; t++)
-                        { clearInterval(g[t]), g[t] = null; }
-                        currentsilde--;
-                        if (currentsilde < 0)
-                        {
-                            currentsilde = currentsilde + 6;
-                        }
-                        c.btnFocus(currentsilde % a.length);
-                        c.picFocus(currentsilde % a.length);
+                    // Show all the segemtns in the list 
+                    var str = "";
+                    var str2 = "";
+                    $.each(result, function (index, current) {
+                        str += "<li class='divisionzone'>";
+                        str += "<a href='#' target='_blank'>";
+                        str += "<img src='../Images/Homepage/segment.jpg' /> <span>" + current.title + "</span>";
+                         str+="</a>";
+                         str += "</li>";
+
+
+                         str2 += "<li><a href='#'></a></li>";
                     });
-                },
-                nextBtClick: function () {
-                    $('.right-arrow').bind("click", function () {
-                        clearTimeout(d);
-                        for (var t = 0, e = g.length; t < e; t++)
-                        { clearInterval(g[t]), g[t] = null; }
-                        c.btnFocus(++currentsilde % a.length);
-                        c.picFocus(currentsilde % a.length);
-                    });
-                },
-                btnFocus:
-                    function (b) {
-                        a.removeClass("active");
-                        a[b].className = "active"
-                    },
-                picFocus:
-                    function (a) {
-                        //b[a].style.zIndex = f++;
-                        //h.opacity(a, 0, 100)
 
-                        $.each($(b[a]).parent().find('li').not($(b[a])), function (index, current) { $(current).hide(); });
+                    $('.start-segment').append(str);
+                    $('.navhide1').appendTo(str2);
+                }
+            });
 
-                        $(b[a]).show();
-                        currentsilde = a;
-                        h.opacity(a, 0, 100)
-                    },
-                onmouseenter:
-                    function (a, b) {
-                        (document.all ? a.onmouseenter = function (a) { b() } : a.onmouseover = function (a) { (null == a.relatedTarget ? b() : !(this === a.relatedTarget || 20 == this.compareDocumentPosition(a.relatedTarget)) && b()) })
-                    },
-                onmouseout:
-                    function (a, b) {
-                        (document.all ? a.onmouseleave = b : a.onmouseout = function (a) {
-                            (null ==
-                            a.relatedTarget ? b() : !(this === a.relatedTarget || 20 == this.compareDocumentPosition(a.relatedTarget)) && b())
-                        })
-                    }
-            }, h = {
-                init: function (a) { d = setTimeout(function () { a = (3 === a ? 0 : a + 1); h.clearInte(); c.btnFocus(a); c.picFocus(a); d = setTimeout(arguments.callee, 1E4) }, 1E4) }, opacity: function (a, c, d) {
-                    b[a].style.opacity = c / 100; b[a].style.filter = "alpha(opacity=" + c + ")"; g[a] = setInterval(function () {
-                        (c >= d ? (b[a].style.opacity = d / 100, b[a].style.filter = "alpha(opacity=" + d + ")", clearInterval(g[a])) : (b[a].style.opacity = c / 100, b[a].style.filter =
-                        "alpha(opacity=" + c + ")")); c += 5
-                    }, 30)
-                }, clearInte: function () { for (var a = 0, b = g.length; a < b; a++) clearInterval(g[a]), g[a] = null }, clearTime: function () { clearTimeout(d); d = null }
-            };
 
-            0 < $(".flex-control-nav").length && 0 < $(".slides").length && (c.init(), c.nextBtClick(), c.prveBtClick(), h.init(0));
+            navlist = $(".navhide1 a");
+             slides = $(".type_list li");
+             left = $('.bxx-prev');
+             right = $('.bx-next');
+             navlen = $(".navhide1").length;
+             slidelen = $(".type_list").length;
+            ScrollPic(navlist, slides, left, right, navlen, slidelen);
         }
-
-        
 
         // scroll to top 
         $('#gotop2').live('click', function (e) {
@@ -147,6 +101,119 @@
             $('#appd_wrap_pop_cnt').animate({ left: "-100%" });
             $('#appd_wrap_open').animate({ left: "0%" });
         });
+
+        function ScrollPic(a, b, left, right,navlen,slidelen) {
+            // the auto scroll
+            var currentsilde = 0;
+
+            var f = 2, d, g = [], c = {
+                init: function () {
+                    for (var e = 0, k = a.length; e < k; e++)
+                        (function () {
+                            var b = e;
+                            $(a[b]).bind("click", function () {
+                                clearTimeout(d);
+                                for (var a = 0, e = g.length; a < e; a++)
+                                    clearInterval(g[a]), g[a] = null;
+                                c.btnFocus(b);
+                                c.picFocus(b);
+                            })
+                        })(e); e = 0;
+
+                },
+                prveBtClick: function () {
+                    left.bind("click", function () {
+                        clearTimeout(d);
+                        for (var t = 0, e = g.length; t < e; t++)
+                        { clearInterval(g[t]), g[t] = null; }
+                        currentsilde--;
+                        if (currentsilde < 0) {
+                            currentsilde = currentsilde + 6;
+                        }
+                        c.btnFocus(currentsilde % a.length);
+                        c.picFocus(currentsilde % a.length);
+                    });
+                },
+                nextBtClick: function () {
+                   right.bind("click", function () {
+                        clearTimeout(d);
+                        for (var t = 0, e = g.length; t < e; t++)
+                        { clearInterval(g[t]), g[t] = null; }
+                        c.btnFocus(++currentsilde % a.length);
+                        c.picFocus(currentsilde % a.length);
+                    });
+                },
+                btnFocus:
+                    function (b) {
+                        a.removeClass("active");
+                        //a[b].className = "active"
+                    },
+                picFocus:
+                    function (a) {
+                        //b[a].style.zIndex = f++;
+                        //h.opacity(a, 0, 100)
+
+                        $.each($(b[a]).parent().find('li').not($(b[a])), function (index, current) { $(current).hide(); });
+
+                        $(b[a]).show();
+                        currentsilde = a;
+                        h.opacity(a, 0, 100)
+                    },
+                onmouseenter:
+                    function (a, b) {
+                        (document.all ? a.onmouseenter = function (a) { b() } : a.onmouseover = function (a) { (null == a.relatedTarget ? b() : !(this === a.relatedTarget || 20 == this.compareDocumentPosition(a.relatedTarget)) && b()) })
+                    },
+                onmouseout:
+                    function (a, b) {
+                        (document.all ? a.onmouseleave = b : a.onmouseout = function (a) {
+                            (null ==
+                            a.relatedTarget ? b() : !(this === a.relatedTarget || 20 == this.compareDocumentPosition(a.relatedTarget)) && b())
+                        })
+                    }
+            }, h = {
+                init: function (a) { d = setTimeout(function () { a = (3 === a ? 0 : a + 1); h.clearInte(); c.btnFocus(a); c.picFocus(a); d = setTimeout(arguments.callee, 1E4) }, 1E4) }, opacity: function (a, c, d) {
+                   // b[a].style.opacity = c / 100;
+                    b[a].style.filter = "alpha(opacity=" + c + ")"; g[a] = setInterval(function () {
+                        (c >= d ? (b[a].style.opacity = d / 100, b[a].style.filter = "alpha(opacity=" + d + ")", clearInterval(g[a])) : (b[a].style.opacity = c / 100, b[a].style.filter =
+                        "alpha(opacity=" + c + ")")); c += 5
+                    }, 30)
+                }, clearInte: function () { for (var a = 0, b = g.length; a < b; a++) clearInterval(g[a]), g[a] = null }, clearTime: function () { clearTimeout(d); d = null }
+            };
+
+            0 < navlen && 0 < slidelen && (c.init(), c.nextBtClick(), c.prveBtClick(), h.init(0));
+        }
+
+        function getAllSegements(callBack) {
+            var loadingArea = $('.hotsegment');
+            var url = GetBaseUrl();
+
+            $.ajax({
+                url: url + "?requestType=getallsegments",
+                type: "POST",
+                dataType: "json",
+                timeout: 99000,
+                beforeSend: function () {
+                    loadingArea.showLoading();
+                },
+                error: function (xhr, status, error) {
+                    alert('Error found any segements');
+                    console.log(error);
+                },
+                success: function (result) {
+                    if (callBack) {
+                        callBack(result);
+                    }
+                },
+                complete: function () {
+                    loadingArea.hideLoading();
+                },
+            });
+        }
+
+        function GetBaseUrl() {
+            var url = "http://" + window.location.hostname + ':' + window.location.port + '/Ajax/SiteAdminAjax';
+            return url;
+        };
     }
 
 

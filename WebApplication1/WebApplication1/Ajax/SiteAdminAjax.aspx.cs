@@ -70,6 +70,10 @@ namespace WebApplication1.Ajax
             {
                 Response.Write(GetUsefulLinks(Request["parentOnly"]));
             }
+            if (Request["requestType"] == "getallsegments")
+            {
+                Response.Write(GetAllSegments());
+            }
         }
 
 
@@ -240,6 +244,25 @@ namespace WebApplication1.Ajax
                 IEnumerable<AppTeamSite> divisions = service.GetAllSingleTeams();
                 return jss.Serialize(divisions);
             }
+        }
+
+        public string GetAllSegments() { 
+        
+           JavaScriptSerializer jss = new JavaScriptSerializer();
+           using (MainDBUnitWorkContext context = new MainDBUnitWorkContext())
+           {
+               ITeamRepository teamRepository = new TeamRepository(context);
+               ISegmentRepository segRepository = new SegmentRepository(context);
+
+
+               // Remove current structure from the database scheme level
+               IDivisionRepository repository = new DivisionRepository(context);
+
+               AppDivisionSegmentsService service = new AppDivisionSegmentsService(teamRepository, segRepository, repository);
+
+               var segments = service.GetAllSegments();
+               return jss.Serialize(segments);
+           }
         }
     }
 

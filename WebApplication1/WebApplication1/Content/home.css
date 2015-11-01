@@ -130,7 +130,7 @@
         }
 
         .repeat-y-sprite, #page-left-shadow, #page-right-shadow {
-            background: transparent url("http://static.huluim.com/huluguru/common/repeat-y-sf0c33273bd.png") no-repeat scroll 0% 0%;
+            background: transparent url("../Images/Homepage/repeat-y-sf0c33273bd.png") no-repeat scroll 0% 0%;
         }
 
         #page-right-shadow {
@@ -235,7 +235,7 @@
         }
 
             .masthead-sprite, #masthead #key-art ul.slides li .play-button, #masthead #key-art ul.slides li .add-to-queue-button, #masthead #key-art ul.slides li .add-to-queue-button.hover, #masthead #key-art ul.slides li .remove-from-queue-button, #masthead #key-art ul.slides li .add-to-favorites-button, #masthead #key-art ul.slides li .add-to-favorites-button.hover, #masthead #key-art ul.slides li .remove-from-favorites-button, #masthead #key-art ul.slides li .add-to-watchlist, #masthead #key-art ul.slides li .add-to-watchlist:hover, #masthead #key-art ul.slides li .add-to-watchlist.hover, #masthead #key-art ul.slides li .remove-from-watchlist, #masthead #key-art ul.slides li .remove-from-watchlist:hover, #masthead #key-art ul.slides li .remove-from-watchlist.hover, #masthead #key-art ul.slides .plus-promo .try-button .button-arrow-icon, #masthead.small #key-art ul.slides li .add-to-queue-button, #masthead.small #key-art ul.slides li .add-to-queue-button.hover, #masthead.small #key-art ul.slides li .remove-from-queue-button, #masthead.small #key-art ul.slides li .add-to-favorites-button, #masthead.small #key-art ul.slides li .add-to-favorites-button.hover, #masthead.small #key-art ul.slides li .remove-from-favorites-button, #masthead .left-arrow .arrow-icon, #masthead .left-arrow.hover .arrow-icon, #masthead .right-arrow .arrow-icon, #masthead .right-arrow.hover .arrow-icon, body.small #masthead.small #key-art ul.slides .plus-promo .try-button .button-arrow-icon, #masthead.controls ol.flex-control-nav li a, #masthead.controls ol.flex-control-nav li a.active, .player-tray .tray.TYPE_S_ONE_ROW .prev, .embed-tray .tray.TYPE_S_ONE_ROW .prev, .player-tray .tray.TYPE_S_ONE_ROW .prev:hover, .embed-tray .tray.TYPE_S_ONE_ROW .prev:hover, .player-tray .tray.TYPE_S_ONE_ROW .next, .embed-tray .tray.TYPE_S_ONE_ROW .next, .player-tray .tray.TYPE_S_ONE_ROW .next:hover, .embed-tray .tray.TYPE_S_ONE_ROW .next:hover, #key-art .play-button {
-                background: transparent url("http://static.huluim.com/huluguru/masthead-sf61c590a59.png") no-repeat scroll 0% 0%;
+                background: transparent url("../Images/Homepage/masthead-sf61c590a59.png") no-repeat scroll 0% 0%;
             }
 
         a {
@@ -342,10 +342,21 @@ a {
     position: absolute;
     width: 280px;
     height: 440px;
-    background: transparent url("http://pages.c-ctrip.com/gs_static/act/img/left_box.png?t=b043443599de62f2837cd0bb5955733c") no-repeat scroll 0% 0%;
+    background: transparent url("../Images/HomePage/left_box.png?t=b043443599de62f2837cd0bb5955733c") no-repeat scroll 0% 0%;
     text-align: center;
     vertical-align: middle;
     float: left;
+}
+
+.loading-indicator {
+    background: url('../Images/loading40.gif') no-repeat center;
+    width: 70px;
+    height: 70px;
+}
+
+.loading-indicator-overlay {
+    opacity: 0.6;
+    background-color: rgb(255, 255, 255);
 }
 .type_content .type_nav a {
     width: 280px;
@@ -410,7 +421,7 @@ a {
     display: block;
     text-decoration: none;
     margin-bottom: 20px;
-    background: transparent url("http://pages.c-ctrip.com/gs_static/act/img/img_back.png?t=1134e14c6b099bd323575b6055d98fbf") no-repeat scroll 0% 0%;
+    background: transparent url("../Images/Homepage/img_back.png?t=1134e14c6b099bd323575b6055d98fbf") no-repeat scroll 0% 0%;
     width: 280px;
     height: 210px;
     overflow: hidden;
@@ -477,7 +488,7 @@ a {
     top: 0px;
     width: 100%;
     height: 100%;
-    background: transparent url("http://webresource.c-ctrip.com/ResUnionOnline/R3/float/pic/app_wrap_open.png") repeat scroll 0% 0%;
+    background: transparent url("../Images/Homepage/app_wrap_open.png") repeat scroll 0% 0%;
 }
 
 
@@ -486,7 +497,7 @@ a {
     left: 0px;
     bottom: 0px;
     width: 100%;
-    background: transparent url("http://pic.c-ctrip.com/index/bg_mask20131029.png") repeat-x scroll 0px -225px;
+    background: transparent url("../Images/Homepage/bg_mask20131029.png") repeat-x scroll 0px -225px;
 }
 .appd_wrap_pop {
     display: none;
@@ -523,7 +534,7 @@ a {
     top: -20px;
     width: 233px;
     height: 205px;
-    background: transparent url("http://webresource.c-ctrip.com/ResUnionOnline/R3/float/pic/gift_float_ppl.png") repeat scroll 0% 0%;
+    background: transparent url("../Images/Homepage/gift_float_ppl.png") repeat scroll 0% 0%;
 }
 .appd_wrap_pop_pic_phone {
     position: absolute;
@@ -591,7 +602,7 @@ img, fieldset {
     height: 36px;
     overflow: hidden;
     top: 205px;
-    background: transparent url("http://pages.c-ctrip.com/gs_static/act/img/nav_icon.png?t=6b262e4b8eaca9fa5c67611d2f00aa89") no-repeat scroll 0% 0%;
+    background: transparent url("../Images/Homepage/nav_icon.png?t=6b262e4b8eaca9fa5c67611d2f00aa89") no-repeat scroll 0% 0%;
     cursor: pointer;
 }
 .type_scroll .bx-next {
@@ -609,7 +620,7 @@ img, fieldset {
     left: 55px;
     width: 170px;
     height: 145px;
-    background: transparent url("http://pages.c-ctrip.com/gs_static/act/img/left_icon.png?t=d82a184ba9848d0139ea9d6dbab4bc23") no-repeat scroll 0% 0%;
+    background: transparent url("../Images/Homepage/left_icon.png?t=d82a184ba9848d0139ea9d6dbab4bc23") no-repeat scroll 0% 0%;
 }
 
 .type_content .type_nav a h1 {
@@ -800,4 +811,11 @@ img, fieldset {
     display: inline-block;
     max-width: 72px;
     overflow: hidden;
+}
+
+.divisionzone {
+    float: left; list-style: none; position: relative; width: 280px; margin-right: 20px;
+}
+.divisonimage {
+    width: 280px; height: 210px;
 }

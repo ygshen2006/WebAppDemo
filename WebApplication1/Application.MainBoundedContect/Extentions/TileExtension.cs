@@ -71,10 +71,10 @@ namespace Application.MainBoundedContect.Extentions
                 {
                     appTile = new AppMySubscriptionsTile();
                 }
-                else
-                {
-                    throw new Exception(String.Format("DO NOT support the {0}", tile.Id.ToString()));
-                }
+                //else
+                //{
+                //    throw new Exception(String.Format("DO NOT support the {0}", tile.Id.ToString()));
+                //}
             }
             else
             {

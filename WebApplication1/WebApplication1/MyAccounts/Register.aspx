@@ -17,9 +17,7 @@
 
         <div class="head">
             <div class="logo-head">
-                <a>
-                    <img src="../Images/baidu.gif" /></a>
-
+                <a></a>
             </div>
             <span style="padding-left: 1000px">已经有帐号了点这里：<a href="Login.aspx" class="login_from">登陆</a></span>
 

@@ -79,7 +79,7 @@
          <header class="bg-dark" style="position: relative">
                 <div class="navigation-bar dark" style="width: 100%; height: 74px; margin: 0 auto">
                     <div class="navigation-bar-content container">
-                        <a href="../Welcome.aspx" class="element" id="logo"></a>
+                        <%--<a href="../Welcome.aspx" class="element" id="logo"></a>--%>
                         <span class="element-divider"></span>
                         <a class="element1 pull-menu" href="#"></a>
                         <ul class="element-menu nav-test">

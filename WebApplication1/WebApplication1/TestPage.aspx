@@ -23,7 +23,8 @@
         }
 
         .loading-indicator {
-            background: url('../Images/loading40.gif') no-repeat center;
+          background:transparent url('../Images/loading40.gif') no-repeat scroll 50% center;
+
             width: 70px;
             height: 70px;
         }

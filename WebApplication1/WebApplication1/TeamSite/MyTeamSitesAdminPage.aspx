@@ -61,7 +61,7 @@
         }
 
         .loading-indicator {
-            background: url('../Images/loading40.gif') no-repeat center;
+            background: transparent url('../Images/loading40.gif') no-repeat scroll 50% center;
             width: 70px;
             height: 70px;
         }
@@ -70,7 +70,6 @@
             opacity: 0.6;
             background-color: rgb(255, 255, 255);
         }
-        
     </style>
     <%--<link href="../Content/teamsites.css" rel="stylesheet" />--%>
     <script>
@@ -145,10 +144,10 @@
 
             divsionId = window.location.href.split('?')[1].split('&')[0].split('=')[1];
             divisionguid = window.location.href.split('?')[1].split('&')[1].split('=')[1];
-           // divisionName = window.location.href.split('?')[1].split('&')[2].split('=')[1];
+            // divisionName = window.location.href.split('?')[1].split('&')[2].split('=')[1];
 
 
-            
+
             loadTheDivisionName(divsionId);
 
             loadTheSegments(divsionId, divisionguid, $('.tile-area'), function (result) {

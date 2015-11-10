@@ -100,7 +100,7 @@
         }
 
         .loading-indicator {
-            background: url('../Images/loading40.gif') no-repeat center;
+            background: transparent url('../Images/loading40.gif') no-repeat scroll 50% center;
             width: 70px;
             height: 70px;
         }
@@ -142,7 +142,7 @@
 </head>
 <body class="metro">
     <div class="wrapper">
-       
+
         <header class="bg-dark" style="position: relative">
             <div class="navigation-bar dark" style="width: 100%">
                 <div class="navigation-bar-content container">
@@ -173,7 +173,6 @@
                                 <li class="teamsearch"><a href="#" class="dropdown-toggle">企业查找</a>
 
                                     <ul class="d-menu" data-role="dropdown">
-                                        
                                     </ul>
                                 </li>
                             </ul>
@@ -188,7 +187,7 @@
                                 <li><a href="../Personal/ProfileEdit.aspx">个人信息</a></li>
                             </ul>
                         </li>
-                        
+
                         <li><a href="#" class="dropdown-toggle">管理中心</a>
                             <ul class="dropdown-menu place-center dark" data-role="dropdown" data-show="hover">
                                 <li><a href="#">网站-新闻</a></li>
@@ -296,6 +295,7 @@
                                             <div class="panel" data-role="panel">
                                                 <div class="panel-header bg-darkBlue" style="font-family: 'Segoe UI'; font-size: 16px; color: white; font-weight: bold">
                                                     帐号信息：
+                                               
                                                 </div>
 
                                                 <div class="panel-content" style="display: block; border: none">
@@ -321,12 +321,14 @@
                                             <div class="panel" data-role="panel">
                                                 <div id="show-more" class="panel-header bg-lightBlue" style="font-family: 'Segoe UI'; font-size: 16px; color: white; font-weight: bold">
                                                     完善其它信息
+                                               
                                                 </div>
                                                 <div class="panel-content" style="display: none; border: none">
 
                                                     <div class="panel" data-role="panel">
                                                         <div id="show-basic" class="panel-header bg-green" style="font-family: 'Segoe UI'; font-size: 13px; height: 17px; color: white; font-weight: bold">
                                                             基本信息
+                                                       
                                                         </div>
                                                         <div class="panel-content" style="display: none; border: none">
                                                             <table class="table striped bordered hovered">
@@ -399,6 +401,7 @@
                                                     <div class="panel" data-role="panel">
                                                         <div class="panel-header bg-green" style="font-family: 'Segoe UI'; font-size: 13px; height: 17px; color: white; font-weight: bold">
                                                             兴趣爱好
+                                                       
                                                         </div>
                                                         <div class="panel-content" style="display: none; border: none">
                                                             <table class="table striped bordered hovered table_intrest">
@@ -529,6 +532,7 @@
                                             </div>
                                             <div>
                                                 显示密码:
+                                               
                                                 <input type="checkbox" id="showPwd" />
                                             </div>
                                             <div>
@@ -538,6 +542,7 @@
                                     </div>
                                     <div style="display: none">
                                         消息设置
+                                   
                                     </div>
                                 </div>
 

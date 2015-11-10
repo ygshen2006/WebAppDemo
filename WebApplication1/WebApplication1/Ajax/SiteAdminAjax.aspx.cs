@@ -261,7 +261,14 @@ namespace WebApplication1.Ajax
                AppDivisionSegmentsService service = new AppDivisionSegmentsService(teamRepository, segRepository, repository);
 
                var segments = service.GetAllSegments();
-               return jss.Serialize(segments);
+               // Divid all the segments into array
+               int len = segments.Count/6==0?segments.Count:segments.Count+1;
+
+               AppSegment[][] array = new AppSegment[len][];
+               for (int i = 0; i < 6; i++) {
+                   array[i] = new AppSegment[] { };
+               }
+                   return jss.Serialize(segments);
            }
         }
     }

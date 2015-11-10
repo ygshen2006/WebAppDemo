@@ -796,7 +796,7 @@
 }
 
 .loading-indicator {
-    background: url('../images/loading40.gif') no-repeat center;
+    background: transparent url('../Images/loading40.gif') no-repeat scroll 50% center;
     width: 80px;
     height: 80px;
 }

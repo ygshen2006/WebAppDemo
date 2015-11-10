@@ -196,6 +196,7 @@
     <Content Include="Content\metro.css" />
     <Content Include="css\metro-bootstrap-new.css" />
     <Content Include="css\sprite.svg" />
+    <Content Include="Images\loading40.gif" />
     <Content Include="Images\approve.png" />
     <Content Include="Images\banner-app.png" />
     <Content Include="Images\banner1.png" />
@@ -228,6 +229,7 @@
     <Content Include="Images\index.gif" />
     <Content Include="Images\index.png" />
     <Content Include="Images\isguidex.png" />
+    <Content Include="Images\loading401.gif" />
     <Content Include="Images\run.jpg" />
     <Content Include="Images\s1_1.png" />
     <Content Include="Images\s1_2.png" />
@@ -329,7 +331,6 @@
     <Content Include="Images\Intrests.jpg" />
     <Content Include="Images\admin-gear.png" />
     <Content Include="Images\fail.png" />
-    <Content Include="Images\loading40.gif" />
     <Content Include="Images\picture-1.jpg" />
     <Content Include="Images\pwd-tip.png" />
     <Content Include="Images\split.png" />

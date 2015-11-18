@@ -19,7 +19,7 @@ namespace WebApplication1
         }
         void Session_Start(object sender, EventArgs e)
         {
-            Session.Timeout = 600; 
+            //Session.Timeout = 600; 
         }
     }
 }

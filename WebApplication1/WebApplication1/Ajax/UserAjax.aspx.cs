@@ -58,6 +58,7 @@ namespace WebApplication1.Ajax
                     {
                         Session["IsAuthorized"] = true;
                         Session["UserName"] = paramDes.First().UserName;
+                        Session["UserId"] = paramDes.First().Id;
                         Response.Write(jss.Serialize("Succeed"));
                     }
                 }
@@ -225,7 +226,19 @@ namespace WebApplication1.Ajax
                 }
             }
 
+            if (Request["requestType"] == "getuserbyid")
+            {
+                JavaScriptSerializer jss = new JavaScriptSerializer();
 
+                using (MainDBUnitWorkContext context = new MainDBUnitWorkContext())
+                {
+                    UserRepository up = new UserRepository(context);
+                    UserService service = new UserService(up);
+                    var users = service.GetUserById();
+                    var s = jss.Serialize(users.ToAppUser());
+                    Response.Write(s);
+                }
+            }
             if (Request["requestType"] == "getteamsforuser")
             {
                 JavaScriptSerializer jss = new JavaScriptSerializer();

@@ -310,3 +310,15 @@ D:\MyGit\WebAppDemo\WebApplication1\WebApplication1\bin\Microsoft.Owin.Security.
 D:\MyGit\WebAppDemo\WebApplication1\WebApplication1\obj\Debug\WebApplication1.csprojResolveAssemblyReference.cache
 D:\MyGit\WebAppDemo\WebApplication1\WebApplication1\obj\Debug\WebApplication1.dll
 D:\MyGit\WebAppDemo\WebApplication1\WebApplication1\obj\Debug\WebApplication1.pdb
+D:\MyGit\WebAppDemo\WebApplication1\WebApplication1\bin\System.Web.Helpers.dll
+D:\MyGit\WebAppDemo\WebApplication1\WebApplication1\bin\System.Web.Mvc.dll
+D:\MyGit\WebAppDemo\WebApplication1\WebApplication1\bin\System.Web.Razor.dll
+D:\MyGit\WebAppDemo\WebApplication1\WebApplication1\bin\System.Web.WebPages.Deployment.dll
+D:\MyGit\WebAppDemo\WebApplication1\WebApplication1\bin\System.Web.WebPages.dll
+D:\MyGit\WebAppDemo\WebApplication1\WebApplication1\bin\System.Web.WebPages.Razor.dll
+D:\MyGit\WebAppDemo\WebApplication1\WebApplication1\bin\System.Web.Helpers.xml
+D:\MyGit\WebAppDemo\WebApplication1\WebApplication1\bin\System.Web.Mvc.xml
+D:\MyGit\WebAppDemo\WebApplication1\WebApplication1\bin\System.Web.Razor.xml
+D:\MyGit\WebAppDemo\WebApplication1\WebApplication1\bin\System.Web.WebPages.xml
+D:\MyGit\WebAppDemo\WebApplication1\WebApplication1\bin\System.Web.WebPages.Deployment.xml
+D:\MyGit\WebAppDemo\WebApplication1\WebApplication1\bin\System.Web.WebPages.Razor.xml

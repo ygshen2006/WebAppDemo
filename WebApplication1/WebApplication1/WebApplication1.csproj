@@ -201,12 +201,98 @@
     <Content Include="Ajax\TeamSiteAdminAjax.aspx" />
     <Content Include="Ajax\UserAjax.aspx" />
     <Content Include="Content\article.css" />
+    <Content Include="Content\avatars\avatar.png" />
+    <Content Include="Content\avatars\avatar1.png" />
+    <Content Include="Content\avatars\avatar2.png" />
+    <Content Include="Content\avatars\avatar3.png" />
+    <Content Include="Content\avatars\avatar4.png" />
+    <Content Include="Content\avatars\avatar5.png" />
+    <Content Include="Content\avatars\profile-pic.jpg" />
+    <Content Include="Content\avatars\user.jpg" />
+    <Content Include="Content\CSS\ace-ie.min.css" />
+    <Content Include="Content\CSS\ace-rtl.min.css" />
+    <Content Include="Content\CSS\ace-skins.min.css" />
+    <Content Include="Content\CSS\ace.min.css" />
+    <Content Include="Content\CSS\bootstrap-editable.css" />
+    <Content Include="Content\CSS\bootstrap-timepicker.css" />
+    <Content Include="Content\CSS\bootstrap.min.css" />
+    <Content Include="Content\CSS\chosen.css" />
+    <Content Include="Content\CSS\colorbox.css" />
+    <Content Include="Content\CSS\colorpicker.css" />
+    <Content Include="Content\CSS\datepicker.css" />
+    <Content Include="Content\CSS\daterangepicker.css" />
+    <Content Include="Content\CSS\dropzone.css" />
+    <Content Include="Content\CSS\font-awesome-ie7.min.css" />
+    <Content Include="Content\CSS\font-awesome.min.css" />
+    <Content Include="Content\CSS\fullcalendar.css" />
+    <Content Include="Content\CSS\images\loading.gif" />
+    <Content Include="Content\CSS\jquery-ui-1.10.3.custom.min.css" />
+    <Content Include="Content\CSS\jquery-ui-1.10.3.full.min.css" />
+    <Content Include="Content\CSS\jquery.gritter.css" />
+    <Content Include="Content\CSS\niqiu.css" />
+    <Content Include="Content\CSS\select2.css" />
+    <Content Include="Content\CSS\ui.jqgrid.css" />
     <Content Include="Content\Dashboard.css" />
     <Content Include="Content\fonts\metro.svg" />
     <Content Include="Content\home.css" />
     <Content Include="Content\icons-rtl.gif" />
     <Content Include="Content\icons.gif" />
     <Content Include="Content\ISAnimate1.css" />
+    <Content Include="Content\Js\ace-elements.min.js" />
+    <Content Include="Content\Js\ace-extra.min.js" />
+    <Content Include="Content\Js\ace.min.js" />
+    <Content Include="Content\Js\additional-methods.min.js" />
+    <Content Include="Content\Js\bootbox.min.js" />
+    <Content Include="Content\Js\bootstrap-colorpicker.min.js" />
+    <Content Include="Content\Js\bootstrap-tag.min.js" />
+    <Content Include="Content\Js\bootstrap-wysiwyg.min.js" />
+    <Content Include="Content\Js\bootstrap.min.js" />
+    <Content Include="Content\Js\chosen.jquery.min.js" />
+    <Content Include="Content\Js\date-time\bootstrap-datepicker.min.js" />
+    <Content Include="Content\Js\date-time\bootstrap-timepicker.min.js" />
+    <Content Include="Content\Js\date-time\daterangepicker.min.js" />
+    <Content Include="Content\Js\date-time\moment.min.js" />
+    <Content Include="Content\Js\dropzone.min.js" />
+    <Content Include="Content\Js\excanvas.min.js" />
+    <Content Include="Content\Js\flot\jquery.flot.min.js" />
+    <Content Include="Content\Js\flot\jquery.flot.pie.min.js" />
+    <Content Include="Content\Js\flot\jquery.flot.resize.min.js" />
+    <Content Include="Content\Js\fuelux\data\fuelux.tree-sampledata.js" />
+    <Content Include="Content\Js\fuelux\fuelux.spinner.min.js" />
+    <Content Include="Content\Js\fuelux\fuelux.tree.min.js" />
+    <Content Include="Content\Js\fuelux\fuelux.wizard.min.js" />
+    <Content Include="Content\Js\fullcalendar.min.js" />
+    <Content Include="Content\Js\html5shiv.js" />
+    <Content Include="Content\Js\jqGrid\i18n\grid.locale-en.js" />
+    <Content Include="Content\Js\jqGrid\jquery.jqGrid.min.js" />
+    <Content Include="Content\Js\jquery-1.10.2.min.js" />
+    <Content Include="Content\Js\jquery-2.0.3.min.js" />
+    <Content Include="Content\Js\jquery-ui-1.10.3.custom.min.js" />
+    <Content Include="Content\Js\jquery-ui-1.10.3.full.min.js" />
+    <Content Include="Content\Js\jquery.autosize.min.js" />
+    <Content Include="Content\Js\jquery.colorbox-min.js" />
+    <Content Include="Content\Js\jquery.dataTables.bootstrap.js" />
+    <Content Include="Content\Js\jquery.dataTables.min.js" />
+    <Content Include="Content\Js\jquery.easy-pie-chart.min.js" />
+    <Content Include="Content\Js\jquery.gritter.min.js" />
+    <Content Include="Content\Js\jquery.hotkeys.min.js" />
+    <Content Include="Content\Js\jquery.inputlimiter.1.3.1.min.js" />
+    <Content Include="Content\Js\jquery.knob.min.js" />
+    <Content Include="Content\Js\jquery.maskedinput.min.js" />
+    <Content Include="Content\Js\jquery.mobile.custom.min.js" />
+    <Content Include="Content\Js\jquery.nestable.min.js" />
+    <Content Include="Content\Js\jquery.slimscroll.min.js" />
+    <Content Include="Content\Js\jquery.sparkline.min.js" />
+    <Content Include="Content\Js\jquery.ui.touch-punch.min.js" />
+    <Content Include="Content\Js\jquery.validate.min.js" />
+    <Content Include="Content\Js\markdown\bootstrap-markdown.min.js" />
+    <Content Include="Content\Js\markdown\markdown.min.js" />
+    <Content Include="Content\Js\niqiu.js" />
+    <Content Include="Content\Js\respond.min.js" />
+    <Content Include="Content\Js\select2.min.js" />
+    <Content Include="Content\Js\typeahead-bs2.min.js" />
+    <Content Include="Content\Js\x-editable\ace-editable.min.js" />
+    <Content Include="Content\Js\x-editable\bootstrap-editable.min.js" />
     <Content Include="Content\loading.gif" />
     <Content Include="Content\metro-icons.css" />
     <Content Include="Content\metro-rename.css" />
@@ -218,6 +304,7 @@
     <Content Include="Content\fonts\icomoon.svg" />
     <Content Include="css\controls.svg" />
     <Content Include="Content\metro.css" />
+    <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="css\metro-bootstrap-new.css" />
     <Content Include="css\sprite.svg" />
     <Content Include="Images\loading40.gif" />
@@ -293,6 +380,7 @@
     <Content Include="Scripts\metro.js" />
     <Content Include="Scripts\myteampagejs.js" />
     <Content Include="Scripts\home-picture-scrolling.js" />
+    <Content Include="Scripts\Recruit\layout.js" />
     <Content Include="Scripts\tagsrelated.js" />
     <Content Include="Scripts\tile\custom.js" />
     <Content Include="Scripts\tile\Load-Tiles.js" />
@@ -497,6 +585,9 @@
     <Content Include="TestPage.aspx" />
     <Content Include="Utility\wangEditor_uploadImg_assist.html" />
     <Content Include="TileTest.aspx" />
+    <Content Include="Views\Shared\_Layout.cshtml">
+      <SubType>Code</SubType>
+    </Content>
     <Content Include="WebForm2.aspx" />
     <Content Include="Welcome.aspx" />
     <Content Include="fonts\auticons.eot" />
@@ -507,6 +598,10 @@
     <Content Include="Content\fonts\metro.eot" />
     <Content Include="Content\fonts\metro.ttf" />
     <Content Include="Content\fonts\metro.woff" />
+    <Content Include="fonts\fontawesome-webfont.eot" />
+    <Content Include="fonts\fontawesome-webfont.ttf" />
+    <Content Include="fonts\fontawesome-webfont.woff" />
+    <Content Include="Content\font\fontawesome-webfont.woff" />
     <None Include="Properties\PublishProfiles\locak.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -551,11 +646,10 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
     <Content Include="Utility\data.ashx" />
     <Content Include="Views\_ViewStart.cshtml" />
-    <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Test\Index.cshtml" />
     <Content Include="Views\Web.config">
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="Views\Recruit\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -651,7 +745,7 @@
     <Compile Include="Contact.aspx.designer.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Controllers\TestController.cs" />
+    <Compile Include="Controllers\RecruitController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

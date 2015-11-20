@@ -2,7 +2,21 @@
     layout.Init = function () {
         // User name init
         LoadUsers($('.nav-user-photo'), 0, function (result) {
-            $('.nav-user-photo').attr('src',result.);
+            
+        });
+
+
+        // Add new position 
+        $('.new-position').live('click',function (e) {
+
+            e.preventDefault();
+            $('#addNewPosition').bPopup().show();
+
+        });
+
+        $('.cancle-saving').live('click',function (e) {
+            e.preventDefault();
+            $('#addNewPosition').bPopup().close();
         });
     }
 

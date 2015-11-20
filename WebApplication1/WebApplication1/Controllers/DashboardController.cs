@@ -6,11 +6,11 @@ using System.Web.Mvc;
 
 namespace WebApplication1.Controllers
 {
-    public class RecruitController : Controller
+    public class DashboardController : Controller
     {
         //
         // GET: /Recruit/
-        public ActionResult Index()
+        public ActionResult Index(string teamguid)
         {
             if (Session["IsAuthorized"] == null)
             {

@@ -12,7 +12,7 @@
 
 
  .loading-indicator {
-    background: transparent url('../Images/loading40.gif') no-repeat scroll 50% center;
+    background: transparent url('../../Images/loading40.gif') no-repeat scroll 50% center;
     width: 70px;
     height: 70px;
 }
@@ -20,4 +20,12 @@
 .loading-indicator-overlay {
     opacity: 0.6;
     background-color: rgb(255, 255, 255);
+}
+
+#addNewPosition {
+    width:700px;
+    height:auto;
+    margin: 0 auto;
+    background-color:white;
+    display:none;
 }

@@ -588,6 +588,9 @@
     <Content Include="Views\Shared\_Layout.cshtml">
       <SubType>Code</SubType>
     </Content>
+    <Content Include="Views\Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="WebForm2.aspx" />
     <Content Include="Welcome.aspx" />
     <Content Include="fonts\auticons.eot" />
@@ -645,9 +648,6 @@
     <Content Include="Bundle.config" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
     <Content Include="Utility\data.ashx" />
-    <Content Include="Views\Web.config">
-      <SubType>Designer</SubType>
-    </Content>
     <Content Include="Views\Dashboard\Index.cshtml" />
     <Content Include="Views\Shared\_LayoutManagement.cshtml" />
     <Content Include="Views\Resume\ReceivedResumeAction.cshtml" />

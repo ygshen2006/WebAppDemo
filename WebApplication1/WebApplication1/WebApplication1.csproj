@@ -225,6 +225,8 @@
     <Content Include="Content\CSS\font-awesome-ie7.min.css" />
     <Content Include="Content\CSS\font-awesome.min.css" />
     <Content Include="Content\CSS\fullcalendar.css" />
+    <Content Include="Content\NewJob.css" />
+    <Content Include="Images\btn.gif" />
     <Content Include="Content\CSS\images\loading.gif" />
     <Content Include="Content\CSS\jquery-ui-1.10.3.custom.min.css" />
     <Content Include="Content\CSS\jquery-ui-1.10.3.full.min.css" />
@@ -380,6 +382,7 @@
     <Content Include="Scripts\metro.js" />
     <Content Include="Scripts\myteampagejs.js" />
     <Content Include="Scripts\home-picture-scrolling.js" />
+    <Content Include="Scripts\Recruit\basedata.js" />
     <Content Include="Scripts\Recruit\layout.js" />
     <Content Include="Scripts\tagsrelated.js" />
     <Content Include="Scripts\tile\custom.js" />
@@ -654,6 +657,7 @@
     <Content Include="Views\Resume\ContactedResumeAction.cshtml" />
     <Content Include="Views\Recurits\RecrutingAction.cshtml" />
     <Content Include="Views\Recurits\RecrutedAction.cshtml" />
+    <Content Include="Views\Recurits\NewJobAction.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

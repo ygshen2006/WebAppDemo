@@ -1,0 +1,126 @@
+﻿@{
+    ViewBag.Title = "发布新招聘信息";
+    Layout = "~/Views/Shared/_LayoutManagement.cshtml";
+}
+<link href="~/Content/NewJob.css" rel="stylesheet" />
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-8">
+            <div class="row">
+                <div class="col-sm-3">
+                    <label>职位：</label>
+                </div>
+                <div class="col-sm-9">
+                    <div class="industry">
+                        <input id="buttonSelJobType" name="buttonSelJobType" value="选择职位" title="选择职位" type="button">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-3">
+                    <label>行业：</label>
+                </div>
+                <div class="col-sm-9">
+                    <div class="job">
+                        <input id="buttonSelIndustry" name="buttonSelIndustry" value="选择行业" title="选择行业" type="button">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-3">
+                    <label>工作地点：</label>
+                </div>
+                <div class="col-sm-9">
+                    <div class="city">
+                        <span class="ui-helper-hidden-accessible" aria-live="polite" role="status"></span>
+                        <label class="cityInput disabled" id="JobLocation">选择城市</label>
+                        <input id="buttonSelCity" name="buttonSelCity" title="选择城市" class="cityButton" type="button">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-3">
+                    <label>薪资范围：</label>
+                </div>
+                <div class="col-sm-9">
+                    <div class="job">
+                        <input id="buttonSelSalary" name="buttonSelIndustry" value="" title="薪资范围" type="button">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-4 ads">
+            将来作为广告板
+        </div>
+</div>
+    </div>
+<!--新招聘职位-->
+<div id="addNewPosition">
+  
+
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="sPopupBlock">
+                    <table id="jobTab" class="table table-striped" width="100%">
+                        <tbody>
+                            <tr class="zebraCol0">
+                                <td class="leftClass jobtypeLCla" nowrap="nowrap" valign="middle">销售|客服|市场</td>
+                                <td class="jobtypeItems">
+                                    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                                        <tbody>
+                                            <tr>
+                                                <td class="blurItem" width="33%"><span class="availItem">银行</span></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="clear"></div>
+                </div>
+
+                <div style="width: 360px; z-index: 1001; left: -100px; top: -100px; visibility: hidden;" class="sPopupDivSubJobname sPopupDivLeftTop">
+                    <div class="paddingBlock">
+                        <table class="chebox" border="0" cellpadding="0" cellspacing="0" width="100%">
+                            <tbody>
+                                <tr>
+                                    <!--一个Tr 只能有两个-->
+                                    <td class="mOutItem" width="50%">
+                                        <label for="c_buttonSelJobType_006" class="noselItem">
+                                            <input name="c_buttonSelJobType" id="c_buttonSelJobType_006" value="006" iname="销售代表" type="checkbox">销售代表
+                                        </label>
+                                    </td>
+                                    <td class="mOutItem" width="50%">
+                                        <label for="c_buttonSelJobType_008" class="noselItem">
+                                            <input name="c_buttonSelJobType" id="c_buttonSelJobType_008" value="008" iname="客户代表" type="checkbox">客户代表
+                                        </label>
+                                    </td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="sButtonBlock">
+                        <label for="c_buttonSelJobType_4010200" class="noselItem_selAll">
+                            <input name="c_buttonSelJobType_4010200" id="c_buttonSelJobType_4010200" value="4010200" type="checkbox">全选
+                        </label>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<a class="orgButton" href="#">确认</a> <a class="blueButton" href="#">取消</a>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <div class="row">
+
+                    <div class="col-sm-6">
+                        <button class="btn-success">提交</button>
+                    </div>
+                    <div class="col-sm-6">
+                        <button class="btn-close cancle-saving">取消</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+</div>

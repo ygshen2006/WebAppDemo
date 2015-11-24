@@ -53,7 +53,7 @@
                         <i class="icon-leaf"></i>
                         招聘管理
                     </small>
-                
+
                 </a><!-- /.brand -->
             </div><!-- /.navbar-header -->
 
@@ -146,7 +146,7 @@
                         </a>
 
                         <ul class="user-menu pull-right dropdown-menu dropdown-yellow dropdown-caret dropdown-close">
-                            
+
                             <li>
                                 <a href="../Personal/ProfileEdit.aspx">
                                     <i class="icon-user"></i>
@@ -186,12 +186,12 @@
 
                 <div class="sidebar-shortcuts" id="sidebar-shortcuts">
                     <div class="sidebar-shortcuts-large" id="sidebar-shortcuts-large">
-
-                        <button class="btn btn-info new-position">
+                        
+                        <a class="btn btn-info new-position" href="@Url.Action("NewJobAction", "Recurits")">
                             <i class="icon-pencil" title="发布新职位"></i>
-                        </button>
+                        </a>
                         <i>发布新职位</i>
-                       
+                           
                     </div>
 
                     <div class="sidebar-shortcuts-mini" id="sidebar-shortcuts-mini">
@@ -300,16 +300,16 @@
                 </div>
 
                 <div class="page-content">
+                 
                     <div class="page-header">
                         <h1>
                             <span>控制台</span>
                             <small>
                                 <i class="icon-double-angle-right"></i>
-                                <span>查看</span>
+                                <span>@ViewBag.Title</span>
                             </small>
                         </h1>
                     </div><!-- /.page-header -->
-
                     <div class="row">
                         <div class="col-xs-12">
                             <!-- PAGE CONTENT BEGINS -->
@@ -373,94 +373,78 @@
             <i class="icon-double-angle-up icon-only bigger-110"></i>
         </a>
     </div><!-- /.main-container -->
-
-
-    <!--新招聘职位-->
-    <div id="addNewPosition">
-        <div class="poisition-center">
-            
-            <div class="row">
-
-                <div class="col-sm-6">
-                    <button class="btn-success">提交</button>
-                </div>
-                <div class="col-sm-6">
-                    <button class="btn-close cancle-saving">取消</button>
-                </div>
-            </div>
-            
-        </div>
-    </div>
-    <!-- basic scripts -->
-    <!--[if !IE]>
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-
-    <![endif]-->
-    <!--[if IE]>
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-    <![endif]-->
-    <!--[if IE]>
-    <script type="text/javascript">
-     window.jQuery || document.write("<script src='~/Content/Js/jquery-1.10.2.min.js'>"+"<"+"/script>");
-    </script>
-    <![endif]-->
-
-    <script type="text/javascript">
-        if ("ontouchend" in document) document.write("<script src='~/Content/Js/jquery.mobile.custom.min.js'>" + "<" + "/script>");
-    </script>
-    <script src="~/Content/Js/bootstrap.min.js"></script>
-    <script src="~/Content/Js/typeahead-bs2.min.js"></script>
-
-    <!-- page specific plugin scripts -->
-
-    <script src="~/Content/Js/jquery-ui-1.10.3.custom.min.js"></script>
-    <script src="~/Content/Js/jquery.ui.touch-punch.min.js"></script>
-    <script src="~/Content/Js/bootbox.min.js"></script>
-
-    <!-- ace scripts -->
-
-    <script src="~/Content/Js/ace-elements.min.js"></script>
-    <script src="~/Content/Js/ace.min.js"></script>
-    <script src="~/Scripts/Recruit/layout.js"></script>
-    <!-- inline scripts related to this page -->
-
-    <script type="text/javascript">
-        jQuery(function ($) {
-
-            /* initialize the external events
-                -----------------------------------------------------------------*/
-
-            $('#external-events div.external-event').each(function () {
-
-                // create an Event Object (http://arshaw.com/fullcalendar/docs/event_data/Event_Object/)
-                // it doesn't need to have a start or end
-                var eventObject = {
-                    title: $.trim($(this).text()) // use the element's text as the event title
-                };
-
-                // store the Event Object in the DOM element so we can get to it later
-                $(this).data('eventObject', eventObject);
-
-                // make the event draggable using jQuery UI
-                $(this).draggable({
-                    zIndex: 999,
-                    revert: true,      // will cause the event to go back to its
-                    revertDuration: 0  //  original position after the drag
-                });
-
-            });
-            layout.Init();
-            /* initialize the calendar
-            -----------------------------------------------------------------*/
-        })
-
-    </script>
-
     
-    <div style="display:none">
-    <script src='http://v7.cnzz.com/stat.php?id=155540&web_id=155540' language='JavaScript' charset='gb2312'></script></div>
-    <script src="~/Content/Js/niqiu.js"></script>
-    @RenderSection("scripts", required: false)
+            <!-- basic scripts -->
+            <!--[if !IE]>
+            <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+            <![endif]-->
+            <!--[if IE]>
+            <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+            <![endif]-->
+            <!--[if IE]>
+            <script type="text/javascript">
+             window.jQuery || document.write("<script src='~/Content/Js/jquery-1.10.2.min.js'>"+"<"+"/script>");
+            </script>
+            <![endif]-->
+
+            <script type="text/javascript">
+                if ("ontouchend" in document) document.write("<script src='~/Content/Js/jquery.mobile.custom.min.js'>" + "<" + "/script>");
+            </script>
+            <script src="~/Content/Js/bootstrap.min.js"></script>
+            <script src="~/Content/Js/typeahead-bs2.min.js"></script>
+
+            <!-- page specific plugin scripts -->
+
+            <script src="~/Content/Js/jquery-ui-1.10.3.custom.min.js"></script>
+            <script src="~/Content/Js/jquery.ui.touch-punch.min.js"></script>
+            <script src="~/Content/Js/bootbox.min.js"></script>
+
+            <!-- ace scripts -->
+
+            <script src="~/Content/Js/ace-elements.min.js"></script>
+            <script src="~/Content/Js/ace.min.js"></script>
+            <script src="~/Scripts/Recruit/layout.js"></script>
+            <!-- inline scripts related to this page -->
+
+            <script type="text/javascript">
+                jQuery(function ($) {
+
+                    /* initialize the external events
+                        -----------------------------------------------------------------*/
+
+                    $('#external-events div.external-event').each(function () {
+
+                        // create an Event Object (http://arshaw.com/fullcalendar/docs/event_data/Event_Object/)
+                        // it doesn't need to have a start or end
+                        var eventObject = {
+                            title: $.trim($(this).text()) // use the element's text as the event title
+                        };
+
+                        // store the Event Object in the DOM element so we can get to it later
+                        $(this).data('eventObject', eventObject);
+
+                        // make the event draggable using jQuery UI
+                        $(this).draggable({
+                            zIndex: 999,
+                            revert: true,      // will cause the event to go back to its
+                            revertDuration: 0  //  original position after the drag
+                        });
+
+                    });
+                    layout.Init();
+                    /* initialize the calendar
+                    -----------------------------------------------------------------*/
+                })
+
+            </script>
+
+
+            <div style="display:none">
+                <script src='http://v7.cnzz.com/stat.php?id=155540&web_id=155540' language='JavaScript' charset='gb2312'></script>
+            </div>
+            <script src="~/Content/Js/niqiu.js"></script>
+            @RenderSection("scripts", required: false)
 
 </body>
 </html>

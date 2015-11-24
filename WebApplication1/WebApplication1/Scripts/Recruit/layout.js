@@ -7,12 +7,12 @@
 
 
         // Add new position 
-        $('.new-position').live('click',function (e) {
+        //$('.new-position').live('click',function (e) {
 
-            e.preventDefault();
-            $('#addNewPosition').bPopup().show();
+        //    e.preventDefault();
+        //    $('#addNewPosition').bPopup().show();
 
-        });
+        //});
 
         $('.cancle-saving').live('click',function (e) {
             e.preventDefault();

@@ -1,0 +1,192 @@
+﻿#addNewPosition {
+    width:800px;
+    height:auto;
+    margin: 0 auto;
+    background-color:white;
+    display:none;
+}
+
+
+
+.sPopupBlock {
+    background: #FFF none repeat scroll 0% 0%;
+    border: 1px solid #B5D1E3;
+}
+
+#jobTab {
+    margin-bottom: 5px;
+}
+.sPopupBlock table {
+    width: 100%;
+    margin: 0px;
+}
+
+.sPopupBlock td.jobtypeLCla {
+    width: 150px;
+}
+.sPopupBlock td.leftClass {
+    text-align: right !important;
+    padding-right: 5px !important;
+    vertical-align: middle;
+    font-weight: bold;
+}
+.sPopupBlock td {
+    text-align: left;
+}
+
+s.sPopupBlock td.jobtypeItems {
+    padding: 1px 2px;
+}
+.sPopupBlock td {
+    border: 0px none;
+    padding: 3px 2px;
+    text-align: left;
+}
+
+.sPopupBlock table {
+    width: 100%;
+    margin: 0px;
+    border-collapse: separate;
+}
+
+
+ .zebraCol0 .blurItem {
+    border: 2px solid #FFF;
+}
+ .sPopupBlock td {
+    border: 0px none;
+    padding: 3px 2px;
+    text-align: left;
+}
+ .blurItem {
+    background-image: url("http://img02.zhaopin.cn/new2011/images/index_sj_iconplus.gif");
+    background-repeat: no-repeat;
+    background-position: 4px center;
+    text-indent: 20px;
+    padding-top: 3px !important;
+}
+
+ .sPopupBlock td span.availItem {
+    height: 14px;
+    overflow: hidden;
+}
+ .sPopupBlock td span.availItem {
+    color: #666;
+    cursor: pointer;
+}
+availItem:hover {
+    background:#dfecff
+}
+
+ 
+.sPopupDivSubJobname {
+    position: absolute;
+    z-index: 1000;
+    visibility: hidden;
+    top: -100px;
+    left: -100px;
+    background: #FFF none repeat scroll 0% 0%;
+    border-left: 2px solid #C7C7C7;
+    border-right: 2px solid #C7C7C7;
+    padding: 0px;
+    width: 346px;
+}
+.sPopupDivLeftTop {
+    background: #FFF url("http://img02.zhaopin.cn/new2011/images/subpopupdivbg_l.gif") no-repeat scroll left top !important;
+    border-bottom: 2px solid #C7C7C7;
+    padding-top: 1px !important;
+}
+.sPopupDivSubJobname .paddingBlock {
+    padding: 3px;
+}
+.sPopupDivSubJobname table {
+    margin: 0px;
+}
+.clear {
+    clear: both;
+    height: 0px;
+    line-height: 0;
+    font-size: 0px;
+    visibility: hidden;
+}
+
+.sPopupDivSubJobname .sButtonBlock {
+    background: #FFF url("http://img02.zhaopin.cn/new2011/images/index.png") repeat-x scroll 0px -287px;
+    border-top: 1px solid #C7C7C7;
+    height: 37px;
+    line-height: 37px;
+    clear: both;
+    padding-left: 6px;
+    margin-bottom: 1px;
+}
+.sPopupDivSubJobname label.noselItem_selAll {
+    color: #666;
+    cursor: pointer;
+}
+
+.sPopupDiv .sButtonBlock a, .sPopupDivSubJobname .sButtonBlock a {
+    color: #AD5700;
+    font-size: 12px;
+    text-decoration: none !important;
+    background: transparent url("http://img02.zhaopin.cn/new2011/images/index.png") no-repeat scroll -317px -90px;
+    width: 60px;
+    height: 23px;
+    display: inline-block;
+    padding: 0px;
+    text-align: center;
+    line-height: 23px;
+}
+.sPopupDiv .sButtonBlock a.blueButton, .sPopupDivSubJobname .sButtonBlock a.blueButton {
+    background-position: -378px -90px;
+    color: #2F59AB;
+    width: 48px;
+}
+
+.industry, .job, .city {
+    float: left;
+    height: 29px;
+    width: 240px;
+    margin: 3px 0px 0px 8px;
+    background: transparent url("http://img02.zhaopin.cn/2012/img/index/se.png") no-repeat scroll 0% 0%;
+}
+.city {
+    background-position: -242px 0px;
+cursor: pointer;
+}
+
+#buttonSelCity {
+    background: transparent url("http://img02.zhaopin.cn/2012/img/index/se.png") repeat-x scroll -588px -4px;
+    width: 60px;
+    height: 21px;
+    cursor: pointer;
+    float: right;
+    margin: 4px 4px 0px 0px;
+}
+#JobLocation {
+    width: 166px;
+    float: left;
+    height: 20px;
+    padding: 5px 0px 5px 7px;
+}
+
+input {
+    border: 0px none;
+    background: transparent none repeat scroll 0px center;
+}
+#buttonSelJobType, #buttonSelIndustry， #buttonSelSalary {
+    width: 210px;
+    margin: 7px 0px 0px 25px;
+    text-align: left;
+    cursor: pointer;
+}
+
+
+.row {
+    padding-top:10px;
+}
+.container, .ads {
+    margin-left:0px;
+}
+.ads {
+    background-color:azure;
+}

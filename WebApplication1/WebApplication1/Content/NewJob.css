@@ -149,6 +149,15 @@ availItem:hover {
     margin: 3px 0px 0px 8px;
     background: transparent url("http://img02.zhaopin.cn/2012/img/index/se.png") no-repeat scroll 0% 0%;
 }
+.jobDesc {
+     float: left;
+    height: 29px;
+    width: 240px;
+    margin: 3px 0px 0px 8px;
+}
+.jobdescriptiontext {
+    width:240px;
+}
 .city {
     background-position: -242px 0px;
 cursor: pointer;
@@ -173,7 +182,7 @@ input {
     border: 0px none;
     background: transparent none repeat scroll 0px center;
 }
-#buttonSelJobType, #buttonSelIndustry， #buttonSelSalary {
+#buttonSelJobType, #buttonSelIndustry, #buttonSelSalary, #buttonSelCompSize {
     width: 210px;
     margin: 7px 0px 0px 25px;
     text-align: left;
@@ -184,8 +193,11 @@ input {
 .row {
     padding-top:10px;
 }
-.container, .ads {
+.container {
     margin-left:0px;
+    background-image:url("../../Images/recruit.png");
+    background-position:right top;
+    background-repeat:no-repeat;
 }
 .ads {
     background-color:azure;

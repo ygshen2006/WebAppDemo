@@ -13,10 +13,13 @@
         //    $('#addNewPosition').bPopup().show();
 
         //});
+        $(".popover-options #buttonSelJobType").popover({ html: true });
+
+        $('#buttonSelJobType').attr('data-content', $('#addNewPosition').html());
 
         $('.cancle-saving').live('click',function (e) {
             e.preventDefault();
-            $('#addNewPosition').bPopup().close();
+            $('#buttonSelJobType').popover('hide');
         });
     }
 

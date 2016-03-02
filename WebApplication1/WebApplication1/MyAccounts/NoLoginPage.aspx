@@ -19,7 +19,7 @@
         <header class="bg-dark" style="position: relative">
             <div class="navigation-bar dark" style="width: 100%">
                 <div class="navigation-bar-content container">
-                    <a href="../Welcome.aspx" class="element"><span class="icon-grid-view" style="margin-right: 5px;"></span>长宁人才</a>
+                    <a href="../Welcome.aspx" class="element"><span class="icon-grid-view" style="margin-right: 5px;"></span>Test Portal</a>
                     <span class="element-divider"></span>
                     <a class="element1 pull-menu" href="#"></a>
                     <ul class="element-menu">
